@@ -8,7 +8,6 @@ to{
   transform: translateY(15px);
 }`;
 const VideoBox = styled.div`
-  width: 100vw;
   height: 100vh;
   position: relative;
   background: linear-gradient(90deg, #06080b, #1a222e);
@@ -17,9 +16,9 @@ const VideoBox = styled.div`
 
 const Video = styled.video`
   min-width: 100%;
-  min-height: ${(props) => props.$windowHeight}px;
-  width: auto;
   height: 100%;
+  width: 100%;
+  object-fit: cover;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -30,7 +29,7 @@ const TypewriterBox = styled.div`
   font-size: 75px;
   position: absolute;
   top: 50%;
-  left: 25%;
+  left: 50%;
   transform: translate(-50%, -50%);
   z-index: 99;
   text-align: center;
@@ -79,7 +78,7 @@ function MainVideo() {
           <span>Trading Service for YOU</span>
           <i className="fa-solid fa-angles-down"></i>
         </Span>
-        <Video autoPlay muted $windowHeight={window.innerHeight}>
+        <Video loop autoPlay muted $windowHeight={window.innerHeight}>
           <source src="https://mempro.myqnapcloud.com:85/2.mp4"></source>
         </Video>
       </VideoBox>

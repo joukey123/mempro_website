@@ -5,28 +5,58 @@ import { scroller } from "react-scroll";
 import ObjectCreator from "../../ObjectCreator";
 import HomeMenu from "./HomeMenu";
 import HomeAbout from "./HomeAbout";
+import Footer from "../../components/Footer";
+import Header from "../../components/Header";
 
+const MainWrapper = styled.div``;
 const Section = styled.div`
-  height: 100vh;
+  min-height: 100vh;
+  overflow: hidden;
 `;
 
 const Section1 = styled(Section)`
   background-color: ${(props) => props.theme.colors.black};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 const Section2 = styled(Section)`
   background-color: ${(props) => props.theme.colors.black};
-`;
-
-const Section3 = styled(Section)`
-  background-color: blue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
 `;
 
 function Main() {
   const [parts, setParts] = useState([]);
-
+  const [currentWindowHeight, setCurrentWindoHeiht] = useState(
+    window.innerHeight
+  );
   const handelTop = () => {
-    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    const startPosition = window.scrollY;
+    const duration = 600; // in milliseconds
+    let startTime = null;
+
+    const animateScroll = (currentTime) => {
+      if (!startTime) startTime = currentTime;
+      const timeElapsed = currentTime - startTime;
+      const run = ease(timeElapsed, startPosition, -startPosition, duration);
+      window.scrollTo(0, run);
+      if (timeElapsed < duration) requestAnimationFrame(animateScroll);
+    };
+
+    const ease = (t, b, c, d) => {
+      t /= d / 2;
+      if (t < 1) return (c / 2) * t * t + b;
+      t--;
+      return (-c / 2) * (t * (t - 2) - 1) + b;
+    };
+
+    requestAnimationFrame(animateScroll);
   };
 
   useEffect(() => {
@@ -50,11 +80,10 @@ function Main() {
     const handleScroll = (event) => {
       const { deltaY } = event;
       const sectionIndex = Math.round(window.scrollY / window.innerHeight);
-
       if (deltaY > 0) {
         // Scroll down
         const nextSectionIndex = sectionIndex + 1;
-        if (nextSectionIndex < 4) {
+        if (nextSectionIndex < 3) {
           scroller.scrollTo(`section${nextSectionIndex}`, {
             duration: 800,
             delay: 0,
@@ -86,14 +115,30 @@ function Main() {
     };
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      let preHeight = currentWindowHeight;
+      setCurrentWindoHeiht(window.innerHeight);
+      if (preHeight < currentWindowHeight) {
+        handelTop();
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [window.innerHeight]);
+
   return (
-    <>
+    <MainWrapper>
+      <Header />
       <MainVideo id="section0" />
       <Section1 id="section1">
         <HomeMenu />
       </Section1>
       <Section2 id="section2">
         <HomeAbout />
+        <Footer />
       </Section2>
       {/* <Section3 id="section3" />
       <ul>
@@ -101,7 +146,7 @@ function Main() {
           <li key={index}>{part}</li>
         ))}
       </ul> */}
-    </>
+    </MainWrapper>
   );
 }
 

@@ -7,10 +7,9 @@ import { useState } from "react";
 const FooterWrapper = styled.div`
   width: 100%;
   max-width: 1280px;
-  height: 250px;
   padding: 20px;
   color: ${(props) => props.theme.colors.white};
-  font-size: 1rem;
+  font-size: 0.9rem;
   border-top: 0.5px solid ${(props) => props.theme.colors.stroke};
   h1 {
     font-weight: 600;
@@ -18,7 +17,7 @@ const FooterWrapper = styled.div`
   }
   h2 {
     font-weight: 100;
-    font-size: 1rem;
+    font-size: 0.9rem;
     margin-bottom: 10px;
 
     span:nth-child(2) {
@@ -29,6 +28,7 @@ const FooterWrapper = styled.div`
     font-size: 0.8rem;
     text-align: center;
     font-weight: 100;
+    margin: 1% 0;
   }
 `;
 const NationSpan = styled.span`
@@ -37,16 +37,15 @@ const NationSpan = styled.span`
 `;
 const Logo = styled.div`
   width: 190px;
-  height: 35px;
+  height: 30px;
   background: url(${logo}) no-repeat;
-  margin-bottom: 30px;
+  margin-bottom: 2%;
   filter: grayscale(1);
 `;
 const Info = styled.div`
-  height: 96px;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 30px;
+  margin-bottom: 2%;
 `;
 const InfoAddress = styled.div`
   display: flex;
@@ -65,7 +64,7 @@ const Mail = styled.div`
 const Link = styled.div`
   width: 10%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 `;
 function Footer() {

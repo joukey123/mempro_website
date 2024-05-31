@@ -58,8 +58,14 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
-
+.Typewriter {
+	width: 500px;
+	height: 500px;
+}
+a {
+	text-decoration: none;
+	color: inherit;
+}
 @media (max-width: 1000px) {
    
     .typewriter-box {

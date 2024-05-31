@@ -1,8 +1,9 @@
 import styled from "styled-components";
-import Footer from "../../components/Footer";
 import bgsemi from "../../img/bgsemi.svg";
 import Btn from "../../components/Btn";
 import LogoAnimation from "../../components/LogoAnimation";
+import { motion, useAnimation, useInView } from "framer-motion";
+import React, { useRef } from "react";
 
 const Homeabout = styled.div`
   display: flex;
@@ -23,31 +24,29 @@ const Wraper = styled.div`
 `;
 const TextWrapper = styled.div`
   width: 40%;
+  margin-right: 5%;
   span {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
   h1 {
-    font-size: 4rem;
+    font-size: 3.5rem;
     line-height: 1.2;
     margin: 40px 0 30px 0;
   }
   p {
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: 100;
   }
-  margin-right: 10%;
 `;
 const ImgWrapper = styled.div`
   width: 40%;
   position: relative;
-  height: 30%;
-  max-width: 650px;
 `;
 const Bgimg = styled.img`
-  width: 100%;
+  width: 90%;
 `;
 
-const BtnWrapper = styled.div`
+const BtnWrapper = styled(motion.div)`
   width: 300px;
   display: flex;
   align-items: center;
@@ -55,15 +54,53 @@ const BtnWrapper = styled.div`
   justify-content: space-between;
   margin-top: 5%;
 `;
+
 function HomeAbout() {
+  const controls = useAnimation();
+  const ref = useRef(null);
+  const isInView = useInView(ref, { triggerOnce: true, threshold: 0.5 });
+
+  React.useEffect(() => {
+    if (isInView) {
+      controls.start("visible");
+    }
+  }, [isInView, controls]);
+
+  const animateVariants = (delay) => ({
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 1, delay } },
+  });
+
   return (
     <Homeabout>
       <Wraper>
-        <TextWrapper>
-          <span>MEMPro</span>
-          <h1>Professional Trading Service</h1>
-          <p>We can offer you the finest products you seek</p>
-          <BtnWrapper>
+        <TextWrapper ref={ref}>
+          <motion.span
+            initial="hidden"
+            animate={controls}
+            variants={animateVariants(0)}
+          >
+            MEMPro
+          </motion.span>
+          <motion.h1
+            initial="hidden"
+            animate={controls}
+            variants={animateVariants(1)}
+          >
+            Professional Trading Service
+          </motion.h1>
+          <motion.p
+            initial="hidden"
+            animate={controls}
+            variants={animateVariants(1.2)}
+          >
+            We can offer you the finest products you seek
+          </motion.p>
+          <BtnWrapper
+            initial="hidden"
+            animate={controls}
+            variants={animateVariants(1.5)}
+          >
             <Btn text={"About MEMPro"} />
             <Btn text={"Contact"} />
           </BtnWrapper>
@@ -73,7 +110,6 @@ function HomeAbout() {
           <Bgimg src={bgsemi} alt="bgImg" />
         </ImgWrapper>
       </Wraper>
-      <Footer />
     </Homeabout>
   );
 }
