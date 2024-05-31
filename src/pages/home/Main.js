@@ -7,6 +7,8 @@ import HomeMenu from "./HomeMenu";
 import HomeAbout from "./HomeAbout";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
+import { Canvas } from "@react-three/fiber";
+import FallingStars from "../../components/FallingStars";
 
 const MainWrapper = styled.div``;
 const Section = styled.div`
@@ -30,7 +32,11 @@ const Section2 = styled(Section)`
   justify-content: center;
   min-height: 100vh;
 `;
-
+const StarCanvasBox = styled.div`
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+`;
 function Main() {
   const [parts, setParts] = useState([]);
   const [currentWindowHeight, setCurrentWindoHeiht] = useState(
@@ -134,6 +140,12 @@ function Main() {
       <Header />
       <MainVideo id="section0" />
       <Section1 id="section1">
+        <StarCanvasBox>
+          <Canvas camera={{ position: [0, 0, 5] }}>
+            <ambientLight intensity={0.5} />
+            <FallingStars count={4000} />
+          </Canvas>
+        </StarCanvasBox>
         <HomeMenu />
       </Section1>
       <Section2 id="section2">
