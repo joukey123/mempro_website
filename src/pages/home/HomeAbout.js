@@ -11,7 +11,7 @@ const Homeabout = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100%;
+  height: 75%;
 `;
 const Wraper = styled.div`
   width: 100%;
@@ -26,21 +26,22 @@ const TextWrapper = styled.div`
   width: 40%;
   margin-right: 5%;
   span {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
   h1 {
-    font-size: 3.5rem;
+    font-size: 3rem;
     line-height: 1.2;
     margin: 40px 0 30px 0;
   }
   p {
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: 100;
   }
 `;
 const ImgWrapper = styled.div`
   width: 40%;
   position: relative;
+  transform: scale(0.8);
 `;
 const Bgimg = styled.img`
   width: 90%;
