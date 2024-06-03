@@ -12,7 +12,9 @@ import FallingStars from "../../components/FallingStars";
 
 const MainWrapper = styled.div``;
 const Section = styled.div`
-  min-height: 100vh;
+  height: 100vh;
+  min-width: 1000px;
+  min-height: 1000px;
   overflow: hidden;
 `;
 
@@ -30,7 +32,6 @@ const Section2 = styled(Section)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
 `;
 const StarCanvasBox = styled.div`
   width: 100%;

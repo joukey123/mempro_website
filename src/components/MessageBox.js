@@ -13,6 +13,7 @@ const Wrap = styled(motion.div)`
   width: 30%;
   margin: 0 auto;
   height: 56px;
+  min-width: 300px;
 `;
 const Contents = styled.span`
   font-size: 1rem;
@@ -20,6 +21,7 @@ const Contents = styled.span`
   color: ${(props) => props.theme.colors.white};
   position: relative;
   right: 22px;
+  min-width: 180px;
 `;
 const Btn = styled.button`
   width: 50px;

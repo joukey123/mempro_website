@@ -48,6 +48,7 @@ const NavWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  min-width: 700px;
 `;
 const Nav = styled.ul`
   width: 100%;

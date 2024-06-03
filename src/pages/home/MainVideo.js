@@ -67,7 +67,6 @@ function MainVideo() {
             options={{
               strings: [
                 '<i class="fa-solid fa-quote-left" style="font-size:50px"></i><br>Commitment<br>&<br>Trust<br><i class="fa-solid fa-quote-right" style="font-size:50px"></i>',
-                `<span style="font-size:100px">MEMPro</span>`,
               ],
               autoStart: true,
               loop: true,

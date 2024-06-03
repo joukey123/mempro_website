@@ -7,7 +7,7 @@ import { useState } from "react";
 const FooterWrapper = styled.div`
   width: 100%;
   max-width: 1280px;
-  padding: 20px;
+  padding: 30px;
   color: ${(props) => props.theme.colors.white};
   font-size: 0.9rem;
   border-top: 0.5px solid ${(props) => props.theme.colors.stroke};
