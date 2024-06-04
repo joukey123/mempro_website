@@ -6,6 +6,7 @@ import { Link, useLocation } from "react-router-dom";
 import Language from "./Language";
 import { useEffect, useRef, useState } from "react";
 import Submenu from "./Submenu";
+import { AnimatePresence } from "framer-motion";
 
 const HeaderWrapper = styled.div`
   position: fixed;
@@ -108,6 +109,11 @@ function Header() {
             <li
               key={index}
               onMouseOver={(event) => handleMouseOver(index, event)}
+              onMouseLeave={
+                item.link === "about" || item.link === "contact"
+                  ? () => handleMouseOut()
+                  : null
+              }
               style={{ position: "relative" }}
             >
               <Link
@@ -119,13 +125,15 @@ function Header() {
               >
                 {item.category}
               </Link>
-              {activeMenu === index && item.subcategories && (
-                <Submenu
-                  subcategories={item.subcategories}
-                  handleMouseOut={handleMouseOut}
-                  hoveredLiWidth={hoveredLiWidth}
-                />
-              )}
+
+              <Submenu
+                subcategories={item.subcategories}
+                handleMouseOut={handleMouseOut}
+                hoveredLiWidth={hoveredLiWidth}
+                isVisible={activeMenu === index && item.subcategories}
+                categoryLink={item.link}
+              />
+
               {/* {item.subcategories && (
                 <Submenu
                   subcategories={item.subcategories}

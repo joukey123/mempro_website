@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const Wrapper = styled(motion.div)`
   display: flex;
@@ -12,6 +13,7 @@ const Wrapper = styled(motion.div)`
   left: -${(props) => props.$subMenuCenter}px;
   padding: 10px;
   border-radius: 10px;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.4);
 `;
 const SubmenuWrapper = styled.ul`
   width: 100%;
@@ -20,6 +22,11 @@ const SubmenuWrapper = styled.ul`
     flex-direction: column;
     width: 100%;
     align-items: start;
+    a {
+      text-decoration: none;
+      margin: 0;
+      padding: 0;
+    }
   }
 `;
 const Diagram = styled.h1`
@@ -44,61 +51,74 @@ const SubCategory = styled.span`
     color: white;
   }
 `;
-function Submenu({ subcategories, handleMouseOut, hoveredLiWidth }) {
+function Submenu({
+  subcategories,
+  handleMouseOut,
+  hoveredLiWidth,
+  isVisible,
+  categoryLink,
+}) {
   const subRef = useRef(null);
   const [subMenuCenter, setSubMenuCenter] = useState(0);
-  const [height, setHeight] = useState(0);
   useEffect(() => {
     if (subRef.current) {
       setSubMenuCenter((subRef.current.offsetWidth - hoveredLiWidth) / 2);
-      setHeight(subRef.current.offsetWidth);
-      console.log(height);
     }
   }, []);
   return (
-    <Wrapper
-      onMouseOut={handleMouseOut}
-      ref={subRef}
-      $subMenuCenter={subMenuCenter}
-    >
-      <div>
-        <SubmenuWrapper>
-          {subcategories.map(
-            (item, index) =>
-              item.diagram !== "machine" && (
-                <li key={index}>
-                  <Diagram key={index}>{item.diagram}</Diagram>
-                  {item.subcategory &&
-                    item.subcategory.map((names, index) => (
-                      <SubCategory key={index}>{names.name}</SubCategory>
-                    ))}
-                </li>
-              )
-          )}
-        </SubmenuWrapper>
-      </div>
-      <div>
-        <SubmenuWrapper>
-          {subcategories.map(
-            (item, index) =>
-              item.diagram === "machine" && (
-                <li key={index}>
-                  <Diagram
-                    style={{ fontWeight: "bold", marginBottom: "5px" }}
-                    key={index}
-                  >
-                    {item.diagram}
-                  </Diagram>
-                  {item.subcategory &&
-                    item.subcategory.map((names, index) => (
-                      <SubCategory key={index}>{names.name}</SubCategory>
-                    ))}
-                </li>
-              )
-          )}
-        </SubmenuWrapper>
-      </div>
-    </Wrapper>
+    <AnimatePresence>
+      {isVisible && (
+        <Wrapper
+          onMouseOut={handleMouseOut}
+          ref={subRef}
+          $subMenuCenter={subMenuCenter}
+          initial={{ height: 0, opacity: 0 }}
+          animate={{ height: "auto", opacity: 1 }}
+          exit={{ height: 0, opacity: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <div>
+            <SubmenuWrapper>
+              {subcategories.map(
+                (item, index) =>
+                  item.diagram !== "machine" && (
+                    <li key={index}>
+                      <Diagram key={index}>{item.diagram}</Diagram>
+                      {item.subcategory &&
+                        item.subcategory.map((names, index) => (
+                          <Link to={`/${categoryLink}/${names.link}`}>
+                            <SubCategory key={index}>{names.name}</SubCategory>
+                          </Link>
+                        ))}
+                    </li>
+                  )
+              )}
+            </SubmenuWrapper>
+          </div>
+          <div>
+            <SubmenuWrapper>
+              {subcategories.map(
+                (item, index) =>
+                  item.diagram === "machine" && (
+                    <li key={index} style={{ marginLeft: "30px" }}>
+                      <Diagram
+                        style={{ fontWeight: "bold", marginBottom: "5px" }}
+                        key={index}
+                      >
+                        {item.diagram}
+                      </Diagram>
+                      {item.subcategory &&
+                        item.subcategory.map((names, index) => (
+                          <SubCategory key={index}>{names.name}</SubCategory>
+                        ))}
+                    </li>
+                  )
+              )}
+            </SubmenuWrapper>
+          </div>
+        </Wrapper>
+      )}
+    </AnimatePresence>
   );
 }
 

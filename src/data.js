@@ -41,42 +41,42 @@ export const items = [
       {
         diagram: "wafer",
         subcategory: [
-          { name: "Diamond Wire", link: "/diamondwire" },
-          { name: "Twist Diamond Wire", link: "/twistdiamondwire" },
+          { name: "Diamond Wire", link: "diamondwire" },
+          { name: "Twist Diamond Wire", link: "twistdiamondwire" },
         ],
       },
       {
         diagram: "etching",
-        subcategory: [{ name: "Focus Ring Electode", link: "/etching" }],
+        subcategory: [{ name: "Focus Ring Electode", link: "etching" }],
       },
       {
         diagram: "EDS-cantilever",
         subcategory: [
-          { name: "Cantilever", link: "/cantilever" },
-          { name: "Stiffener", link: "/stiffener" },
-          { name: "Probe", link: "/probe" },
-          { name: "PI-Tube", link: "/tube" },
+          { name: "Cantilever", link: "cantilever" },
+          { name: "Stiffener", link: "stiffener" },
+          { name: "Probe", link: "probe" },
+          { name: "PI-Tube", link: "tube" },
         ],
       },
       {
         diagram: "EDS-vertical",
         subcategory: [
-          { name: "Vertical", link: "/vertical" },
-          { name: "Stiffener", link: "/stiffener" },
-          { name: "Probe", link: "/probe" },
-          { name: "Ceramic Hole/Guide", link: "/ceramic" },
+          { name: "Vertical", link: "vertical" },
+          { name: "Stiffener", link: "stiffener" },
+          { name: "Probe", link: "probe" },
+          { name: "Ceramic HoleGuide", link: "ceramic" },
         ],
       },
       {
         diagram: "machine",
         subcategory: [
-          { name: "Sanding Machine", link: "/sanding" },
-          { name: "Bending Machine", link: "/bending" },
-          { name: "Manual Prober", link: "/manual" },
-          { name: "Punching Machine", link: "/punching" },
-          { name: "Probe Tester", link: "/probetester" },
-          { name: "PogoPin Caulking", link: "/pogopin" },
-          { name: "Rubber Socket Tester", link: "/rubber" },
+          { name: "Sanding Machine", link: "sanding" },
+          { name: "Bending Machine", link: "bending" },
+          { name: "Manual Prober", link: "manual" },
+          { name: "Punching Machine", link: "punching" },
+          { name: "Probe Tester", link: "probetester" },
+          { name: "PogoPin Caulking", link: "pogopin" },
+          { name: "Rubber Socket Tester", link: "rubber" },
         ],
       },
     ],
@@ -90,11 +90,11 @@ export const items = [
     subcategories: [
       {
         diagram: "process",
-        subcategory: [{ name: "Coater", link: "/coater" }],
+        subcategory: [{ name: "Coater", link: "coater" }],
       },
       {
         diagram: "eds",
-        subcategory: [{ name: "Led Probe", link: "/ledprobe" }],
+        subcategory: [{ name: "Led Probe", link: "ledprobe" }],
       },
     ],
     link: "led",
@@ -108,8 +108,8 @@ export const items = [
       {
         diagram: "Process",
         subcategory: [
-          { name: "PP Sheet", link: "/pp" },
-          { name: "Ceramic Brush", link: "/brush" },
+          { name: "PP Sheet", link: "pp" },
+          { name: "Ceramic Brush", link: "brush" },
         ],
       },
     ],
@@ -124,10 +124,10 @@ export const items = [
       {
         diagram: "BBT",
         subcategory: [
-          { name: "Wire Probe", link: "/wire" },
-          { name: "Universal Probe", link: "/universal" },
-          { name: "Dimple Probe", link: "/dimple" },
-          { name: "Spring Wire Probe", link: "/spring" },
+          { name: "Wire Probe", link: "wire" },
+          { name: "Universal Probe", link: "universal" },
+          { name: "Dimple Probe", link: "dimple" },
+          { name: "Spring Wire Probe", link: "spring" },
         ],
       },
     ],
@@ -143,10 +143,10 @@ export const items = [
       {
         diagram: "Process",
         subcategory: [
-          { name: "Road Stus", link: "/stus" },
-          { name: "Bollard", link: "/bollard" },
-          { name: "Solar Lighr", link: "/solar" },
-          { name: "Logo Jector", link: "/logojector" },
+          { name: "Road Stus", link: "stus" },
+          { name: "Bollard", link: "bollard" },
+          { name: "Solar Lighr", link: "solar" },
+          { name: "Logo Jector", link: "logojector" },
         ],
       },
     ],

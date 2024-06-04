@@ -48,7 +48,7 @@ const Bgimg = styled.img`
 `;
 
 const BtnWrapper = styled(motion.div)`
-  width: 300px;
+  width: 280px;
   display: flex;
   align-items: center;
   justify-content: center;
