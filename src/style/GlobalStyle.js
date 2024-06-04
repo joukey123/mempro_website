@@ -33,6 +33,7 @@ time, mark, audio, video {
 	font-size: 100%;
 	vertical-align: baseline;
 	font-family: "Libre Franklin", sans-serif;
+	box-sizing: border-box;
 
 }
 /* HTML5 display-role reset for older browsers */

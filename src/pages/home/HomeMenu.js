@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import map from "../../img/1.png";
+import map from "../../img/map.svg";
 import gif from "../../img/GIF.gif";
 import { React, useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -23,17 +23,19 @@ const ImgWrapper = styled(motion.div)`
   align-items: center;
   justify-content: center;
   position: relative;
-  transform: scale(0.9);
   padding-top: 10%;
 `;
 
 const Img = styled.img`
   filter: grayscale(1);
-  max-width: ${(props) => props.$rate}%;
+  max-width: 1200px;
+  position: absolute;
+  top: 50px;
 `;
 
 const MaskImg = styled.img`
-  max-width: ${(props) => props.$rate}%;
+  width: 100%;
+  max-width: 1200px;
   mask: ${(props) =>
     props.$isMouseOver
       ? props.$categoies === "led"
@@ -49,13 +51,11 @@ const MaskImg = styled.img`
         : "none"
       : "none"};
   position: absolute;
+  top: 50px;
 `;
-
 const Svg = styled.svg`
   position: absolute;
-  max-width: ${(props) => props.$rate}%;
-  width: 100%;
-  height: 100%;
+  top: -250px;
   pointer-events: none;
   cursor: pointer;
   opacity: 0;
@@ -63,10 +63,12 @@ const Svg = styled.svg`
   path {
     pointer-events: fill;
   }
+  a {
+    display: flex;
+  }
 `;
 const MessageWrapper = styled.div`
   width: 100%;
-  max-width: 1280px;
   height: 20vh;
   display: flex;
   justify-content: center;
@@ -74,30 +76,25 @@ const MessageWrapper = styled.div`
   margin-top: -150px;
 `;
 function HomeMenu() {
-  const rate = 70; //max-width
   const [mouseover, setMouseover] = useState(false);
   const [selectCategory, setSelectCategoty] = useState();
   const [viewScale, setviewScale] = useState(
     Math.min(
       (Math.ceil((window.innerWidth / 1100) * 10000) / 10000).toFixed(4),
-      (
-        Math.ceil(((window.innerWidth * (rate / 100)) / 1100) * 10000) / 10000
-      ).toFixed(4)
+      (Math.ceil((1220 / 1100) * 10000) / 10000).toFixed(4)
     )
   );
+  const gifImg = useRef(null);
 
   useEffect(() => {
     const handleResize = () => {
-      // 브라우저 창의 가로 세로 비율을 계산하여 scale 값 설정
-      let windowWidth;
-      if (window.innerWidth > window.innerWidth * (rate / 100)) {
-        windowWidth = window.innerWidth * (rate / 100);
+      if (window.innerWidth >= 1220) {
+        setviewScale(1.11);
       } else {
-        windowWidth = window.innerWidth;
+        setviewScale(
+          (Math.ceil((window.innerWidth / 1100) * 10000) / 10000).toFixed(4)
+        );
       }
-      const ratio = Math.ceil((windowWidth / 1100) * 10000) / 10000;
-
-      setviewScale(ratio.toFixed(4));
     };
 
     // 컴포넌트가 마운트될 때와 창 크기가 변경될 때 이벤트를 감지
@@ -123,19 +120,31 @@ function HomeMenu() {
   return (
     <Wrapper ref={ref}>
       <ImgWrapper style={{ scale }}>
-        <Img src={map} $rate={rate} />
-        {items.map((item) => (
-          <Svg
-            key={item.category}
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 1084.72 735.96"
-            onMouseOver={() => handleMouseOver(item.category)}
-            onMouseLeave={handleMouseLeave}
-            $rate={rate}
-          >
-            <Link to={`/${item.link}`}>{item.tag && item.tag}</Link>
-          </Svg>
-        ))}
+        <Img src={map} />
+        <div
+          style={{
+            position: "absolute",
+            width: "100%",
+            maxWidth: "1200px",
+            top: "300px",
+          }}
+        >
+          {items.map(
+            (item) =>
+              item.tag && (
+                <Svg
+                  key={item.category}
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 1084.72 735.96"
+                  onMouseOver={() => handleMouseOver(item.category)}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <Link to={`/${item.link}`}>{item.tag}</Link>
+                </Svg>
+              )
+          )}
+        </div>
+
         {mouseover && (
           <>
             {/* <MaskImg $isMouseOver={mouseover} $categoies={"led"}>
@@ -148,39 +157,32 @@ function HomeMenu() {
             </MaskImg> */}
             <MaskImg
               src={gif}
-              $isMouseOver={mouseover}
               $categoies={selectCategory}
-              $rate={rate}
+              $isMouseOver={mouseover}
+              ref={gifImg}
             />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 1084.72 735.96"
-              style={{
-                position: "absolute",
-              }}
-            >
+
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1081.3 626.46">
               <defs>
                 <mask id="semiMask">
                   <path
-                    style={{
-                      transform: `scale(${viewScale})`,
-                    }}
+                    style={{ transform: `scale(${viewScale})` }}
                     fill="white"
-                    d="M841.69,95.75l2.32-2.22-3-1.73.07-6.31-4.33-3.48,8.23-5.23-3.89-2.22v-8.23s-47.39-28.77-47.39-28.77l-7.71-.98-9.73,6.11-.21-5.13-1.84-1.07-3.48,1.77-.03,7.39-5.29,2.81v7.89l-2.86,2.17c-7.39-.25-14.87.65-21.57,2.71l-.91-36.16-30.46-18.52-27.45,14.87.07,4.34-3.25-1.98-27.45,14.87,2.5,71.63-13.95,8.11c-15.96,9.27-41.91,9.28-57.97.01l-47.7-27.54c-8.26-4.77-19.13-7.08-29.91-6.95-2.07-2.55-5.77-5.56-11.04-4.11-8.13,2.25-6.64,6.2-6.46,6.62-3.82,1.11-7.4,2.59-10.58,4.44l-25.55,14.85c-15.96,9.27-41.91,9.29-57.97.01l-12.15-7.01c-.76-2.97-1.99-5.92-3.97-8.33-6.94-8.43-12.33-1.84-12.33-1.84l-.69,1.12c-4.01-1.49-8.36-2.54-12.86-3.14l1.7-54.31L296.91,0l-55.68,32.16.31,101.98-2.5,1.45-48.1,27.95c-15.96,9.28-15.85,24.31.19,33.57l22.3,12.87.24.15,297.99,168.52,35.12-20.02,377.51-215.2-82.6-47.69Z"
+                    d="M924.29,143.44l-377.51,215.2-35.12,20.02L213.67,210.14l-.24-.15-22.3-12.87c-16.04-9.26-16.15-24.29-.19-33.57l121.7-70.72c15.96-9.27,41.91-9.26,57.95,0l22.3,12.87c16.06,9.28,42.01,9.26,57.97-.01l25.55-14.85c15.96-9.28,41.93-9.28,58,0l47.7,27.54c16.06,9.27,42.01,9.26,57.97-.01l91.1-52.95c15.96-9.27,41.93-9.27,57.99,0l135.12,78.02Z"
                   />
                 </mask>
               </defs>
+
               <defs>
                 <mask id="ledMask">
                   <path
-                    style={{
-                      transform: `scale(${viewScale})`,
-                    }}
+                    style={{ transform: `scale(${viewScale})` }}
                     fill="white"
                     d="M331.9,476.36l167.16,95.02-102.02,64.15-28.39-16.39c-16.06-9.28-42.01-9.27-57.97.01l-19.38,11.26c-15.96,9.28-41.93,9.28-58,0L12.1,502.7c-16.07-9.27-16.13-24.3-.17-33.58l77.17-44.84c15.96-9.28,15.87-24.32-.19-33.6l-36.38-21c-16.06-9.27-16.15-24.32-.19-33.59l160.55-93.3c15.87-9.22,15.89-24.15.07-33.43l297.99,168.52-179.05,98.48Z"
                   />
                 </mask>
               </defs>
+
               <defs>
                 <mask id="subMask">
                   <path

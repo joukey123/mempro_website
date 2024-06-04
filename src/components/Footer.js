@@ -111,8 +111,13 @@ function Footer() {
           <h2>{add[offices].mail}</h2>
         </Mail>
         <Link>
-          {linkBtns.map((item) => (
-            <LinkBtn icon={item.icon} link={item.link} text={item.text} />
+          {linkBtns.map((item, index) => (
+            <LinkBtn
+              icon={item.icon}
+              link={item.link}
+              text={item.text}
+              key={index}
+            />
           ))}
         </Link>
       </Info>

@@ -4,7 +4,8 @@ import navLogoWhite from "../img/nav_logo_white.svg";
 import { items } from "../data";
 import { Link, useLocation } from "react-router-dom";
 import Language from "./Language";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import Submenu from "./Submenu";
 
 const HeaderWrapper = styled.div`
   position: fixed;
@@ -59,16 +60,24 @@ const Nav = styled.ul`
   align-items: center;
   justify-content: flex-end;
   display: flex;
+  li {
+    display: flex;
+  }
   a {
-    margin-right: 30px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
   }
 `;
 const LanguageWrapper = styled.div`
   transform: scale(0.8);
 `;
+
 function Header() {
   const location = useLocation();
   const [isMain, setIsMain] = useState(false);
+  const [activeMenu, setActiveMenu] = useState(null);
+  const [hoveredLiWidth, setHoveredLiWidth] = useState(null);
 
   useEffect(() => {
     if (location.pathname === "/") {
@@ -77,6 +86,14 @@ function Header() {
       setIsMain(false);
     }
   }, [location]);
+  const handleMouseOver = (index, event) => {
+    setActiveMenu(index);
+    setHoveredLiWidth(event.currentTarget.offsetWidth);
+  };
+
+  const handleMouseOut = () => {
+    setActiveMenu(null);
+  };
 
   return (
     <HeaderWrapper $isMain={isMain}>
@@ -88,8 +105,33 @@ function Header() {
       <NavWrapper>
         <Nav>
           {items.map((item, index) => (
-            <li key={index}>
-              <Link to={`/${item.link}`}>{item.category}</Link>
+            <li
+              key={index}
+              onMouseOver={(event) => handleMouseOver(index, event)}
+              style={{ position: "relative" }}
+            >
+              <Link
+                to={`/${item.link}`}
+                style={{
+                  color: activeMenu === index ? "#44A8F4" : "inherit",
+                  fontWeight: activeMenu === index && "bold",
+                }}
+              >
+                {item.category}
+              </Link>
+              {activeMenu === index && item.subcategories && (
+                <Submenu
+                  subcategories={item.subcategories}
+                  handleMouseOut={handleMouseOut}
+                  hoveredLiWidth={hoveredLiWidth}
+                />
+              )}
+              {/* {item.subcategories && (
+                <Submenu
+                  subcategories={item.subcategories}
+                  hoveredLiWidth={hoveredLiWidth}
+                />
+              )} */}
             </li>
           ))}
         </Nav>

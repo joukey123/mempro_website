@@ -37,13 +37,66 @@ export const items = [
   },
   {
     category: "semiconductor",
+    subcategories: [
+      {
+        diagram: "wafer",
+        subcategory: [
+          { name: "Diamond Wire", link: "/diamondwire" },
+          { name: "Twist Diamond Wire", link: "/twistdiamondwire" },
+        ],
+      },
+      {
+        diagram: "etching",
+        subcategory: [{ name: "Focus Ring Electode", link: "/etching" }],
+      },
+      {
+        diagram: "EDS-cantilever",
+        subcategory: [
+          { name: "Cantilever", link: "/cantilever" },
+          { name: "Stiffener", link: "/stiffener" },
+          { name: "Probe", link: "/probe" },
+          { name: "PI-Tube", link: "/tube" },
+        ],
+      },
+      {
+        diagram: "EDS-vertical",
+        subcategory: [
+          { name: "Vertical", link: "/vertical" },
+          { name: "Stiffener", link: "/stiffener" },
+          { name: "Probe", link: "/probe" },
+          { name: "Ceramic Hole/Guide", link: "/ceramic" },
+        ],
+      },
+      {
+        diagram: "machine",
+        subcategory: [
+          { name: "Sanding Machine", link: "/sanding" },
+          { name: "Bending Machine", link: "/bending" },
+          { name: "Manual Prober", link: "/manual" },
+          { name: "Punching Machine", link: "/punching" },
+          { name: "Probe Tester", link: "/probetester" },
+          { name: "PogoPin Caulking", link: "/pogopin" },
+          { name: "Rubber Socket Tester", link: "/rubber" },
+        ],
+      },
+    ],
     link: "semi",
     tag: (
-      <path d="M841.69,95.75l2.32-2.22-3-1.73.07-6.31-4.33-3.48,8.23-5.23-3.89-2.22v-8.23s-47.39-28.77-47.39-28.77l-7.71-.98-9.73,6.11-.21-5.13-1.84-1.07-3.48,1.77-.03,7.39-5.29,2.81v7.89l-2.86,2.17c-7.39-.25-14.87.65-21.57,2.71l-.91-36.16-30.46-18.52-27.45,14.87.07,4.34-3.25-1.98-27.45,14.87,2.5,71.63-13.95,8.11c-15.96,9.27-41.91,9.28-57.97.01l-47.7-27.54c-8.26-4.77-19.13-7.08-29.91-6.95-2.07-2.55-5.77-5.56-11.04-4.11-8.13,2.25-6.64,6.2-6.46,6.62-3.82,1.11-7.4,2.59-10.58,4.44l-25.55,14.85c-15.96,9.27-41.91,9.29-57.97.01l-12.15-7.01c-.76-2.97-1.99-5.92-3.97-8.33-6.94-8.43-12.33-1.84-12.33-1.84l-.69,1.12c-4.01-1.49-8.36-2.54-12.86-3.14l1.7-54.31L296.91,0l-55.68,32.16.31,101.98-2.5,1.45-48.1,27.95c-15.96,9.28-15.85,24.31.19,33.57l22.3,12.87.24.15,297.99,168.52,35.12-20.02,377.51-215.2-82.6-47.69Z" />
+      <path d="M924.29,143.44l-377.51,215.2-35.12,20.02L213.67,210.14l-.24-.15-22.3-12.87c-16.04-9.26-16.15-24.29-.19-33.57l121.7-70.72c15.96-9.27,41.91-9.26,57.95,0l22.3,12.87c16.06,9.28,42.01,9.26,57.97-.01l25.55-14.85c15.96-9.28,41.93-9.28,58,0l47.7,27.54c16.06,9.27,42.01,9.26,57.97-.01l91.1-52.95c15.96-9.27,41.93-9.27,57.99,0l135.12,78.02Z" />
     ),
   },
   {
     category: "led",
+    subcategories: [
+      {
+        diagram: "process",
+        subcategory: [{ name: "Coater", link: "/coater" }],
+      },
+      {
+        diagram: "eds",
+        subcategory: [{ name: "Led Probe", link: "/ledprobe" }],
+      },
+    ],
     link: "led",
     tag: (
       <path d="M331.9,476.36l167.16,95.02-102.02,64.15-28.39-16.39c-16.06-9.28-42.01-9.27-57.97.01l-19.38,11.26c-15.96,9.28-41.93,9.28-58,0L12.1,502.7c-16.07-9.27-16.13-24.3-.17-33.58l77.17-44.84c15.96-9.28,15.87-24.32-.19-33.6l-36.38-21c-16.06-9.27-16.15-24.32-.19-33.59l160.55-93.3c15.87-9.22,15.89-24.15.07-33.43l297.99,168.52-179.05,98.48Z" />
@@ -51,6 +104,15 @@ export const items = [
   },
   {
     category: "substrate",
+    subcategories: [
+      {
+        diagram: "Process",
+        subcategory: [
+          { name: "PP Sheet", link: "/pp" },
+          { name: "Ceramic Brush", link: "/brush" },
+        ],
+      },
+    ],
     link: "subs",
     tag: (
       <path d="M870.93,547.21l-225.01,130.76c-15.96,9.28-41.93,9.28-57.99.01l-9.41-5.43c-16.06-9.28-42.03-9.28-57.99,0-15.94,9.26-41.91,9.26-57.97-.01l-64.45-37.21,102.02-64.15-167.16-95.02,179.05-98.48,35.12-20.02,218.07,127.66,105.72,61.89Z" />
@@ -58,6 +120,17 @@ export const items = [
   },
   {
     category: "BBT",
+    subcategories: [
+      {
+        diagram: "BBT",
+        subcategory: [
+          { name: "Wire Probe", link: "/wire" },
+          { name: "Universal Probe", link: "/universal" },
+          { name: "Dimple Probe", link: "/dimple" },
+          { name: "Spring Wire Probe", link: "/spring" },
+        ],
+      },
+    ],
     link: "bbt",
 
     tag: (
@@ -66,6 +139,17 @@ export const items = [
   },
   {
     category: "capted",
+    subcategories: [
+      {
+        diagram: "Process",
+        subcategory: [
+          { name: "Road Stus", link: "/stus" },
+          { name: "Bollard", link: "/bollard" },
+          { name: "Solar Lighr", link: "/solar" },
+          { name: "Logo Jector", link: "/logojector" },
+        ],
+      },
+    ],
     link: "capted",
 
     tag: (

@@ -87,6 +87,7 @@ function HomeAbout() {
             initial="hidden"
             animate={controls}
             variants={animateVariants(1)}
+            style={{ maxWidth: "400px" }}
           >
             Professional Trading Service
           </motion.h1>

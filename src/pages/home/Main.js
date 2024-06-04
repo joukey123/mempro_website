@@ -10,12 +10,9 @@ import Header from "../../components/Header";
 import { Canvas } from "@react-three/fiber";
 import FallingStars from "../../components/FallingStars";
 
-const MainWrapper = styled.div`
-  min-height: 800px;
-`;
+const MainWrapper = styled.div``;
 const Section = styled.div`
   height: 100vh;
-  min-width: 1000px;
   overflow: hidden;
   min-height: 800px;
 `;
@@ -34,6 +31,7 @@ const Section2 = styled(Section)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  min-width: 1000px;
 `;
 const StarCanvasBox = styled.div`
   width: 100%;

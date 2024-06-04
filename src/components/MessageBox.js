@@ -4,13 +4,11 @@ import styled from "styled-components";
 
 const Wrap = styled(motion.div)`
   background-color: ${(props) => props.theme.colors.box};
-  padding: 20px 70px;
   border-radius: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  width: 30%;
   margin: 0 auto;
   height: 56px;
   min-width: 300px;
@@ -105,7 +103,6 @@ function MessageBox({ text, type }) {
   const handleClose = (closeState) => {
     setIsClosed(closeState);
   };
-  console.log(location);
   return (
     <Wrap
       ref={refInfo}
