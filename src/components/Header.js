@@ -6,7 +6,6 @@ import { Link, useLocation } from "react-router-dom";
 import Language from "./Language";
 import { useEffect, useRef, useState } from "react";
 import Submenu from "./Submenu";
-import { AnimatePresence } from "framer-motion";
 
 const HeaderWrapper = styled.div`
   position: fixed;
@@ -61,6 +60,7 @@ const Nav = styled.ul`
   align-items: center;
   justify-content: flex-end;
   display: flex;
+  font-size: 0.9rem;
   li {
     display: flex;
   }

@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
-
+import { machine } from "../data";
 const Wrapper = styled(motion.div)`
   display: flex;
   flex-direction: row;
@@ -10,7 +10,6 @@ const Wrapper = styled(motion.div)`
   color: black;
   position: absolute;
   top: 30px;
-  left: -${(props) => props.$subMenuCenter}px;
   padding: 10px;
   border-radius: 10px;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.4);
@@ -58,64 +57,56 @@ function Submenu({
   isVisible,
   categoryLink,
 }) {
-  const subRef = useRef(null);
-  const [subMenuCenter, setSubMenuCenter] = useState(0);
-  useEffect(() => {
-    if (subRef.current) {
-      setSubMenuCenter((subRef.current.offsetWidth - hoveredLiWidth) / 2);
-    }
-  }, []);
   return (
     <AnimatePresence>
       {isVisible && (
         <Wrapper
           onMouseOut={handleMouseOut}
-          ref={subRef}
-          $subMenuCenter={subMenuCenter}
           initial={{ height: 0, opacity: 0 }}
-          animate={{ height: "auto", opacity: 1 }}
           exit={{ height: 0, opacity: 0 }}
-          transition={{ duration: 0.5 }}
+          animate={{ height: "auto", opacity: 1 }}
         >
           <div>
             <SubmenuWrapper>
-              {subcategories.map(
-                (item, index) =>
-                  item.diagram !== "machine" && (
-                    <li key={index}>
-                      <Diagram key={index}>{item.diagram}</Diagram>
-                      {item.subcategory &&
-                        item.subcategory.map((names, index) => (
-                          <Link to={`/${categoryLink}/${names.link}`}>
-                            <SubCategory key={index}>{names.name}</SubCategory>
-                          </Link>
-                        ))}
-                    </li>
-                  )
-              )}
+              {subcategories.map((item, index) => (
+                <li key={index}>
+                  <Diagram key={index}>{item.diagram}</Diagram>
+                  {item.subcategory &&
+                    item.subcategory.map((names, index) => (
+                      <Link to={`/${categoryLink}/${names.link}`} key={index}>
+                        <SubCategory>{names.name}</SubCategory>
+                      </Link>
+                    ))}
+                </li>
+              ))}
             </SubmenuWrapper>
           </div>
-          <div>
-            <SubmenuWrapper>
-              {subcategories.map(
-                (item, index) =>
-                  item.diagram === "machine" && (
-                    <li key={index} style={{ marginLeft: "30px" }}>
-                      <Diagram
-                        style={{ fontWeight: "bold", marginBottom: "5px" }}
-                        key={index}
-                      >
-                        {item.diagram}
-                      </Diagram>
-                      {item.subcategory &&
-                        item.subcategory.map((names, index) => (
-                          <SubCategory key={index}>{names.name}</SubCategory>
-                        ))}
-                    </li>
-                  )
-              )}
-            </SubmenuWrapper>
-          </div>
+
+          {categoryLink === "semi" && (
+            <div>
+              <SubmenuWrapper>
+                {machine.map((item, index) => (
+                  <li key={index} style={{ marginLeft: "30px" }}>
+                    <Diagram
+                      style={{ fontWeight: "bold", marginBottom: "5px" }}
+                      key={index}
+                    >
+                      {item.category}
+                    </Diagram>
+                    {item.subcategories &&
+                      item.subcategories.map((names, index) => (
+                        <Link
+                          to={`/${item.category}/${names.link}`}
+                          key={index}
+                        >
+                          <SubCategory key={index}>{names.diagram}</SubCategory>
+                        </Link>
+                      ))}
+                  </li>
+                ))}
+              </SubmenuWrapper>
+            </div>
+          )}
         </Wrapper>
       )}
     </AnimatePresence>

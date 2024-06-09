@@ -41,8 +41,8 @@ export const items = [
       {
         diagram: "wafer",
         subcategory: [
-          { name: "Diamond Wire", link: "diamondwire" },
-          { name: "Twist Diamond Wire", link: "twistdiamondwire" },
+          { name: "Diamond Wire", link: "diamond" },
+          { name: "Twist Diamond Wire", link: "twistdiamond" },
         ],
       },
       {
@@ -65,18 +65,6 @@ export const items = [
           { name: "Stiffener", link: "stiffener" },
           { name: "Probe", link: "probe" },
           { name: "Ceramic HoleGuide", link: "ceramic" },
-        ],
-      },
-      {
-        diagram: "machine",
-        subcategory: [
-          { name: "Sanding Machine", link: "sanding" },
-          { name: "Bending Machine", link: "bending" },
-          { name: "Manual Prober", link: "manual" },
-          { name: "Punching Machine", link: "punching" },
-          { name: "Probe Tester", link: "probetester" },
-          { name: "PogoPin Caulking", link: "pogopin" },
-          { name: "Rubber Socket Tester", link: "rubber" },
         ],
       },
     ],
@@ -159,5 +147,71 @@ export const items = [
   {
     category: "contact",
     link: "contact",
+  },
+];
+
+export const machine = [
+  {
+    category: "machine",
+    subcategories: [
+      {
+        diagram: "Sanding Machine",
+        subcategory: [
+          { name: "330 Sanding Machine", link: "330" },
+          { name: "Vertical Sanding Machine", link: "vertical" },
+          { name: "Multi Sanding Machine", link: "multi" },
+          { name: "Vision Sanding Machine", link: "vision" },
+          { name: "Idling Sanding Machine", link: "idling" },
+        ],
+        link: "sanding",
+      },
+
+      {
+        diagram: "Bending Machine",
+        subcategory: [{ name: "Length Benging Machine", link: "length" }],
+        link: "bending",
+      },
+      {
+        diagram: "Manual Prober",
+        subcategory: [
+          { name: "330 Manual Prober", link: "330" },
+          { name: "440 Manual Prober", link: "440" },
+          { name: "480 Manual Prober", link: "480" },
+          { name: "520 Semi Auto Prober", link: "520" },
+        ],
+        link: "manual",
+      },
+      {
+        diagram: "Punching Machine",
+        subcategory: [{ name: "Punching Machine", link: "punching" }],
+        link: "punching",
+      },
+      {
+        diagram: "Prober Tester",
+        subcategory: [
+          { name: "Probe C.C.C Tester", link: "ccc" },
+          { name: "Probe Life Cycle Tester", link: "lifecycle" },
+        ],
+        link: "tester",
+      },
+      {
+        diagram: "PogoPin Caulking",
+        subcategory: [
+          { name: "R-Caulking Machine", link: "rcaulking" },
+          { name: "Roll Caulking Machine", link: "rollcaulking" },
+        ],
+        link: "pogo",
+      },
+      {
+        diagram: "Rubber Socket Tester",
+        subcategory: [
+          { name: "MRC Contact Machine", link: "mrc" },
+          { name: "Multi Auto Contact Machine", link: "multi" },
+          { name: "Socket Aging Machine", link: "socket" },
+        ],
+        link: "rubber",
+      },
+    ],
+    link: "machine",
   },
 ];

@@ -6,7 +6,7 @@ const BtnBox = styled.button`
   color: ${(props) => props.theme.colors.blue};
   background-color: transparent;
   padding: 10px 20px;
-  font-size: 1.1rem;
+  font-size: 1rem;
   cursor: pointer;
   &:hover {
     background-color: ${(props) => props.theme.colors.blue};

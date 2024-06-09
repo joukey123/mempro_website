@@ -11,6 +11,7 @@ const generateStars = (count) => {
     positions[i * 3 + 1] = Math.random() * 30; // Y 위치
     positions[i * 3 + 2] = (Math.random() - 0.5) * 30; // Z 위치
   }
+
   return positions;
 };
 

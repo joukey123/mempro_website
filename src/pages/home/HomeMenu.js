@@ -14,7 +14,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  min-height: 900px;
 `;
 const ImgWrapper = styled(motion.div)`
   width: 100%;
@@ -55,9 +55,9 @@ const MaskImg = styled.img`
 `;
 const Svg = styled.svg`
   position: absolute;
-  top: -250px;
   pointer-events: none;
   cursor: pointer;
+  top: -250px;
   opacity: 0;
   z-index: 999;
   path {
@@ -72,8 +72,6 @@ const MessageWrapper = styled.div`
   height: 20vh;
   display: flex;
   justify-content: center;
-  align-items: center;
-  margin-top: -150px;
 `;
 function HomeMenu() {
   const [mouseover, setMouseover] = useState(false);
@@ -114,7 +112,7 @@ function HomeMenu() {
   };
 
   const { scrollYProgress } = useScroll();
-  const scale = useTransform(scrollYProgress, [0, 1], [0.2, 1.3]);
+  const scale = useTransform(scrollYProgress, [0, 1.1], [0.2, 1.3]);
   const ref = useRef(null);
 
   return (

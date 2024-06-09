@@ -12,6 +12,7 @@ const Homeabout = styled.div`
   justify-content: center;
   width: 100%;
   height: 75%;
+  padding-top: 50px;
 `;
 const Wraper = styled.div`
   width: 100%;
@@ -23,15 +24,17 @@ const Wraper = styled.div`
   max-width: 1280px;
 `;
 const TextWrapper = styled.div`
-  width: 40%;
+  width: 35%;
   margin-right: 5%;
+
   span {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
   h1 {
-    font-size: 3rem;
+    font-size: 2.5rem;
     line-height: 1.2;
-    margin: 40px 0 30px 0;
+    margin: 10px 0 30px 0;
+    width: 80%;
   }
   p {
     font-size: 0.8rem;
@@ -41,7 +44,7 @@ const TextWrapper = styled.div`
 const ImgWrapper = styled.div`
   width: 40%;
   position: relative;
-  transform: scale(0.8);
+  transform: scale(0.9);
 `;
 const Bgimg = styled.img`
   width: 90%;
@@ -51,9 +54,11 @@ const BtnWrapper = styled(motion.div)`
   width: 280px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin-top: 5%;
+  button:first-child {
+    margin-right: 15px;
+  }
 `;
 
 function HomeAbout() {

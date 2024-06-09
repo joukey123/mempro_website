@@ -9,26 +9,25 @@ const FooterWrapper = styled.div`
   max-width: 1280px;
   padding: 15px 30px;
   color: ${(props) => props.theme.colors.white};
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   border-top: 0.5px solid ${(props) => props.theme.colors.stroke};
   h1 {
     font-weight: 600;
-    margin-bottom: 5px;
+    margin-bottom: 3px;
   }
   h2 {
     font-weight: 100;
-    font-size: 0.9rem;
-    margin-bottom: 10px;
+    font-size: 0.7rem;
+    margin-bottom: 8px;
 
     span:nth-child(2) {
       margin: 0 15px;
     }
   }
   #copyrighter {
-    font-size: 0.8rem;
+    font-size: 0.6rem;
     text-align: center;
     font-weight: 100;
-    margin: 1% 0;
   }
 `;
 const NationSpan = styled.span`
@@ -39,13 +38,13 @@ const Logo = styled.div`
   width: 190px;
   height: 30px;
   background: url(${logo}) no-repeat;
-  margin-bottom: 2%;
+  margin-bottom: 1.5%;
   filter: grayscale(1);
 `;
 const Info = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-bottom: 2%;
+  margin-bottom: 10px;
 `;
 const InfoAddress = styled.div`
   display: flex;
@@ -53,6 +52,9 @@ const InfoAddress = styled.div`
   width: 40%;
   h2 {
     line-height: 1.2;
+  }
+  #add {
+    width: 80%;
   }
 `;
 const Tell = styled.div`
@@ -66,6 +68,7 @@ const Link = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  transform: scale(0.8);
 `;
 function Footer() {
   const [offices, setOffices] = useState(0);
