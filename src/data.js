@@ -53,8 +53,8 @@ export const items = [
         diagram: "EDS-cantilever",
         subcategory: [
           { name: "Cantilever", link: "cantilever" },
-          { name: "Stiffener", link: "stiffener" },
-          { name: "Probe", link: "probe" },
+          { name: "Cantilever-Stiffener", link: "stiffener" },
+          { name: "Cantilever-Probe", link: "cprobe" },
           { name: "PI-Tube", link: "tube" },
         ],
       },
@@ -62,8 +62,8 @@ export const items = [
         diagram: "EDS-vertical",
         subcategory: [
           { name: "Vertical", link: "vertical" },
-          { name: "Stiffener", link: "stiffener" },
-          { name: "Probe", link: "probe" },
+          { name: "Vertical-Stiffener", link: "vstiffener" },
+          { name: "Vertical-Probe", link: "vprobe" },
           { name: "Ceramic HoleGuide", link: "ceramic" },
         ],
       },

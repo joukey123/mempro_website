@@ -56,7 +56,7 @@ const BtnBox = ({ type, onClose }) => {
   };
   return (
     <Btn onClick={() => handleClose(type)}>
-      {type === "close" ? <i class="fa-solid fa-xmark"></i> : null}
+      {type === "close" ? <i className="fa-solid fa-xmark"></i> : null}
     </Btn>
   );
 };

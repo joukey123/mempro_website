@@ -1,14 +1,17 @@
 import styled from "styled-components";
 import logo from "../img/logo2.svg";
+import logo2 from "../img/logo3.svg";
 import LinkBtn from "./LinkBtn";
 import { linkBtns, add } from "../data.js";
 import { useState } from "react";
+import { useMatch } from "react-router-dom";
 
 const FooterWrapper = styled.div`
   width: 100%;
   max-width: 1280px;
   padding: 15px 30px;
-  color: ${(props) => props.theme.colors.white};
+  color: ${(props) =>
+    props.$isHome ? props.theme.colors.white : props.theme.colors.black};
   font-size: 0.8rem;
   border-top: 0.5px solid ${(props) => props.theme.colors.stroke};
   h1 {
@@ -37,7 +40,7 @@ const NationSpan = styled.span`
 const Logo = styled.div`
   width: 190px;
   height: 30px;
-  background: url(${logo}) no-repeat;
+  background: url(${(props) => props.$url}) no-repeat;
   margin-bottom: 1.5%;
   filter: grayscale(1);
 `;
@@ -72,7 +75,7 @@ const Link = styled.div`
 `;
 function Footer() {
   const [offices, setOffices] = useState(0);
-
+  const match = useMatch("/");
   const handleOffices = (nation) => {
     if (nation === "korea") {
       setOffices(0);
@@ -81,8 +84,8 @@ function Footer() {
     }
   };
   return (
-    <FooterWrapper>
-      <Logo />
+    <FooterWrapper $isHome={match}>
+      {match ? <Logo $url={logo} /> : <Logo $url={logo2} />}
       <Info>
         <InfoAddress>
           <h1>ADDRESS</h1>

@@ -1,6 +1,6 @@
 import PageHeader from "../../components/headers/PageHeader";
 
-function DiamondWire() {
+function twistdiamond() {
   return (
     <>
       <PageHeader />
@@ -8,4 +8,4 @@ function DiamondWire() {
   );
 }
 
-export default DiamondWire;
+export default twistdiamond;

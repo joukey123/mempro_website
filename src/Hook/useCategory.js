@@ -5,19 +5,21 @@ import { items } from "../data";
 export const useCategory = () => {
   const location = useLocation();
   const [currentCategory, setCurrentCategory] = useState("");
-  const [currentSubcategory, setCurrentSubcategory] = useState([]);
   const [currentDiagrams, setCurrentDiagrams] = useState([]);
+  const [currentSubcategory, setCurrentSubcategory] = useState([]);
+  const [currentSubcategoryName, setCurrentSubcategoryName] = useState("");
+  const [selectDiagram, setSelectDiagram] = useState("");
 
   useEffect(() => {
     const paths = location.pathname.split("/").filter(Boolean);
     let foundCategory = "";
-    let foundSubcategory = [];
+    let foundSubcategoryNames = [];
+    let foundSubcategoryName = "";
     let diagrams = [];
-    console.log(paths, "path");
+    let diagram = "";
     if (paths.length > 0) {
       const mainPath = paths[0];
       const mainItem = items.find((item) => item.link === mainPath);
-      console.log(mainItem);
       if (mainItem) {
         foundCategory = mainItem.category;
 
@@ -26,25 +28,43 @@ export const useCategory = () => {
             (subcategory) => subcategory.diagram
           );
 
+          // 서브카테고리를 찾고 저장
           if (paths.length > 1) {
-            const subPath = paths[1];
-            mainItem.subcategories.forEach((subcategory) => {
-              const subItem = subcategory.subcategory.find(
-                (sub) => sub.link === subPath
+            const desiredSubcategory = paths[1];
+            const matchedSubcategory = mainItem.subcategories.find(
+              (subcategory) =>
+                subcategory.subcategory.some(
+                  (sub) => sub.link === desiredSubcategory
+                )
+            );
+
+            if (matchedSubcategory) {
+              diagram = matchedSubcategory.diagram;
+              const matchedSub = matchedSubcategory.subcategory.find(
+                (sub) => sub.link === desiredSubcategory
               );
-              if (subItem) {
-                foundSubcategory = subItem.name;
-              }
-            });
+              foundSubcategoryName = matchedSub ? matchedSub.name : "";
+              foundSubcategoryNames = matchedSubcategory.subcategory.map(
+                (sub) => sub.name
+              );
+            }
           }
         }
       }
     }
 
     setCurrentCategory(foundCategory);
-    setCurrentSubcategory(foundSubcategory);
+    setCurrentSubcategory(foundSubcategoryNames);
+    setCurrentSubcategoryName(foundSubcategoryName);
     setCurrentDiagrams(diagrams);
+    setSelectDiagram(diagram);
   }, [location]);
 
-  return { currentCategory, currentSubcategory, currentDiagrams };
+  return {
+    currentCategory,
+    currentSubcategory,
+    currentSubcategoryName,
+    currentDiagrams,
+    selectDiagram,
+  };
 };
