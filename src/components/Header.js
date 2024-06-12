@@ -18,8 +18,7 @@ const HeaderWrapper = styled.div`
   display: flex;
   align-items: center;
   padding: 0 30px;
-  background-color: ${(props) =>
-    props.$isMain ? "transparent" : props.theme.colors.white};
+  background-color: ${(props) => (props.$isMain ? "transparent" : "white")};
   box-shadow: ${(props) =>
     props.$isMain ? null : "0px 3px 1px -2px rgba(0, 0, 0, 0.2)"};
   color: ${(props) =>
@@ -87,6 +86,7 @@ function Header() {
       setIsMain(false);
     }
   }, [location]);
+
   const handleMouseOver = (index, event) => {
     setActiveMenu(index);
     setHoveredLiWidth(event.currentTarget.offsetWidth);

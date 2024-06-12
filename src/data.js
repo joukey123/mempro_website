@@ -1,3 +1,5 @@
+import semiBook from "./img/semiBook.svg";
+
 export const linkBtns = [
   {
     text: "blog",
@@ -13,6 +15,7 @@ export const linkBtns = [
 
 export const add = [
   {
+    type: "Headquarters",
     nation: "Republic of Korea",
     address:
       "GIDC-C dong 1109, 43, iljik-ro, Gwangmyeong-si, Gyeonggi-do, 14353, Republic of Korea",
@@ -21,6 +24,7 @@ export const add = [
     mail: "mempro_group@mempro.co.kr",
   },
   {
+    type: "OverSeas Offices",
     nation: "Taiwan",
     address:
       "Rm. 1,3F., No.15 Aly.29, Ln. 136, Kangle St., Neihu Dist., Taipai City, Taiwan(R.O.C), 114038",
@@ -213,5 +217,14 @@ export const machine = [
       },
     ],
     link: "machine",
+  },
+];
+
+export const books = [
+  {
+    name: "Semicondutor",
+    dec: "Semiconductor - Parts, Machines",
+    img: semiBook,
+    url: "http://mempro.myqnapcloud.com/",
   },
 ];

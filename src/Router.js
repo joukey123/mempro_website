@@ -24,8 +24,8 @@ function Router() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/about" element={<About />}>
-          <Route index element={<Navigate to="brand" />} />
-          <Route path="brand" element={<Brand />} />
+          <Route index element={<Navigate to="company" />} />
+          <Route path="company" element={<Brand />} />
           <Route path="office" element={<Office />} />
           <Route path="e-catalog" element={<Ecatalog />} />
         </Route>

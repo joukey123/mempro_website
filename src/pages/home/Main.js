@@ -15,10 +15,10 @@ const Section = styled.div`
   height: 100vh;
   overflow: hidden;
   min-height: 800px;
+  background-color: #0a0b14;
 `;
 
 const Section1 = styled(Section)`
-  background-color: ${(props) => props.theme.colors.black};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,7 +26,6 @@ const Section1 = styled(Section)`
 `;
 
 const Section2 = styled(Section)`
-  background-color: ${(props) => props.theme.colors.black};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -65,23 +64,6 @@ function Main() {
 
     requestAnimationFrame(animateScroll);
   };
-
-  useEffect(() => {
-    const part = [
-      { name: "Diamond Wire", diagram: "wafer" },
-      { name: "Diamond Wire", diagram: "wafer" },
-      { name: "Diamond Wire", diagram: "wafer" },
-      { name: "Diamond Wire", diagram: "wafer" },
-      { name: "Diamond Wire", diagram: "wafer" },
-      // 추가 데이터는 여기에 추가할 수 있습니다.
-    ];
-
-    // 객체 생성 및 배열에 추가
-    const newParts = part.map((part) => (
-      <ObjectCreator name={part.name} diagram={part.diagram} />
-    ));
-    setParts(newParts);
-  }, []);
 
   useEffect(() => {
     const handleScroll = (event) => {

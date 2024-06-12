@@ -96,7 +96,7 @@ function CurrentNav() {
   } = useCategory();
   const [clickedDiagram, setclickedDiagram] = useState(0);
   const navigate = useNavigate();
-  const aboutMenu = ["Brand", "Office", "E-catalog"];
+  const aboutMenu = ["Company", "Office", "E-catalog"];
 
   const handleDiagramClick = (diagram) => {
     const mainItem = items.find(
@@ -165,7 +165,7 @@ function CurrentNav() {
         <>
           <Diagrams>
             {aboutMenu.map((item, index) => (
-              <li key={index}>
+              <li key={index} onClick={() => setclickedDiagram(index)}>
                 <DiagramLink
                   $isClick={clickedDiagram === index}
                   to={`${item.toLocaleLowerCase()}`}

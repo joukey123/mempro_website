@@ -41,7 +41,7 @@ const Img = styled.div`
 const Title = styled.h1`
   width: 220px;
   text-align: center;
-  font-size: 2rem;
+  font-size: 32px;
   font-weight: 800;
   margin-bottom: 5px;
   color: ${(props) => props.$color};
@@ -65,7 +65,6 @@ const BlackBox = styled.div`
   text-align: center;
   line-height: 40px;
   font-weight: lighter;
-  font-size: 1rem;
   margin-bottom: 35px;
 `;
 const StyleTitle = styled.h1`
@@ -117,7 +116,7 @@ const TextBox = styled.div`
   color: white;
   width: 50%;
   height: 100%;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   span {
     margin: 3% 0;
     font-weight: 400;
@@ -131,7 +130,7 @@ const CiWrapper = styled.div`
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: 100px;
+  margin-bottom: 150px;
 `;
 
 const SliderWrapper = styled.div`
@@ -184,7 +183,8 @@ const Circle = styled.div`
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background-color: ${(props) => (props.$isActive ? "blue" : "#d9d9d9")};
+  background-color: ${(props) =>
+    props.$isActive ? props.theme.colors.blue : "#d9d9d9"};
   margin: 0 0.5%;
   animation: ${(props) => props.$isActive && grow} 0.3s forwards;
 `;
@@ -218,15 +218,15 @@ const CopyMessage = styled(motion.div)`
   position: absolute;
   top: 55%;
   left: 50%;
-  transform: translate(-50%, -50%);
   background-color: ${(props) =>
     props.$number === 3 || props.$number === 4
       ? "rgba(0,0,0,0.5)"
       : "rgba(255, 255, 255, 0.5)"};
   text-align: center;
   padding: 10px 0;
-  width: 50%;
+  width: 40%;
   border-radius: 15px;
+  font-size: 0.8rem;
 `;
 function Brand() {
   const CiImages = [Ci0, Ci1, Ci2, Ci3];
@@ -240,7 +240,6 @@ function Brand() {
   ];
   const [index, setIndex] = useState(0);
   const [hoveredColorIndex, setHoveredColorIndex] = useState(null);
-
   const copyColorNumber = (item) => {
     navigator.clipboard.writeText(item);
   };
@@ -299,7 +298,7 @@ function Brand() {
           </ValueImgWrapper>
         </ValueWrapper>
         <CiWrapper>
-          <BlackBox>브랜드 CI</BlackBox>
+          <BlackBox>CI</BlackBox>
           <SliderWrapper>
             <CiBtn
               onClick={() => {
@@ -361,14 +360,14 @@ function Brand() {
                     <CopyMessage
                       initial={{
                         scale: 0,
-                        translateX: -55,
+                        translateX: -50,
                         translateY: -20,
                         opacity: 0,
                       }}
                       animate={{ scale: 1, opacity: 1 }}
                       exit={{
                         scale: 0,
-                        translateX: -55,
+                        translateX: -50,
                         translateY: -20,
                         opacity: 0,
                       }}
@@ -382,8 +381,8 @@ function Brand() {
             ))}
           </ColorBoxWrapper>
         </CiWrapper>
-        <Footer />
       </Wrapper>
+      <Footer />
     </>
   );
 }

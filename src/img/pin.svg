@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="uuid-e3242796-3003-467d-86e9-aadb37c5e8d6" data-name="레이어 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 23.7 37.3">
+  <defs>
+    <style>
+      .uuid-49e78cae-23ad-4907-9869-b63ad7f40e9f {
+        clip-path: url(#uuid-69860924-d3a5-4159-938a-77ccb0157d3d);
+      }
+
+      .uuid-774987b3-1692-46fb-a96e-ae1bdb056891, .uuid-46c60754-1733-4b77-b7ce-d281999cff7d, .uuid-7de2bd44-3bf2-402c-bccf-599316567993, .uuid-637e44b8-3f7d-4231-a40a-752f6dae0003, .uuid-cd162dbf-6b6a-4f81-986e-385426625d5d, .uuid-24eb7ea6-0084-4285-86f0-b5d47d346447, .uuid-74d56140-d362-455c-9a53-52f89532953c, .uuid-ec9da090-ed86-4456-b90c-48e281fc9b5e {
+        stroke-width: 0px;
+      }
+
+      .uuid-774987b3-1692-46fb-a96e-ae1bdb056891, .uuid-637e44b8-3f7d-4231-a40a-752f6dae0003 {
+        fill: #004d91;
+      }
+
+      .uuid-774987b3-1692-46fb-a96e-ae1bdb056891, .uuid-cd162dbf-6b6a-4f81-986e-385426625d5d, .uuid-74d56140-d362-455c-9a53-52f89532953c {
+        fill-rule: evenodd;
+      }
+
+      .uuid-46c60754-1733-4b77-b7ce-d281999cff7d, .uuid-24eb7ea6-0084-4285-86f0-b5d47d346447 {
+        fill: none;
+      }
+
+      .uuid-7de2bd44-3bf2-402c-bccf-599316567993 {
+        fill: #980;
+      }
+
+      .uuid-cd162dbf-6b6a-4f81-986e-385426625d5d {
+        fill: #0068a7;
+      }
+
+      .uuid-24eb7ea6-0084-4285-86f0-b5d47d346447 {
+        clip-rule: evenodd;
+      }
+
+      .uuid-479b9062-ee9d-453e-83b7-35ef3a25d0d2 {
+        clip-path: url(#uuid-c68c8c3e-2c3a-4a6d-a934-ee0bc89c1533);
+      }
+
+      .uuid-74d56140-d362-455c-9a53-52f89532953c, .uuid-ec9da090-ed86-4456-b90c-48e281fc9b5e {
+        fill: #fff;
+      }
+    </style>
+    <clipPath id="uuid-c68c8c3e-2c3a-4a6d-a934-ee0bc89c1533">
+      <polygon class="uuid-24eb7ea6-0084-4285-86f0-b5d47d346447" points="11.69 11.94 11.69 14.67 13.63 13.57 13.63 17.18 15.76 15.95 15.76 9.66 11.69 11.94 11.69 11.94"/>
+    </clipPath>
+    <clipPath id="uuid-69860924-d3a5-4159-938a-77ccb0157d3d">
+      <rect class="uuid-46c60754-1733-4b77-b7ce-d281999cff7d" x="11.69" y="9.66" width="4.07" height="7.52"/>
+    </clipPath>
+  </defs>
+  <g id="uuid-6348b2d9-ba5f-490a-898f-10bf81e8064e" data-name="레이어 1">
+    <g>
+      <path class="uuid-637e44b8-3f7d-4231-a40a-752f6dae0003" d="M23.7,11.85C23.7,5.31,18.39,0,11.85,0S0,5.31,0,11.85c0,1.39.24,2.77.73,4.07s1.18,2.54,1.81,3.79c1.57,3.13,2.9,6.39,4.32,9.59.95,2.14,1.91,4.29,2.86,6.43l.69,1.56c1.37,0,1.52,0,2.89,0h0c1.09-2.41,2.18-4.82,3.27-7.23,1.66-3.66,3.3-7.33,4.96-10.98.53-1.16,1.18-2.32,1.58-3.53.39-1.19.58-2.45.58-3.71Z"/>
+      <circle class="uuid-ec9da090-ed86-4456-b90c-48e281fc9b5e" cx="11.85" cy="12.01" r="9.87"/>
+      <g>
+        <path class="uuid-7de2bd44-3bf2-402c-bccf-599316567993" d="M5.99,8.31l5.42-3.2c.19-.11.41-.1.59,0l5.48,3.23c.18.11.29.3.29.5h0v6.28c0,.24-.14.44-.34.53l-1.34.77s-.06.04-.1.06l-2.08,1.2-1.94,1.12c-.18.11-.4.1-.58,0l-1.94-1.12-2.13-1.23h0s-1.42-.83-1.42-.83c-.19-.11-.29-.3-.29-.5h0v-6.27c0-.25.16-.46.38-.54h0ZM12,5.11h0s0,0,0,0h0Z"/>
+        <polygon class="uuid-cd162dbf-6b6a-4f81-986e-385426625d5d" points="6.19 8.85 11.69 11.94 11.69 18.29 6.19 15.13 6.19 8.85 6.19 8.85"/>
+        <polygon class="uuid-74d56140-d362-455c-9a53-52f89532953c" points="11.69 11.94 11.69 14.67 9.75 13.57 9.75 17.18 7.63 15.95 7.63 9.66 11.69 11.94 11.69 11.94"/>
+        <polygon class="uuid-774987b3-1692-46fb-a96e-ae1bdb056891" points="17.19 8.85 11.69 11.94 11.69 18.29 17.19 15.13 17.19 8.85 17.19 8.85"/>
+        <g class="uuid-479b9062-ee9d-453e-83b7-35ef3a25d0d2">
+          <g class="uuid-49e78cae-23ad-4907-9869-b63ad7f40e9f">
+            <image width="24" height="37" transform="translate(11.16 17.86) scale(.23 -.23)" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAAkCAYAAABixKGjAAAACXBIWXMAAC+sAAAvrAGM7Xx8AAAATUlEQVRIie3MsQ2AMBBDUYeZwv4ThQ3soyEgpQ3l/9JJJxevSdIYV1VFTpR5nr+//dkcq1Lvn0Rn701Lxzr8GTg4ODg4ODg4ODg47XcDYLY0Qhcr/cMAAAAASUVORK5CYII="/>
+          </g>
+        </g>
+        <polygon class="uuid-774987b3-1692-46fb-a96e-ae1bdb056891" points="11.71 5.61 17.19 8.84 17.19 8.85 11.69 11.94 6.2 8.86 11.71 5.61 11.71 5.61"/>
+      </g>
+    </g>
+  </g>
+</svg>

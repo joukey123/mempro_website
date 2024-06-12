@@ -14,12 +14,13 @@ const FooterWrapper = styled.div`
     props.$isHome ? props.theme.colors.white : props.theme.colors.black};
   font-size: 0.8rem;
   border-top: 0.5px solid ${(props) => props.theme.colors.stroke};
+  margin: 0 auto;
   h1 {
     font-weight: 600;
     margin-bottom: 3px;
   }
   h2 {
-    font-weight: 100;
+    font-weight: 300;
     font-size: 0.7rem;
     margin-bottom: 8px;
 
@@ -30,12 +31,18 @@ const FooterWrapper = styled.div`
   #copyrighter {
     font-size: 0.6rem;
     text-align: center;
-    font-weight: 100;
+    font-weight: 200;
   }
 `;
 const NationSpan = styled.span`
   cursor: pointer;
-  color: ${(props) => (props.$isClick ? "inherit" : "rgba(255,255,255,0.3)")};
+  /* color: ${(props) =>
+    props.$isClick ? "inherit" : "rgba(255,255,255,0.3)"}; */
+  font-weight: ${(props) => props.$isClick && "500"};
+  color: inherit;
+  &:hover {
+    font-weight: bold;
+  }
 `;
 const Logo = styled.div`
   width: 190px;
