@@ -3,8 +3,8 @@ import growth from "../../img/growth.svg";
 import award from "../../img/award.svg";
 import output from "../../img/output.svg";
 import CountUp from "react-countup/";
-import commit from "../../img/commitment.png";
-import trust from "../../img/trust.png";
+import commit from "../../img/commitment.svg";
+import trust from "../../img/trust.svg";
 import Footer from "../../components/Footer";
 import Ci0 from "../../img/0.svg";
 import Ci1 from "../../img/1.svg";
@@ -54,7 +54,7 @@ const ValueWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 100px;
+  margin-bottom: 150px;
 `;
 const BlackBox = styled.div`
   background-color: ${(props) => props.theme.colors.black};
@@ -64,7 +64,7 @@ const BlackBox = styled.div`
   height: 40px;
   text-align: center;
   line-height: 40px;
-  font-weight: lighter;
+  font-weight: 500;
   margin-bottom: 35px;
 `;
 const StyleTitle = styled.h1`
@@ -72,9 +72,10 @@ const StyleTitle = styled.h1`
   font-family: "Abril Fatface", cursive;
   margin-bottom: 20px;
 `;
-const Des = styled.p`
-  width: 39%;
+const Dec = styled.p`
+  width: 45%;
   text-align: center;
+  letter-spacing: -0.5px;
 `;
 const ValueImgWrapper = styled.div`
   width: 100%;
@@ -108,7 +109,7 @@ const Illust = styled.div`
 `;
 const TextBox = styled.div`
   position: absolute;
-  right: 0vmin;
+  right: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -178,6 +179,9 @@ const CiBtn = styled.div`
   justify-content: center;
   color: black;
   cursor: pointer;
+  &:hover {
+    background-color: ${(props) => props.theme.colors.gray};
+  }
 `;
 const Circle = styled.div`
   width: 10px;
@@ -270,13 +274,13 @@ function Brand() {
           </Box>
         </Info>
         <ValueWrapper>
-          <BlackBox>브랜드 핵심가치</BlackBox>
+          <BlackBox>핵심가치</BlackBox>
           <StyleTitle>Commitment & Trust</StyleTitle>
-          <Des>
+          <Dec>
             주식회사 멤프로는 반도체 & 무역 산업의 선두주자로서, 고객과 신뢰의
             바탕으로 최고의 품질과 서비스를 약속드립니다. 혁식을 통해 미래를
             함께 열어갑니다.
-          </Des>
+          </Dec>
 
           <ValueImgWrapper>
             <ValueBox>
@@ -327,12 +331,12 @@ function Brand() {
               <i className="fa-solid fa-chevron-right"></i>
             </CiBtn>
           </SliderWrapper>
-          <Des style={{ width: "600px" }}>
+          <Dec style={{ width: "650px" }}>
             약속과 신뢰를 시각적으로 나타내며, 정육각형을 통해 고객사와의 균형과
             조화를 상징하며 글로벌 비즈니스와 다양한 거래를 조화롭게 관리하는
             능력을 표현합니다. <br></br> 로고에 포함된 'M'자는 멤프로가 글로벌
             무대에서 중심적인 역할을 하는 리더십을 상징합니다.
-          </Des>
+          </Dec>
           <ColorBoxWrapper>
             {Color.map((item, index) => (
               <ColorBox
@@ -373,7 +377,7 @@ function Brand() {
                       }}
                       $number={index}
                     >
-                      클릭! 색상 복사
+                      색상 복사
                     </CopyMessage>
                   )}
                 </AnimatePresence>

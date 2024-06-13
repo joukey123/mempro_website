@@ -65,7 +65,7 @@ const BtnWrapper = styled.div`
   padding: 20px 5px;
   margin-bottom: 50px;
   button {
-    width: 145px;
+    width: 150px;
   }
   button:last-child {
     margin-left: 20px;
@@ -83,7 +83,7 @@ const BlackBox = styled.div`
   height: 40px;
   text-align: center;
   line-height: 40px;
-  font-weight: lighter;
+  font-weight: 500;
   margin-bottom: 35px;
 `;
 
@@ -331,8 +331,9 @@ function Office() {
           </AnimatePresence>
         </MapWrapper>
         <OfficeAddrss>
-          {add.map((item) => (
+          {add.map((item, index) => (
             <div
+              key={index}
               style={{
                 border: "1px solid rgba(0,0,0,0.1)",
                 padding: 20,
@@ -375,11 +376,18 @@ function Office() {
                   map
                 </button>
               </div>
-              <div style={{ width: 400, marginTop: 10, lineHeight: 1.3 }}>
+              <div
+                style={{
+                  fontSize: 14,
+                  width: 400,
+                  marginTop: 10,
+                  lineHeight: 1.3,
+                }}
+              >
                 {item.address}
               </div>
               <div style={{ fontSize: 15, marginTop: 20 }}>
-                {item.mail} | {item.tell}
+                {item.mail}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;{item.tell}
               </div>
             </div>
           ))}

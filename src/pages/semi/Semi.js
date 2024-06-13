@@ -1,5 +1,14 @@
-function Semi() {
-  return <h1>Semiconductor Page</h1>;
+import styled from "styled-components";
+import PageHeader from "../../components/headers/PageHeader";
+import { Outlet } from "react-router-dom";
+
+function About() {
+  return (
+    <>
+      <PageHeader />
+      <Outlet />
+    </>
+  );
 }
 
-export default Semi;
+export default About;

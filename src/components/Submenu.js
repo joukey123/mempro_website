@@ -42,6 +42,7 @@ const SubCategory = styled.span`
   margin-bottom: 10px;
   cursor: pointer;
   border-radius: 4px;
+  font-weight: 400 !important;
   &:last-child {
     margin-bottom: 10px;
   }
@@ -56,6 +57,7 @@ function Submenu({
   hoveredLiWidth,
   isVisible,
   categoryLink,
+  id,
 }) {
   return (
     <AnimatePresence>
@@ -73,7 +75,10 @@ function Submenu({
                   <Diagram key={index}>{item.diagram}</Diagram>
                   {item.subcategory &&
                     item.subcategory.map((names, index) => (
-                      <Link to={`/${categoryLink}/${names.link}`} key={index}>
+                      <Link
+                        to={`/${categoryLink}/${id}/${names.link}`}
+                        key={index}
+                      >
                         <SubCategory>{names.name}</SubCategory>
                       </Link>
                     ))}
@@ -81,7 +86,7 @@ function Submenu({
               ))}
             </SubmenuWrapper>
           </div>
-
+          {/* machine 카테고리도 같이 나오게하는거 */}
           {categoryLink === "semi" && (
             <div>
               <SubmenuWrapper>
@@ -96,7 +101,7 @@ function Submenu({
                     {item.subcategories &&
                       item.subcategories.map((names, index) => (
                         <Link
-                          to={`/${item.category}/${names.link}`}
+                          to={`/${categoryLink}/${item.category}/${names.link}`}
                           key={index}
                         >
                           <SubCategory key={index}>{names.diagram}</SubCategory>

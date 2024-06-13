@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useCategory } from "../Hook/useCategory";
-import { Link, Outlet, Route, Routes, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { items } from "../data";
 import Office from "../pages/about/Office";
@@ -93,11 +93,13 @@ function CurrentNav() {
     currentDiagrams,
     selectDiagram,
     currentSubcategoryName,
+    currentId,
   } = useCategory();
   const [clickedDiagram, setclickedDiagram] = useState(0);
   const navigate = useNavigate();
   const aboutMenu = ["Company", "Office", "E-catalog"];
-
+  const location = useLocation();
+  const lo = location.pathname.split("/")[2];
   const handleDiagramClick = (diagram) => {
     const mainItem = items.find(
       (item) => item.category.toLowerCase() === currentCategory.toLowerCase()
@@ -110,7 +112,11 @@ function CurrentNav() {
 
       if (subcategoryItem && subcategoryItem.subcategory.length > 0) {
         const firstSubcategoryLink = subcategoryItem.subcategory[0].link;
-        navigate(`/${mainItem.link}/${firstSubcategoryLink}`);
+        if (currentId) {
+          navigate(`/${mainItem.link}/${currentId}/${firstSubcategoryLink}`);
+        } else {
+          navigate(`/${mainItem.link}/${firstSubcategoryLink}`);
+        }
       }
     }
   };
@@ -119,7 +125,7 @@ function CurrentNav() {
     const mainItem = items.find(
       (item) => item.category.toLowerCase() === currentCategory.toLowerCase()
     );
-
+    console.log(mainItem, "mainItem");
     if (mainItem) {
       const subcategoryItem = mainItem.subcategories.find((subcat) =>
         subcat.subcategory.some((sub) => sub.name === subcategoryName)
@@ -131,7 +137,7 @@ function CurrentNav() {
         )?.link;
 
         if (subLink) {
-          return `/${mainItem.link}/${subLink}`;
+          return `/${mainItem.link}/${currentId}/${subLink}`;
         }
       }
     }
@@ -165,10 +171,10 @@ function CurrentNav() {
         <>
           <Diagrams>
             {aboutMenu.map((item, index) => (
-              <li key={index} onClick={() => setclickedDiagram(index)}>
+              <li key={index}>
                 <DiagramLink
-                  $isClick={clickedDiagram === index}
-                  to={`${item.toLocaleLowerCase()}`}
+                  $isClick={item.toLocaleLowerCase() === lo}
+                  to={`/about/${item.toLocaleLowerCase()}`}
                 >
                   {item}
                 </DiagramLink>

@@ -1,9 +1,7 @@
-import PageHeader from "../../../components/headers/PageHeader";
-
 function Etching() {
   return (
     <>
-      <PageHeader />
+      <h1> Etching</h1>
     </>
   );
 }

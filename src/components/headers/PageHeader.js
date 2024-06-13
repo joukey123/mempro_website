@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Header from "../../components/Header";
-import Img from "../../img/about.jpg";
 import CurrentNav from "../../components/CurrentNav";
+import { useCategory } from "../../Hook/useCategory";
 
 const Warpper = styled.div`
   width: 100%;
@@ -27,17 +27,26 @@ const ImgBox = styled.div`
   width: 100%;
   max-width: 1280px;
   height: 100%;
-  background: url(${Img});
+  background: url(${(props) => props.img});
   background-position: center 40%;
   background-size: cover;
 `;
+const Img = styled.img`
+  width: 100%;
+  max-width: 1280px;
+  height: 100%;
+  object-position: center 40%;
+  object-fit: cover;
+`;
 function PageHeader() {
+  const { headerImges, currentCategory } = useCategory();
+
   return (
     <>
       <Header />
       <Warpper>
         <ImgWarpper>
-          <ImgBox />
+          <Img src={headerImges} alt={currentCategory} />
           <BlackBox />
         </ImgWarpper>
         <CurrentNav />

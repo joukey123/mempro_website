@@ -1,9 +1,7 @@
-import PageHeader from "../../components/headers/PageHeader";
-
 function DiamondWire() {
   return (
     <>
-      <PageHeader />
+      <h1>DiamondWire</h1>
     </>
   );
 }

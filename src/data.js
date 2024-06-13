@@ -1,4 +1,9 @@
 import semiBook from "./img/semiBook.svg";
+import parts from "./img/parts.svg";
+import machines from "./img/machines.svg";
+//header 이미지 경로
+import aboutImg from "../src/img/about.jpg";
+import semiImg from "../src/img/semi.jpg";
 
 export const linkBtns = [
   {
@@ -38,9 +43,16 @@ export const items = [
   {
     category: "about MEMPro",
     link: "about",
+    headerImg: aboutImg,
   },
   {
     category: "semiconductor",
+    id: "parts",
+    link: "semi",
+    headerImg: semiImg,
+    tag: (
+      <path d="M924.29,143.44l-377.51,215.2-35.12,20.02L213.67,210.14l-.24-.15-22.3-12.87c-16.04-9.26-16.15-24.29-.19-33.57l121.7-70.72c15.96-9.27,41.91-9.26,57.95,0l22.3,12.87c16.06,9.28,42.01,9.26,57.97-.01l25.55-14.85c15.96-9.28,41.93-9.28,58,0l47.7,27.54c16.06,9.27,42.01,9.26,57.97-.01l91.1-52.95c15.96-9.27,41.93-9.27,57.99,0l135.12,78.02Z" />
+    ),
     subcategories: [
       {
         diagram: "wafer",
@@ -72,10 +84,6 @@ export const items = [
         ],
       },
     ],
-    link: "semi",
-    tag: (
-      <path d="M924.29,143.44l-377.51,215.2-35.12,20.02L213.67,210.14l-.24-.15-22.3-12.87c-16.04-9.26-16.15-24.29-.19-33.57l121.7-70.72c15.96-9.27,41.91-9.26,57.95,0l22.3,12.87c16.06,9.28,42.01,9.26,57.97-.01l25.55-14.85c15.96-9.28,41.93-9.28,58,0l47.7,27.54c16.06,9.27,42.01,9.26,57.97-.01l91.1-52.95c15.96-9.27,41.93-9.27,57.99,0l135.12,78.02Z" />
-    ),
   },
   {
     category: "led",
@@ -223,8 +231,17 @@ export const machine = [
 export const books = [
   {
     name: "Semicondutor",
-    dec: "Semiconductor - Parts, Machines",
+    dec: [
+      {
+        type: "Parts",
+        img: parts,
+      },
+      {
+        type: "Machines",
+        img: machines,
+      },
+    ],
     img: semiBook,
-    url: "http://mempro.myqnapcloud.com/",
+    url: "http://mempro.myqnapcloud.com:80/",
   },
 ];

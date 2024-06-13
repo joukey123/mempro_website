@@ -60,14 +60,17 @@ const Nav = styled.ul`
   justify-content: flex-end;
   display: flex;
   font-size: 0.9rem;
-  li {
-    display: flex;
-  }
+
   a {
     padding: 0 20px;
     display: flex;
     justify-content: center;
   }
+`;
+const NavMenu = styled.li`
+  display: flex;
+  color: ${(props) => (props.$isSelect ? props.theme.colors.blue : "inhert")};
+  font-weight: ${(props) => props.$isSelect && "bold"};
 `;
 const LanguageWrapper = styled.div`
   transform: scale(0.8);
@@ -106,7 +109,7 @@ function Header() {
       <NavWrapper>
         <Nav>
           {items.map((item, index) => (
-            <li
+            <NavMenu
               key={index}
               onMouseOver={(event) => handleMouseOver(index, event)}
               onMouseLeave={
@@ -115,11 +118,12 @@ function Header() {
                   : null
               }
               style={{ position: "relative" }}
+              $isSelect={location.pathname.split("/")[1] === item.link}
             >
               <Link
-                to={`/${item.link}`}
+                to={item.id ? `/${item.link}/${item.id}` : `/${item.link}`}
                 style={{
-                  color: activeMenu === index ? "#44A8F4" : "inherit",
+                  color: activeMenu === index ? "inherit" : "inherit",
                   fontWeight: activeMenu === index && "bold",
                 }}
               >
@@ -132,6 +136,7 @@ function Header() {
                 hoveredLiWidth={hoveredLiWidth}
                 isVisible={activeMenu === index && item.subcategories}
                 categoryLink={item.link}
+                id={item.id}
               />
 
               {/* {item.subcategories && (
@@ -140,7 +145,7 @@ function Header() {
                   hoveredLiWidth={hoveredLiWidth}
                 />
               )} */}
-            </li>
+            </NavMenu>
           ))}
         </Nav>
       </NavWrapper>
