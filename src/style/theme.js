@@ -7,5 +7,6 @@ export const basicTheme = {
     stroke: "#D3D3D3",
     white: "#F5F5F5",
     box: "rgb(66 66 69/70%);",
+    gold: "#B76E00",
   },
 };

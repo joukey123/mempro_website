@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -57,7 +57,7 @@ function Submenu({
   hoveredLiWidth,
   isVisible,
   categoryLink,
-  id,
+  type,
 }) {
   return (
     <AnimatePresence>
@@ -76,7 +76,7 @@ function Submenu({
                   {item.subcategory &&
                     item.subcategory.map((names, index) => (
                       <Link
-                        to={`/${categoryLink}/${id}/${names.link}`}
+                        to={`/${categoryLink}/${type}/${names.link}`}
                         key={index}
                       >
                         <SubCategory>{names.name}</SubCategory>

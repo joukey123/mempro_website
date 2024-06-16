@@ -93,9 +93,8 @@ function CurrentNav() {
     currentDiagrams,
     selectDiagram,
     currentSubcategoryName,
-    currentId,
+    type,
   } = useCategory();
-  const [clickedDiagram, setclickedDiagram] = useState(0);
   const navigate = useNavigate();
   const aboutMenu = ["Company", "Office", "E-catalog"];
   const location = useLocation();
@@ -112,20 +111,18 @@ function CurrentNav() {
 
       if (subcategoryItem && subcategoryItem.subcategory.length > 0) {
         const firstSubcategoryLink = subcategoryItem.subcategory[0].link;
-        if (currentId) {
-          navigate(`/${mainItem.link}/${currentId}/${firstSubcategoryLink}`);
+        if (type) {
+          navigate(`/${mainItem.link}/${type}/${firstSubcategoryLink}`);
         } else {
           navigate(`/${mainItem.link}/${firstSubcategoryLink}`);
         }
       }
     }
   };
-
   const getSubcategoryLink = (subcategoryName) => {
     const mainItem = items.find(
       (item) => item.category.toLowerCase() === currentCategory.toLowerCase()
     );
-    console.log(mainItem, "mainItem");
     if (mainItem) {
       const subcategoryItem = mainItem.subcategories.find((subcat) =>
         subcat.subcategory.some((sub) => sub.name === subcategoryName)
@@ -137,7 +134,7 @@ function CurrentNav() {
         )?.link;
 
         if (subLink) {
-          return `/${mainItem.link}/${currentId}/${subLink}`;
+          return `/${mainItem.link}/${type}/${subLink}`;
         }
       }
     }

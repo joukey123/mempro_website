@@ -32,6 +32,7 @@ const Book = styled.div`
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 12px;
   padding-bottom: 10px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.05);
 `;
 
 const BookImg = styled.img`

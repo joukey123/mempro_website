@@ -121,7 +121,7 @@ function Header() {
               $isSelect={location.pathname.split("/")[1] === item.link}
             >
               <Link
-                to={item.id ? `/${item.link}/${item.id}` : `/${item.link}`}
+                to={item.type ? `/${item.link}/${item.type}` : `/${item.link}`}
                 style={{
                   color: activeMenu === index ? "inherit" : "inherit",
                   fontWeight: activeMenu === index && "bold",
@@ -136,7 +136,7 @@ function Header() {
                 hoveredLiWidth={hoveredLiWidth}
                 isVisible={activeMenu === index && item.subcategories}
                 categoryLink={item.link}
-                id={item.id}
+                type={item.type}
               />
 
               {/* {item.subcategories && (

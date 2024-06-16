@@ -9,18 +9,18 @@ export const useCategory = () => {
   const [currentSubcategory, setCurrentSubcategory] = useState([]);
   const [currentSubcategoryName, setCurrentSubcategoryName] = useState("");
   const [selectDiagram, setSelectDiagram] = useState("");
-  const [currentId, setCurrentId] = useState("");
+  const [type, setType] = useState("");
   const [headerImges, setHeaderImges] = useState("");
-
+  const [sublink, setSublink] = useState("");
   useEffect(() => {
-    console.log(items[0].headerImg);
     const paths = location.pathname.split("/").filter(Boolean);
     let foundCategory = "";
     let foundSubcategoryNames = [];
     let foundSubcategoryName = "";
+    let foundSubcategoryLink = "";
     let diagrams = [];
     let diagram = "";
-    let id = "";
+    let type = "";
     let img = "";
 
     if (paths.length > 0) {
@@ -28,8 +28,12 @@ export const useCategory = () => {
       const mainItem = items.find((item) => item.link === mainPath);
       if (mainItem) {
         foundCategory = mainItem.category;
-        id = mainItem.id;
-        img = mainItem.headerImg;
+        if (mainItem.type) {
+          type = mainItem.type;
+        } else {
+          type = "";
+        }
+        img = mainItem.headerImg; //배경이미지
         if (mainItem.subcategories) {
           diagrams = mainItem.subcategories.map(
             (subcategory) => subcategory.diagram
@@ -46,11 +50,12 @@ export const useCategory = () => {
             );
 
             if (matchedSubcategory) {
-              diagram = matchedSubcategory.diagram;
+              diagram = matchedSubcategory.diagram; //selectDiagram
               const matchedSub = matchedSubcategory.subcategory.find(
                 (sub) => sub.link === desiredSubcategory
               );
               foundSubcategoryName = matchedSub ? matchedSub.name : "";
+              foundSubcategoryLink = matchedSub ? matchedSub.link : "";
               foundSubcategoryNames = matchedSubcategory.subcategory.map(
                 (sub) => sub.name
               );
@@ -65,8 +70,9 @@ export const useCategory = () => {
     setCurrentSubcategoryName(foundSubcategoryName);
     setCurrentDiagrams(diagrams);
     setSelectDiagram(diagram);
-    setCurrentId(id);
+    setType(type);
     setHeaderImges(img);
+    setSublink(foundSubcategoryLink);
   }, [location]);
 
   return {
@@ -75,7 +81,8 @@ export const useCategory = () => {
     currentSubcategoryName,
     currentDiagrams,
     selectDiagram,
-    currentId,
+    type,
     headerImges,
+    sublink,
   };
 };

@@ -5,6 +5,15 @@ import machines from "./img/machines.svg";
 import aboutImg from "../src/img/about.jpg";
 import semiImg from "../src/img/semi.jpg";
 
+//diamond img
+import diamondWireDiagram from "../src/img/diamond/diamonWireDiagram.svg";
+import sem from "../src/img/diamond/SEM.png";
+import configuration from "../src/img/diamond/Configuration.png";
+import semiconductorIngot from "../src/img/diamond/semiconductorIngot.jpg";
+import sapphireIngot from "../src/img/diamond/sapphireIngot.jpg";
+import solarIngot from "../src/img/diamond/solarIngot.jpg";
+import magnet from "../src/img/diamond/magnet.jpg";
+
 export const linkBtns = [
   {
     text: "blog",
@@ -47,7 +56,7 @@ export const items = [
   },
   {
     category: "semiconductor",
-    id: "parts",
+    type: "parts",
     link: "semi",
     headerImg: semiImg,
     tag: (
@@ -245,3 +254,71 @@ export const books = [
     url: "http://mempro.myqnapcloud.com:80/",
   },
 ];
+
+export const itemsDetail = {
+  diamond: {
+    nation: "Made in Korea",
+    title: "Diamond Wire",
+    description:
+      "Manufactured by using an electrode to deposit diamond particles on the surface of core wire, made of high carbon steel and tungsten.",
+    images: diamondWireDiagram,
+    contents: {
+      sem: [
+        { text: "Electroplated Diamond Wire SEM", img: sem },
+        {
+          text: "Configuration of Electroplated Diamond Wire",
+          img: configuration,
+        },
+      ],
+      applications: [
+        { text: "Semiconductor Ingot", img: semiconductorIngot },
+        { text: "Sapphire Ingot", img: sapphireIngot },
+        { text: "Solar Ingot", img: solarIngot },
+        { text: "Magnet", img: magnet },
+      ],
+    },
+
+    specifications: [
+      {
+        model: "200S",
+        diamondWireDiameter: "200±5 μm",
+        coreWireDiameter: "140±1 μm",
+        grainSize: "20~30 μm",
+        minimumBreakingLoad: "65 N",
+        application: "Silicon Ingot",
+      },
+      {
+        model: "65S",
+        diamondWireDiameter: "65±5 μm",
+        coreWireDiameter: "50±1 μm",
+        grainSize: "6~12 μm, 5~10 μm",
+        minimumBreakingLoad: "9.5 N",
+        application: "Silicon Ingot",
+      },
+      {
+        model: "230S",
+        diamondWireDiameter: "230±10 μm",
+        coreWireDiameter: "160±1 μm",
+        grainSize: "30~40 μm",
+        minimumBreakingLoad: "75 N",
+        application: "Sapphire Ingot",
+      },
+      {
+        model: "250S",
+        diamondWireDiameter: "250±10 μm",
+        coreWireDiameter: "180±1 μm",
+        grainSize: "30~40 μm",
+        minimumBreakingLoad: "95 N",
+        application: "Sapphire Ingot",
+      },
+      {
+        model: "330S",
+        diamondWireDiameter: "330±15 μm",
+        coreWireDiameter: "250±1 μm",
+        grainSize: "40~60 μm",
+        minimumBreakingLoad: "130 N",
+        application: "SiC, Quartz, ETC.",
+      },
+    ],
+  },
+};
