@@ -13,7 +13,14 @@ import semiconductorIngot from "../src/img/diamond/semiconductorIngot.jpg";
 import sapphireIngot from "../src/img/diamond/sapphireIngot.jpg";
 import solarIngot from "../src/img/diamond/solarIngot.jpg";
 import magnet from "../src/img/diamond/magnet.jpg";
+import diamond_features1 from "../src/img/diamond/diamond_features1.svg";
+import diamond_features2 from "../src/img/diamond/diamond_features2.svg";
+import diamond_features3 from "../src/img/diamond/diamond_features3.svg";
+import diamondwire_machine from "../src/img/diamond/machine.svg";
 
+//erching img
+import etching_machine from "../src/img/etching/etching_machine.svg";
+import etching_step1 from "../src/img/etching/etching_step1.svg";
 export const linkBtns = [
   {
     text: "blog",
@@ -261,7 +268,7 @@ export const itemsDetail = {
     title: "Diamond Wire",
     description:
       "Manufactured by using an electrode to deposit diamond particles on the surface of core wire, made of high carbon steel and tungsten.",
-    images: diamondWireDiagram,
+    images: diamondwire_machine,
     contents: {
       sem: [
         { text: "Electroplated Diamond Wire SEM", img: sem },
@@ -275,6 +282,20 @@ export const itemsDetail = {
         { text: "Sapphire Ingot", img: sapphireIngot },
         { text: "Solar Ingot", img: solarIngot },
         { text: "Magnet", img: magnet },
+      ],
+      features: [
+        {
+          text: "plating technique",
+          icon: diamond_features1,
+        },
+        {
+          text: "electrodeposited Ni",
+          icon: diamond_features2,
+        },
+        {
+          text: "production speed 50M",
+          icon: diamond_features3,
+        },
       ],
     },
 
@@ -320,5 +341,13 @@ export const itemsDetail = {
         application: "SiC, Quartz, ETC.",
       },
     ],
+  },
+
+  etching: {
+    nation: "Made in Korea",
+    title: "Electrode, Focus Ring, ETC.",
+    description:
+      "During the semiconductor manufacturing process, consumable parts are applied precisely in a sterile environment with the use of a chamber of diffusion in the CVD ,Etching ,and Thin Film processing facilities.",
+    images: { machine: etching_machine, step1: etching_step1 },
   },
 };

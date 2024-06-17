@@ -6,6 +6,7 @@ const Button = styled.button`
   border: 0;
   border-radius: 50%;
   margin: 0 8px;
+  cursor: pointer;
 
   a {
     display: flex;

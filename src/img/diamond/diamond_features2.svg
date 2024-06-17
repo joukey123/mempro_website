@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="uuid-22ea3400-8592-4626-b93d-a54b43dfdcf3" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 153 108.3">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #bdbdbd;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        stroke: #3a3a3a;
+        stroke-miterlimit: 10;
+        stroke-width: 3px;
+      }
+
+      .cls-2 {
+        fill: none;
+      }
+
+      .cls-3 {
+        fill: #ffd93a;
+      }
+    </style>
+  </defs>
+  <g id="uuid-dd08d2da-d661-4c35-96f8-094b5e2fc64f">
+    <g>
+      <rect class="cls-1" x="1.5" y="1.5" width="150" height="105.3" rx="7.2" ry="7.2"/>
+      <g>
+        <g>
+          <circle class="cls-3" cx="25.5" cy="35.3" r="9"/>
+          <circle class="cls-3" cx="59.5" cy="35.3" r="9"/>
+          <circle class="cls-3" cx="93.5" cy="35.3" r="9"/>
+          <circle class="cls-3" cx="127.5" cy="35.3" r="9"/>
+        </g>
+        <g>
+          <circle class="cls-3" cx="42.5" cy="72.9" r="9"/>
+          <circle class="cls-3" cx="76.5" cy="72.9" r="9"/>
+          <circle class="cls-3" cx="110.5" cy="72.9" r="9"/>
+        </g>
+      </g>
+      <path class="cls-2" d="M132.9,42.6v41.5c0,2.7-2.4,4.9-5.4,4.9H25.5c-3,0-5.4-2.2-5.4-4.9v-41.5"/>
+    </g>
+  </g>
+</svg>
