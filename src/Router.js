@@ -17,6 +17,7 @@ import Ceramic from "./pages/semi/Vertical/Ceramic";
 import Office from "./pages/about/Office";
 import Ecatalog from "./pages/about/Ecatalog";
 import Brand from "./pages/about/Brand";
+import Probe from "./pages/semi/Probe";
 
 function Router() {
   return (
@@ -47,30 +48,6 @@ function Router() {
       </Routes>
     </BrowserRouter>
   );
-}
-
-const componentMap = {
-  main: Main,
-  about: About,
-  semi: Semi,
-  diamond: DiamondWire,
-  twistdiamond: TwistDiamond,
-  etching: Etching,
-  cantilever: Cantilever,
-  cprobe: Cprobe,
-  stiffener: Stiffener,
-  tube: Tube,
-  vertical: Vertical,
-  vprobe: Vprobe,
-  vstiffener: Vstiffener,
-  ceramic: Ceramic,
-
-  // 나머지 컴포넌트도 여기에 추가...
-};
-
-function DynamicComponent({ link }) {
-  const Component = componentMap[link] || Main; // 기본값으로 Main 설정
-  return <Component />;
 }
 
 export default Router;

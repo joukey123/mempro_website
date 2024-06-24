@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="uuid-a3362f3b-0d5e-426a-bec9-f8763aaf203e" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 200.6 410.7">
+  <defs>
+    <style>
+      .cls-1 {
+        letter-spacing: 0em;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        fill: #fff;
+      }
+
+      .cls-1, .cls-3, .cls-4, .cls-5, .cls-6 {
+        font-family: Pretendard-Bold-KSCpc-EUC-H, Pretendard;
+        font-size: 10px;
+        font-weight: 700;
+      }
+
+      .cls-1, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7 {
+        isolation: isolate;
+      }
+
+      .cls-2 {
+        stroke: #0269b7;
+        stroke-linecap: round;
+      }
+
+      .cls-2, .cls-8, .cls-9 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-4, .cls-5, .cls-6 {
+        fill: #231815;
+      }
+
+      .cls-10 {
+        fill: #2780b8;
+      }
+
+      .cls-10, .cls-11, .cls-12, .cls-13 {
+        stroke-width: 0px;
+      }
+
+      .cls-11 {
+        fill: #dca65b;
+      }
+
+      .cls-12 {
+        fill: #ca6e28;
+      }
+
+      .cls-5 {
+        letter-spacing: 0em;
+      }
+
+      .cls-8 {
+        fill: #d1d1d1;
+        stroke: #1f2020;
+      }
+
+      .cls-8, .cls-9 {
+        stroke-width: .1px;
+      }
+
+      .cls-13 {
+        fill: url(#_무제_그라디언트_9);
+      }
+
+      .cls-6 {
+        letter-spacing: 0em;
+      }
+
+      .cls-9 {
+        fill: #027139;
+        stroke: #1d1f1f;
+      }
+    </style>
+    <linearGradient id="_무제_그라디언트_9" data-name="무제 그라디언트 9" x1="-3.4" y1="389.9" x2="101.3" y2="106.6" gradientTransform="translate(0 412) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#004d91"/>
+    </linearGradient>
+  </defs>
+  <g id="uuid-0da9c583-4ef0-4cd3-878c-cd3fa7f9314a">
+    <g>
+      <polygon class="cls-13" points="0 311.7 15.7 2.9 47.1 0 194 276 0 311.7"/>
+      <circle class="cls-2" cx="100.3" cy="310.4" r="99.8"/>
+      <g>
+        <rect class="cls-10" x="37.8" y="287.8" width="125" height="9.9"/>
+        <rect class="cls-12" x="37.8" y="330.9" width="125" height="4.8"/>
+        <g class="cls-7">
+          <text class="cls-6" transform="translate(85.3 333.3)"><tspan x="0" y="0">W</tspan></text>
+          <text class="cls-4" transform="translate(94.7 333.3)"><tspan x="0" y="0">a</tspan></text>
+          <text class="cls-5" transform="translate(100.3 333.3)"><tspan x="0" y="0">f</tspan></text>
+          <text class="cls-4" transform="translate(103.8 333.3)"><tspan x="0" y="0">er</tspan></text>
+        </g>
+        <g>
+          <polygon class="cls-11" points="66.3 297.7 66.3 302.1 49.6 302.1 49.6 302.9 49.6 304.9 49.6 309 50.3 309 50.3 304.9 67.1 304.9 67.1 303.9 67.1 302.1 67.1 297.7 66.3 297.7"/>
+          <polygon class="cls-11" points="108.3 297.7 108.3 302.1 91.6 302.1 91.6 302.9 91.6 304.9 91.6 309 92.3 309 92.3 304.9 109 304.9 109 303.9 109 302.1 109 297.7 108.3 297.7"/>
+          <polygon class="cls-11" points="134.3 297.6 134.3 302 151 302 151 302.8 151 304.8 151 308.9 150.3 308.9 150.3 304.8 133.6 304.8 133.6 303.8 133.6 302 133.6 297.6 134.3 297.6"/>
+        </g>
+        <polygon class="cls-8" points="172.6 335.9 27.8 335.9 27.8 346.6 85.2 346.6 85.2 370 115.2 370 115.2 346.6 172.6 346.6 172.6 335.9"/>
+        <rect class="cls-9" x="27.7" y="261.6" width="145.2" height="26.2"/>
+      </g>
+      <g class="cls-7">
+        <text class="cls-3" transform="translate(69.2 277.9)"><tspan x="0" y="0">PROBE </tspan></text>
+        <text class="cls-1" transform="translate(103.8 277.9)"><tspan x="0" y="0">C</tspan></text>
+        <text class="cls-3" transform="translate(110.9 277.9)"><tspan x="0" y="0">ARD</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

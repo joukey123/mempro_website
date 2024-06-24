@@ -15,6 +15,7 @@ const FooterWrapper = styled.div`
   font-size: 0.8rem;
   border-top: 0.5px solid ${(props) => props.theme.colors.stroke};
   margin: 0 auto;
+  margin-top: 150px;
   h1 {
     font-weight: 600;
     margin-bottom: 3px;

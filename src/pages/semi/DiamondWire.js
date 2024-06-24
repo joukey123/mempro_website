@@ -32,7 +32,7 @@ const DiagramWpper = styled.div`
   overflow: hidden;
 `;
 
-const DiagramImg = styled.img`
+const DiagramImg = styled(motion.img)`
   width: 100%;
   max-width: 1100px;
   height: 500px;
@@ -48,7 +48,7 @@ const DiagramImg = styled.img`
       transform: scale(0.8);
     }
     to {
-      transform: scale(3) translateX(200px) translateY(50px);
+      transform: scale(3) translateX(20%) translateY(10%);
     }
   }
   @keyframes zoomout {
@@ -128,7 +128,7 @@ const ContentsWrapper = styled.div`
   max-width: 1100px;
   align-items: center;
   justify-content: center;
-  grid-template-columns: repeat(4, auto);
+  grid-template-columns: repeat(${(props) => props.$length}, auto);
   font-size: 14px;
   text-align: center;
   gap: 50px;
@@ -183,7 +183,8 @@ const ZoomBtn = styled.button`
   display: flex;
   width: 50px;
   height: 50px;
-  background-color: ${(props) => props.theme.colors.blue};
+  background-color: ${(props) =>
+    props.$isZoom ? "tan" : props.theme.colors.blue};
   border-radius: 50%;
   align-items: center;
   justify-content: center;
@@ -226,8 +227,7 @@ const Step2 = styled(motion.img)`
 
 function DiamondWire() {
   const sublink = "diamond";
-  const { nation, title, description, images, contents } =
-    itemsDetail[`${sublink}`];
+  const { images, contents } = itemsDetail[`${sublink}`];
   const [index, setIndex] = useState(0);
   const [isZoom, setIsZoom] = useState(false);
   const [playAnimation, setPlayAnimation] = useState(false);
@@ -257,27 +257,33 @@ function DiamondWire() {
       setPlayAnimation(true);
     }, 1000);
   }, []);
+
   return (
     <>
       <Wrapper>
         <Headline item={{ ...itemsDetail[`${sublink}`] }} />
 
         <DiagramWpper>
-          <DiagramImg src={images} $isZoom={isZoom} />
+          <DiagramImg
+            src={images}
+            $isZoom={isZoom}
+            initial={{ scale: 0.8 }}
+            animate={{ scale: 0.8 }}
+          />
           {playAnimation && (
             <>
               <Step1
                 src={step1}
-                initial={{ top: "30px", opacity: 1 }}
-                animate={{ top: "240px", opacity: 0 }}
+                initial={{ top: "5%", opacity: 1 }}
+                animate={{ top: "50%", opacity: 0 }}
                 transition={{ duration: 2, delay: 1 }}
                 $isZoom={isZoom}
               />
               (
               <Step2
                 src={step3}
-                initial={{ top: "240px", opacity: 0, zIndex: 98 }}
-                animate={{ top: "240px", opacity: 1, zIndex: 98 }}
+                initial={{ top: "46%", opacity: 0, zIndex: 98 }}
+                animate={{ top: "46%", opacity: 1, zIndex: 98 }}
                 transition={{ duration: 1, delay: 2.2 }}
                 $isZoom={isZoom}
               />
@@ -289,7 +295,7 @@ function DiamondWire() {
             <ZoomBtn onClick={handlePlayAnimtion}>
               <i class="fa-solid fa-arrows-rotate"></i>
             </ZoomBtn>
-            <ZoomBtn onClick={handleZoomDiagram}>
+            <ZoomBtn onClick={handleZoomDiagram} $isZoom={isZoom}>
               <i class="fa-solid fa-magnifying-glass"></i>
             </ZoomBtn>
           </BtnWrapper>
@@ -308,7 +314,8 @@ function DiamondWire() {
               <span>Features</span>
             </ContentsTitle>
             <ContentsWrapper
-              style={{ gridTemplateColumns: "repeat(3, auto)", gap: "150px" }}
+              $length={contents.features.length}
+              style={{ gap: 150 }}
             >
               {contents.features.map((item, index) => (
                 <IconWrapper key={index}>
@@ -340,11 +347,11 @@ function DiamondWire() {
               </ImgSliderBtn>
             </ImgSlider>
           </div>
-          <div className="components" style={{ margin: "150px 0" }}>
+          <div className="components" style={{ marginTop: "150px " }}>
             <ContentsTitle>
               <span>Components</span>
             </ContentsTitle>
-            <ContentsWrapper>
+            <ContentsWrapper $length={contents.applications.length}>
               {contents.applications.map((item) => (
                 <div>
                   <ApplicationImg src={item.img} />

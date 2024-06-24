@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   max-width: 1280px;
   padding: 60px 0 30px 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  margin-bottom: 150px;
+  margin-bottom: 80px;
 `;
 
 const Category = styled.h1`

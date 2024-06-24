@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const TextWrapper = styled.div`
@@ -21,20 +22,71 @@ const Span = styled.span`
   border-radius: 15px;
   position: relative;
   bottom: -2px;
+  margin: 0 5px;
 `;
 const Description = styled.p`
   margin-top: 20px;
-  width: 65%;
+  width: 80%;
 `;
 
-function Headline({ item }) {
+const Warining = styled.img`
+  width: 20px;
+  height: 20px;
+  position: relative;
+  cursor: pointer;
+  bottom: -5px;
+`;
+
+function Headline({ item, text }) {
+  const [showWarning, setShowWarning] = useState(true);
+  const [timeoutId, setTimeoutId] = useState(null);
+
+  const handleShowWarning = () => {
+    setShowWarning(true);
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+      setTimeoutId(null);
+    }
+  };
+  const handleHideWarning = () => {
+    const id = setTimeout(() => setShowWarning(false), 3000);
+    setTimeoutId(id);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+    };
+  }, [timeoutId]);
   return (
     <TextWrapper style={{ display: "flex" }}>
       <div style={{ display: "flex", alignItems: "center" }}>
         <Title>{item.title}</Title>
-        <Span>{item.nation}</Span>
+        {item.warning && (
+          <>
+            <Warining src={item.warning} />
+
+            <span
+              style={{
+                backgroundColor: "#FF4466",
+                color: "white",
+                padding: "5px 15px",
+                borderRadius: 10,
+                marginLeft: 5,
+                position: "relative",
+                bottom: "-5px",
+              }}
+            >
+              {text}
+            </span>
+          </>
+        )}
+
+        {item.nation && item.nation.map((item) => <Span>{item}</Span>)}
       </div>
-      <Description>{item.description}</Description>
+      {item.description && <Description>{item.description}</Description>}
     </TextWrapper>
   );
 }

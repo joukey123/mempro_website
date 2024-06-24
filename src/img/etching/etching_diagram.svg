@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="uuid-a1771986-d1ce-4d9b-9377-80762ac82bba" data-name="레이어 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 297.25 304.48">
+  <defs>
+    <style>
+      .uuid-da35f2e5-7446-43fb-8f2d-be4d7a3e37a3, .uuid-98abb488-b1ce-478b-959d-59349039061a {
+        fill: #0269b7;
+      }
+
+      .uuid-da35f2e5-7446-43fb-8f2d-be4d7a3e37a3, .uuid-90876433-3e06-4977-9b7d-3fcc2cee2a48, .uuid-4d8c8291-d922-4651-bdb7-87dbaec4d8e6, .uuid-0b89c4af-b122-4bbf-9a93-a7c08caa8c1b {
+        stroke-width: 0px;
+      }
+
+      .uuid-98abb488-b1ce-478b-959d-59349039061a, .uuid-0f7956f6-81b6-4676-82cc-a1d43b873f23 {
+        font-size: 13px;
+      }
+
+      .uuid-98abb488-b1ce-478b-959d-59349039061a, .uuid-0f7956f6-81b6-4676-82cc-a1d43b873f23, .uuid-b16efc57-df13-4323-925b-3966d3fe9cbb, .uuid-dcd0c259-bd83-4eae-aaa0-a6dd0743fb8f {
+        font-family: Pretendard-SemiBold-KSCpc-EUC-H, Pretendard;
+        font-weight: 600;
+      }
+
+      .uuid-10f3b19a-0731-4545-82a3-b7f688f0c6f7 {
+        letter-spacing: -.02em;
+      }
+
+      .uuid-0e89eb17-85c1-4b76-ab79-f9dff73da239 {
+        fill: #d1d1d1;
+        stroke: #1f2020;
+        stroke-width: .3px;
+      }
+
+      .uuid-0e89eb17-85c1-4b76-ab79-f9dff73da239, .uuid-4ae2f9f1-51e3-483c-86c0-66813aaab475 {
+        stroke-miterlimit: 10;
+      }
+
+      .uuid-0f7956f6-81b6-4676-82cc-a1d43b873f23, .uuid-90876433-3e06-4977-9b7d-3fcc2cee2a48 {
+        fill: #2780b8;
+      }
+
+      .uuid-4ae2f9f1-51e3-483c-86c0-66813aaab475 {
+        stroke: #767d86;
+        stroke-width: 1px;
+      }
+
+      .uuid-4ae2f9f1-51e3-483c-86c0-66813aaab475, .uuid-b16efc57-df13-4323-925b-3966d3fe9cbb {
+        fill: #fff;
+      }
+
+      .uuid-bf8e1222-93eb-4a95-9a4f-6494e242c369 {
+        letter-spacing: -.02em;
+      }
+
+      .uuid-b16efc57-df13-4323-925b-3966d3fe9cbb, .uuid-dcd0c259-bd83-4eae-aaa0-a6dd0743fb8f {
+        font-size: 10px;
+      }
+
+      .uuid-dcd0c259-bd83-4eae-aaa0-a6dd0743fb8f {
+        fill: #231815;
+      }
+
+      .uuid-ea09815f-8977-46eb-8615-a0361eb09c58 {
+        letter-spacing: -.05em;
+      }
+
+      .uuid-4d8c8291-d922-4651-bdb7-87dbaec4d8e6 {
+        fill: #ca6e28;
+      }
+
+      .uuid-0b89c4af-b122-4bbf-9a93-a7c08caa8c1b {
+        fill: url(#uuid-ab13f6e0-359e-4c02-a63a-6d98c973854a);
+      }
+
+      .uuid-095b5169-58d1-45e5-a0c2-f653dec0b0b9 {
+        letter-spacing: -.04em;
+      }
+    </style>
+    <linearGradient id="uuid-ab13f6e0-359e-4c02-a63a-6d98c973854a" data-name="무제 그라디언트 62" x1="141.7" y1="18.33" x2="144.82" y2="160.98" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#767d86" stop-opacity=".5"/>
+    </linearGradient>
+  </defs>
+  <g id="uuid-49b7e179-3fd9-4486-84c1-48223de06e9d" data-name="레이어 1">
+    <g>
+      <polygon class="uuid-0b89c4af-b122-4bbf-9a93-a7c08caa8c1b" points="145.53 13.23 287.25 145.13 1.96 157.34 70.93 0 145.53 13.23"/>
+      <rect class="uuid-4ae2f9f1-51e3-483c-86c0-66813aaab475" x=".5" y="140.36" width="296.25" height="163.63" rx="23.81" ry="23.81"/>
+      <rect class="uuid-da35f2e5-7446-43fb-8f2d-be4d7a3e37a3" x="77.31" y="176.46" width="142.63" height="9.9"/>
+      <polygon class="uuid-0e89eb17-85c1-4b76-ab79-f9dff73da239" points="64.37 176.46 64.37 166.55 45.82 166.55 45.82 186.36 49.9 186.36 64.37 186.36 77.31 186.36 77.31 176.46 64.37 176.46"/>
+      <rect class="uuid-0e89eb17-85c1-4b76-ab79-f9dff73da239" x="64.29" y="166.55" width="31.95" height="9.9"/>
+      <polygon class="uuid-0e89eb17-85c1-4b76-ab79-f9dff73da239" points="232.89 176.46 232.89 166.55 251.43 166.55 251.43 186.36 247.36 186.36 232.89 186.36 219.94 186.36 219.94 176.46 232.89 176.46"/>
+      <rect class="uuid-0e89eb17-85c1-4b76-ab79-f9dff73da239" x="201.01" y="166.55" width="31.95" height="9.9" transform="translate(433.97 343.01) rotate(-180)"/>
+      <polygon class="uuid-90876433-3e06-4977-9b7d-3fcc2cee2a48" points="71.03 251.85 71.03 242.16 45.82 242.16 45.82 251.85 45.82 257.5 81.46 257.5 81.46 251.85 71.03 251.85"/>
+      <polygon class="uuid-90876433-3e06-4977-9b7d-3fcc2cee2a48" points="226.22 242.16 226.22 251.85 215.79 251.85 215.79 257.5 251.43 257.5 251.43 251.85 251.43 242.16 226.22 242.16"/>
+      <rect class="uuid-4d8c8291-d922-4651-bdb7-87dbaec4d8e6" x="73.37" y="240.27" width="150.5" height="9.14"/>
+      <rect class="uuid-0e89eb17-85c1-4b76-ab79-f9dff73da239" x="81.46" y="251.85" width="135.52" height="5.66"/>
+      <rect class="uuid-0e89eb17-85c1-4b76-ab79-f9dff73da239" x="58.43" y="257.5" width="177.26" height="11.14"/>
+      <text class="uuid-dcd0c259-bd83-4eae-aaa0-a6dd0743fb8f" transform="translate(231.98 218.09)"><tspan x="0" y="0">Plasma</tspan></text>
+      <text class="uuid-b16efc57-df13-4323-925b-3966d3fe9cbb" transform="translate(134.57 248.65)"><tspan class="uuid-ea09815f-8977-46eb-8615-a0361eb09c58" x="0" y="0">W</tspan><tspan x="9.16" y="0">a</tspan><tspan class="uuid-10f3b19a-0731-4545-82a3-b7f688f0c6f7" x="14.66" y="0">f</tspan><tspan x="18.03" y="0">er</tspan></text>
+      <text class="uuid-98abb488-b1ce-478b-959d-59349039061a" transform="translate(119.89 170.45)"><tspan x="0" y="0">Elect</tspan><tspan class="uuid-bf8e1222-93eb-4a95-9a4f-6494e242c369" x="29.99" y="0">r</tspan><tspan x="34.66" y="0">ode</tspan></text>
+      <text class="uuid-0f7956f6-81b6-4676-82cc-a1d43b873f23" transform="translate(115.79 282.27)"><tspan class="uuid-095b5169-58d1-45e5-a0c2-f653dec0b0b9" x="0" y="0">F</tspan><tspan x="6.79" y="0">ocus Ring</tspan></text>
+    </g>
+  </g>
+</svg>

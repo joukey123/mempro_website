@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="uuid-e24ac9e7-f820-42a4-be69-709207aff379" data-name="레이어 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34.64 30">
+  <defs>
+    <style>
+      .uuid-2f01d6a6-904e-40e2-a578-aa5961233c8e {
+        fill: #f46;
+        stroke-width: 0px;
+      }
+    </style>
+  </defs>
+  <g id="uuid-7b269330-18e0-4aca-a33a-afac6c2aaa9c" data-name="레이어 1">
+    <path class="uuid-2f01d6a6-904e-40e2-a578-aa5961233c8e" d="M17.32,4l13.86,24H3.46L17.32,4M17.32,0L0,30h34.64L17.32,0h0Z"/>
+    <path class="uuid-2f01d6a6-904e-40e2-a578-aa5961233c8e" d="M17.26,23.84c.84,0,1.54.7,1.55,1.55-.01.85-.71,1.54-1.55,1.55-.85-.01-1.56-.7-1.55-1.55-.01-.85.7-1.55,1.55-1.55ZM18.33,22.22h-2.17l-.2-11.27h2.56l-.2,11.27Z"/>
+  </g>
+</svg>

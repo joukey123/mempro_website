@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="uuid-62e62ae3-26f1-4513-b064-f481091bb3c7" data-name="레이어 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 321.35 298.61">
+  <defs>
+    <style>
+      .uuid-54f9763d-1506-4518-8042-be89b8e6994e {
+        fill: #fff;
+        stroke: #767d86;
+        stroke-miterlimit: 10;
+      }
+
+      .uuid-e8f569e6-7ca7-43fe-ae73-9a55ca0fae5a {
+        fill: url(#uuid-c032524a-aeb4-4a76-ba83-37d208e22f1a);
+        stroke-width: 0px;
+      }
+    </style>
+    <linearGradient id="uuid-c032524a-aeb4-4a76-ba83-37d208e22f1a" data-name="무제 그라디언트 62" x1="156.7" y1="19.25" x2="159.97" y2="168.9" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#767d86" stop-opacity=".5"/>
+    </linearGradient>
+  </defs>
+  <g id="uuid-28c01588-6bcc-42f4-856b-24f6cca87be7" data-name="레이어 1">
+    <polygon class="uuid-e8f569e6-7ca7-43fe-ae73-9a55ca0fae5a" points="157.58 13.23 317.77 158.36 1.8 162.32 82.98 0 157.58 13.23"/>
+    <rect class="uuid-54f9763d-1506-4518-8042-be89b8e6994e" x=".5" y="146.24" width="320.35" height="151.87" rx="23.85" ry="23.85"/>
+  </g>
+</svg>

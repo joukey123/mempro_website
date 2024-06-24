@@ -131,7 +131,6 @@ const CiWrapper = styled.div`
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: 150px;
 `;
 
 const SliderWrapper = styled.div`

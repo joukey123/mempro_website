@@ -5,8 +5,10 @@ import machines from "./img/machines.svg";
 import aboutImg from "../src/img/about.jpg";
 import semiImg from "../src/img/semi.jpg";
 
+// warning
+import semo_ex from "./img/semo_ex.svg";
+
 //diamond img
-import diamondWireDiagram from "../src/img/diamond/diamonWireDiagram.svg";
 import sem from "../src/img/diamond/SEM.png";
 import configuration from "../src/img/diamond/Configuration.png";
 import semiconductorIngot from "../src/img/diamond/semiconductorIngot.jpg";
@@ -21,6 +23,58 @@ import diamondwire_machine from "../src/img/diamond/machine.svg";
 //erching img
 import etching_machine from "../src/img/etching/etching_machine.svg";
 import etching_step1 from "../src/img/etching/etching_step1.svg";
+import etching_diagram from "../src/img/etching/etching_diagram.svg";
+import img_1 from "../src/img/etching/1.png";
+import img_2 from "../src/img/etching/2.png";
+import img_3 from "../src/img/etching/3.png";
+import img_4 from "../src/img/etching/4.png";
+import img_5 from "../src/img/etching/5.png";
+import img_6 from "../src/img/etching/6.png";
+import img_7 from "../src/img/etching/7.png";
+import img_8 from "../src/img/etching/8.png";
+import img_9 from "../src/img/etching/9.png";
+import img_10 from "../src/img/etching/10.png";
+import img_11 from "../src/img/etching/11.png";
+import img_12 from "../src/img/etching/12.png";
+
+//eds-cantilever
+import cantilever_machie from "../src/img/cantilever/prob_machine.svg";
+import cantilever_diagram from "../src/img/cantilever/prob_diagram.svg";
+import probe_item1 from "../src/img/cantilever/probe_item1.png";
+import probe_item2 from "../src/img/cantilever/probe_item2.png";
+import probe_item3 from "../src/img/cantilever/probe_item3.png";
+import probe_item4 from "../src/img/cantilever/probe_item4.png";
+import probe_item5 from "../src/img/cantilever/probe_item5.png";
+import probe_item6 from "../src/img/cantilever/probe_item6.png";
+import cantilever_part1 from "../src/img/cantilever/cantilever_part1.svg";
+import cantilever_part2 from "../src/img/cantilever/cantilever_part2.svg";
+import cantilever_part3 from "../src/img/cantilever/cantilever_part3.svg";
+import cantilever_part4 from "../src/img/cantilever/cantilever_part4.svg";
+import stiffener from "../src/img/cantilever/stiffener2.svg";
+import stiffener3 from "../src/img/cantilever/stiffener3.png";
+import stiffener4 from "../src/img/cantilever/stiffener4.png";
+import stiffener5 from "../src/img/cantilever/stiffener5.png";
+import stiffener6 from "../src/img/cantilever/stiffener6.png";
+import stiffener7 from "../src/img/cantilever/stiffener7.png";
+
+import cantileverNeedle from "../src/img/cantilever/cantilever_needle.svg";
+import bending from "../src/img/cantilever/bending.svg";
+import coating from "../src/img/cantilever/coating.svg";
+import tube from "../src/img/cantilever/tube.svg";
+
+//vertical
+
+import vertical_part1 from "../src/img/vertical/vertical_part1.svg";
+import vertical_part2 from "../src/img/vertical/vertical_part2.svg";
+import vertical_part3 from "../src/img/vertical/vertical_part3.svg";
+import vertical_part4 from "../src/img/vertical/vertical_part4.svg";
+import vertical_part5 from "../src/img/vertical/vertical_part5.svg";
+import vertical_part6 from "../src/img/vertical/vertical_part6.svg";
+import vertical_part7 from "../src/img/vertical/vertical_part7.svg";
+import vertical_part8 from "../src/img/vertical/vertical_part8.svg";
+import vertical_part9 from "../src/img/vertical/vertical_part9.svg";
+import ceramic from "../src/img/vertical/ceramicDuagram.svg";
+import ceramic_step1 from "../src/img/vertical/ceramicStep1.svg";
 export const linkBtns = [
   {
     text: "blog",
@@ -264,7 +318,7 @@ export const books = [
 
 export const itemsDetail = {
   diamond: {
-    nation: "Made in Korea",
+    nation: ["Made in Korea"],
     title: "Diamond Wire",
     description:
       "Manufactured by using an electrode to deposit diamond particles on the surface of core wire, made of high carbon steel and tungsten.",
@@ -344,10 +398,394 @@ export const itemsDetail = {
   },
 
   etching: {
-    nation: "Made in Korea",
+    nation: ["Made in Korea"],
     title: "Electrode, Focus Ring, ETC.",
     description:
       "During the semiconductor manufacturing process, consumable parts are applied precisely in a sterile environment with the use of a chamber of diffusion in the CVD ,Etching ,and Thin Film processing facilities.",
-    images: { machine: etching_machine, step1: etching_step1 },
+    images: {
+      machine: etching_machine,
+      step1: etching_step1,
+      diagram: etching_diagram,
+    },
+    contents: {
+      features: [
+        {
+          text: "fine surface treatment",
+          icon: diamond_features1,
+        },
+        {
+          text: "short delivery period ",
+          icon: diamond_features2,
+        },
+      ],
+      material: [
+        {
+          text: "Silicon",
+          images: [
+            {
+              title: "Electrode",
+              img: img_1,
+            },
+            {
+              title: "Showe Head",
+              img: img_2,
+            },
+            {
+              title: "Focus",
+              img: img_3,
+            },
+            {
+              title: "Insert",
+              img: img_4,
+            },
+            {
+              title: "C-Ring",
+              img: img_5,
+            },
+          ],
+        },
+        {
+          text: "Quartz",
+          images: [
+            {
+              title: "Electrode",
+              img: img_6,
+            },
+            {
+              title: "G.D.P",
+              img: img_7,
+            },
+            {
+              title: "Sheild",
+              img: img_8,
+            },
+            {
+              title: "Wap",
+              img: img_9,
+            },
+            {
+              title: "Insulator",
+              img: img_10,
+            },
+          ],
+        },
+        {
+          text: "SiC",
+          images: [
+            {
+              title: "SiC Ring",
+              img: img_11,
+            },
+            {
+              title: "SiC Shower Head",
+              img: img_12,
+            },
+          ],
+        },
+      ],
+    },
+  },
+
+  probe: {
+    title: "Probe",
+    description:
+      "Are used to connect the integrated circuits located on a wafer to the ATE (Automated Test Equipment) to test that the electrical parameters and performance meet requirements before they are manufactured and shipped out.",
+    warning: semo_ex,
+
+    images: {
+      machine: cantilever_machie,
+      diagram: cantilever_diagram,
+    },
+    item: [
+      {
+        title: "sanding machine",
+        img: probe_item1,
+      },
+      {
+        title: "bending machine",
+        img: probe_item2,
+      },
+      {
+        title: "ceramic guide plate",
+        img: probe_item3,
+      },
+      {
+        title: "stiffener",
+        img: probe_item4,
+      },
+      {
+        title: "probe",
+        img: probe_item5,
+      },
+      {
+        title: "PI-Tube",
+        img: probe_item6,
+      },
+    ],
+  },
+
+  cantilever: {
+    title: "Cantilever Porbe",
+    description:
+      "Are used to connect the integrated circuits located on a wafer to the ATE (Automated Test Equipment) to test that the electrical parameters and performance meet requirements before they are manufactured and shipped out.",
+    warning: semo_ex,
+    images: {
+      part1: cantilever_part1,
+      part2: cantilever_part2,
+      part3: cantilever_part3,
+      part4: cantilever_part4,
+      part5: cantilever_part4,
+      part6: cantilever_part4,
+      part7: cantilever_part4,
+      part8: cantilever_part4,
+    },
+    item: [
+      {
+        title: "stiffener",
+        img: probe_item4,
+      },
+      {
+        title: "probe",
+        img: probe_item5,
+      },
+      {
+        title: "PI-Tube",
+        img: probe_item6,
+      },
+    ],
+  },
+
+  stiffener: {
+    nation: ["Made in Taiwan"],
+    title: "Stiffener",
+    images: {
+      stiffener,
+    },
+    contents: {
+      items: [
+        stiffener,
+        stiffener3,
+        stiffener4,
+        stiffener5,
+        stiffener6,
+        stiffener7,
+      ],
+    },
+  },
+  cprobe: {
+    nation: ["Made in Korea"],
+    title: "Cantilever Probe",
+    cards: {
+      Cantilever: {
+        needle: ["WRNP", "WNP", "BECU"],
+      },
+      DDI: {
+        needle: ["P7", "PT", "NP40"],
+      },
+    },
+    contents: {
+      needle: {
+        img: cantileverNeedle,
+        spec: [
+          {
+            Category: "Diameter",
+            Xposition: "10, 20, 30μm",
+            TaperDiameter: "Customizable",
+            TaperLength: "Customizable",
+            PinLength: "Customizable",
+            PinDiameter: "Customizable",
+          },
+          {
+            Category: "Tolerances",
+            Xposition: "-",
+            TaperDiameter: "± 2μm",
+            TaperLength: "± 100μm",
+            PinLength: "± 1mm",
+            PinDiameter: "± 5μm",
+          },
+        ],
+      },
+      bending: {
+        img: bending,
+        spec: [
+          {
+            id: 1,
+            name: "Bending Length",
+            description: "Dimension / Tolerances / Customizable / ±10µm",
+          },
+          {
+            id: 2,
+            name: "Bending Angle",
+            description: "90 ~ 179° / ±1°",
+          },
+          {
+            id: 3,
+            name: "Tip Shape",
+            description: "Sharp Tip, Flat Tip, Radius Tip",
+          },
+        ],
+      },
+      coating: {
+        img: coating,
+        spec: [
+          {
+            id: 1,
+            name: "Coating Length",
+            description: "Tolerances / Customizable / ±300µm",
+          },
+          {
+            id: 2,
+            name: "Coating Thickness",
+            description: "Polyamide / 2.5 ~ 6 ± 2.5µm",
+          },
+          {
+            id: 3,
+            name: "Rod Diameter",
+            description: "60 ~ 500µm",
+          },
+        ],
+      },
+    },
+  },
+
+  tube: {
+    nation: ["Made in Korea", "Made in Japan"],
+    title: "PI-Tube",
+    description: "The PI-Tube prevents shorts caused by the contact of probe.",
+    img: tube,
+    spec: [
+      {
+        items: [
+          {
+            nominalInsideDiameter: "0.11",
+            toleranceInsideDiameter: "± 0.009",
+            wallThickness: "0.02",
+            outsideDiameter: "0.15",
+            length: "500",
+            moq: "500",
+          },
+          {
+            nominalInsideDiameter: "0.21",
+            toleranceInsideDiameter: "± 0.009",
+            wallThickness: "0.02",
+            outsideDiameter: "0.16",
+            length: "500",
+            moq: "500",
+          },
+          {
+            nominalInsideDiameter: "0.15",
+            toleranceInsideDiameter: "± 0.009",
+            wallThickness: "0.02",
+            outsideDiameter: "0.19",
+            length: "500",
+            moq: "500",
+          },
+          {
+            nominalInsideDiameter: "0.18",
+            toleranceInsideDiameter: "± 0.009",
+            wallThickness: "0.02",
+            outsideDiameter: "0.22",
+            length: "500",
+            moq: "500",
+          },
+          {
+            nominalInsideDiameter: "0.20",
+            toleranceInsideDiameter: "-0.01 / +0.04",
+            wallThickness: "0.04",
+            outsideDiameter: "0.28",
+            length: "1000",
+            moq: "500",
+          },
+          {
+            nominalInsideDiameter: "0.25",
+            toleranceInsideDiameter: "-0.01 / +0.04",
+            wallThickness: "0.04",
+            outsideDiameter: "0.33",
+            length: "1000",
+            moq: "500",
+          },
+          {
+            nominalInsideDiameter: "0.30",
+            toleranceInsideDiameter: "-0.01 / +0.04",
+            wallThickness: "0.04",
+            outsideDiameter: "0.38",
+            length: "1000",
+            moq: "500",
+          },
+          {
+            nominalInsideDiameter: "0.35",
+            toleranceInsideDiameter: "-0.01 / +0.04",
+            wallThickness: "0.04",
+            outsideDiameter: "0.43",
+            length: "1000",
+            moq: "500",
+          },
+          {
+            nominalInsideDiameter: "0.40",
+            toleranceInsideDiameter: "-0.01 / +0.05",
+            wallThickness: "0.04",
+            outsideDiameter: "0.48",
+            length: "1000",
+            moq: "500",
+          },
+        ],
+      },
+    ],
+  },
+  vertical: {
+    title: "Vertical Porbe",
+    description:
+      "Are used to connect the integrated circuits located on a wafer to the ATE (Automated Test Equipment) to test that the electrical parameters and performance meet requirements before they are manufactured and shipped out.",
+    warning: semo_ex,
+    images: {
+      part1: vertical_part1,
+      part2: vertical_part2,
+      part3: vertical_part3,
+      part4: vertical_part4,
+      part5: vertical_part5,
+      part6: vertical_part6,
+      part7: vertical_part7,
+      part8: vertical_part8,
+      part9: vertical_part9,
+    },
+    item: [
+      {
+        title: "stiffener",
+        img: probe_item4,
+      },
+      {
+        title: "probe",
+        img: probe_item5,
+      },
+      {
+        title: "Ceramic Guide/Hole",
+        img: vertical_part8,
+      },
+    ],
+  },
+  vstiffener: {
+    nation: ["Made in Taiwan"],
+    title: "Stiffener",
+    images: {
+      stiffener,
+    },
+    contents: {
+      items: [
+        stiffener,
+        stiffener3,
+        stiffener4,
+        stiffener5,
+        stiffener6,
+        stiffener7,
+      ],
+    },
+  },
+
+  ceramic: {
+    title: "Ceramic Guide Plate / Hole Processing",
+    images: {
+      machine: ceramic,
+      step1: ceramic_step1,
+    },
   },
 };

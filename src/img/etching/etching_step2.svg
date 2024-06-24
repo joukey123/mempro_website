@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="uuid-37f50138-7dec-4eab-89f7-acdd4ab2268e" data-name="레이어 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 97.45 119.25">
+  <defs>
+    <style>
+      .uuid-6f76b826-2d68-4cea-99cf-77aa98f0519f, .uuid-2b753df7-2e45-430c-8b26-e258c4a16b64, .uuid-95b4f742-57b6-4604-ad7c-65d45c35a1a0, .uuid-50c67d66-ad5e-4ece-956e-b971e42f57ec, .uuid-94a93a77-7c9f-402c-ad6b-9ac217890c86 {
+        fill: none;
+        stroke-miterlimit: 10;
+      }
+
+      .uuid-6f76b826-2d68-4cea-99cf-77aa98f0519f, .uuid-95b4f742-57b6-4604-ad7c-65d45c35a1a0, .uuid-94a93a77-7c9f-402c-ad6b-9ac217890c86 {
+        stroke: #2780b8;
+      }
+
+      .uuid-2b753df7-2e45-430c-8b26-e258c4a16b64, .uuid-50c67d66-ad5e-4ece-956e-b971e42f57ec {
+        stroke: #0269b7;
+      }
+
+      .uuid-95b4f742-57b6-4604-ad7c-65d45c35a1a0 {
+        stroke-dasharray: 0 0 4.69 4.69;
+      }
+
+      .uuid-50c67d66-ad5e-4ece-956e-b971e42f57ec {
+        stroke-dasharray: 0 0 3.28 3.28;
+      }
+
+      .uuid-94a93a77-7c9f-402c-ad6b-9ac217890c86 {
+        stroke-dasharray: 0 0 5.13 5.13;
+      }
+    </style>
+  </defs>
+  <g id="uuid-7abb9c77-3125-4cb2-a7b3-f020ce6fa590" data-name="레이어 1">
+    <g>
+      <line class="uuid-6f76b826-2d68-4cea-99cf-77aa98f0519f" x1=".5" y1="80.92" x2=".5" y2="83.42"/>
+      <line class="uuid-95b4f742-57b6-4604-ad7c-65d45c35a1a0" x1=".5" y1="88.11" x2=".5" y2="113.91"/>
+      <polyline class="uuid-6f76b826-2d68-4cea-99cf-77aa98f0519f" points=".5 116.25 .5 118.75 3 118.75"/>
+      <line class="uuid-94a93a77-7c9f-402c-ad6b-9ac217890c86" x1="8.13" y1="118.75" x2="56.91" y2="118.75"/>
+      <line class="uuid-6f76b826-2d68-4cea-99cf-77aa98f0519f" x1="59.48" y1="118.75" x2="61.98" y2="118.75"/>
+    </g>
+    <g>
+      <line class="uuid-2b753df7-2e45-430c-8b26-e258c4a16b64" x1="96.95" y1="14.85" x2="96.95" y2="12.35"/>
+      <line class="uuid-50c67d66-ad5e-4ece-956e-b971e42f57ec" x1="96.95" y1="9.07" x2="96.95" y2="4.14"/>
+      <line class="uuid-2b753df7-2e45-430c-8b26-e258c4a16b64" x1="96.95" y1="2.5" x2="96.95"/>
+    </g>
+  </g>
+</svg>

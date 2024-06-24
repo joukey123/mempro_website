@@ -93,7 +93,6 @@ const OfficeAddrss = styled.div`
   display: flex;
   justify-content: space-between;
   margin-top: 70px;
-  margin-bottom: 150px;
   color: ${(props) => props.theme.colors.black};
   button {
     background-color: ${(props) => props.theme.colors.gray}; // 기본 버튼 색상

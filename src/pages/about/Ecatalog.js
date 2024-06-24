@@ -23,9 +23,7 @@ const BlackBox = styled.div`
   font-weight: 500;
   margin-bottom: 35px;
 `;
-const BookWrapper = styled.div`
-  margin-bottom: 150px;
-`;
+const BookWrapper = styled.div``;
 const Book = styled.div`
   display: flex;
   flex-direction: column;
