@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="uuid-c2836ab4-19c6-4f3e-8384-342406a6c558" data-name="레이어 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50.13 22.33">
+  <defs>
+    <style>
+      .uuid-a683834f-c81d-4ccc-88b7-bf90821eb1df {
+        fill: #6d6d6d;
+      }
+
+      .uuid-a683834f-c81d-4ccc-88b7-bf90821eb1df, .uuid-7818b67b-1643-4453-bbe1-10340e4487bb {
+        stroke: #1f2020;
+        stroke-miterlimit: 10;
+        stroke-width: .3px;
+      }
+
+      .uuid-7818b67b-1643-4453-bbe1-10340e4487bb {
+        fill: #d8d8d8;
+      }
+    </style>
+  </defs>
+  <g id="uuid-6f869303-d144-4771-84f8-d5715ee101e2" data-name="uuid-203b9788-daec-4cd7-8810-f6398b5cb9bc">
+    <g>
+      <rect class="uuid-7818b67b-1643-4453-bbe1-10340e4487bb" x=".15" y=".15" width="49.83" height="14.41"/>
+      <rect class="uuid-a683834f-c81d-4ccc-88b7-bf90821eb1df" x="12.77" y="14.56" width="24.58" height="7.62"/>
+    </g>
+  </g>
+</svg>

@@ -75,6 +75,11 @@ import vertical_part8 from "../src/img/vertical/vertical_part8.svg";
 import vertical_part9 from "../src/img/vertical/vertical_part9.svg";
 import ceramic from "../src/img/vertical/ceramicDuagram.svg";
 import ceramic_step1 from "../src/img/vertical/ceramicStep1.svg";
+import ceramic_step2 from "../src/img/vertical/ceramicStep2.svg";
+import ceramic_step3 from "../src/img/vertical/ceramicStep3.svg";
+import ceramic_step4 from "../src/img/vertical/ceramicStep4.svg";
+import ceramic_step5 from "../src/img/vertical/ceramicStep5.svg";
+
 export const linkBtns = [
   {
     text: "blog",
@@ -786,6 +791,9 @@ export const itemsDetail = {
     images: {
       machine: ceramic,
       step1: ceramic_step1,
+      step2: ceramic_step2,
+      step3: ceramic_step3,
+      step4: ceramic_step4,
     },
   },
 };
