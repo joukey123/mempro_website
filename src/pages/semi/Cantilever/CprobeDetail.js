@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { useTable } from "react-table";
 import { AnimatePresence, motion, transform } from "framer-motion";
 import CantileverProbeInfo from "./CantileverProbeInfo";
+import CoaxialInfo from "./ CoaxialInfo";
 
 const Wrapper = styled.div`
   padding: 0 50px;
@@ -58,7 +59,6 @@ const TableWrapper = styled.div`
 const Table = styled.table`
   width: 100%;
   max-width: 1100px;
-  height: 140px;
   border-collapse: collapse;
   text-align: center;
   font-weight: 300;
@@ -92,6 +92,17 @@ const Table = styled.table`
 
 function CprobeDetail({ needle, contents }) {
   const data = React.useMemo(() => contents.needle.spec, []);
+  const coaxialData = React.useMemo(() => contents.coaxial.spec, []);
+  const coaxialColumns = React.useMemo(
+    () => [
+      { Header: "", accessor: "category" },
+      { Header: "Specification", accessor: "specification" },
+      { Header: "Material (Probe)", accessor: "materialProbe" },
+      { Header: "Material (Tube)", accessor: "materialTube" },
+      { Header: "Coating (Probe)", accessor: "coatingProbe" },
+    ],
+    []
+  );
   const columns = React.useMemo(
     () => [
       {
@@ -122,7 +133,10 @@ function CprobeDetail({ needle, contents }) {
     []
   );
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable({ columns, data });
+    useTable({
+      columns: needle === "Coaxial" ? coaxialColumns : columns,
+      data: needle === "Coaxial" ? coaxialData : data,
+    });
 
   const [tableHeader, setTableHeader] = useState("");
 
@@ -140,9 +154,21 @@ function CprobeDetail({ needle, contents }) {
         ) : (
           <NeedleName>Specification</NeedleName>
         )}
-        <NeedleImg src={contents.needle.img} />
+        {needle === "Coaxial" ? (
+          <>
+            <NeedleImg
+              src={contents.coaxial.img}
+              style={{ top: "56.6%", left: "50%" }}
+            />
+            <CoaxialInfo />
+          </>
+        ) : (
+          <>
+            <NeedleImg src={contents.needle.img} />
+            <CantileverProbeInfo tableHeader={tableHeader} />
+          </>
+        )}
         {/* <NeedleImginfo src={needleInfo} /> */}
-        <CantileverProbeInfo tableHeader={tableHeader} />
       </StructureWarpper>
       <Table {...getTableProps()} className="table">
         <thead>

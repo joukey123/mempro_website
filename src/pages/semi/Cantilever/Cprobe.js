@@ -22,55 +22,54 @@ const Wrapper = styled.div`
   position: relative;
   padding: 0 50px;
 `;
-const TableWrapper = styled.div`
-  width: 100%;
-  max-width: 550px;
-  height: 80px;
-  position: relative;
-  border-radius: 8px;
-  overflow: hidden;
-  border: 0.5px solid ${(props) => props.theme.colors.border};
-  margin-left: 50px;
-`;
+
 const Table = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
-  max-width: 500px;
-  :first-child div {
-    border-bottom: 0.5px solid ${(props) => props.theme.colors.border};
-  }
+  max-width: 570px;
+  padding-left: 50px;
 `;
 const Th = styled.span`
-  background-color: ${(props) => props.theme.colors.blue};
-  color: white;
+  color: ${(props) => props.theme.colors.black};
   display: block;
-  width: 100px;
+  width: 120px;
   height: fit-content;
-  padding: 10px 15px;
-  border: 2px solid ${(props) => props.theme.colors.blue};
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 10px;
 `;
 
 const TableRow = styled.div`
   display: flex;
-  align-items: center;
+  flex-direction: column;
   width: fit-content;
-`;
-const TableItem = styled.span`
-  width: 150px;
-  padding: 10px 15px;
-  text-align: center;
-  font-weight: 200;
-  cursor: pointer;
-  color: ${(props) =>
-    props.$isClick ? props.theme.colors.blue : props.theme.colors.black};
-  font-weight: ${(props) => props.$isClick && 600};
+  &:first-child {
+    margin: 25px 0;
+  }
 `;
 
 const ItemWrapper = styled.div`
   display: flex;
-  width: ${(props) => props.$tableWidth}px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  justify-content: space-between;
+  border-radius: 5px;
+  overflow: hidden;
+`;
+const TableItem = styled.span`
+  width: 200px;
+  padding: 10px 15px;
+  text-align: center;
+  font-weight: 200;
+  cursor: pointer;
+  background-color: ${(props) =>
+    props.$isClick && props.theme.colors[props.$color]};
+  color: ${(props) =>
+    props.$isClick ? props.theme.colors.white : props.theme.colors.black};
+  font-weight: ${(props) => props.$isClick && 600};
+  border-right: 1px solid rgba(0, 0, 0, 0.3);
+
+  &:last-child {
+    border-right: 0px;
+  }
 `;
 
 const Contents = styled.h2`
@@ -115,39 +114,39 @@ function Cprobe() {
     <>
       <Wrapper>
         <Headline item={{ ...itemsDetail[`${sublink}`] }} />
-        <TableWrapper>
-          <Table>
-            <TableRow>
-              <Th>Card</Th>
-              <ItemWrapper $tableWidth={maxWidth}>
-                {Object.keys(cards).map((item, index) => (
+        <Table>
+          <TableRow>
+            <Th>Card Type</Th>
+            <ItemWrapper $tableWidth={maxWidth}>
+              {Object.keys(cards).map((item, index) => (
+                <TableItem
+                  key={index}
+                  onClick={(event) => handleClickCard(item, event)}
+                  $isClick={item === selectCard}
+                  $color={"blue"}
+                >
+                  {item}
+                </TableItem>
+              ))}
+            </ItemWrapper>
+          </TableRow>
+          <TableRow>
+            <Th>Probe Type</Th>
+            <ItemWrapper ref={tableref} $tableWidth={maxWidth}>
+              {selectCard &&
+                cards[selectCard]?.needle.map((item, index) => (
                   <TableItem
                     key={index}
-                    onClick={(event) => handleClickCard(item, event)}
-                    $isClick={item === selectCard}
+                    onClick={() => handleClickNeedle(item)}
+                    $isClick={item === selectNeedle}
+                    $color={"gold"}
                   >
                     {item}
                   </TableItem>
                 ))}
-              </ItemWrapper>
-            </TableRow>
-            <TableRow>
-              <Th>Needles</Th>
-              <ItemWrapper ref={tableref} $tableWidth={maxWidth}>
-                {selectCard &&
-                  cards[selectCard]?.needle.map((item, index) => (
-                    <TableItem
-                      key={index}
-                      onClick={() => handleClickNeedle(item)}
-                      $isClick={item === selectNeedle}
-                    >
-                      {item}
-                    </TableItem>
-                  ))}
-              </ItemWrapper>
-            </TableRow>
-          </Table>
-        </TableWrapper>
+            </ItemWrapper>
+          </TableRow>
+        </Table>
         <span
           style={{ margin: "10px 0 50px 50px", fontSize: 13, fontWeight: 400 }}
         >
@@ -155,21 +154,22 @@ function Cprobe() {
         </span>
 
         <CprobeDetail needle={selectNeedle} contents={contents} />
-
-        <Contents>
-          <div className="bending" style={{ margin: "100px 0" }}>
-            <ContentsTitle>
-              <span>Bending Technology</span>
-            </ContentsTitle>
-            <BendingDetail contents={contents} />
-          </div>
-          <div className="bending" style={{ margin: "100px 0" }}>
-            <ContentsTitle>
-              <span>Coating Technology</span>
-            </ContentsTitle>
-            <CoatingDetail contents={contents} />
-          </div>
-        </Contents>
+        {selectNeedle !== "Coaxial" && (
+          <Contents>
+            <div className="bending" style={{ margin: "100px 0" }}>
+              <ContentsTitle>
+                <span>Bending Technology</span>
+              </ContentsTitle>
+              <BendingDetail contents={contents} />
+            </div>
+            <div className="bending" style={{ margin: "100px 0" }}>
+              <ContentsTitle>
+                <span>Coating Technology</span>
+              </ContentsTitle>
+              <CoatingDetail contents={contents} />
+            </div>
+          </Contents>
+        )}
       </Wrapper>
       <Footer />
     </>

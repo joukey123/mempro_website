@@ -61,6 +61,7 @@ import cantileverNeedle from "../src/img/cantilever/cantilever_needle.svg";
 import bending from "../src/img/cantilever/bending.svg";
 import coating from "../src/img/cantilever/coating.svg";
 import tube from "../src/img/cantilever/tube.svg";
+import coaxial from "../src/img/cantilever/coaxial.svg";
 
 //vertical
 
@@ -78,7 +79,7 @@ import ceramic_step1 from "../src/img/vertical/ceramicStep1.svg";
 import ceramic_step2 from "../src/img/vertical/ceramicStep2.svg";
 import ceramic_step3 from "../src/img/vertical/ceramicStep3.svg";
 import ceramic_step4 from "../src/img/vertical/ceramicStep4.svg";
-import ceramic_step5 from "../src/img/vertical/ceramicStep5.svg";
+import cobra from "../src/img/vertical/cobra.svg";
 
 export const linkBtns = [
   {
@@ -582,7 +583,7 @@ export const itemsDetail = {
     title: "Cantilever Probe",
     cards: {
       Cantilever: {
-        needle: ["WRNP", "WNP", "BECU"],
+        needle: ["WRNP", "WNP", "BECU", "Coaxial"],
       },
       DDI: {
         needle: ["P7", "PT", "NP40"],
@@ -607,6 +608,18 @@ export const itemsDetail = {
             TaperLength: "± 100μm",
             PinLength: "± 1mm",
             PinDiameter: "± 5μm",
+          },
+        ],
+      },
+      coaxial: {
+        img: coaxial,
+        spec: [
+          {
+            category: "Coaxial",
+            specification: "Customizable",
+            materialProbe: "Customizable",
+            materialTube: "Brass (Au-Plated)",
+            coatingProbe: "Polymide",
           },
         ],
       },
@@ -785,7 +798,42 @@ export const itemsDetail = {
       ],
     },
   },
-
+  vprobe: {
+    nation: ["Made in Korea"],
+    title: "Vertical Porbe",
+    cards: {
+      Vertical: {
+        needle: ["wire", "short", "cobra", "PEMs"],
+      },
+      CIS: {
+        needle: ["short", "cobra", "PEMs"],
+      },
+      Memory: {
+        needle: ["cobra", "PEMs"],
+      },
+    },
+    contents: {
+      cobra: {
+        img: cobra,
+        spec: [
+          {
+            id: 1,
+            name: "Rod Diameter",
+            description: "30 / 38 / 50 / 63 / 76 µm",
+          },
+          { id: 2, name: "Cobra Probe Length", description: "Customizable" },
+          { id: 3, name: "Head Length", description: "Customizable" },
+          { id: 4, name: "Tip Length", description: "Customizable" },
+          { id: 5, name: "Cobra Probe Width", description: "Customizable" },
+          {
+            id: 6,
+            name: "Materials",
+            description: "NC30 (Paliney7), NC40 (H3C)",
+          },
+        ],
+      },
+    },
+  },
   ceramic: {
     title: "Ceramic Guide Plate / Hole Processing",
     images: {

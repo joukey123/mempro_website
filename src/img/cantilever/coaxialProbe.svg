@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="uuid-9d04e00a-eb5d-467f-bbf7-85241627f0da" data-name="레이어 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 457.88 105.12">
+  <defs>
+    <style>
+      .uuid-74b0efec-2577-4334-b9de-f8eda357fa30 {
+        letter-spacing: -.07em;
+      }
+
+      .uuid-1268788c-7696-42f6-8435-b2297ee20852 {
+        letter-spacing: -.07em;
+      }
+
+      .uuid-34711f84-ec11-43f5-9a50-8d59820029b8 {
+        fill: #0269b7;
+        stroke-width: 0px;
+      }
+
+      .uuid-210d179b-ab88-483f-8a2e-02b1b8aa19f2 {
+        fill: #000;
+        font-family: Pretendard-Light-KSCpc-EUC-H, Pretendard;
+        font-size: 8px;
+        font-weight: 300;
+      }
+
+      .uuid-17ef63b9-8271-422a-a97b-98c65d101ee8 {
+        letter-spacing: .01em;
+      }
+
+      .uuid-d31a4dfc-7205-4032-be44-32f3523471a4 {
+        letter-spacing: .01em;
+      }
+
+      .uuid-99a3d5f3-c23d-48f8-b178-8e0c89e74c34 {
+        stroke: #a6a6a7;
+      }
+
+      .uuid-99a3d5f3-c23d-48f8-b178-8e0c89e74c34, .uuid-9f713dc8-9f5e-4d68-8c47-db482f636caf {
+        fill: none;
+        stroke-miterlimit: 10;
+        stroke-width: .5px;
+      }
+
+      .uuid-450dcb68-4eed-439e-adea-98624f0db4b0 {
+        letter-spacing: 0em;
+      }
+
+      .uuid-9f713dc8-9f5e-4d68-8c47-db482f636caf {
+        stroke: #0269b7;
+      }
+
+      .uuid-64683d6a-2d2e-4be3-83c6-67b6ac4f38bb {
+        letter-spacing: 0em;
+      }
+
+      .uuid-bd2a1e70-0b0d-4912-8269-38b5929ad63f {
+        letter-spacing: 0em;
+      }
+
+      .uuid-33b3ac0c-2577-45a5-8320-d4255322aeb6 {
+        letter-spacing: -.08em;
+      }
+
+      .uuid-c2444fe7-4cef-4381-b5fd-43c79ccc5775 {
+        letter-spacing: 0em;
+      }
+    </style>
+  </defs>
+  <g id="uuid-d87ab818-c1b8-4b70-b235-d781d648618c" data-name="레이어 1">
+    <g>
+      <g>
+        <line class="uuid-9f713dc8-9f5e-4d68-8c47-db482f636caf" x1="437.28" y1="13.17" x2="4.09" y2="13.17"/>
+        <polygon class="uuid-34711f84-ec11-43f5-9a50-8d59820029b8" points="436.56 10.68 440.87 13.17 436.56 15.66 436.56 10.68"/>
+        <polygon class="uuid-34711f84-ec11-43f5-9a50-8d59820029b8" points="4.82 10.68 .5 13.17 4.82 15.66 4.82 10.68"/>
+      </g>
+      <g>
+        <line class="uuid-9f713dc8-9f5e-4d68-8c47-db482f636caf" x1="95.22" y1="52.37" x2="4.09" y2="52.37"/>
+        <polygon class="uuid-34711f84-ec11-43f5-9a50-8d59820029b8" points="94.49 49.88 98.8 52.37 94.49 54.86 94.49 49.88"/>
+        <polygon class="uuid-34711f84-ec11-43f5-9a50-8d59820029b8" points="4.82 49.88 .5 52.37 4.82 54.86 4.82 49.88"/>
+      </g>
+      <line class="uuid-99a3d5f3-c23d-48f8-b178-8e0c89e74c34" x1=".25" y1="2.66" x2=".25" y2="72.99"/>
+      <line class="uuid-99a3d5f3-c23d-48f8-b178-8e0c89e74c34" x1="441.32" y1="2.7" x2="441.32" y2="72.99"/>
+      <text class="uuid-210d179b-ab88-483f-8a2e-02b1b8aa19f2" transform="translate(190.62 10.47)"><tspan class="uuid-33b3ac0c-2577-45a5-8320-d4255322aeb6" x="0" y="0">T</tspan><tspan x="5.76" y="0">otal Leng</tspan><tspan class="uuid-d31a4dfc-7205-4032-be44-32f3523471a4" x="50.52" y="0">t</tspan><tspan x="54.31" y="0">h</tspan></text>
+      <text class="uuid-210d179b-ab88-483f-8a2e-02b1b8aa19f2" transform="translate(22.34 49.29)"><tspan class="uuid-33b3ac0c-2577-45a5-8320-d4255322aeb6" x="0" y="0">T</tspan><tspan x="5.76" y="0">op Leng</tspan><tspan class="uuid-d31a4dfc-7205-4032-be44-32f3523471a4" x="45.02" y="0">t</tspan><tspan x="48.81" y="0">h</tspan></text>
+      <g>
+        <line class="uuid-9f713dc8-9f5e-4d68-8c47-db482f636caf" x1="235.53" y1="45.1" x2="103.35" y2="45.1"/>
+        <polygon class="uuid-34711f84-ec11-43f5-9a50-8d59820029b8" points="234.8 42.6 239.12 45.1 234.8 47.59 234.8 42.6"/>
+        <polygon class="uuid-34711f84-ec11-43f5-9a50-8d59820029b8" points="104.07 42.6 99.76 45.1 104.07 47.59 104.07 42.6"/>
+      </g>
+      <text class="uuid-210d179b-ab88-483f-8a2e-02b1b8aa19f2" transform="translate(124.3 42.01)"><tspan x="0" y="0">B</tspan><tspan class="uuid-c2444fe7-4cef-4381-b5fd-43c79ccc5775" x="6.76" y="0">r</tspan><tspan class="uuid-450dcb68-4eed-439e-adea-98624f0db4b0" x="10.42" y="0">ass </tspan><tspan class="uuid-74b0efec-2577-4334-b9de-f8eda357fa30" x="29.55" y="0">T</tspan><tspan x="35.36" y="0">ube Leng</tspan><tspan class="uuid-17ef63b9-8271-422a-a97b-98c65d101ee8" x="80.65" y="0">t</tspan><tspan x="84.44" y="0">h</tspan></text>
+      <text class="uuid-210d179b-ab88-483f-8a2e-02b1b8aa19f2" transform="translate(385.63 101.97)"><tspan class="uuid-64683d6a-2d2e-4be3-83c6-67b6ac4f38bb" x="0" y="0">R</tspan><tspan class="uuid-450dcb68-4eed-439e-adea-98624f0db4b0" x="6.54" y="0">od Diame</tspan><tspan class="uuid-bd2a1e70-0b0d-4912-8269-38b5929ad63f" x="52.43" y="0">t</tspan><tspan x="56.03" y="0">er</tspan></text>
+      <line class="uuid-99a3d5f3-c23d-48f8-b178-8e0c89e74c34" x1="99.76" y1="59.64" x2="99.76" y2="41.01"/>
+      <line class="uuid-99a3d5f3-c23d-48f8-b178-8e0c89e74c34" x1="240.53" y1="59.64" x2="240.53" y2="41.01"/>
+      <line class="uuid-99a3d5f3-c23d-48f8-b178-8e0c89e74c34" x1="445.34" y1="63.87" x2="457.88" y2="63.87"/>
+      <line class="uuid-99a3d5f3-c23d-48f8-b178-8e0c89e74c34" x1="445.34" y1="80.23" x2="457.88" y2="80.23"/>
+      <line class="uuid-99a3d5f3-c23d-48f8-b178-8e0c89e74c34" x1="163.09" y1="60.84" x2="175.63" y2="60.84"/>
+      <line class="uuid-99a3d5f3-c23d-48f8-b178-8e0c89e74c34" x1="163.09" y1="82.41" x2="175.63" y2="82.41"/>
+      <g>
+        <line class="uuid-9f713dc8-9f5e-4d68-8c47-db482f636caf" x1="451.61" y1="60.28" x2="451.61" y2="44.45"/>
+        <polygon class="uuid-34711f84-ec11-43f5-9a50-8d59820029b8" points="454.11 59.55 451.61 63.87 449.12 59.55 454.11 59.55"/>
+      </g>
+      <g>
+        <line class="uuid-9f713dc8-9f5e-4d68-8c47-db482f636caf" x1="451.61" y1="83.81" x2="451.61" y2="99.64"/>
+        <polygon class="uuid-34711f84-ec11-43f5-9a50-8d59820029b8" points="449.12 84.54 451.61 80.23 454.11 84.54 449.12 84.54"/>
+      </g>
+      <text class="uuid-210d179b-ab88-483f-8a2e-02b1b8aa19f2" transform="translate(119.21 101.97)"><tspan x="0" y="0">Brass </tspan><tspan class="uuid-1268788c-7696-42f6-8435-b2297ee20852" x="29.55" y="0">T</tspan><tspan x="35.36" y="0">ube Diame</tspan><tspan class="uuid-64683d6a-2d2e-4be3-83c6-67b6ac4f38bb" x="87.14" y="0">t</tspan><tspan x="90.74" y="0">er</tspan></text>
+      <g>
+        <line class="uuid-9f713dc8-9f5e-4d68-8c47-db482f636caf" x1="169.36" y1="85.99" x2="169.36" y2="92.11"/>
+        <polygon class="uuid-34711f84-ec11-43f5-9a50-8d59820029b8" points="166.87 86.72 169.36 82.41 171.85 86.72 166.87 86.72"/>
+      </g>
+      <g>
+        <line class="uuid-9f713dc8-9f5e-4d68-8c47-db482f636caf" x1="169.36" y1="57.49" x2="169.36" y2="50.65"/>
+        <polygon class="uuid-34711f84-ec11-43f5-9a50-8d59820029b8" points="171.85 56.76 169.36 61.08 166.87 56.76 171.85 56.76"/>
+      </g>
+    </g>
+  </g>
+</svg>

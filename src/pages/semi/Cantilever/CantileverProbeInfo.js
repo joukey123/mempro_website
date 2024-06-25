@@ -61,7 +61,7 @@ const CantileverProbeInfo = ({ tableHeader }) => (
             fill: #000;
             font-family: 'Pretendard-Light-KSCpc-EUC-H', 'Pretendard';
             font-size: 8px;
-            font-weight: 400;
+            font-weight: 350;
           }
 
           .uuid-95799921-8ea9-4335-a933-e000e894abb8 {
