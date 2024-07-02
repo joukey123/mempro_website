@@ -3,35 +3,14 @@ import styled from "styled-components";
 import line from "../../../img/line.svg";
 import CobraDetail from "./CobraDetail";
 import Footer from "../../../components/Footer";
+import WireDetail from "./WireDetail";
+import ShortDetail from "./ShotDetail";
+import PemsDetail from "./PemsDetail";
 
 const Wrapper = styled.div`
   padding: 0 50px;
 `;
 
-const NeedleName = styled.h1`
-  font-size: 18px;
-  span {
-    color: ${(props) => props.theme.colors.blue};
-    font-weight: bold;
-    margin-right: 10px;
-  }
-`;
-const StructureWarpper = styled(motion.div)`
-  width: 100%;
-  max-width: 1100px;
-  height: 750px;
-  margin: 0 auto;
-  border-radius: 8px;
-  background: url(${line}) center center;
-  background-size: cover;
-  background-color: ${(props) => props.theme.colors.white};
-  padding: 50px;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  margin-top: 50px;
-`;
 const TableWrapper = styled.div`
   width: 100%;
   max-width: 1100px;
@@ -81,18 +60,18 @@ const Table = styled.table`
 function VprobeDetail({ needle, contents }) {
   return (
     <Wrapper>
-      <StructureWarpper>
-        {needle ? (
-          <NeedleName>
-            <span style={{ textTransform: "capitalize" }}>{needle}</span>:
-            Specification
-          </NeedleName>
-        ) : (
-          <NeedleName>Specification</NeedleName>
-        )}
-
-        {needle === "cobra" && <CobraDetail contents={contents.cobra} />}
-      </StructureWarpper>
+      {needle === "cobra" && (
+        <CobraDetail contents={contents.cobra} needle={needle} />
+      )}
+      {needle === "wire" && (
+        <WireDetail contents={contents.wire} needle={needle} />
+      )}
+      {needle === "short" && (
+        <ShortDetail contents={contents.short} needle={needle} />
+      )}
+      {needle === "PEMs" && (
+        <PemsDetail contents={contents.pems} needle={needle} />
+      )}
       <Footer />
     </Wrapper>
   );

@@ -2,12 +2,25 @@ import styled from "styled-components";
 
 const SVG = styled.svg`
   max-width: 900px;
+  position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(50%, -360%) scale(2);
+  transform: translate(-50%, -125%) scale(1.8);
 `;
 
-const CobraInfo = () => (
+const Line = styled.line`
+  stroke: ${(props) =>
+    props.$hover ? props.theme.colors.gold : props.theme.colors.blue};
+`;
+const Polygon = styled.polygon`
+  fill: ${(props) =>
+    props.$hover ? props.theme.colors.gold : props.theme.colors.blue};
+`;
+const Circle = styled.circle`
+  fill: ${(props) =>
+    props.$hover ? props.theme.colors.gold : props.theme.colors.blue};
+`;
+const CobraInfo = ({ specId }) => (
   <SVG
     id="uuid-d89842b3-25f0-43ed-a144-9e8af64f6d3f"
     data-name="레이어 2"
@@ -69,18 +82,21 @@ const CobraInfo = () => (
           y2="132.67"
         />
         <g>
-          <line
+          <Line
+            $hover={specId === 1}
             class="uuid-643d1d67-cb37-4a10-adab-c38480353626"
             x1="4.54"
             y1="133.16"
             x2="4.54"
             y2="136.64"
           />
-          <polygon
+          <Polygon
+            $hover={specId === 1}
             class="uuid-570818bc-aa6b-47e2-95c1-38dedf52a79c"
             points="2.72 133.7 4.54 130.54 6.36 133.7 2.72 133.7"
           />
-          <polygon
+          <Polygon
+            $hover={specId === 1}
             class="uuid-570818bc-aa6b-47e2-95c1-38dedf52a79c"
             points="2.72 136.1 4.54 139.26 6.36 136.1 2.72 136.1"
           />
@@ -99,35 +115,41 @@ const CobraInfo = () => (
           x2="32.23"
         />
         <g>
-          <line
+          <Line
+            $hover={specId === 3}
             class="uuid-643d1d67-cb37-4a10-adab-c38480353626"
             x1="38.08"
             y1="57.76"
             x2="122.52"
             y2="57.76"
           />
-          <polygon
+          <Polygon
+            $hover={specId === 3}
             class="uuid-570818bc-aa6b-47e2-95c1-38dedf52a79c"
             points="38.81 60.26 34.49 57.76 38.81 55.27 38.81 60.26"
           />
-          <polygon
+          <Polygon
+            $hover={specId === 3}
             class="uuid-570818bc-aa6b-47e2-95c1-38dedf52a79c"
             points="121.79 60.26 126.11 57.76 121.79 55.27 121.79 60.26"
           />
         </g>
         <g>
-          <line
+          <Line
+            $hover={specId === 4}
             class="uuid-643d1d67-cb37-4a10-adab-c38480353626"
             x1="388.07"
             y1="34.76"
             x2="472.21"
             y2="34.76"
           />
-          <polygon
+          <Polygon
+            $hover={specId === 4}
             class="uuid-570818bc-aa6b-47e2-95c1-38dedf52a79c"
             points="388.8 37.26 384.49 34.76 388.8 32.27 388.8 37.26"
           />
-          <polygon
+          <Polygon
+            $hover={specId === 4}
             class="uuid-570818bc-aa6b-47e2-95c1-38dedf52a79c"
             points="471.48 37.26 475.8 34.76 471.48 32.27 471.48 37.26"
           />
@@ -140,18 +162,21 @@ const CobraInfo = () => (
           y2="2.02"
         />
         <g>
-          <line
+          <Line
+            $hover={specId === 2}
             class="uuid-643d1d67-cb37-4a10-adab-c38480353626"
             x1="37.51"
             y1="11.31"
             x2="473.5"
             y2="11.31"
           />
-          <polygon
+          <Polygon
+            $hover={specId === 2}
             class="uuid-570818bc-aa6b-47e2-95c1-38dedf52a79c"
             points="38.24 13.8 33.93 11.31 38.24 8.82 38.24 13.8"
           />
-          <polygon
+          <Polygon
+            $hover={specId === 2}
             class="uuid-570818bc-aa6b-47e2-95c1-38dedf52a79c"
             points="472.77 13.8 477.09 11.31 472.77 8.82 472.77 13.8"
           />
@@ -171,24 +196,28 @@ const CobraInfo = () => (
           y2="137.36"
         />
         <g>
-          <line
+          <Line
+            $hover={specId === 5}
             class="uuid-643d1d67-cb37-4a10-adab-c38480353626"
             x1="478"
             y1="67.59"
             x2="478"
             y2="133.77"
           />
-          <polygon
+          <Polygon
+            $hover={specId === 5}
             class="uuid-570818bc-aa6b-47e2-95c1-38dedf52a79c"
             points="475.5 68.32 478 64.01 480.49 68.32 475.5 68.32"
           />
-          <polygon
+          <Polygon
+            $hover={specId === 5}
             class="uuid-570818bc-aa6b-47e2-95c1-38dedf52a79c"
             points="475.5 133.05 478 137.36 480.49 133.05 475.5 133.05"
           />
         </g>
         <g>
-          <circle
+          <Circle
+            $hover={specId === 2}
             class="uuid-570818bc-aa6b-47e2-95c1-38dedf52a79c"
             cx="255.51"
             cy="19.04"
@@ -204,7 +233,8 @@ const CobraInfo = () => (
           </text>
         </g>
         <g>
-          <circle
+          <Circle
+            $hover={specId === 3}
             class="uuid-570818bc-aa6b-47e2-95c1-38dedf52a79c"
             cx="80.3"
             cy="64.57"
@@ -220,7 +250,8 @@ const CobraInfo = () => (
           </text>
         </g>
         <g>
-          <circle
+          <Circle
+            $hover={specId === 1}
             class="uuid-570818bc-aa6b-47e2-95c1-38dedf52a79c"
             cx="4.54"
             cy="123.42"
@@ -236,7 +267,8 @@ const CobraInfo = () => (
           </text>
         </g>
         <g>
-          <circle
+          <Circle
+            $hover={specId === 4}
             class="uuid-570818bc-aa6b-47e2-95c1-38dedf52a79c"
             cx="430.14"
             cy="41.89"
@@ -252,7 +284,8 @@ const CobraInfo = () => (
           </text>
         </g>
         <g>
-          <circle
+          <Circle
+            $hover={specId === 5}
             class="uuid-570818bc-aa6b-47e2-95c1-38dedf52a79c"
             cx="471.77"
             cy="93.72"

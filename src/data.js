@@ -79,7 +79,27 @@ import ceramic_step1 from "../src/img/vertical/ceramicStep1.svg";
 import ceramic_step2 from "../src/img/vertical/ceramicStep2.svg";
 import ceramic_step3 from "../src/img/vertical/ceramicStep3.svg";
 import ceramic_step4 from "../src/img/vertical/ceramicStep4.svg";
+
+//cobra
 import cobra from "../src/img/vertical/cobra.svg";
+import ap from "../src/img/vertical/ap.jpg";
+import cpu from "../src/img/vertical/cpu.jpg";
+import gpu from "../src/img/vertical/gpu.jpg";
+
+//wire
+import wire from "../src/img/vertical/wire.svg";
+import wireType from "../src/img/vertical/wireType.svg";
+import wire15 from "../src/img/vertical/15.jpeg";
+import wire20 from "../src/img/vertical/20.jpeg";
+
+//short
+import short from "../src/img/vertical/short.svg";
+import powerIC from "../src/img/vertical/Power.jpg";
+import cis from "../src/img/vertical/CIS.jpg";
+import mems from "../src/img/vertical/MEMS.jpg";
+import shortSem from "../src/img/vertical/shortSem.svg";
+import press from "../src/img/vertical/press.svg";
+import shortCoating from "../src/img/vertical/coating.svg";
 
 export const linkBtns = [
   {
@@ -831,7 +851,245 @@ export const itemsDetail = {
             description: "NC30 (Paliney7), NC40 (H3C)",
           },
         ],
+        force: [
+          {
+            diameter: "3.0mil (76µm)",
+            nc30_ccc: "650-700",
+            nc30_force: "6.5",
+            nc40_ccc: "1,000-1,050",
+            nc40_force: "6.2",
+          },
+          {
+            diameter: "2.5mil (63µm)",
+            nc30_ccc: "550-600",
+            nc30_force: "5.5",
+            nc40_ccc: "900-950",
+            nc40_force: "5.2",
+          },
+          {
+            diameter: "2.0mil (50µm)",
+            nc30_ccc: "450-500",
+            nc30_force: "4.5",
+            nc40_ccc: "775-825",
+            nc40_force: "4.2",
+          },
+        ],
+        applications: [
+          { text: "AP Chips", img: ap },
+          { text: "CPU Chips", img: cpu },
+          { text: "GPU Chips", img: gpu },
+        ],
       },
+      wire: {
+        img: wire,
+        type: wireType,
+        spec: [
+          {
+            property: "Material Diameter ØD (µm)",
+            15: "15",
+            20: "20",
+            25: "25",
+            30: "30",
+            40: "40",
+            50: "50",
+            70: "70",
+          },
+          {
+            property: "Tolerance (µm)",
+            15: "+2/-1",
+            20: "+2/-1",
+            25: "+2/-1",
+            30: "0/-3",
+            40: "±2",
+            50: "±2",
+            70: "±2",
+            Available: "Available Custom Order",
+          },
+          {
+            property: "Coating Diameter ØCD (µm)",
+            15: "22",
+            20: "27",
+            25: "32",
+            30: "38",
+            40: "50",
+            50: "63",
+            70: "90",
+            Available: "Available Custom Order",
+          },
+          {
+            property: "Total Length L (mm)",
+            15: "5/10",
+            20: "5/10",
+            25: "10",
+            30: "10/15/20",
+            40: "20",
+            50: "20",
+            70: "30",
+            Available: "Available Custom Order",
+          },
+          {
+            property: "Tolerance (µm)",
+            15: "±5",
+            20: "±5",
+            25: "±5/±10",
+            30: "±5",
+            40: "±10",
+            50: "±10",
+            70: "±10",
+            Available: "Available Custom Order",
+          },
+          {
+            property: "Length A (mm)",
+            15: "1.5",
+            20: "1.5",
+            25: "1.5",
+            30: "1.5~3.0",
+            40: "3.0",
+            50: "3.0",
+            70: "3.0",
+            Available: "Available Custom Order",
+          },
+
+          {
+            property: "Length B (mm)",
+            15: "0.02",
+            20: "0.02",
+            25: "0.02",
+            30: "0.02~0.05",
+            40: "0.05",
+            50: "0.05~2.0",
+            70: "0.05~2.0",
+            Available: "Available Custom Order",
+          },
+          {
+            property: "Material",
+            15: "Rhenium Tungsten, Pd Alloy",
+            20: "Rhenium Tungsten, Pd Alloy",
+            25: "Rhenium Tungsten, Pd Alloy",
+            30: "Rhenium Tungsten, Pd Alloy",
+            40: "Rhenium Tungsten, Pd Alloy",
+            50: "Rhenium Tungsten, Pd Alloy",
+            70: "Tungsten",
+          },
+          {
+            property: "Plating",
+            15: "Au Plating over Ni Plating",
+            20: "Au Plating over Ni Plating",
+            25: "Au Plating over Ni Plating",
+            30: "Au Plating over Ni Plating",
+            40: "Au Plating over Ni Plating",
+            50: "Au Plating over Ni Plating",
+            70: "Au Plating over Ni Plating",
+          },
+          {
+            property: "Coating Material",
+            15: "Acrylic",
+            20: "Acrylic",
+            25: "Acrylic",
+            30: "Acrylic",
+            40: "Acrylic",
+            50: "Acrylic",
+            70: "Acrylic",
+          },
+        ],
+        force: [
+          {
+            item: "Force (g.f)",
+            Ø30: "0.49",
+            Ø40: "1.15",
+            Ø50: "2.08",
+            Ø70: "3.18",
+          },
+          {
+            item: "C.Res (Ω)",
+            Ø30: "1.7",
+            Ø40: "1.2",
+            Ø50: "0.7",
+            Ø70: "0.6",
+          },
+        ],
+        sem: [
+          { text: "15N", img: wire15 },
+          {
+            text: "20NF",
+            img: wire20,
+          },
+        ],
+      },
+      short: {
+        img: short,
+        spec: [
+          {
+            property: "Materials",
+            value1: "3%Re-W, Rhodium, Pd Alloy, Etc.",
+            value2: "",
+          },
+          {
+            property: "Rod Diameter",
+            value1: "15-40 µm (Customizable)",
+            value2: "",
+          },
+          {
+            property: "Rod Length",
+            value1: "1.3-10 mm (Customizable)",
+            value2: "",
+          },
+          {
+            property: "Taper Angle",
+            value1: "30-60° (Customizable)",
+            value2: "",
+          },
+          {
+            property: "Point Accuracy",
+            value1: "0-1 µm",
+            value2: "",
+          },
+        ],
+        force: [
+          {
+            od: "25",
+            np40_ccc: "350",
+            np40_force: "1.50",
+            nc70_ccc: "430",
+            nc70_force: "1.51",
+          },
+          {
+            od: "50",
+            np40_ccc: "350",
+            np40_force: "1.53",
+            nc70_ccc: "430",
+            nc70_force: "1.55",
+          },
+          {
+            od: "75",
+            np40_ccc: "350",
+            np40_force: "1.55",
+            nc70_ccc: "430",
+            nc70_force: "1.57",
+          },
+          {
+            od: "100",
+            np40_ccc: "350",
+            np40_force: "1.56",
+            nc70_ccc: "430",
+            nc70_force: "1.58",
+          },
+        ],
+        sem: [
+          { text: "SEM", img: shortSem },
+          {
+            text: "Press Stopper",
+            img: press,
+          },
+          { text: "Coating Stopper", img: shortCoating },
+        ],
+        applications: [
+          { text: "Power IC", img: powerIC },
+          { text: "CIS", img: cis },
+          { text: "Alternative to MEMS", img: mems },
+        ],
+      },
+      pems: {},
     },
   },
   ceramic: {

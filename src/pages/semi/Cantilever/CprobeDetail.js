@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import { useTable } from "react-table";
 import { AnimatePresence, motion, transform } from "framer-motion";
 import CantileverProbeInfo from "./CantileverProbeInfo";
-import CoaxialInfo from "./ CoaxialInfo";
+import CoaxialInfo from "./CoaxialInfo";
 
 const Wrapper = styled.div`
   padding: 0 50px;
