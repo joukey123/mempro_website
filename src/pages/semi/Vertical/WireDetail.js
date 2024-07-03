@@ -10,7 +10,7 @@ const StructureWarpper = styled(motion.div)`
   width: 100%;
   max-width: 1100px;
   height: 650px;
-  margin: 50px auto;
+  margin: 0px auto;
   border-radius: 8px;
   background: url(${line}) center center;
   background-size: cover;
@@ -18,12 +18,7 @@ const StructureWarpper = styled(motion.div)`
   padding: 50px;
   position: relative;
   overflow: hidden;
-`;
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  margin-bottom: 30px;
 `;
 
 const NeedleName = styled.h1`
@@ -42,40 +37,7 @@ const NeedleImg = styled.img`
   margin-left: 60px;
   transform: scale(1.03);
 `;
-const SpecWrapper = styled.div`
-  margin-top: 20px;
-  border-top: 1px solid ${(props) => props.theme.colors.blue};
-  padding-top: 50px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  row-gap: 20px;
-`;
 
-const TextWrapper = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const Number = styled.span`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  background-color: ${(props) =>
-    props.$hover ? props.theme.colors.gold : props.theme.colors.blue};
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  color: white;
-  margin-right: 10px;
-  font-weight: 300;
-`;
-
-const Column = styled.div``;
-const Name = styled.h1`
-  margin-bottom: 3px;
-`;
-const Des = styled.span``;
 const Contents = styled.h2`
   width: 100%;
   max-width: 1100px;
@@ -134,24 +96,6 @@ const Table = styled.table`
   }
 `;
 
-const ContentsWrapper = styled.div`
-  display: grid;
-  width: 100%;
-  max-width: 1100px;
-  align-items: center;
-  justify-content: center;
-  grid-template-columns: repeat(${(props) => props.$length}, auto);
-  font-size: 14px;
-  text-align: center;
-  gap: 50px;
-  text-transform: capitalize;
-`;
-const ApplicationImg = styled.img`
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 10px;
-`;
 const TableWrapper = styled.div`
   width: 100%;
   max-width: 1200px;

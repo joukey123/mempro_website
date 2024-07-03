@@ -8,7 +8,7 @@ const StructureWarpper = styled.div`
   width: 100%;
   max-width: 1100px;
   height: 450px;
-  margin: 50px auto;
+  margin: 0px auto;
   border-radius: 8px;
   background: url(${line}) center center;
   background-size: cover;
@@ -16,6 +16,7 @@ const StructureWarpper = styled.div`
   padding: 50px;
   position: relative;
   overflow: hidden;
+  margin-bottom: 30px;
 `;
 const NeedleName = styled.h1`
   font-size: 18px;

@@ -69,7 +69,7 @@ function VprobeDetail({ needle, contents }) {
       {needle === "short" && (
         <ShortDetail contents={contents.short} needle={needle} />
       )}
-      {needle === "PEMs" && (
+      {needle === "pems" && (
         <PemsDetail contents={contents.pems} needle={needle} />
       )}
       <Footer />

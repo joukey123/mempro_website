@@ -1,13 +1,13 @@
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from "./style/GlobalStyle";
-import { basicTheme } from "./style/theme";
+import { basicTheme, theme, themeui } from "./style/theme";
 import Router from "./Router";
 import { RecoilRoot } from "recoil";
 function App() {
   return (
     <>
       <RecoilRoot>
-        <ThemeProvider theme={basicTheme}>
+        <ThemeProvider theme={theme}>
           <GlobalStyle />
           <Router />
         </ThemeProvider>

@@ -4,6 +4,17 @@ import React, { useState } from "react";
 import line from "../../../img/line.svg";
 import { motion } from "framer-motion";
 import { useTable } from "react-table";
+import Application from "../../../components/Application";
+import ContentsTitle from "../../../components/ContentsTitle";
+import Table from "@mui/material/Table";
+
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+import Collapse from "@mui/material/Collapse";
 
 const StructureWarpper = styled(motion.div)`
   width: 100%;
@@ -17,17 +28,18 @@ const StructureWarpper = styled(motion.div)`
   padding: 50px;
   position: relative;
   overflow: hidden;
-  margin-top: 50px;
-`;
-
-const Wrapper = styled.div`
+  margin-bottom: 150px;
   display: flex;
   flex-direction: column;
+
   justify-content: center;
 `;
 
 const NeedleName = styled.h1`
   font-size: 18px;
+  position: absolute;
+  top: 50px;
+  left: 50px;
   span {
     color: ${(props) => props.theme.colors.blue};
     font-weight: bold;
@@ -36,12 +48,12 @@ const NeedleName = styled.h1`
 `;
 const NeedleImg = styled.img`
   width: 100%;
-  max-width: 900px;
-  padding: 50px 0;
+  max-width: 850px;
+  margin-bottom: 50px;
+  margin-left: 80px;
   margin-top: 100px;
-  margin-left: 60px;
-  transform: scale(1.03);
 `;
+
 const SpecWrapper = styled.div`
   margin-top: 20px;
   border-top: 1px solid ${(props) => props.theme.colors.blue};
@@ -54,6 +66,8 @@ const SpecWrapper = styled.div`
 const TextWrapper = styled.div`
   display: flex;
   align-items: center;
+  width: 1100px;
+  width: 100%;
 `;
 
 const Number = styled.span`
@@ -68,12 +82,13 @@ const Number = styled.span`
   border-radius: 50%;
   color: white;
   margin-right: 10px;
-  font-weight: 300;
+  font-weight: 400;
 `;
 
 const Column = styled.div``;
 const Name = styled.h1`
   margin-bottom: 3px;
+  font-size: 18px;
 `;
 const Des = styled.span``;
 const Contents = styled.h2`
@@ -83,67 +98,20 @@ const Contents = styled.h2`
   font-size: 20px;
   font-weight: 400;
 `;
-const ContentsTitle = styled.div`
-  border-bottom: 0.3px solid rgba(0, 0, 0, 0.3);
-  padding-bottom: 3px;
-  max-width: 1100px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 30px;
-  font-size: 18px;
-  font-weight: 600;
-  margin-top: 150px;
+
+const StyledTableHead = styled(TableHead)`
+  && {
+    background: ${(props) => props.theme.palette.table.main};
+  }
 `;
-
-const Table = styled.table`
-  width: 100%;
-  max-width: 1200px;
-  height: 140px;
-  border-collapse: collapse;
-  text-align: center;
-  font-weight: 300;
-  font-size: 15px;
-
-  :first-child tr {
-    background: linear-gradient(to right, #2467a2, #253b78);
-  }
-  tr,
-  td {
-    padding: 15px;
-    border: 0.1px solid ${(props) => props.theme.colors.border};
-    &:hover {
-      background-color: ${(props) => props.theme.colors.white};
-    }
-  }
-  th {
-    color: white;
-    padding: 15px;
-    font-weight: 600;
-    width: 100px;
-    align-content: center;
-    border: 0.1px solid ${(props) => props.theme.colors.border};
+const StyledTableCell = styled(TableCell)`
+  && {
+    text-align: center;
+    border-right: 1px solid #dfdfdf;
+    font-size: 16px;
   }
 `;
 
-const ContentsWrapper = styled.div`
-  display: grid;
-  width: 100%;
-  max-width: 1100px;
-  align-items: center;
-  justify-content: center;
-  grid-template-columns: repeat(${(props) => props.$length}, auto);
-  font-size: 14px;
-  text-align: center;
-  gap: 50px;
-  text-transform: capitalize;
-`;
-const ApplicationImg = styled.img`
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 10px;
-`;
 function CobraDetail({ contents, needle }) {
   const [specIndex, setSpecIndex] = useState();
   const [specId, setSpecId] = useState();
@@ -158,45 +126,11 @@ function CobraDetail({ contents, needle }) {
     setSpecId(-1);
   };
 
-  const columns = React.useMemo(
-    () => [
-      {
-        Header: "Diameter",
-        accessor: "diameter",
-      },
+  const [expendClicked, setExpendClicked] = useState(true);
 
-      {
-        Header: "NC30 (P7)",
-        columns: [
-          {
-            Header: "C.C.C (mA)",
-            accessor: "nc30_ccc",
-          },
-          {
-            Header: "Force (g/f)",
-            accessor: "nc30_force",
-          },
-        ],
-      },
-      {
-        Header: "NC40 (H3C)",
-        columns: [
-          {
-            Header: "C.C.C (mA)",
-            accessor: "nc40_ccc",
-          },
-          {
-            Header: "Force (g/f)",
-            accessor: "nc40_force",
-          },
-        ],
-      },
-    ],
-    []
-  );
-
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable({ columns, data });
+  const showContent = (show) => {
+    setExpendClicked(show);
+  };
   return (
     <>
       <StructureWarpper>
@@ -227,10 +161,9 @@ function CobraDetail({ contents, needle }) {
         </SpecWrapper>
       </StructureWarpper>
       <Contents>
-        <ContentsTitle>
-          <span>C.C.C & Force</span>
-        </ContentsTitle>
-        <Table {...getTableProps()}>
+        <ContentsTitle title={"C.C.C & Force"} onData={showContent} />
+
+        {/* <Tabless {...getTableProps()}>
           <thead>
             {headerGroups.map((headerGroup) => (
               <tr {...headerGroup.getHeaderGroupProps()}>
@@ -254,18 +187,81 @@ function CobraDetail({ contents, needle }) {
               );
             })}
           </tbody>
-        </Table>
-        <ContentsTitle>
-          <span>Application</span>
-        </ContentsTitle>
-        <ContentsWrapper $length={contents.applications.length}>
-          {contents.applications.map((item) => (
-            <div>
-              <ApplicationImg src={item.img} />
-              <div>{item.text}</div>
-            </div>
-          ))}
-        </ContentsWrapper>
+        </Tabless> */}
+        <Collapse in={expendClicked}>
+          <TableContainer component={Paper}>
+            <Table aria-label="custom table" sx={{ minWidth: 900 }}>
+              <StyledTableHead>
+                <TableRow>
+                  <StyledTableCell
+                    rowSpan={2}
+                    align="center"
+                    sx={{ color: "white" }}
+                  >
+                    Diameter
+                  </StyledTableCell>
+                  <StyledTableCell
+                    colSpan={2}
+                    align="center"
+                    sx={{ color: "white" }}
+                  >
+                    NC30 (P7)
+                  </StyledTableCell>
+                  <StyledTableCell
+                    colSpan={2}
+                    align="center"
+                    sx={{ color: "white" }}
+                  >
+                    NC40 (H3C)
+                  </StyledTableCell>
+                </TableRow>
+                <TableRow>
+                  <StyledTableCell align="center" sx={{ color: "white" }}>
+                    C.C.C (mA)
+                  </StyledTableCell>
+                  <StyledTableCell align="center" sx={{ color: "white" }}>
+                    Force (g/f)
+                  </StyledTableCell>
+                  <StyledTableCell align="center" sx={{ color: "white" }}>
+                    C.C.C (mA)
+                  </StyledTableCell>
+                  <StyledTableCell align="center" sx={{ color: "white" }}>
+                    Force (g/f)
+                  </StyledTableCell>
+                </TableRow>
+              </StyledTableHead>
+              <TableBody>
+                {data.map((row, index) => (
+                  <TableRow
+                    key={index}
+                    sx={{
+                      "&:hover": {
+                        backgroundColor: "#F5F5F5",
+                      },
+                    }}
+                  >
+                    <StyledTableCell align="center">
+                      {row.diameter}
+                    </StyledTableCell>
+                    <StyledTableCell align="center">
+                      {row.nc30_ccc}
+                    </StyledTableCell>
+                    <StyledTableCell align="center">
+                      {row.nc30_force}
+                    </StyledTableCell>
+                    <StyledTableCell align="center">
+                      {row.nc40_ccc}
+                    </StyledTableCell>
+                    <StyledTableCell align="center">
+                      {row.nc40_force}
+                    </StyledTableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Collapse>
+        <Application contents={contents} />
       </Contents>
     </>
   );

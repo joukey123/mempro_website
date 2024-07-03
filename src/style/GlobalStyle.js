@@ -8,6 +8,9 @@ const GlobalStyle = createGlobalStyle`
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  color:#333;
+  font-family: "Roboto", sans-serif;
+
 }
 
 /* 폰트 크기의 팽창을 방지합니다. */
@@ -30,10 +33,10 @@ time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
-	font-size: 100%;
+	font-size: 16px;
 	vertical-align: baseline;
-	font-family: "Libre Franklin", sans-serif;
 	box-sizing: border-box;
+
 
 }
 /* HTML5 display-role reset for older browsers */

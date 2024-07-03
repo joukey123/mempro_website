@@ -101,6 +101,13 @@ import shortSem from "../src/img/vertical/shortSem.svg";
 import press from "../src/img/vertical/press.svg";
 import shortCoating from "../src/img/vertical/coating.svg";
 
+//PEM
+import pem01 from "../src/img/vertical/pem1.png";
+import pem02 from "../src/img/vertical/pem2.png";
+import pem03 from "../src/img/vertical/pem3.png";
+import topShape from "../src/img/vertical/topSahpeImg.svg";
+import tipShape from "../src/img/vertical/tipShapeImg.svg";
+
 export const linkBtns = [
   {
     text: "blog",
@@ -822,14 +829,14 @@ export const itemsDetail = {
     nation: ["Made in Korea"],
     title: "Vertical Porbe",
     cards: {
-      Vertical: {
-        needle: ["wire", "short", "cobra", "PEMs"],
+      vertical: {
+        needle: ["wire", "short", "cobra", "pems"],
       },
-      CIS: {
-        needle: ["short", "cobra", "PEMs"],
+      cis: {
+        needle: ["short", "cobra", "pems"],
       },
-      Memory: {
-        needle: ["cobra", "PEMs"],
+      memory: {
+        needle: ["cobra", "pems"],
       },
     },
     contents: {
@@ -1089,7 +1096,75 @@ export const itemsDetail = {
           { text: "Alternative to MEMS", img: mems },
         ],
       },
-      pems: {},
+      pems: {
+        img: [pem01, pem02, pem03],
+        features: [
+          {
+            text: "Made of alloy metal",
+            icon: diamond_features1,
+          },
+          {
+            text: "Superior physical / perfomance",
+            icon: diamond_features2,
+          },
+          {
+            text: "variety of tapered shapes",
+            icon: diamond_features3,
+          },
+        ],
+        spec: [
+          {
+            material: "Pd Alloy",
+            tipSize: "□30×30",
+            application: "Micro Bump, Micro Pad, Al Pad",
+            availablePitch: "50≤",
+            overallLength: "~5,000",
+            probeForce: "1.6 (± 10%)",
+            cres: "1.46",
+            ccc: "450≤",
+          },
+          {
+            material: "Pd Alloy",
+            tipSize: "□35×35",
+            application: "Micro Bump, Micro Pad, Al Pad",
+            availablePitch: "60≤",
+            overallLength: "~5,000",
+            probeForce: "1.8 (± 10%)",
+            cres: "1.65",
+            ccc: "600≤",
+          },
+          {
+            material: "Pd Alloy",
+            tipSize: "□40 ~ □50",
+            application: "Micro Bump, Micro Pad, Al Pad",
+            availablePitch: "Customizable",
+            overallLength: "customizable",
+            probeForce: "customizable",
+            cres: "customizable",
+            ccc: "customizable",
+          },
+        ],
+
+        shape: [
+          {
+            title: "top",
+            text: "Implements stopper",
+            img: topShape,
+          },
+
+          {
+            title: "tip",
+            text: "Various Shape of Contact Part",
+            img: tipShape,
+          },
+        ],
+
+        applications: [
+          { text: "AP Chips", img: ap },
+          { text: "CPU Chips", img: cpu },
+          { text: "GPU Chips", img: gpu },
+        ],
+      },
     },
   },
   ceramic: {

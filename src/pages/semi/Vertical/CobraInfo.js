@@ -2,15 +2,17 @@ import styled from "styled-components";
 
 const SVG = styled.svg`
   max-width: 900px;
+  width: 100%;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -125%) scale(1.8);
+  transform: translate(-50%, -105%) scale(1);
 `;
 
 const Line = styled.line`
   stroke: ${(props) =>
     props.$hover ? props.theme.colors.gold : props.theme.colors.blue};
+  stroke-width: 0.7;
 `;
 const Polygon = styled.polygon`
   fill: ${(props) =>
@@ -55,9 +57,9 @@ const CobraInfo = ({ specId }) => (
 
       .uuid-4323abc0-96ad-4e3f-a461-3f81e29de71f, .uuid-8b9516ef-ff89-456d-bbbc-2330861abce4 {
         fill: #fff;
-        font-family: Pretendard-Medium-KSCpc-EUC-H, Pretendard;
-        font-size: 8.75px;
-        font-weight: 500;
+        font-family: Roboto, sans-serif;
+        font-size: 8px;
+        font-weight: 400;
       }
 
       .uuid-8b9516ef-ff89-456d-bbbc-2330861abce4 {
