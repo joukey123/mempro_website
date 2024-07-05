@@ -13,6 +13,7 @@ const ContentTitle = styled.div`
   justify-content: space-between;
   margin-bottom: 50px;
   font-weight: 600;
+  margin-top: 150px;
 `;
 const StyledToggleButton = styled(ToggleButton)`
   border: 0 !important;

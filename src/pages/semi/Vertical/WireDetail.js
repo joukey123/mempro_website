@@ -2,14 +2,25 @@ import styled, { keyframes } from "styled-components";
 import CobraInfo from "./CobraInfo";
 import React, { useState } from "react";
 import line from "../../../img/line.svg";
-import { motion } from "framer-motion";
+import { motion, sync } from "framer-motion";
 import { useTable } from "react-table";
 import WireInfo from "./WireInfo";
+import Carousel from "../../../components/Carousel";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+} from "@mui/material";
+import ContentsTitle from "../../../components/ContentsTitle";
+import Collapse from "@mui/material/Collapse";
 
 const StructureWarpper = styled(motion.div)`
   width: 100%;
   max-width: 1100px;
-  height: 650px;
   margin: 0px auto;
   border-radius: 8px;
   background: url(${line}) center center;
@@ -32,10 +43,7 @@ const NeedleName = styled.h1`
 const NeedleImg = styled.img`
   width: 100%;
   max-width: 900px;
-  padding: 50px 0;
-  margin-top: 110px;
-  margin-left: 60px;
-  transform: scale(1.03);
+  margin-bottom: 100px;
 `;
 
 const Contents = styled.h2`
@@ -45,56 +53,44 @@ const Contents = styled.h2`
   font-size: 20px;
   font-weight: 400;
 `;
-const ContentsTitle = styled.div`
-  border-bottom: 0.3px solid rgba(0, 0, 0, 0.3);
-  padding-bottom: 3px;
-  max-width: 1100px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 30px;
-  font-size: 18px;
-  font-weight: 600;
-  margin-top: 150px;
-`;
 
-const Table = styled.table`
-  width: 100%;
-  max-width: 1200px;
-  height: 140px;
-  border-collapse: collapse;
-  text-align: center;
-  font-weight: 300;
-  font-size: 15px;
+// const Table = styled.table`
+//   width: 100%;
+//   max-width: 1200px;
+//   height: 140px;
+//   border-collapse: collapse;
+//   text-align: center;
+//   font-weight: 300;
+//   font-size: 15px;
 
-  :first-child tr {
-    background: linear-gradient(to right, #2467a2, #253b78);
-  }
+//   :first-child tr {
+//     background: linear-gradient(to right, #2467a2, #253b78);
+//   }
 
-  td:first-child {
-    background: linear-gradient(to right, #2467a2, #253b78);
-    color: white;
-    font-weight: bold;
-    font-weight: 600;
-  }
-  tr,
-  td {
-    padding: 15px;
-    border: 0.1px solid ${(props) => props.theme.colors.border};
-    align-content: center;
-    &:hover {
-      background-color: ${(props) => props.theme.colors.white};
-    }
-  }
-  th {
-    color: white;
-    padding: 15px;
-    font-weight: 600;
-    width: 100px;
-    align-content: center;
-    border: 0.1px solid ${(props) => props.theme.colors.border};
-  }
-`;
+//   td:first-child {
+//     background: linear-gradient(to right, #2467a2, #253b78);
+//     color: white;
+//     font-weight: bold;
+//     font-weight: 600;
+//   }
+//   tr,
+//   td {
+//     padding: 15px;
+//     border: 0.1px solid ${(props) => props.theme.colors.border};
+//     align-content: center;
+//     &:hover {
+//       background-color: ${(props) => props.theme.colors.white};
+//     }
+//   }
+//   th {
+//     color: white;
+//     padding: 15px;
+//     font-weight: 600;
+//     width: 100px;
+//     align-content: center;
+//     border: 0.1px solid ${(props) => props.theme.colors.border};
+//   }
+// `;
 
 const TableWrapper = styled.div`
   width: 100%;
@@ -102,131 +98,109 @@ const TableWrapper = styled.div`
   margin: 0 auto;
 `;
 
-const ImgSlider = styled.div`
-  width: 100%;
-  max-width: 1100px;
+const InfoBox = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-const ImgSliderWrapper = styled.div`
-  display: flex;
-  max-width: 900px;
-  width: 70%;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: 14px;
-  margin: 0 -10px;
-`;
-const ImgSliderBox = styled.img`
-  max-width: 900px;
-  width: 80%;
-  height: 250px;
-  object-fit: contain;
-`;
-const ImgSliderBtn = styled.div`
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background-color: ${(props) => props.theme.colors.white};
-  display: flex;
   align-items: center;
-  justify-content: center;
-  color: rgba(0, 0, 0, 0.3);
-  font-size: 15px;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
-  cursor: pointer;
-  &:hover {
-    transition: all 0.1s ease-in-out;
-    background-color: ${(props) => props.theme.colors.gray};
+  position: relative;
+  padding-top: 170px;
+`;
+const StyledTableHead = styled(TableHead)`
+  && {
+    background: ${(props) => props.theme.palette.table.main};
   }
 `;
-const CircleBox = styled.div`
-  display: flex;
-  margin-top: 10px;
-`;
-const Circle = styled.div`
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: ${(props) =>
-    props.$isActive ? props.theme.colors.blue : "#d9d9d9"};
-  margin: 0 5px;
-  animation: ${(props) => props.$isActive && grow} 0.3s forwards;
-`;
-const grow = keyframes`
-  from {
-    width: 10px;
-  }  
-  to {
-    width: 30px;
-    border-radius: 5px;
+
+const StyledTableCell = styled(TableCell)`
+  && {
+    text-align: center;
+    border-right: 1px solid #dfdfdf;
+    font-size: 16px;
   }
 `;
+
+const StyledTableRow = styled(TableRow)(({ index }) => ({
+  "&:hover": {
+    backgroundColor: "#f5f5f5",
+    ...(index === 0 && {
+      "& td:last-child": {
+        backgroundColor: "white",
+      },
+      "& td:nth-last-child(2)": {
+        backgroundColor: "white",
+      },
+      "& td:nth-last-child(3)": {
+        backgroundColor: "white",
+      },
+    }),
+    ...(index === 6 && {
+      "& td:last-child": {
+        backgroundColor: "white",
+      },
+    }),
+  },
+}));
 function WireDetail({ contents, needle }) {
   const [specIndex, setSpecIndex] = useState();
   const [specId, setSpecId] = useState();
+  const [expendClicked, setExpendClicked] = useState(true);
 
-  const columns = React.useMemo(
-    () => [
-      { Header: "Property", accessor: "property" },
-      { Header: "15", accessor: "15" },
-      { Header: "20", accessor: "20" },
-      { Header: "25", accessor: "25" },
-      { Header: "30", accessor: "30" },
-      { Header: "40", accessor: "40" },
-      { Header: "50", accessor: "50" },
-      { Header: "70", accessor: "70" },
-      { Header: "Available", accessor: "Available" },
-    ],
-    []
-  );
+  // const columns = React.useMemo(
+  //   () => [
+  //     { Header: "Property", accessor: "property" },
+  //     { Header: "15", accessor: "15" },
+  //     { Header: "20", accessor: "20" },
+  //     { Header: "25", accessor: "25" },
+  //     { Header: "30", accessor: "30" },
+  //     { Header: "40", accessor: "40" },
+  //     { Header: "50", accessor: "50" },
+  //     { Header: "70", accessor: "70" },
+  //     { Header: "Available", accessor: "Available" },
+  //   ],
+  //   []
+  // );
+  const columns = [
+    "Material Diameter ØD (µm)",
+    "Tolerance (µm)",
+    "Coating Diameter ØCD (µm)",
+    "Total Length L (mm)",
+    "Tolerance (µm)",
+    "Length A (mm)",
+    "Length B (mm)",
+    "Material",
+    "Plating",
+    "Coating Material",
+  ];
 
-  const forceColumns = React.useMemo(
-    () => [
-      {
-        Header: "Item",
-        accessor: "item",
-      },
-      {
-        Header: "Ø30\nRhenium Tungsten",
-        accessor: "Ø30",
-      },
-      {
-        Header: "Ø40\nRhenium Tungsten",
-        accessor: "Ø40",
-      },
-      {
-        Header: "Ø50\nTungsten",
-        accessor: "Ø50",
-      },
-      {
-        Header: "Ø70\nTungsten",
-        accessor: "Ø70",
-      },
-    ],
-    []
-  );
-  const data = React.useMemo(() => contents.spec, []);
+  const forceColumns = [
+    "Item",
+    "Ø30\nRhenium Tungsten",
+    "Ø40\nRhenium Tungsten",
+    "Ø50\nTungsten",
+    "Ø70\nTungsten",
+  ];
+
+  const data = React.useMemo(() => contents.spec2, []);
   const forceData = React.useMemo(() => contents.force, []);
   const [tableHeader, setTableHeader] = useState("");
   const [index, setIndex] = useState(0);
   const length = contents.sem.length;
 
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable({ columns, data });
+  // const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+  //   useTable({ columns, data });
 
-  const {
-    getTableProps: getTablePropsForce,
-    getTableBodyProps: getTableBodyPropsForce,
-    headerGroups: headerGroupsForce,
-    rows: rowsForce,
-    prepareRow: prepareRowForce,
-  } = useTable({ columns: forceColumns, data: forceData });
+  // const {
+  //   getTableProps: getTablePropsForce,
+  //   getTableBodyProps: getTableBodyPropsForce,
+  //   headerGroups: headerGroupsForce,
+  //   rows: rowsForce,
+  //   prepareRow: prepareRowForce,
+  // } = useTable({ columns: forceColumns, data: forceData });
 
-  const handleTableHeader = (tableheader) => {
-    setTableHeader(tableheader);
+  const handleTableHeader = (index) => {
+    const numTotext = String(index);
+    setTableHeader(numTotext);
   };
 
   const handleImgSlider = (text) => {
@@ -247,15 +221,116 @@ function WireDetail({ contents, needle }) {
         ) : (
           <NeedleName>Specification</NeedleName>
         )}
-        <NeedleImg src={contents.img} />
-        <WireInfo specId={specId} tableHeader={tableHeader} />
-        <img
-          src={contents.type}
-          width={450}
-          style={{ marginLeft: 250, marginTop: 100 }}
-        />
+        <InfoBox>
+          <NeedleImg src={contents.img} />
+          <WireInfo specId={specId} tableHeader={tableHeader} />
+          <img
+            src={contents.type}
+            style={{ width: "100%", maxWidth: 500, transform: "scale(.9)" }}
+          />
+        </InfoBox>
       </StructureWarpper>
-      <TableWrapper style={{ position: "relative" }}>
+      <TableContainer component={Paper}>
+        <Table aria-label="transposed table">
+          <StyledTableHead>
+            <TableRow>
+              {columns.map((column) => (
+                <StyledTableCell
+                  align="right"
+                  key={column}
+                  sx={{ color: "white" }}
+                >
+                  {column}
+                </StyledTableCell>
+              ))}
+            </TableRow>
+          </StyledTableHead>
+          <TableBody>
+            {data.map((row, index) => (
+              <StyledTableRow key={index} index={index}>
+                {index === 7 ? (
+                  <StyledTableCell colSpan={7}>
+                    {row.materialDiameter}
+                  </StyledTableCell>
+                ) : (
+                  <StyledTableCell
+                    onMouseOver={() => handleTableHeader(0)}
+                    onMouseLeave={() => handleTableHeader("")}
+                  >
+                    {row.materialDiameter}
+                  </StyledTableCell>
+                )}
+                {index !== 7 && (
+                  <StyledTableCell
+                    onMouseOver={() => handleTableHeader(1)}
+                    onMouseLeave={() => handleTableHeader("")}
+                  >
+                    {row.toleranceA}
+                  </StyledTableCell>
+                )}
+                {index !== 7 && (
+                  <StyledTableCell
+                    onMouseOver={() => handleTableHeader(2)}
+                    onMouseLeave={() => handleTableHeader("")}
+                  >
+                    {row.coatingDiameter}
+                  </StyledTableCell>
+                )}
+                {index !== 7 && (
+                  <StyledTableCell
+                    onMouseOver={() => handleTableHeader(3)}
+                    onMouseLeave={() => handleTableHeader("")}
+                  >
+                    {row.totalLength}
+                  </StyledTableCell>
+                )}
+                {index !== 7 && (
+                  <StyledTableCell
+                    onMouseOver={() => handleTableHeader(4)}
+                    onMouseLeave={() => handleTableHeader("")}
+                  >
+                    {row.toleranceB}
+                  </StyledTableCell>
+                )}
+                {index !== 7 && (
+                  <StyledTableCell
+                    onMouseOver={() => handleTableHeader(5)}
+                    onMouseLeave={() => handleTableHeader("")}
+                  >
+                    {row.lengthA}
+                  </StyledTableCell>
+                )}
+                {index !== 7 && (
+                  <StyledTableCell
+                    onMouseOver={() => handleTableHeader(6)}
+                    onMouseLeave={() => handleTableHeader("")}
+                  >
+                    {row.lengthB}
+                  </StyledTableCell>
+                )}
+                {index === 0 ? (
+                  <StyledTableCell rowSpan={6}>{row.material}</StyledTableCell>
+                ) : index === 6 ? (
+                  <StyledTableCell>{row.material}</StyledTableCell>
+                ) : (
+                  <StyledTableCell style={{ display: "none" }}>
+                    {row.material}
+                  </StyledTableCell>
+                )}
+                {index === 0 && (
+                  <StyledTableCell rowSpan={7}>{row.plating}</StyledTableCell>
+                )}
+                {index === 0 && (
+                  <StyledTableCell rowSpan={7}>
+                    {row.coatingMaterial}
+                  </StyledTableCell>
+                )}
+              </StyledTableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      {/* <TableWrapper style={{ position: "relative" }}>
         <Table {...getTableProps()}>
           <thead>
             {headerGroups.map((headerGroup) => (
@@ -312,9 +387,11 @@ function WireDetail({ contents, needle }) {
             })}
           </tbody>
         </Table>
-      </TableWrapper>
+      </TableWrapper> */}
       <Contents>
-        <ContentsTitle>
+        <ContentsTitle title={"Force"} />
+
+        {/* <ContentsTitle>
           <span>Force</span>
         </ContentsTitle>
         <TableWrapper>
@@ -343,27 +420,50 @@ function WireDetail({ contents, needle }) {
               })}
             </tbody>
           </Table>
-        </TableWrapper>
-        <ContentsTitle>
-          <span>SEM</span>
-        </ContentsTitle>
-        <ImgSlider>
-          <ImgSliderBtn onClick={() => handleImgSlider("prev")}>
-            <i className="fa-solid fa-chevron-left"></i>
-          </ImgSliderBtn>
-          <ImgSliderWrapper>
-            <ImgSliderBox src={contents.sem[index].img} />
-            <span>{contents.sem[index].text}</span>
-            <CircleBox>
-              {contents.sem.map((item, indexs) => (
-                <Circle key={indexs} $isActive={indexs === index}></Circle>
-              ))}
-            </CircleBox>
-          </ImgSliderWrapper>
-          <ImgSliderBtn onClick={() => handleImgSlider("next")}>
-            <i className="fa-solid fa-chevron-right"></i>
-          </ImgSliderBtn>
-        </ImgSlider>
+        </TableWrapper> */}
+
+        <Collapse in={expendClicked}>
+          <TableContainer component={Paper}>
+            <Table aria-label="custom table" sx={{ minWidth: 900 }}>
+              <StyledTableHead>
+                <TableRow>
+                  {forceColumns.map((item, index) => (
+                    <StyledTableCell sx={{ color: "white" }}>
+                      {item}
+                    </StyledTableCell>
+                  ))}
+                </TableRow>
+              </StyledTableHead>
+              <TableBody>
+                {forceData.map((row, index) => (
+                  <TableRow
+                    key={index}
+                    sx={{
+                      "&:hover": {
+                        backgroundColor: "#F5F5F5",
+                      },
+                    }}
+                  >
+                    <StyledTableCell
+                      align="center"
+                      sx={{
+                        color: "white",
+                        background: "#2466A2",
+                      }}
+                    >
+                      {row.item}
+                    </StyledTableCell>
+                    <StyledTableCell align="center">{row.r30}</StyledTableCell>
+                    <StyledTableCell align="center">{row.r40}</StyledTableCell>
+                    <StyledTableCell align="center">{row.r50}</StyledTableCell>
+                    <StyledTableCell align="center">{row.r70}</StyledTableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Collapse>
+        <Carousel contents={contents} />
       </Contents>
     </>
   );

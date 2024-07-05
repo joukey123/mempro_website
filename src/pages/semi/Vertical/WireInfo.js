@@ -5,12 +5,13 @@ const SVG = styled.svg`
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -150%) scale(1.8);
+  transform: translate(-50%, -108%) scale(1.8);
 `;
 
 const Line = styled.line`
   stroke: ${(props) =>
     props.$hover ? props.theme.colors.gold : props.theme.colors.blue};
+  stroke-width: 0.5px;
 `;
 const Polygon = styled.polygon`
   fill: ${(props) =>
@@ -46,9 +47,10 @@ const WireInfo = ({ specId, tableHeader }) => (
   
         .uuid-e57c417f-6d98-4c93-8038-491fda796f50, .uuid-c8ad2a26-c6d8-439e-8ff7-fe1d5e4c01e1 {
           fill: #fff;
-          font-family: Pretendard-Medium-KSCpc-EUC-H, Pretendard;
-          font-size: 8.7px;
-          font-weight: 500;
+         font-family: Roboto, sans-serif;
+          font-size: 8px;
+          font-weight: 400;
+           letter-spacing: -.04em;
         }
   
         .uuid-39bf3759-d526-4c87-9cb7-e62f01225994 {
@@ -191,7 +193,7 @@ const WireInfo = ({ specId, tableHeader }) => (
         class="uuid-c8ad2a26-c6d8-439e-8ff7-fe1d5e4c01e1"
         transform="translate(233.44 91.72)"
       >
-        <tspan x="0" y="0">
+        <tspan x="2" y="0">
           ØCD
         </tspan>
       </text>
@@ -224,7 +226,7 @@ const WireInfo = ({ specId, tableHeader }) => (
           class="uuid-c8ad2a26-c6d8-439e-8ff7-fe1d5e4c01e1"
           transform="translate(4.81 92.43)"
         >
-          <tspan x="0" y="0">
+          <tspan x="1" y="0">
             ØD
           </tspan>
         </text>

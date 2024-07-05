@@ -49,7 +49,7 @@ const ShortInfo = ({ tableHeader }) => (
       }
 
       .uuid-244edb2a-9317-48d4-b9ad-43e54f1cf141 {
-        letter-spacing: -.02em;
+        letter-spacing: -.04em;
       }
 
       .uuid-c8a6ff61-3cd6-402b-b1f3-2598228c18d5 {
@@ -57,7 +57,7 @@ const ShortInfo = ({ tableHeader }) => (
       }
 
       .uuid-de12e8f2-a220-4b5d-ae4e-66c7cb1de3a0, .uuid-c4a8fc87-c602-4e87-a459-df91c961bd3a {
-        font-family: Pretendard-SemiBold-KSCpc-EUC-H, Pretendard;
+        font-family: Roboto, sans-serif;
         font-size: 10px;
         font-weight: 600;
       }
@@ -77,7 +77,7 @@ const ShortInfo = ({ tableHeader }) => (
       }
 
       .uuid-3e2ce877-dee5-4fa2-a3c6-4a97084557b7 {
-        letter-spacing: -.03em;
+        letter-spacing: -.04em;
       }
 
       .uuid-8f46dbe0-5f3f-4bde-a13d-08cc96f242f2 {
@@ -85,7 +85,7 @@ const ShortInfo = ({ tableHeader }) => (
       }
 
       .uuid-20e68fa3-ba4c-4dc3-900f-29c681816d59 {
-        letter-spacing: -.02em;
+        letter-spacing: -.04em;
       }
 
       .uuid-03ae8d9d-a372-4d91-906c-923b248e5fbb {
@@ -93,11 +93,14 @@ const ShortInfo = ({ tableHeader }) => (
       }
 
       .uuid-5acb73e6-7370-44c5-92fd-2113fbc1036c {
-        letter-spacing: -.02em;
+        letter-spacing: -.04em;
       }
 
       .uuid-40fd9b54-68a3-407a-afe2-ee5736fde7dd {
         letter-spacing: -.04em;
+          font-family: Roboto, sans-serif;
+        font-size: 8px;
+        font-weight: 400;
       }
 
       .uuid-4175e895-935b-485b-be45-0a98ae268aff {
@@ -145,7 +148,11 @@ const ShortInfo = ({ tableHeader }) => (
           class="uuid-c4a8fc87-c602-4e87-a459-df91c961bd3a"
           transform="translate(18.71 93.69)"
         >
-          <tspan x="0" y="0">
+          <tspan
+            x="-5"
+            y="-8"
+            className="uuid-40fd9b54-68a3-407a-afe2-ee5736fde7dd"
+          >
             Ø 0.040 - 1.2 mm
           </tspan>
           <tspan
@@ -160,7 +167,11 @@ const ShortInfo = ({ tableHeader }) => (
             y="0"
           ></tspan>
           <tspan x="61.18" y="0"></tspan>
-          <tspan x="-18.71" y="14.4">
+          <tspan
+            x="-18.71"
+            y="2"
+            class="uuid-40fd9b54-68a3-407a-afe2-ee5736fde7dd"
+          >
             Sharp Tip on Both Sides
           </tspan>
           <tspan
@@ -175,7 +186,7 @@ const ShortInfo = ({ tableHeader }) => (
           class="uuid-de12e8f2-a220-4b5d-ae4e-66c7cb1de3a0"
           transform="translate(211.82 11.43)"
         >
-          <tspan x="0" y="0">
+          <tspan x="-4" y="5" class="uuid-40fd9b54-68a3-407a-afe2-ee5736fde7dd">
             Length
           </tspan>
           <tspan
@@ -184,7 +195,11 @@ const ShortInfo = ({ tableHeader }) => (
             y="0"
           ></tspan>
           <tspan x="31.95" y="0"></tspan>
-          <tspan x="-13.23" y="14.4">
+          <tspan
+            x="-13.23"
+            y="14.4"
+            class="uuid-40fd9b54-68a3-407a-afe2-ee5736fde7dd"
+          >
             1285.70 μm
           </tspan>
           <tspan
@@ -209,12 +224,20 @@ const ShortInfo = ({ tableHeader }) => (
           class="uuid-de12e8f2-a220-4b5d-ae4e-66c7cb1de3a0"
           transform="translate(338.1 93.69)"
         >
-          <tspan x="0" y="0">
+          <tspan
+            x="15"
+            y="-8"
+            class="uuid-40fd9b54-68a3-407a-afe2-ee5736fde7dd"
+          >
             Diameter
           </tspan>
           <tspan x="35.05" y="0"></tspan>
           <tspan x="39.31" y="0"></tspan>
-          <tspan x="-1.48" y="14.4">
+          <tspan
+            x="13.48"
+            y="2"
+            class="uuid-40fd9b54-68a3-407a-afe2-ee5736fde7dd"
+          >
             40.52 μm
           </tspan>
           <tspan

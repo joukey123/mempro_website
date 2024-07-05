@@ -90,7 +90,7 @@ function Vprobe() {
             >
               {Object.keys(cards).map((item, index) => (
                 <ToggleButton
-                  sx={{ width: 200 }}
+                  sx={{ width: 150, height: 40 }}
                   value={item}
                   onClick={(event) => handleClickCard(item)}
                 >
@@ -113,7 +113,7 @@ function Vprobe() {
                     key={index}
                     value={item}
                     onClick={() => handleClickNeedle(item)}
-                    sx={{ width: 150 }}
+                    sx={{ width: 150, height: 40 }}
                   >
                     {item}
                   </ToggleButton>

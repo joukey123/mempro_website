@@ -21,7 +21,6 @@ function Application({ contents }) {
   return (
     <div className="application" style={{ margin: "150px 0" }}>
       <ContentsTitle title={"Application"} onData={showContent} />
-
       <Collapse in={expendClicked}>
         <StyledGridContainer container spacing={3}>
           {contents.applications.map((item) => (

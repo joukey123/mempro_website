@@ -6,7 +6,7 @@ const SVG = styled.svg`
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -105%) scale(1);
+  transform: translate(-50%, -86%) scale(1.1);
 `;
 
 const Line = styled.line`

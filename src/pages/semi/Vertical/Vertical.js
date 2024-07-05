@@ -6,6 +6,7 @@ import Footer from "../../../components/Footer";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import line from "../../../img/line.svg";
+import ProbeTap from "../../../components/headers/ProbeTap";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -241,6 +242,7 @@ function Vertical() {
             </ProbeName>
           ))}
         </div>
+        <ProbeTap />
         <Headline
           item={{ ...itemsDetail[`${sublink}`] }}
           text="

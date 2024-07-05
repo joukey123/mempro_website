@@ -89,17 +89,20 @@ import gpu from "../src/img/vertical/gpu.jpg";
 //wire
 import wire from "../src/img/vertical/wire.svg";
 import wireType from "../src/img/vertical/wireType.svg";
-import wire15 from "../src/img/vertical/15.jpeg";
-import wire20 from "../src/img/vertical/20.jpeg";
+import wire15 from "../src/img/vertical/15.png";
+import wire20 from "../src/img/vertical/20.png";
 
 //short
 import short from "../src/img/vertical/short.svg";
 import powerIC from "../src/img/vertical/Power.jpg";
 import cis from "../src/img/vertical/CIS.jpg";
 import mems from "../src/img/vertical/MEMS.jpg";
-import shortSem from "../src/img/vertical/shortSem.svg";
-import press from "../src/img/vertical/press.svg";
-import shortCoating from "../src/img/vertical/coating.svg";
+// import shortSem from "../src/img/vertical/shortSem.svg";
+// import press from "../src/img/vertical/press.svg";
+// import shortCoating from "../src/img/vertical/coating.svg";
+import shortSem from "../src/img/vertical/short_sem.png";
+import press from "../src/img/vertical/press.png";
+import shortCoating from "../src/img/vertical/coating.png";
 
 //PEM
 import pem01 from "../src/img/vertical/pem1.png";
@@ -999,20 +1002,119 @@ export const itemsDetail = {
             70: "Acrylic",
           },
         ],
+
+        spec2: [
+          {
+            materialDiameter: "15 µm",
+            toleranceA: "+2/-1",
+            coatingDiameter: "22",
+            totalLength: "5/10",
+            toleranceB: "±5",
+            lengthA: "1.5",
+            lengthB: "0.02",
+            material: "Rhenium Tungsten, Pd Alloy",
+            plating: "Au Plating over Ni Plating",
+            coatingMaterial: "Acrylic",
+          },
+          {
+            materialDiameter: "20 µm",
+            toleranceA: "+2/-1",
+            coatingDiameter: "27",
+            totalLength: "5/10",
+            toleranceB: "±5",
+            lengthA: "1.5",
+            lengthB: "0.02",
+            material: "Rhenium Tungsten, Pd Alloy",
+            plating: "Au Plating over Ni Plating",
+            coatingMaterial: "Acrylic",
+          },
+          {
+            materialDiameter: "25 µm",
+            toleranceA: "+2/-1",
+            coatingDiameter: "32",
+            totalLength: "10",
+            toleranceB: "	±5/±10",
+            lengthA: "1.5",
+            lengthB: "0.02",
+            material: "Rhenium Tungsten, Pd Alloy",
+            plating: "Au Plating over Ni Plating",
+            coatingMaterial: "Acrylic",
+          },
+          {
+            materialDiameter: "30 µm",
+            toleranceA: "0/-3",
+            coatingDiameter: "38",
+            totalLength: "10/15/20",
+            toleranceB: "±5",
+            lengthA: "1.5~3.0",
+            lengthB: "0.02~0.05",
+            material: "Rhenium Tungsten, Pd Alloy",
+            plating: "Au Plating over Ni Plating",
+            coatingMaterial: "Acrylic",
+          },
+          {
+            materialDiameter: "40 µm",
+            toleranceA: "±2",
+            coatingDiameter: "50",
+            totalLength: "20",
+            toleranceB: "±10",
+            lengthA: "3.0",
+            lengthB: "0.05",
+            material: "Rhenium Tungsten, Pd Alloy",
+            plating: "Au Plating over Ni Plating",
+            coatingMaterial: "Acrylic",
+          },
+          {
+            materialDiameter: "50 µm",
+            toleranceA: "±2",
+            coatingDiameter: "63",
+            totalLength: "20",
+            toleranceB: "±10",
+            lengthA: "3.0",
+            lengthB: "0.05~2.0",
+            material: "Rhenium Tungsten, Pd Alloy",
+            plating: "Au Plating over Ni Plating",
+            coatingMaterial: "Acrylic",
+          },
+          {
+            materialDiameter: "70 µm",
+            toleranceA: "±2",
+            coatingDiameter: "90",
+            totalLength: "30",
+            toleranceB: "±10",
+            lengthA: "3.0",
+            lengthB: "0.05~2.0",
+            material: "Tungsten",
+            plating: "Au Plating over Ni Plating",
+            coatingMaterial: "Acrylic",
+          },
+          {
+            materialDiameter: "Available Custom Order",
+            toleranceA: "Available Custom Order",
+            coatingDiameter: "Available Custom Order",
+            totalLength: "Available Custom Order",
+            toleranceB: "Available Custom Order",
+            lengthA: "Available Custom Order",
+            lengthB: "Available Custom Order",
+            material: "",
+            plating: "",
+            coatingMaterial: "",
+          },
+        ],
         force: [
           {
             item: "Force (g.f)",
-            Ø30: "0.49",
-            Ø40: "1.15",
-            Ø50: "2.08",
-            Ø70: "3.18",
+            r30: "0.49",
+            r40: "1.15",
+            r50: "2.08",
+            r70: "3.18",
           },
           {
             item: "C.Res (Ω)",
-            Ø30: "1.7",
-            Ø40: "1.2",
-            Ø50: "0.7",
-            Ø70: "0.6",
+            r30: "1.7",
+            r40: "1.2",
+            r50: "0.7",
+            r70: "0.6",
           },
         ],
         sem: [
@@ -1027,29 +1129,11 @@ export const itemsDetail = {
         img: short,
         spec: [
           {
-            property: "Materials",
-            value1: "3%Re-W, Rhodium, Pd Alloy, Etc.",
-            value2: "",
-          },
-          {
-            property: "Rod Diameter",
-            value1: "15-40 µm (Customizable)",
-            value2: "",
-          },
-          {
-            property: "Rod Length",
-            value1: "1.3-10 mm (Customizable)",
-            value2: "",
-          },
-          {
-            property: "Taper Angle",
-            value1: "30-60° (Customizable)",
-            value2: "",
-          },
-          {
-            property: "Point Accuracy",
-            value1: "0-1 µm",
-            value2: "",
+            material: "3%Re-W, Rhodium, Pd Alloy, Etc.",
+            roadDiameter: "15-40 µm (Customizable)",
+            roadLength: "1.3-10 mm (Customizable)",
+            taperAngle: "30-60° (Customizable)",
+            pointAccuracy: "0-1 µm",
           },
         ],
         force: [
@@ -1083,12 +1167,18 @@ export const itemsDetail = {
           },
         ],
         sem: [
-          { text: "SEM", img: shortSem },
           {
+            id: 1,
+            text: "SEM",
+            img: shortSem,
+          },
+
+          {
+            id: 2,
             text: "Press Stopper",
             img: press,
           },
-          { text: "Coating Stopper", img: shortCoating },
+          { id: 3, text: "Coating Stopper", img: shortCoating },
         ],
         applications: [
           { text: "Power IC", img: powerIC },

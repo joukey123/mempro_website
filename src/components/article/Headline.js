@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import Chip from "@mui/material/Chip";
+import Stack from "@mui/material/Stack";
 
 const TextWrapper = styled.div`
   width: 100%;
@@ -62,7 +64,7 @@ function Headline({ item, text }) {
   }, [timeoutId]);
   return (
     <TextWrapper style={{ display: "flex" }}>
-      <div style={{ display: "flex", alignItems: "center" }}>
+      <div style={{ display: "flex", alignItems: "end" }}>
         <Title>{item.title}</Title>
         {item.warning && (
           <>
@@ -83,8 +85,12 @@ function Headline({ item, text }) {
             </span>
           </>
         )}
-
-        {item.nation && item.nation.map((item) => <Span>{item}</Span>)}
+        <Stack direction="row" spacing={1}>
+          {item.nation &&
+            item.nation.map((item) => (
+              <Chip label={item} variant="outlined" color="warning" />
+            ))}
+        </Stack>
       </div>
       {item.description && <Description>{item.description}</Description>}
     </TextWrapper>

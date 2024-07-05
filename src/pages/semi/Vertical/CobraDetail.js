@@ -6,8 +6,8 @@ import { motion } from "framer-motion";
 import { useTable } from "react-table";
 import Application from "../../../components/Application";
 import ContentsTitle from "../../../components/ContentsTitle";
-import Table from "@mui/material/Table";
 
+import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
@@ -19,27 +19,31 @@ import Collapse from "@mui/material/Collapse";
 const StructureWarpper = styled(motion.div)`
   width: 100%;
   max-width: 1100px;
-  height: 750px;
   margin: 0 auto;
   border-radius: 8px;
   background: url(${line}) center center;
   background-size: cover;
   background-color: ${(props) => props.theme.colors.white};
   padding: 50px;
-  position: relative;
   overflow: hidden;
   margin-bottom: 150px;
-  display: flex;
-  flex-direction: column;
-
-  justify-content: center;
+  position: relative;
+  align-content: center;
 `;
 
+const InfoBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  padding-top: 100px;
+`;
 const NeedleName = styled.h1`
   font-size: 18px;
   position: absolute;
   top: 50px;
   left: 50px;
+  z-index: 2;
   span {
     color: ${(props) => props.theme.colors.blue};
     font-weight: bold;
@@ -48,9 +52,8 @@ const NeedleName = styled.h1`
 `;
 const NeedleImg = styled.img`
   width: 100%;
-  max-width: 850px;
+  max-width: 1000px;
   margin-bottom: 50px;
-  margin-left: 80px;
   margin-top: 100px;
 `;
 
@@ -63,7 +66,7 @@ const SpecWrapper = styled.div`
   row-gap: 20px;
 `;
 
-const TextWrapper = styled.div`
+const Text = styled.div`
   display: flex;
   align-items: center;
   width: 1100px;
@@ -142,23 +145,26 @@ function CobraDetail({ contents, needle }) {
         ) : (
           <NeedleName>Specification</NeedleName>
         )}
-        <NeedleImg src={contents.img} />
-        <CobraInfo specId={specId} />
-        <SpecWrapper>
-          {contents.spec.map((item, index) => (
-            <TextWrapper
-              key={index}
-              onMouseOver={() => handleSpecOver(index, item.id)}
-              onMouseLeave={handleSpecLeave}
-            >
-              <Number $hover={specIndex + 1 === item.id}>{item.id}</Number>
-              <Column>
-                <Name>{item.name}</Name>
-                <Des>{item.description}</Des>
-              </Column>
-            </TextWrapper>
-          ))}
-        </SpecWrapper>
+        <InfoBox>
+          <NeedleImg src={contents.img} />
+          <CobraInfo specId={specId} />
+
+          <SpecWrapper>
+            {contents.spec.map((item, index) => (
+              <Text
+                key={index}
+                onMouseOver={() => handleSpecOver(index, item.id)}
+                onMouseLeave={handleSpecLeave}
+              >
+                <Number $hover={specIndex + 1 === item.id}>{item.id}</Number>
+                <Column>
+                  <Name>{item.name}</Name>
+                  <Des>{item.description}</Des>
+                </Column>
+              </Text>
+            ))}
+          </SpecWrapper>
+        </InfoBox>
       </StructureWarpper>
       <Contents>
         <ContentsTitle title={"C.C.C & Force"} onData={showContent} />

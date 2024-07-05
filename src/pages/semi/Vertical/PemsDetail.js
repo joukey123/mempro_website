@@ -95,8 +95,22 @@ const StyledTableCell = styled(TableCell)`
     font-size: 16px;
   }
 `;
-const StyledTableRow = styled(TableRow)``;
-
+const StyledTableRow = styled(TableRow)(({ index }) => ({
+  "&:hover": {
+    backgroundColor: "#f5f5f5",
+    ...(index === 0 && {
+      "& td:nth-last-child(4)": {
+        backgroundColor: "white",
+      },
+      "& td:nth-last-child(6)": {
+        backgroundColor: "white",
+      },
+      "& th:nth-last-child(8)": {
+        backgroundColor: "white",
+      },
+    }),
+  },
+}));
 function PemsDetail({ contents, needle }) {
   const [expendClicked, setExpendClicked] = useState(true);
 
@@ -123,7 +137,7 @@ function PemsDetail({ contents, needle }) {
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 900 }}>
           <StyledTableHead>
-            <StyledTableRow>
+            <TableRow>
               <StyledTableCell sx={{ color: "white" }}>
                 Material
               </StyledTableCell>
@@ -148,11 +162,11 @@ function PemsDetail({ contents, needle }) {
               <StyledTableCell sx={{ color: "white" }}>
                 C.C.C. [mA]
               </StyledTableCell>
-            </StyledTableRow>
+            </TableRow>
           </StyledTableHead>
           <TableBody>
             {contents.spec.map((row, index) => (
-              <StyledTableRow key={index}>
+              <StyledTableRow key={index} index={index}>
                 {index === 0 && (
                   <StyledTableCell rowSpan={3} component="th" scope="row">
                     {row.material}
