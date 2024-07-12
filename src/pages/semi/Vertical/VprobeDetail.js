@@ -72,7 +72,6 @@ function VprobeDetail({ needle, contents }) {
       {needle === "pems" && (
         <PemsDetail contents={contents.pems} needle={needle} />
       )}
-      <Footer />
     </Wrapper>
   );
 }

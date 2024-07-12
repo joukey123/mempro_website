@@ -1,14 +1,15 @@
 import styled from "styled-components";
 import { useCategory } from "../Hook/useCategory";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { items } from "../data";
 import Office from "../pages/about/Office";
-
+import ToggleButton from "@mui/material/ToggleButton";
+import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 const Wrapper = styled.div`
   width: 100%;
   max-width: 1280px;
-  padding: 60px 0 30px 0;
+  padding: 60px 0 30px 80px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   margin-bottom: 80px;
 `;
@@ -97,8 +98,16 @@ function CurrentNav() {
   } = useCategory();
   const navigate = useNavigate();
   const aboutMenu = ["Company", "Office", "E-catalog"];
+  const [selectAboutMenu, setSelectAboutMenu] = useState("Company");
+  const [selectSubCategory, setSelectSubCategory] = useState("");
+
   const location = useLocation();
-  const lo = location.pathname.split("/")[2];
+  const lo = location.pathname.split("/")[3];
+
+  useEffect(() => {
+    setSelectSubCategory(`${currentSubcategory[0]}`);
+  }, [currentSubcategory[0]]);
+
   const handleDiagramClick = (diagram) => {
     const mainItem = items.find(
       (item) => item.category.toLowerCase() === currentCategory.toLowerCase()
@@ -141,7 +150,16 @@ function CurrentNav() {
 
     return "#"; // Fallback link if not found
   };
+  const handleSelectAboutMenu = (item) => {
+    setSelectAboutMenu(item);
+    navigate(`/about/${item.toLocaleLowerCase()}`);
+  };
 
+  const handleSelectSub = (item) => {
+    console.log(item);
+    setSelectSubCategory(item);
+    navigate(`${getSubcategoryLink(item)}`);
+  };
   return (
     <Wrapper>
       <Category>
@@ -154,7 +172,59 @@ function CurrentNav() {
             </>
           )}
       </Category>
-      {currentDiagrams.length > 0 && currentCategory !== "about MEMPro" ? (
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        {currentDiagrams.length > 0 && currentCategory !== "about MEMPro" ? (
+          <ToggleButtonGroup
+            color="primary"
+            value={selectDiagram}
+            exclusive
+            aria-label="Platform"
+          >
+            {currentDiagrams.map((diagram, index) => (
+              <ToggleButton
+                value={diagram}
+                key={index}
+                onClick={() => handleDiagramClick(diagram)}
+                sx={{ textTransform: "capitalize", width: 180, height: 40 }}
+              >
+                {diagram}
+              </ToggleButton>
+            ))}
+          </ToggleButtonGroup>
+        ) : (
+          <>
+            <ToggleButtonGroup
+              color="primary"
+              value={selectAboutMenu}
+              exclusive
+              aria-label="Platform"
+            >
+              {aboutMenu.map((item, index) => (
+                <ToggleButton
+                  value={item}
+                  key={index}
+                  onClick={() => handleSelectAboutMenu(item)}
+                  sx={{ textTransform: "capitalize", width: 180, height: 40 }}
+                >
+                  {/* <Link
+                  $isClick={item.toLocaleLowerCase() === lo}
+                  to={`/about/${item.toLocaleLowerCase()}`}
+                 
+                > */}
+                  {item}
+                  {/* </Link> */}
+                </ToggleButton>
+              ))}
+            </ToggleButtonGroup>
+          </>
+        )}
+
+        {/* {currentDiagrams.length > 0 && currentCategory !== "about MEMPro" ? (
         <Diagrams>
           {currentDiagrams.map((diagram, index) => (
             <li key={index} onClick={() => handleDiagramClick(diagram)}>
@@ -166,34 +236,56 @@ function CurrentNav() {
         </Diagrams>
       ) : (
         <>
-          <Diagrams>
+          <ToggleButtonGroup
+            color="primary"
+            value={selectAboutMenu}
+            exclusive
+            aria-label="Platform"
+          >
             {aboutMenu.map((item, index) => (
-              <li key={index}>
-                <DiagramLink
+              <ToggleButton
+                key={index}
+                value={item}
+                onClick={() => handleSelectAboutMenu(item)}
+              >
+                <Link
                   $isClick={item.toLocaleLowerCase() === lo}
                   to={`/about/${item.toLocaleLowerCase()}`}
                 >
-                  {item}
-                </DiagramLink>
-              </li>
+                {item}
+                </Link>
+              </ToggleButton>
             ))}
-          </Diagrams>
+          </ToggleButtonGroup>
         </>
-      )}
-      {currentCategory !== "about MEMPro" && currentCategory !== "contact" && (
-        <SubCategories>
-          {currentSubcategory.map((item, index) => (
-            <li key={index}>
-              <SubLink
+      )} */}
+        {currentCategory !== "about MEMPro" &&
+          currentCategory !== "contact" && (
+            <ToggleButtonGroup
+              color="warning"
+              value={selectSubCategory}
+              exclusive
+              aria-label="Platform"
+              sx={{ marginTop: 2 }}
+            >
+              {currentSubcategory.map((item, index) => (
+                <ToggleButton
+                  key={index}
+                  value={item}
+                  onClick={() => handleSelectSub(item)}
+                  sx={{ textTransform: "capitalize", width: 180, height: 40 }}
+                >
+                  {/* <SubLink
                 to={getSubcategoryLink(item)}
                 $isClick={item === currentSubcategoryName}
-              >
-                {item}
-              </SubLink>
-            </li>
-          ))}
-        </SubCategories>
-      )}
+              > */}
+                  {item}
+                  {/* </SubLink> */}
+                </ToggleButton>
+              ))}
+            </ToggleButtonGroup>
+          )}
+      </div>
     </Wrapper>
   );
 }

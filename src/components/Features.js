@@ -5,6 +5,7 @@ import { useState } from "react";
 
 import Collapse from "@mui/material/Collapse";
 import ContentsTitle from "./ContentsTitle";
+import { WidthFull } from "@mui/icons-material";
 
 const Icon = styled.img`
   width: 150px;
@@ -13,7 +14,7 @@ const Icon = styled.img`
 `;
 const StyledGridContainer = styled(Grid)``;
 
-function Features({ contents }) {
+function Features({ contents, maxWidth }) {
   const maxNumber = 12;
   const length = contents.features.length;
   const [rowNumber, setRowNumber] = useState(maxNumber / length);
@@ -29,7 +30,7 @@ function Features({ contents }) {
     <div className="features" style={{ margin: "150px 0" }}>
       <ContentsTitle title={"Features"} onData={showContent} />
       <Collapse in={expendClicked}>
-        <Box sx={{ flexGrow: 1 }}>
+        <Box sx={{ flexGrow: 1, maxWidth, margin: "0 auto" }}>
           <StyledGridContainer container spacing={3}>
             {contents.features.map((item, index) => (
               <Grid
@@ -41,7 +42,9 @@ function Features({ contents }) {
                 }}
               >
                 <Icon className={`img${index}`} src={item.icon} />
-                <div style={{ marginTop: 20 }}>{item.text}</div>
+                <div style={{ marginTop: 20, textTransform: "capitalize" }}>
+                  {item.text}
+                </div>
               </Grid>
             ))}
           </StyledGridContainer>

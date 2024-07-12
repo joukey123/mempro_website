@@ -28,16 +28,16 @@ function Carousel({ contents }) {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
-  useEffect(() => {
-    const interval = setInterval(
-      () => setActiveStep((prev) => (prev + 1) % maxSteps),
-      5000
-    );
+  // useEffect(() => {
+  //   const interval = setInterval(
+  //     () => setActiveStep((prev) => (prev + 1) % maxSteps),
+  //     5000
+  //   );
 
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
+  //   return () => {
+  //     clearInterval(interval);
+  //   };
+  // }, []);
 
   return (
     <div className="carousel">

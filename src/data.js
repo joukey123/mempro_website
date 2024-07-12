@@ -9,8 +9,8 @@ import semiImg from "../src/img/semi.jpg";
 import semo_ex from "./img/semo_ex.svg";
 
 //diamond img
-import sem from "../src/img/diamond/SEM.png";
-import configuration from "../src/img/diamond/Configuration.png";
+import diamondWire_sem1 from "../src/img/diamond/diamondWire_sem1.png";
+import diamondWire_sem2 from "../src/img/diamond/diamondWire_sem2.png";
 import semiconductorIngot from "../src/img/diamond/semiconductorIngot.jpg";
 import sapphireIngot from "../src/img/diamond/sapphireIngot.jpg";
 import solarIngot from "../src/img/diamond/solarIngot.jpg";
@@ -111,15 +111,26 @@ import pem03 from "../src/img/vertical/pem3.png";
 import topShape from "../src/img/vertical/topSahpeImg.svg";
 import tipShape from "../src/img/vertical/tipShapeImg.svg";
 
+//plus_item
+import item_stiffener from "../src/img/cantilever/item_stiffener.svg";
+import item_probe from "../src/img/cantilever/item_probe.svg";
+import item_guide from "../src/img/cantilever/item_guide.svg";
+import item_sanding_machine from "../src/img/cantilever/item_sanding_machine.svg";
+import item_bending_machine from "../src/img/cantilever/item_bending_machine.svg";
+import item_pitube from "../src/img/cantilever/item_pi-tube.svg";
+import { type } from "@testing-library/user-event/dist/type";
+import MenuBookIcon from "@mui/icons-material/MenuBook";
+import FormatBoldIcon from "@mui/icons-material/FormatBold";
+
 export const linkBtns = [
   {
     text: "blog",
-    icon: <i class="fa-brands fa-blogger-b"></i>,
+    icon: <FormatBoldIcon />,
     link: "http://blog.naver.com/mempro_sales",
   },
   {
     text: "catalog",
-    icon: <i class="fa-solid fa-book"></i>,
+    icon: <MenuBookIcon />,
     link: "http://www.mempro.co.kr",
   },
 ];
@@ -361,10 +372,10 @@ export const itemsDetail = {
     images: diamondwire_machine,
     contents: {
       sem: [
-        { text: "Electroplated Diamond Wire SEM", img: sem },
+        { text: "Electroplated Diamond Wire SEM", img: diamondWire_sem1 },
         {
           text: "Configuration of Electroplated Diamond Wire",
-          img: configuration,
+          img: diamondWire_sem2,
         },
       ],
       applications: [
@@ -526,7 +537,7 @@ export const itemsDetail = {
     title: "Probe",
     description:
       "Are used to connect the integrated circuits located on a wafer to the ATE (Automated Test Equipment) to test that the electrical parameters and performance meet requirements before they are manufactured and shipped out.",
-    warning: semo_ex,
+    warning: "We provide the necessary parts for the probe card.",
 
     images: {
       machine: cantilever_machie,
@@ -535,36 +546,42 @@ export const itemsDetail = {
     item: [
       {
         title: "sanding machine",
-        img: probe_item1,
+        img: item_sanding_machine,
+        link: "a",
       },
       {
         title: "bending machine",
-        img: probe_item2,
+        img: item_bending_machine,
+        link: "a",
       },
       {
-        title: "ceramic guide plate",
-        img: probe_item3,
+        title: "Guide Plate/Hole",
+        img: item_guide,
+        link: "ceramic",
       },
       {
         title: "stiffener",
-        img: probe_item4,
+        img: item_stiffener,
+        link: "cstiffener",
       },
       {
         title: "probe",
-        img: probe_item5,
+        img: item_probe,
+        link: "cprobe",
       },
       {
         title: "PI-Tube",
-        img: probe_item6,
+        img: item_pitube,
+        link: "tube",
       },
     ],
   },
 
   cantilever: {
-    title: "Cantilever Porbe",
+    title: "Cantilever Structure",
     description:
       "Are used to connect the integrated circuits located on a wafer to the ATE (Automated Test Equipment) to test that the electrical parameters and performance meet requirements before they are manufactured and shipped out.",
-    warning: semo_ex,
+    warning: "We provide the necessary parts for the probe card.",
     images: {
       part1: cantilever_part1,
       part2: cantilever_part2,
@@ -578,15 +595,15 @@ export const itemsDetail = {
     item: [
       {
         title: "stiffener",
-        img: probe_item4,
+        img: item_stiffener,
       },
       {
         title: "probe",
-        img: probe_item5,
+        img: item_probe,
       },
       {
         title: "PI-Tube",
-        img: probe_item6,
+        img: item_pitube,
       },
     ],
   },
@@ -610,15 +627,14 @@ export const itemsDetail = {
   },
   cprobe: {
     nation: ["Made in Korea"],
-    title: "Cantilever Probe",
-    cards: {
-      Cantilever: {
+    title: "cantilever Probe",
+    cards: [
+      {
+        type: "cantilever",
         needle: ["WRNP", "WNP", "BECU", "Coaxial"],
       },
-      DDI: {
-        needle: ["P7", "PT", "NP40"],
-      },
-    },
+      { type: "DDI", needle: ["P7", "PT", "NP40"] },
+    ],
     contents: {
       needle: {
         img: cantileverNeedle,
@@ -781,10 +797,10 @@ export const itemsDetail = {
     ],
   },
   vertical: {
-    title: "Vertical Porbe",
+    title: "Vertical Structure",
     description:
       "Are used to connect the integrated circuits located on a wafer to the ATE (Automated Test Equipment) to test that the electrical parameters and performance meet requirements before they are manufactured and shipped out.",
-    warning: semo_ex,
+    warning: "We provide the necessary parts for the probe card.",
     images: {
       part1: vertical_part1,
       part2: vertical_part2,
@@ -798,16 +814,19 @@ export const itemsDetail = {
     },
     item: [
       {
-        title: "stiffener",
-        img: probe_item4,
+        title: "Stiffener",
+        img: item_stiffener,
+        link: "vstiffener",
       },
       {
-        title: "probe",
-        img: probe_item5,
+        title: "Vertical probe",
+        img: item_probe,
+        link: "vprobe",
       },
       {
-        title: "Ceramic Guide/Hole",
-        img: vertical_part8,
+        title: "Guide Plate/Hole",
+        img: item_guide,
+        link: "ceramic",
       },
     ],
   },
@@ -831,17 +850,40 @@ export const itemsDetail = {
   vprobe: {
     nation: ["Made in Korea"],
     title: "Vertical Porbe",
-    cards: {
-      vertical: {
+    // cards: {
+    //   vertical: {
+    //     needle: ["wire", "short", "cobra", "pems"],
+    //   },
+    //   cis: {
+    //     needle: ["short", "cobra", "pems"],
+    //   },
+    //   memory: {
+    //     needle: ["cobra", "pems"],
+    //   },
+    // },
+
+    cards: [
+      {
+        system: "non-memory",
+        type: "vertical",
         needle: ["wire", "short", "cobra", "pems"],
       },
-      cis: {
+      {
+        system: "non-memory",
+        type: "CIS",
         needle: ["short", "cobra", "pems"],
       },
-      memory: {
-        needle: ["cobra", "pems"],
+      {
+        system: "memory",
+        type: "NANAD Flash",
+        needle: ["pems"],
       },
-    },
+      {
+        system: "memory",
+        type: "DRAM",
+        needle: ["pems"],
+      },
+    ],
     contents: {
       cobra: {
         img: cobra,
@@ -893,115 +935,6 @@ export const itemsDetail = {
       wire: {
         img: wire,
         type: wireType,
-        spec: [
-          {
-            property: "Material Diameter ØD (µm)",
-            15: "15",
-            20: "20",
-            25: "25",
-            30: "30",
-            40: "40",
-            50: "50",
-            70: "70",
-          },
-          {
-            property: "Tolerance (µm)",
-            15: "+2/-1",
-            20: "+2/-1",
-            25: "+2/-1",
-            30: "0/-3",
-            40: "±2",
-            50: "±2",
-            70: "±2",
-            Available: "Available Custom Order",
-          },
-          {
-            property: "Coating Diameter ØCD (µm)",
-            15: "22",
-            20: "27",
-            25: "32",
-            30: "38",
-            40: "50",
-            50: "63",
-            70: "90",
-            Available: "Available Custom Order",
-          },
-          {
-            property: "Total Length L (mm)",
-            15: "5/10",
-            20: "5/10",
-            25: "10",
-            30: "10/15/20",
-            40: "20",
-            50: "20",
-            70: "30",
-            Available: "Available Custom Order",
-          },
-          {
-            property: "Tolerance (µm)",
-            15: "±5",
-            20: "±5",
-            25: "±5/±10",
-            30: "±5",
-            40: "±10",
-            50: "±10",
-            70: "±10",
-            Available: "Available Custom Order",
-          },
-          {
-            property: "Length A (mm)",
-            15: "1.5",
-            20: "1.5",
-            25: "1.5",
-            30: "1.5~3.0",
-            40: "3.0",
-            50: "3.0",
-            70: "3.0",
-            Available: "Available Custom Order",
-          },
-
-          {
-            property: "Length B (mm)",
-            15: "0.02",
-            20: "0.02",
-            25: "0.02",
-            30: "0.02~0.05",
-            40: "0.05",
-            50: "0.05~2.0",
-            70: "0.05~2.0",
-            Available: "Available Custom Order",
-          },
-          {
-            property: "Material",
-            15: "Rhenium Tungsten, Pd Alloy",
-            20: "Rhenium Tungsten, Pd Alloy",
-            25: "Rhenium Tungsten, Pd Alloy",
-            30: "Rhenium Tungsten, Pd Alloy",
-            40: "Rhenium Tungsten, Pd Alloy",
-            50: "Rhenium Tungsten, Pd Alloy",
-            70: "Tungsten",
-          },
-          {
-            property: "Plating",
-            15: "Au Plating over Ni Plating",
-            20: "Au Plating over Ni Plating",
-            25: "Au Plating over Ni Plating",
-            30: "Au Plating over Ni Plating",
-            40: "Au Plating over Ni Plating",
-            50: "Au Plating over Ni Plating",
-            70: "Au Plating over Ni Plating",
-          },
-          {
-            property: "Coating Material",
-            15: "Acrylic",
-            20: "Acrylic",
-            25: "Acrylic",
-            30: "Acrylic",
-            40: "Acrylic",
-            50: "Acrylic",
-            70: "Acrylic",
-          },
-        ],
 
         spec2: [
           {

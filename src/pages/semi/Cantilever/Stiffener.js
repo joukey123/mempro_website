@@ -7,6 +7,9 @@ import Headline from "../../../components/article/Headline";
 import Footer from "../../../components/Footer";
 import line from "../../../img/line.svg";
 
+import ImageList from "@mui/material/ImageList";
+import ImageListItem from "@mui/material/ImageListItem";
+
 const Warapper = styled.div`
   width: 100%;
   max-width: 1280px;
@@ -116,7 +119,6 @@ function Stiffener() {
               <ItemImg
                 key={index}
                 src={item}
-                style={{}}
                 onClick={() => handleSelectImg(index)}
                 $isClick={index === imgIndex}
               />

@@ -1,12 +1,7 @@
 import styled, { keyframes } from "styled-components";
 import Typewriter from "typewriter-effect";
-const move = keyframes`
-from {
-  transform: translateY(5px);
-}
-to{
-  transform: translateY(15px);
-}`;
+import WheelAnimation from "../../components/WheelAnimation";
+
 const VideoBox = styled.div`
   height: 100vh;
   position: relative;
@@ -49,12 +44,10 @@ const Span = styled.span`
   flex-direction: column;
   align-items: center;
   :first-child {
-    border-bottom: 1px solid white;
     margin-bottom: 5px;
   }
   :last-child {
     font-size: 15px;
-    animation: ${move} 1.5s ease-in-out infinite alternate;
   }
 `;
 
@@ -66,7 +59,7 @@ function MainVideo() {
           <Typewriter
             options={{
               strings: [
-                '<i class="fa-solid fa-quote-left" style="font-size:50px"></i><br>Commitment<br>&<br>Trust<br><i class="fa-solid fa-quote-right" style="font-size:50px"></i>',
+                '<div style="display:flex; flex-direction:column; align-items:center; font-size:70px;"><span style="font-size:100px !important;   margin-bottom: -70px">Commitment</span><br>&amp;<br><span style="font-size:100px !important">Trust</span></div>',
               ],
               autoStart: true,
               loop: true,
@@ -74,8 +67,8 @@ function MainVideo() {
           />
         </TypewriterBox>
         <Span>
-          <span>Trading Service for YOU</span>
-          <i className="fa-solid fa-angles-down"></i>
+          {/* <span>Trading Service for YOU</span> */}
+          <WheelAnimation />
         </Span>
         <Video loop autoPlay muted $windowHeight={window.innerHeight}>
           <source src="https://mempro.myqnapcloud.com:85/2.mp4"></source>

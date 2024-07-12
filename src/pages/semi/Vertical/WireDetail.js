@@ -1,9 +1,7 @@
-import styled, { keyframes } from "styled-components";
-import CobraInfo from "./CobraInfo";
+import styled from "styled-components";
 import React, { useState } from "react";
 import line from "../../../img/line.svg";
-import { motion, sync } from "framer-motion";
-import { useTable } from "react-table";
+import { motion } from "framer-motion";
 import WireInfo from "./WireInfo";
 import Carousel from "../../../components/Carousel";
 import {

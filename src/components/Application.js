@@ -24,7 +24,10 @@ function Application({ contents }) {
       <Collapse in={expendClicked}>
         <StyledGridContainer container spacing={3}>
           {contents.applications.map((item) => (
-            <Grid xs={4} sx={{ textAlign: "center" }}>
+            <Grid
+              xs={12 / contents.applications.length}
+              sx={{ textAlign: "center" }}
+            >
               <ApplicationImg src={item.img} />
               <div>{item.text}</div>
             </Grid>

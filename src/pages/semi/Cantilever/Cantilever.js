@@ -4,9 +4,21 @@ import { itemsDetail } from "../../../data";
 import { AnimatePresence, motion } from "framer-motion";
 import Footer from "../../../components/Footer";
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import line from "../../../img/line.svg";
+import Tap from "../../../components/headers/Tap";
+import Fab from "@mui/material/Fab";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
+import ReplayIcon from "@mui/icons-material/Replay";
+import Cards from "../../../components/article/Cards";
+import Chip from "@mui/material/Chip";
+import Probe from "../Probe";
+import ZoomInOutlinedIcon from "@mui/icons-material/ZoomInOutlined";
+import ZoomOutOutlinedIcon from "@mui/icons-material/ZoomOutOutlined";
 
+import ExpandLessOutlinedIcon from "@mui/icons-material/ExpandLessOutlined";
+import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
 const Wrapper = styled.div`
   width: 100%;
   max-width: 1280px;
@@ -53,6 +65,9 @@ const BtnWrapper = styled.div`
   position: absolute;
   right: 50px;
   bottom: 50px;
+  visibility: ${(props) => props.$isPlay && "hidden"};
+  display: flex;
+  flex-direction: column;
 `;
 
 const ZoomBtn = styled.button`
@@ -80,7 +95,7 @@ const ZoomBtn = styled.button`
 const ZooWrapper = styled(motion.div)`
   width: 100%;
   max-width: 700px;
-  height: 850px;
+  height: 750px;
   border-radius: 25px 25px 0 0px;
   background-color: rgba(0, 0, 0, 0.8);
   position: absolute;
@@ -90,16 +105,16 @@ const ZooWrapper = styled(motion.div)`
   justify-content: center;
 `;
 
-const Cards = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -70%);
-  color: white;
-`;
+// const Cards = styled.div`
+//   display: grid;
+//   grid-template-columns: repeat(3, 1fr);
+//   gap: 30px;
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -70%);
+//   color: white;
+// `;
 
 const Card = styled.div`
   display: flex;
@@ -165,6 +180,8 @@ const Part = styled(motion.img)`
 `;
 function Cantilever() {
   const location = useLocation();
+  const navigate = useNavigate();
+
   const paths = location.pathname.split("/").filter(Boolean);
   const porbeArray = ["probe", "cantilever", "vertical"];
   const [sublink, setSublink] = useState(paths[2]);
@@ -178,6 +195,11 @@ function Cantilever() {
 
   const handleClickProbe = (item) => {
     setSublink(item);
+    if (item === "probe") {
+      setSublink("probe");
+    } else {
+      navigate(`/semi/parts/${item}`);
+    }
   };
   const handlePlayAnimation = () => {
     setPlayAnimation(true);
@@ -218,42 +240,39 @@ function Cantilever() {
   return (
     <>
       <Wrapper>
-        <div
-          style={{
-            width: "100%",
-            maxWidth: 1100,
-            margin: "0 auto",
-            marginBottom: 30,
-          }}
-        >
-          {porbeArray.map((item, index) => (
-            <ProbeName
-              key={index}
-              onClick={() => handleClickProbe(item)}
-              $isClick={sublink === item}
-            >
-              {item !== "probe" ? (
-                <Link to={`/semi/parts/${porbeArray[index]}`}>{item}</Link>
-              ) : (
-                item
-              )}
-            </ProbeName>
-          ))}
-        </div>
+        <Tap
+          data={porbeArray}
+          handleClickProbe={handleClickProbe}
+          sublink={sublink}
+        />
         <Headline
           item={{ ...itemsDetail[`${sublink}`] }}
           text="
         We provide the necessary parts for the probe card."
         />
-
-        {sublink === "probe" && (
+        {sublink === "probe" && <Probe images={images} item={item} />}
+        {/* {sublink === "probe" && (
           <DiagramWpper>
             <DiagramImg src={images.machine} $isZoom={isZoom} />
             <Step1 src={images.diagram} $isZoom={isZoom} />
-            <BtnWrapper>
-              <ZoomBtn onClick={handleZoomDiagram} $isZoom={isZoom}>
-                <i class="fa-solid fa-plus"></i>
-              </ZoomBtn>
+            <BtnWrapper $isPlay={playAnimation}>
+              <Fab
+                color="primary"
+                aria-label="add"
+                onClick={handleZoomDiagram}
+                sx={{ marginBottom: 1 }}
+              >
+                {isZoom ? <RemoveIcon /> : <AddIcon />}
+              </Fab>
+              {!isZoom && (
+                <Fab
+                  color="primary"
+                  aria-label="replay"
+                  onClick={handlePlayAnimation}
+                >
+                  <ReplayIcon />
+                </Fab>
+              )}
             </BtnWrapper>
 
             <AnimatePresence>
@@ -300,7 +319,7 @@ function Cantilever() {
               )}
             </AnimatePresence>
           </DiagramWpper>
-        )}
+        )} */}
 
         {/* cantilever start */}
         {sublink === "cantilever" && (
@@ -390,20 +409,20 @@ function Cantilever() {
               <motion.span
                 style={{
                   position: "absolute",
-                  top: 190,
-                  left: "33%",
+                  top: 185,
+                  left: "32.5%",
                   fontSize: 18,
                 }}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.5 }}
               >
-                Stiffener
+                <Chip label="Stiffener" />
               </motion.span>
               <motion.span
                 style={{
                   position: "absolute",
-                  top: 590,
+                  top: 585,
                   left: "8.5%",
                   fontSize: 18,
                 }}
@@ -411,7 +430,7 @@ function Cantilever() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.5 }}
               >
-                Probe, PI-Tube
+                <Chip label="Probe, PI-Tube" />
               </motion.span>
             </Line>
             {/* cantilever animation start */}
@@ -487,13 +506,28 @@ function Cantilever() {
               </>
             )}
 
-            <BtnWrapper>
-              <ZoomBtn onClick={handleZoomDiagram} $isPlay={playAnimation}>
-                <i class="fa-solid fa-plus"></i>
-              </ZoomBtn>
-              <ZoomBtn onClick={handlePlayAnimation} $isPlay={playAnimation}>
-                <i class="fa-solid fa-play"></i>
-              </ZoomBtn>
+            <BtnWrapper $isPlay={playAnimation}>
+              <Fab
+                color="primary"
+                aria-label="add"
+                onClick={handleZoomDiagram}
+                sx={{ marginBottom: 1 }}
+              >
+                {isZoom ? (
+                  <ExpandMoreOutlinedIcon />
+                ) : (
+                  <ExpandLessOutlinedIcon />
+                )}
+              </Fab>
+              {!isZoom && (
+                <Fab
+                  color="primary"
+                  aria-label="replay"
+                  onClick={handlePlayAnimation}
+                >
+                  <ReplayIcon />
+                </Fab>
+              )}
             </BtnWrapper>
 
             <AnimatePresence>
@@ -508,7 +542,7 @@ function Cantilever() {
                   exit={{ top: "100%" }}
                   transition={{ duration: 0.1 }}
                 >
-                  <Cards class="cards">
+                  {/* <Cards class="cards">
                     <h1
                       style={{
                         gridColumnStart: 1,
@@ -538,7 +572,10 @@ function Cantilever() {
                         <CardText>{item.title}</CardText>
                       </Card>
                     ))}
-                  </Cards>
+                  </Cards> */}
+                  {item.map((item, index) => (
+                    <Cards title={item.title} img={item.img} link={item.link} />
+                  ))}
                 </ZooWrapper>
               )}
             </AnimatePresence>

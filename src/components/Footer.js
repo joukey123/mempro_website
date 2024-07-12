@@ -5,6 +5,18 @@ import LinkBtn from "./LinkBtn";
 import { linkBtns, add } from "../data.js";
 import { useState } from "react";
 import { useMatch } from "react-router-dom";
+import SpeedDial from "@mui/material/SpeedDial";
+import SpeedDialIcon from "@mui/material/SpeedDialIcon";
+import SpeedDialAction from "@mui/material/SpeedDialAction";
+import FileCopyIcon from "@mui/icons-material/FileCopyOutlined";
+import SaveIcon from "@mui/icons-material/Save";
+import PrintIcon from "@mui/icons-material/Print";
+import ShareIcon from "@mui/icons-material/Share";
+import Box from "@mui/material/Box";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import EmailIcon from "@mui/icons-material/Email";
+import Tooltip from "@mui/material/Tooltip";
+import Fab from "@mui/material/Fab";
 
 const FooterWrapper = styled.div`
   width: 100%;
@@ -12,17 +24,17 @@ const FooterWrapper = styled.div`
   padding: 15px 30px;
   color: ${(props) =>
     props.$isHome ? props.theme.colors.white : props.theme.colors.black};
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   border-top: 0.5px solid ${(props) => props.theme.colors.stroke};
   margin: 0 auto;
   margin-top: 150px;
   h1 {
-    font-weight: 600;
+    font-weight: bold;
     margin-bottom: 3px;
   }
   h2 {
-    font-weight: 300;
-    font-size: 0.7rem;
+    font-weight: 100;
+    font-size: 1rem;
     margin-bottom: 8px;
 
     span:nth-child(2) {
@@ -78,8 +90,8 @@ const Link = styled.div`
   width: 10%;
   display: flex;
   align-items: flex-start;
-  justify-content: center;
-  transform: scale(0.8);
+  justify-content: space-between;
+  transform: scale(0.9);
 `;
 function Footer() {
   const [offices, setOffices] = useState(0);
@@ -91,52 +103,112 @@ function Footer() {
       setOffices(1);
     }
   };
+
+  const actions = [
+    {
+      icon: <EmailIcon />,
+      name: "Mail",
+      func: function () {
+        console.log("hello2");
+      },
+    },
+
+    {
+      icon: <KeyboardArrowUpIcon />,
+      name: "Top",
+      func: function () {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      },
+    },
+  ];
   return (
-    <FooterWrapper $isHome={match}>
-      {match ? <Logo $url={logo} /> : <Logo $url={logo2} />}
-      <Info>
-        <InfoAddress>
-          <h1>ADDRESS</h1>
-          <h2 id="nation">
-            <NationSpan
-              onClick={() => handleOffices("korea")}
-              $isClick={offices === 0}
-            >
-              {add[0].nation}
-            </NationSpan>
-            <span>|</span>
-            <NationSpan
-              onClick={() => handleOffices("taiwan")}
-              $isClick={offices === 1}
-            >
-              {add[1].nation}
-            </NationSpan>
-          </h2>
-          <h2 id="add">{add[offices].address}</h2>
-        </InfoAddress>
-        <Tell>
-          <h1>TEL</h1>
-          <h2>{add[offices].tell}</h2>
-          <h1>FAX</h1>
-          <h2>{add[offices].fax}</h2>
-        </Tell>
-        <Mail>
-          <h1>MAIL</h1>
-          <h2>{add[offices].mail}</h2>
-        </Mail>
-        <Link>
-          {linkBtns.map((item, index) => (
-            <LinkBtn
-              icon={item.icon}
-              link={item.link}
-              text={item.text}
-              key={index}
+    <>
+      <FooterWrapper $isHome={match}>
+        {match ? <Logo $url={logo} /> : <Logo $url={logo2} />}
+        <Info>
+          <InfoAddress>
+            <h1>ADDRESS</h1>
+            <h2 id="nation">
+              <NationSpan
+                onClick={() => handleOffices("korea")}
+                $isClick={offices === 0}
+              >
+                {add[0].nation}
+              </NationSpan>
+              <span>|</span>
+              <NationSpan
+                onClick={() => handleOffices("taiwan")}
+                $isClick={offices === 1}
+              >
+                {add[1].nation}
+              </NationSpan>
+            </h2>
+            <h2 id="add">{add[offices].address}</h2>
+          </InfoAddress>
+          <Tell>
+            <h1>TEL</h1>
+            <h2>{add[offices].tell}</h2>
+            <h1>FAX</h1>
+            <h2>{add[offices].fax}</h2>
+          </Tell>
+          <Mail>
+            <h1>MAIL</h1>
+            <h2>{add[offices].mail}</h2>
+          </Mail>
+          <Link>
+            {linkBtns.map((item, index) => (
+              <Tooltip
+                sx={{ textTransform: "capitalize" }}
+                title={item.text}
+                arrow
+              >
+                <Fab
+                  color="primary"
+                  target="_blank"
+                  onClick={() => window.open(`${item.link}`)}
+                >
+                  {item.icon}
+                </Fab>
+              </Tooltip>
+            ))}
+          </Link>
+        </Info>
+        <div id="copyrighter">
+          Copyright &copy; MEMPro. All rights reserved.
+        </div>
+      </FooterWrapper>
+      <Box
+        sx={{
+          transform: "translateZ(0px)",
+          flexGrow: 1,
+          position: "fixed",
+          bottom: "12%",
+          right: "5%",
+        }}
+      >
+        <SpeedDial
+          ariaLabel="SpeedDial"
+          icon={<SpeedDialIcon />}
+          sx={{
+            "& .MuiSpeedDial-fab": { backgroundColor: "#4C4C4C" },
+            "& .MuiSpeedDial-fab:hover": { backgroundColor: "#4C4C4C" },
+            zIndex: 99999,
+          }}
+        >
+          {actions.map((action) => (
+            <SpeedDialAction
+              key={action.name}
+              icon={action.icon}
+              tooltipTitle={action.name}
+              onClick={action.func}
             />
           ))}
-        </Link>
-      </Info>
-      <div id="copyrighter">Copyright &copy; MEMPro. All rights reserved.</div>
-    </FooterWrapper>
+        </SpeedDial>
+      </Box>
+    </>
   );
 }
 

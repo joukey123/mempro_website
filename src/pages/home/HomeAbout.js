@@ -4,6 +4,7 @@ import Btn from "../../components/Btn";
 import LogoAnimation from "../../components/LogoAnimation";
 import { motion, useAnimation, useInView } from "framer-motion";
 import React, { useRef } from "react";
+import { Link } from "react-router-dom";
 
 const Homeabout = styled.div`
   display: flex;
@@ -108,8 +109,12 @@ function HomeAbout() {
             animate={controls}
             variants={animateVariants(1.5)}
           >
-            <Btn text={"About MEMPro"} />
-            <Btn text={"Contact"} />
+            <Link to={"/about"}>
+              <Btn text={"About MEMPro"} />
+            </Link>
+            <Link to={"/contact"}>
+              <Btn text={"Contact"} />
+            </Link>
           </BtnWrapper>
         </TextWrapper>
         <ImgWrapper>

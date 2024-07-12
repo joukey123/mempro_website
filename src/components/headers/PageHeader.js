@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Header from "../../components/Header";
 import CurrentNav from "../../components/CurrentNav";
 import { useCategory } from "../../Hook/useCategory";
-
+import Breadcrumbs from "./Breadcrumbs";
 const Warpper = styled.div`
   width: 100%;
   display: flex;
@@ -49,7 +49,8 @@ function PageHeader() {
           <Img src={headerImges} alt={currentCategory} />
           <BlackBox />
         </ImgWarpper>
-        <CurrentNav />
+        <Breadcrumbs />
+        {/* <CurrentNav /> */}
       </Warpper>
     </>
   );

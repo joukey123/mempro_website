@@ -3,7 +3,6 @@ import CobraInfo from "./CobraInfo";
 import React, { useState } from "react";
 import line from "../../../img/line.svg";
 import { motion } from "framer-motion";
-import { useTable } from "react-table";
 import Application from "../../../components/Application";
 import ContentsTitle from "../../../components/ContentsTitle";
 

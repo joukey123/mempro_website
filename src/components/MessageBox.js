@@ -1,7 +1,7 @@
 import { motion, useAnimation, useInView } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-
+import CloseIcon from "@mui/icons-material/Close";
 const Wrap = styled(motion.div)`
   background-color: ${(props) => props.theme.colors.box};
   border-radius: 40px;
@@ -30,6 +30,9 @@ const Btn = styled.button`
   border: 0;
   position: absolute;
   right: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   i {
     font-size: 25px;
@@ -56,7 +59,7 @@ const BtnBox = ({ type, onClose }) => {
   };
   return (
     <Btn onClick={() => handleClose(type)}>
-      {type === "close" ? <i className="fa-solid fa-xmark"></i> : null}
+      {type === "close" ? <CloseIcon /> : null}
     </Btn>
   );
 };

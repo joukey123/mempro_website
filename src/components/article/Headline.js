@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
+import SnackbarBox from "../SnackbarBox";
 
 const TextWrapper = styled.div`
   width: 100%;
@@ -16,6 +17,7 @@ const Title = styled.h1`
   font-size: 40px;
   font-weight: 600;
   margin-right: 20px;
+  text-transform: capitalize;
 `;
 const Span = styled.span`
   padding: 5px 15px;
@@ -28,7 +30,7 @@ const Span = styled.span`
 `;
 const Description = styled.p`
   margin-top: 20px;
-  width: 80%;
+  width: 65%;
 `;
 
 const Warining = styled.img`
@@ -66,25 +68,7 @@ function Headline({ item, text }) {
     <TextWrapper style={{ display: "flex" }}>
       <div style={{ display: "flex", alignItems: "end" }}>
         <Title>{item.title}</Title>
-        {item.warning && (
-          <>
-            <Warining src={item.warning} />
-
-            <span
-              style={{
-                backgroundColor: "#FF4466",
-                color: "white",
-                padding: "5px 15px",
-                borderRadius: 10,
-                marginLeft: 5,
-                position: "relative",
-                bottom: "-5px",
-              }}
-            >
-              {text}
-            </span>
-          </>
-        )}
+        {item.warning && <SnackbarBox text={item.warning} />}
         <Stack direction="row" spacing={1}>
           {item.nation &&
             item.nation.map((item) => (

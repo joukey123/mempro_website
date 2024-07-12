@@ -4,9 +4,18 @@ import { itemsDetail } from "../../../data";
 import { AnimatePresence, motion } from "framer-motion";
 import Footer from "../../../components/Footer";
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import line from "../../../img/line.svg";
-import ProbeTap from "../../../components/headers/ProbeTap";
+import Tap from "../../../components/headers/Tap";
+import Fab from "@mui/material/Fab";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
+import ReplayIcon from "@mui/icons-material/Replay";
+import Cards from "../../../components/article/Cards";
+import Chip from "@mui/material/Chip";
+import Probe from "../Probe";
+import ExpandLessOutlinedIcon from "@mui/icons-material/ExpandLessOutlined";
+import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -54,6 +63,9 @@ const BtnWrapper = styled.div`
   position: absolute;
   right: 50px;
   bottom: 50px;
+  visibility: ${(props) => props.$isPlay && "hidden"};
+  display: flex;
+  flex-direction: column;
 `;
 
 const ZoomBtn = styled.button`
@@ -80,9 +92,9 @@ const ZoomBtn = styled.button`
 
 const ZooWrapper = styled(motion.div)`
   width: 100%;
-  max-width: 700px;
+  max-width: 750px;
   height: 850px;
-  border-radius: 25px 25px 0 0px;
+  border-radius: 8px 8px 0 0px;
   background-color: rgba(0, 0, 0, 0.8);
   position: absolute;
   z-index: 101;
@@ -91,29 +103,29 @@ const ZooWrapper = styled(motion.div)`
   justify-content: center;
 `;
 
-const Cards = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -70%);
-  color: white;
-`;
+// const Cards = styled.div`
+//   display: grid;
+//   grid-template-columns: repeat(3, 1fr);
+//   gap: 30px;
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -70%);
+//   color: white;
+// `;
 
-const Card = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 170px;
-  height: 180px;
-  background-color: ${(props) => props.theme.colors.white};
-  overflow: hidden;
-  border-radius: 10px;
-  box-shadow: 1px 1px 5px black;
-`;
+// const Card = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+//   width: 170px;
+//   height: 180px;
+//   background-color: ${(props) => props.theme.colors.white};
+//   overflow: hidden;
+//   border-radius: 10px;
+//   box-shadow: 1px 1px 5px black;
+// `;
 
 const CardImg = styled.img`
   width: 170px;
@@ -166,6 +178,7 @@ const Part = styled(motion.img)`
 `;
 function Vertical() {
   const location = useLocation();
+  const navigate = useNavigate();
   const paths = location.pathname.split("/").filter(Boolean);
 
   const porbeArray = ["probe", "cantilever", "vertical"];
@@ -180,6 +193,11 @@ function Vertical() {
 
   const handleClickProbe = (item) => {
     setSublink(item);
+    if (item === "probe") {
+      setSublink("probe");
+    } else {
+      navigate(`/semi/parts/${item}`);
+    }
   };
   const handlePlayAnimation = () => {
     setPlayAnimation(true);
@@ -216,11 +234,16 @@ function Vertical() {
     left: 0;
     visibility: ${(props) => (props.$isPlay || props.$isZoom) && "hidden"};
   `;
-
+  const CardsWarpper = styled.div`
+    display: flex;
+    width: 500px;
+    height: 500px;
+    background-color: aqua;
+  `;
   return (
     <>
       <Wrapper>
-        <div
+        {/* <div
           style={{
             width: "100%",
             maxWidth: 1100,
@@ -241,75 +264,19 @@ function Vertical() {
               )}
             </ProbeName>
           ))}
-        </div>
-        <ProbeTap />
-        <Headline
-          item={{ ...itemsDetail[`${sublink}`] }}
-          text="
-        We provide the necessary parts for the probe card."
+        </div> */}
+
+        <Tap
+          data={porbeArray}
+          handleClickProbe={handleClickProbe}
+          sublink={sublink}
         />
-
-        {sublink === "probe" && (
-          <DiagramWpper>
-            <DiagramImg src={images.machine} $isZoom={isZoom} />
-            <Step1 src={images.diagram} $isZoom={isZoom} />
-            <BtnWrapper>
-              <ZoomBtn onClick={handleZoomDiagram} $isZoom={isZoom}>
-                <i class="fa-solid fa-plus"></i>
-              </ZoomBtn>
-            </BtnWrapper>
-
-            <AnimatePresence>
-              {isZoom && (
-                <ZooWrapper
-                  initial={{
-                    top: "100%",
-                    left: "50%",
-                    transform: "translate(-50%,0%)",
-                  }}
-                  animate={{ top: "6%" }}
-                  exit={{ top: "100%" }}
-                  transition={{ duration: 0.1 }}
-                >
-                  <Cards class="cards">
-                    <h1
-                      style={{
-                        gridColumnStart: 1,
-                        gridColumnEnd: 4,
-                        textAlign: "center",
-                      }}
-                    >
-                      MEMPro Products
-                    </h1>
-                    <span
-                      style={{
-                        gridColumnStart: 1,
-                        gridColumnEnd: 4,
-                        textAlign: "center",
-                        marginTop: -15,
-                        marginBottom: 50,
-                      }}
-                    >
-                      {sublink}에 들어가는 부품을 멤프로가 관리하고 있습니다.
-                    </span>
-                    {item.map((item, index) => (
-                      <Card class="card" key={index}>
-                        <CardImg src={item.img} />
-                        <CardText>{item.title}</CardText>
-                      </Card>
-                    ))}
-                  </Cards>
-                </ZooWrapper>
-              )}
-            </AnimatePresence>
-          </DiagramWpper>
-        )}
-
+        <Headline item={{ ...itemsDetail[`${sublink}`] }} />
+        {sublink === "probe" && <Probe images={images} item={item} />}
         {/* vertical start */}
         {sublink === "vertical" && (
           <StructureWarpper>
             <DiagramImg src={images.machine} $isZoom={isZoom} />
-
             <Part
               src={images.part1}
               $isPlay={playAnimation}
@@ -322,7 +289,6 @@ function Vertical() {
               transition={{ duration: 2 }}
               $isZoom={isZoom}
             />
-
             <Part
               src={images.part2}
               $isPlay={playAnimation}
@@ -425,6 +391,7 @@ function Vertical() {
               transition={{ duration: 2 }}
               $isZoom={isZoom}
             />
+
             <Line style={{}} $isPlay={playAnimation} $isZoom={isZoom}>
               <svg
                 style={{
@@ -484,21 +451,21 @@ function Vertical() {
               <motion.span
                 style={{
                   position: "absolute",
-                  top: 140,
-                  left: "32%",
+                  top: 135,
+                  left: "31.5%",
                   fontSize: 18,
                 }}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.5 }}
               >
-                Stiffener
+                <Chip label="Stiffener" />
               </motion.span>
 
               <motion.span
                 style={{
                   position: "absolute",
-                  top: 480,
+                  top: 475,
                   left: "14%",
                   fontSize: 18,
                 }}
@@ -506,33 +473,33 @@ function Vertical() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.5 }}
               >
-                Ceramic Hole
+                <Chip label="Ceramic Hole" />
               </motion.span>
               <motion.span
                 style={{
                   position: "absolute",
-                  top: 580,
-                  left: "5%",
+                  top: 575,
+                  left: "6%",
                   fontSize: 18,
                 }}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.5 }}
               >
-                Ceramic Guide Plate
+                <Chip label="Ceramic Guide Plate" />
               </motion.span>
               <motion.span
                 style={{
                   position: "absolute",
-                  top: 740,
-                  left: "51%",
+                  top: 735,
+                  left: "50%",
                   fontSize: 18,
                 }}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.5 }}
               >
-                Cobra, Wire, Short, PEMS
+                <Chip label="Cobra, Wire, Short, PEMS" />
               </motion.span>
             </Line>
             {/* vertical animation start */}
@@ -707,13 +674,28 @@ function Vertical() {
               </>
             )}
 
-            <BtnWrapper>
-              <ZoomBtn onClick={handleZoomDiagram} $isPlay={playAnimation}>
-                <i class="fa-solid fa-plus"></i>
-              </ZoomBtn>
-              <ZoomBtn onClick={handlePlayAnimation} $isPlay={playAnimation}>
-                <i class="fa-solid fa-play"></i>
-              </ZoomBtn>
+            <BtnWrapper $isPlay={playAnimation}>
+              <Fab
+                color="primary"
+                aria-label="add"
+                onClick={handleZoomDiagram}
+                sx={{ marginBottom: 1 }}
+              >
+                {isZoom ? (
+                  <ExpandMoreOutlinedIcon />
+                ) : (
+                  <ExpandLessOutlinedIcon />
+                )}
+              </Fab>
+              {!isZoom && (
+                <Fab
+                  color="primary"
+                  aria-label="replay"
+                  onClick={handlePlayAnimation}
+                >
+                  <ReplayIcon />
+                </Fab>
+              )}
             </BtnWrapper>
 
             <AnimatePresence>
@@ -728,7 +710,7 @@ function Vertical() {
                   exit={{ top: "100%" }}
                   transition={{ duration: 0.1 }}
                 >
-                  <Cards class="cards">
+                  {/* <Cards class="cards">
                     <h1
                       style={{
                         gridColumnStart: 1,
@@ -758,7 +740,10 @@ function Vertical() {
                         <CardText>{item.title}</CardText>
                       </Card>
                     ))}
-                  </Cards>
+                  </Cards> */}
+                  {item.map((item, index) => (
+                    <Cards title={item.title} img={item.img} link={item.link} />
+                  ))}
                 </ZooWrapper>
               )}
             </AnimatePresence>

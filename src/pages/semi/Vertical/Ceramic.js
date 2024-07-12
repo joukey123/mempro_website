@@ -6,7 +6,12 @@ import { itemsDetail } from "../../../data";
 import { motion } from "framer-motion";
 import Footer from "../../../components/Footer";
 import ceramic_plus from "../../../img/vertical/ceramic_zoom.svg";
+import Fab from "@mui/material/Fab";
 
+import ReplayIcon from "@mui/icons-material/Replay";
+
+import ExpandLessOutlinedIcon from "@mui/icons-material/ExpandLessOutlined";
+import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
 const Wrapper = styled.div`
   width: 100%;
   max-width: 1280px;
@@ -61,15 +66,22 @@ const Step1 = styled(motion.img)`
   filter: ${(props) => props.$isPlus && "blur(10px)"};
 `;
 
+// const BtnWrapper = styled.div`
+//   position: absolute;
+//   right: 50px;
+//   bottom: 50px;
+//   :nth-child(2) {
+//     visibility: ${(props) => props.$isPlus && "hidden"};
+//   }
+// `;
 const BtnWrapper = styled.div`
   position: absolute;
   right: 50px;
   bottom: 50px;
-  :nth-child(2) {
-    visibility: ${(props) => props.$isPlus && "hidden"};
-  }
+  visibility: ${(props) => props.$isPlay && "hidden"};
+  display: flex;
+  flex-direction: column;
 `;
-
 const ZoomBtn = styled.button`
   display: flex;
   width: 50px;
@@ -260,15 +272,33 @@ function Ceramic() {
           </ImgBox>
 
           <CeramicText $isPlus={isPlus}>Ceramic</CeramicText>
-          <BtnWrapper $isPlus={isPlus}>
+          {/* <BtnWrapper $isPlus={isPlus}>
             <ZoomBtn onClick={handlePlusItem} $isPlus={isPlus}>
               <i class="fa-solid fa-plus"></i>
             </ZoomBtn>
             <ZoomBtn onClick={handlePlayAnimation}>
               <i class="fa-solid fa-play"></i>
             </ZoomBtn>
+          </BtnWrapper> */}
+          <BtnWrapper $isPlus={isPlus}>
+            <Fab
+              color="primary"
+              aria-label="add"
+              onClick={handlePlusItem}
+              sx={{ marginBottom: 1 }}
+            >
+              {isPlus ? <ExpandMoreOutlinedIcon /> : <ExpandLessOutlinedIcon />}
+            </Fab>
+            {!isPlus && (
+              <Fab
+                color="primary"
+                aria-label="replay"
+                onClick={handlePlayAnimation}
+              >
+                <ReplayIcon />
+              </Fab>
+            )}
           </BtnWrapper>
-
           {isPlus && (
             <ZooWrapper
               initial={{

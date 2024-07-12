@@ -6,6 +6,15 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import zoomImg from "../../../img/etching/etching_3d.svg";
 import circle_ex from "../../../img/ circle_ex.svg";
+import ExpandLessOutlinedIcon from "@mui/icons-material/ExpandLessOutlined";
+import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
+import Fab from "@mui/material/Fab";
+import Alert from "@mui/material/Alert";
+import AlertTitle from "@mui/material/AlertTitle";
+import ContentsTitle from "../../../components/ContentsTitle";
+import Features from "../../../components/Features";
+import { Collapse, Button, ButtonGroup, Box } from "@mui/material";
+
 const Wrapper = styled.div`
   width: 100%;
   max-width: 1280px;
@@ -19,41 +28,40 @@ const Wrapper = styled.div`
 const DiagramWpper = styled.div`
   width: 100%;
   max-width: 1100px;
-  height: 800px;
+  height: 850px;
   margin: 0 auto;
   border-radius: 15px;
   background-color: ${(props) => props.theme.colors.white};
   padding: 50px;
   position: relative;
   overflow: hidden;
-  @keyframes zoomClick {
-    from {
-      transform: translate(-50%, -60%) scale(1.3);
-    }
-    to {
-      transform: translate(-50%, -60%) scale(100);
-    }
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 `;
 const DiagramImg = styled(motion.img)`
   width: 100%;
-  max-width: 400px;
-  height: 800px;
+  max-width: 450px;
   object-fit: contain;
   object-position: center center;
   z-index: 99;
   position: absolute;
   animation-duration: 0.5s;
   filter: ${(props) => props.$isZoom && "blur(10px)"};
+  top: 30px;
 `;
-const Step1 = styled(motion.img)`
+const Step1 = styled.div`
   width: 100%;
-  max-width: 400px;
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, -60%) scale(1.3);
+  max-width: 1000px;
+  min-width: 1000px;
+  height: 600px;
+  background: url(${(props) => props.$src}) no-repeat center;
   z-index: 100;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -45%);
   filter: ${(props) => props.$isZoom && "blur(10px)"};
 `;
 
@@ -62,26 +70,26 @@ const Step2 = styled.img`
   max-width: 400px;
   height: 50px;
   z-index: 1000;
-  position: absolute;
-  top: 74%;
+  top: 70%;
   left: 50%;
-  opacity: 0;
-  transform: translate(-50%, -55%) scale(1.1);
-  animation: moving 3s ease-in-out infinite;
+  opacity: 1;
+  position: absolute;
+  animation: moving 1s ease-in-out infinite;
   animation-delay: 2s;
   visibility: ${(props) => props.$isZoom && "hidden"};
-
+  transform: translate(-50%, -60%) scale(1.1);
   @keyframes moving {
     from {
       opacity: 0;
-      top: 70%;
+      transform: translate(-50%, -60%) scale(1.1);
     }
     to {
       opacity: 1;
-      top: 75%;
+      transform: translate(-50%, -20%) scale(1.1);
     }
   }
 `;
+
 const Contents = styled.h2`
   width: 100%;
   max-width: 1100px;
@@ -98,17 +106,17 @@ const Icon = styled.img`
   width: 150px;
   height: 150px;
 `;
-const ContentsTitle = styled.div`
-  border-bottom: 0.3px solid rgba(0, 0, 0, 0.3);
-  padding-bottom: 3px;
-  max-width: 1100px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 30px;
-  font-size: 18px;
-  font-weight: 600;
-`;
+// const ContentsTitle = styled.div`
+//   border-bottom: 0.3px solid rgba(0, 0, 0, 0.3);
+//   padding-bottom: 3px;
+//   max-width: 1100px;
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+//   margin-bottom: 30px;
+//   font-size: 18px;
+//   font-weight: 600;
+// `;
 const ContentsWrapper = styled.div`
   display: grid;
   width: 100%;
@@ -194,6 +202,8 @@ const ZoomImg = styled.img`
   position: relative;
   top: -5%;
 `;
+
+const StyledButton = styled(Button)``;
 function Etching() {
   const sublink = "etching";
   const { images, contents } = itemsDetail[`${sublink}`];
@@ -202,6 +212,11 @@ function Etching() {
   const [selectImg, setSelectImg] = useState(
     contents.material[selectMaterial].images
   );
+  const [expendClicked, setExpendClicked] = useState(true);
+
+  const showContent = (show) => {
+    setExpendClicked(show);
+  };
 
   const handleClickMaterial = (text, index) => {
     setSelectMaterial(index);
@@ -220,24 +235,43 @@ function Etching() {
           <DiagramImg
             src={images.machine}
             $isZoom={isZoom}
-            initial={{ top: "-20%", right: "30%", scale: 0.8 }}
-            animate={{ top: "-20%", right: "30%" }}
+            initial={{ scale: 0.8 }}
           />
-          <Step1
-            src={images.diagram}
-            initial={{ opacity: 0, transform: "translate(-50%,-50%) scale(0)" }}
-            animate={{
-              opacity: 1,
-              transform: "translate(-50%,-50%) scale(1.3)",
+          <div
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              width: "100%",
+              transform: " translate(-50%,-50%) scale(.9)",
+              zIndex: 99,
             }}
-            transition={{ delay: 1 }}
-            $isZoom={isZoom}
-          />
-          <Step2 src={images.step1} $isZoom={isZoom} />
+          >
+            <Step1
+              $src={images.diagram}
+              // initial={{
+              //   opacity: 0,
+              //   transform: "translate(-50%,-50%) scale(0)",
+              // }}
+              // animate={{
+              //   opacity: 1,
+              //   transform: "translate(-50%,-50%) scale(1.3)",
+              // }}
+              $isZoom={isZoom}
+            >
+              <Step2 src={images.step1} $isZoom={isZoom} />
+            </Step1>
+          </div>
+
           <BtnWrapper>
-            <ZoomBtn onClick={handleZoomDiagram} $isZoom={isZoom}>
-              <i class="fa-solid fa-plus"></i>
-            </ZoomBtn>
+            <Fab
+              color="primary"
+              aria-label="add"
+              onClick={handleZoomDiagram}
+              sx={{ marginBottom: 1 }}
+            >
+              {isZoom ? <ExpandMoreOutlinedIcon /> : <ExpandLessOutlinedIcon />}
+            </Fab>
           </BtnWrapper>
           <AnimatePresence>
             {isZoom && (
@@ -256,76 +290,54 @@ function Etching() {
             )}
           </AnimatePresence>
         </DiagramWpper>
+        <Alert
+          severity="info"
+          sx={{ width: "100%", maxWidth: 1100, margin: "20px auto" }}
+        >
+          <AlertTitle>Info</AlertTitle>
+          We are able to produce the product based on drawings or actual
+          measurements.
+        </Alert>
         <Contents>
-          <div className="features" style={{ margin: "150px 0" }}>
-            <ContentsTitle>
-              <span>Features</span>
-            </ContentsTitle>
-            <ContentsWrapper $length={contents.features.length}>
-              {contents.features.map((item, index) => (
-                <IconWrapper key={index}>
-                  <Icon className={`img${index}`} src={item.icon} />
-                  <div>{item.text}</div>
-                </IconWrapper>
-              ))}
-            </ContentsWrapper>
-          </div>
-          <div className="material" style={{ marginTop: "150px" }}>
-            <ContentsTitle>
-              <span>Material</span>
-            </ContentsTitle>
-            <MaterialTextWrapper>
-              {contents.material.map((item, index) => (
-                <MaterialText
-                  key={index}
-                  onClick={() => handleClickMaterial(item.text, index)}
-                  $isClick={index === selectMaterial}
-                >
-                  {item.text}
-                </MaterialText>
-              ))}
-            </MaterialTextWrapper>
-            <ContentsWrapper
-              $length={selectImg.length}
-              style={{ rowGap: 1, columnGap: 30 }}
-            >
-              {selectImg.map((item) => (
-                <MaterialImg src={item.img} />
-              ))}
-              {selectImg.map((item) => (
-                <div>{item.title}</div>
-              ))}
-            </ContentsWrapper>
+          <Features contents={contents} maxWidth={600} />
 
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                width: "100%",
-                maxWidth: "700px",
-                margin: "0px auto",
-                backgroundColor: "#f9f9f9",
-                borderRadius: 20,
-                padding: "8px 0",
-                marginTop: "100px",
-              }}
-            >
-              <img
-                src={circle_ex}
-                style={{ width: 18, height: 18, marginRight: 10 }}
-              />
-              <p
-                style={{
-                  color: "#FF4466",
-                  fontSize: 16,
-                  fontWeight: 300,
+          <div className="material" style={{ marginTop: "150px" }}>
+            <ContentsTitle title={"Material"} onData={showContent} />
+            <Collapse in={expendClicked}>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  "& > *": {
+                    m: 2,
+                  },
                 }}
               >
-                We are able to produce the product based on drawings or actual
-                measurements.
-              </p>
-            </div>
+                <ButtonGroup variant="text" aria-label="Basic button group">
+                  {contents.material.map((item, index) => (
+                    <Button
+                      key={index}
+                      onClick={() => handleClickMaterial(item.text, index)}
+                      $isClick={index === selectMaterial}
+                    >
+                      {item.text}
+                    </Button>
+                  ))}
+                </ButtonGroup>
+                <ContentsWrapper
+                  $length={selectImg.length}
+                  style={{ rowGap: 1, columnGap: 30 }}
+                >
+                  {selectImg.map((item) => (
+                    <MaterialImg src={item.img} />
+                  ))}
+                  {selectImg.map((item) => (
+                    <div>{item.title}</div>
+                  ))}
+                </ContentsWrapper>
+              </Box>
+            </Collapse>
           </div>
         </Contents>
       </Wrapper>

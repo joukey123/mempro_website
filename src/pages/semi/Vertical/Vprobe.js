@@ -4,11 +4,11 @@ import React, { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { itemsDetail } from "../../../data";
 import VprobeDetail from "./VprobeDetail";
-
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import { warning } from "framer-motion";
-import { events } from "@react-three/fiber";
+import ProbeType from "../../../components/headers/ProbeType";
+import { Box, Collapse } from "@mui/material";
+import Footer from "../../../components/Footer";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -42,101 +42,53 @@ function Vprobe() {
   const paths = location.pathname.split("/").filter(Boolean);
   const [sublink, setSublink] = useState(paths[2]);
   const { cards, contents } = itemsDetail[`${sublink}`];
-  const [selectCard, setSelectCard] = useState("vertical");
-  const [selectNeedle, setSelectNeedle] = useState("wire");
+  const [selectNeedle, setSelectNeedle] = useState("");
+  const [isNeedleChange, setIsNeedleChange] = useState(false);
 
-  const handleClickCard = (item) => {
-    setSelectCard(item);
+  const handleProbeType = (data) => {
+    setSelectNeedle(data);
   };
-  const handleClickNeedle = (item) => {
-    setSelectNeedle(item);
-  };
+
+  // useEffect(() => {
+  //   const found = cards[selectCard]?.needle.find(
+  //     (item) => item === selectNeedle
+  //   );
+  //   if (found) {
+  //     setSelectNeedle(found);
+  //   } else {
+  //     setSelectNeedle(cards[selectCard]?.needle[0]);
+  //   }
+  //   console.log(selectNeedle, isNeedleChange, "test");
+  // }, [selectCard]);
 
   useEffect(() => {
-    const found = cards[selectCard]?.needle.find(
-      (item) => item === selectNeedle
-    );
-    if (found) {
-      setSelectNeedle(found);
-    } else {
-      setSelectNeedle(cards[selectCard]?.needle[0]);
-    }
-  }, [selectCard]);
-
+    setIsNeedleChange(false);
+    setTimeout(() => {
+      setIsNeedleChange((prev) => !prev);
+    }, 1000);
+  }, [selectNeedle]);
   return (
     <>
       <Wrapper>
         <Headline item={{ ...itemsDetail[`${sublink}`] }} />
-        <Table>
-          <TableRow>
-            <h2 style={{ marginBottom: 10 }}>Card Type</h2>
-            {/* <ItemWrapper>
-              {Object.keys(cards).map((item, index) => (
-                <TableItem
-                  key={index}
-                  onClick={(event) => handleClickCard(item, event)}
-                  $isClick={item === selectCard}
-                  $color={"blue"}
-                >
-                  {item}
-                </TableItem>
-              ))}
-            </ItemWrapper> */}
-            <ToggleButtonGroup
-              color="primary"
-              value={selectCard}
-              exclusive
-              aria-label="Platform"
-            >
-              {Object.keys(cards).map((item, index) => (
-                <ToggleButton
-                  sx={{ width: 150, height: 40 }}
-                  value={item}
-                  onClick={(event) => handleClickCard(item)}
-                >
-                  {item}
-                </ToggleButton>
-              ))}
-            </ToggleButtonGroup>
-          </TableRow>
-          <TableRow>
-            <h2 style={{ marginBottom: 10 }}>Probe Type</h2>
-            <ToggleButtonGroup
-              color="warning"
-              value={selectNeedle}
-              exclusive
-              aria-label="Platform"
-            >
-              {selectCard &&
-                cards[selectCard]?.needle.map((item, index) => (
-                  <ToggleButton
-                    key={index}
-                    value={item}
-                    onClick={() => handleClickNeedle(item)}
-                    sx={{ width: 150, height: 40 }}
-                  >
-                    {item}
-                  </ToggleButton>
-                ))}
-            </ToggleButtonGroup>
-            {/* <ItemWrapper>
-              {selectCard &&
-                cards[selectCard]?.needle.map((item, index) => (
-                  <TableItem
-                    key={index}
-                    onClick={() => handleClickNeedle(item)}
-                    $isClick={item === selectNeedle}
-                    $color={"gold"}
-                  >
-                    {item}
-                  </TableItem>
-                ))}
-            </ItemWrapper> */}
-          </TableRow>
-        </Table>
+        <ProbeType
+          cards={cards}
+          onData={handleProbeType}
+          IsNeedleChange={setIsNeedleChange}
+        />
 
-        <VprobeDetail needle={selectNeedle} contents={contents} />
+        <Collapse in={selectNeedle && isNeedleChange}>
+          <Box
+            sx={{
+              height: isNeedleChange ? "auto" : "0",
+              overflow: "hidden",
+            }}
+          >
+            <VprobeDetail needle={selectNeedle} contents={contents} />
+          </Box>
+        </Collapse>
       </Wrapper>
+      <Footer />
     </>
   );
 }

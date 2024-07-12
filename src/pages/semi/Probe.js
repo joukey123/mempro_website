@@ -6,7 +6,14 @@ import Footer from "../../components/Footer";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import line from "../../img/line.svg";
+import Fab from "@mui/material/Fab";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
+import ReplayIcon from "@mui/icons-material/Replay";
+import Cards from "../../components/article/Cards";
 
+import ExpandLessOutlinedIcon from "@mui/icons-material/ExpandLessOutlined";
+import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
 const Wrapper = styled.div`
   width: 100%;
   max-width: 1280px;
@@ -17,20 +24,7 @@ const Wrapper = styled.div`
   padding: 0 50px;
   position: relative;
 `;
-const DiagramWpper = styled.div`
-  width: 100%;
-  max-width: 1100px;
-  height: 800px;
-  margin: 0 auto;
-  border-radius: 15px;
-  background-color: ${(props) => props.theme.colors.white};
-  padding: 50px;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 80px;
-`;
+
 const DiagramImg = styled(motion.img)`
   width: 100%;
   max-width: 400px;
@@ -50,12 +44,18 @@ const Step1 = styled(motion.img)`
   z-index: 100;
   filter: ${(props) => props.$isZoom && "blur(10px)"};
 `;
+// const BtnWrapper = styled.div`
+//   position: absolute;
+//   right: 50px;
+//   bottom: 50px;
+// `;
 const BtnWrapper = styled.div`
   position: absolute;
   right: 50px;
   bottom: 50px;
+  display: flex;
+  flex-direction: column;
 `;
-
 const ZoomBtn = styled.button`
   display: flex;
   width: 50px;
@@ -77,12 +77,11 @@ const ZoomBtn = styled.button`
     transition: all 0.2s ease-in-out;
   }
 `;
-
 const ZooWrapper = styled(motion.div)`
   width: 100%;
-  max-width: 700px;
-  height: 850px;
-  border-radius: 25px 25px 0 0px;
+  max-width: 750px;
+  height: 750px;
+  border-radius: 8px 8px 0 0px;
   background-color: rgba(0, 0, 0, 0.8);
   position: absolute;
   z-index: 101;
@@ -91,16 +90,16 @@ const ZooWrapper = styled(motion.div)`
   justify-content: center;
 `;
 
-const Cards = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -70%);
-  color: white;
-`;
+// const Cards = styled.div`
+//   display: grid;
+//   grid-template-columns: repeat(3, 1fr);
+//   gap: 30px;
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -70%);
+//   color: white;
+// `;
 
 const Card = styled.div`
   display: flex;
@@ -165,109 +164,62 @@ const Part = styled(motion.img)`
   visibility: ${(props) => props.$isPlay && "hidden"};
   filter: ${(props) => props.$isZoom && "blur(10px)"};
 `;
-function Probe() {
-  const location = useLocation();
-  const paths = location.pathname.split("/").filter(Boolean);
 
-  const porbeArray = ["probe", "cantilever", "vertical"];
-  const [sublink, setSublink] = useState(paths[2]);
-  const { images, contents, item, warning } = itemsDetail[`${sublink}`];
+const DiagramWpper = styled.div`
+  width: 100%;
+  max-width: 1100px;
+  height: 800px;
+  margin: 0 auto;
+  border-radius: 15px;
+  background-color: ${(props) => props.theme.colors.white};
+  padding: 50px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+`;
+
+const CardWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+`;
+
+function Probe({ images, item }) {
   const [isZoom, setIsZoom] = useState(false);
-  const [playAnimation, setPlayAnimation] = useState(false);
 
   const handleZoomDiagram = () => {
     setIsZoom((prev) => !prev);
   };
 
-  const handleClickProbe = (item) => {
-    setSublink(item);
-  };
-  const handlePlayAnimation = () => {
-    setPlayAnimation(true);
-    setTimeout(() => {
-      setPlayAnimation(false);
-    }, 4000);
-  };
-
-  useEffect(() => {
-    setTimeout(() => {
-      setPlayAnimation(true);
-    }, 1000);
-    setTimeout(() => {
-      setPlayAnimation(false);
-    }, 5000);
-  }, []);
-
-  const lines = {
-    hidden: {
-      pathLength: 0,
-      fill: "rgba(255, 255, 255, 0)",
-    },
-    visible: {
-      pathLength: 1,
-      fill: "rgba(255, 255, 255, 1)",
-    },
-  };
-
-  const Line = styled.div`
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    visibility: ${(props) => (props.$isPlay || props.$isZoom) && "hidden"};
-  `;
-
   return (
     <>
-      <Wrapper>
-        <div
-          style={{
-            width: "100%",
-            maxWidth: 1100,
-            margin: "0 auto",
-            marginBottom: 30,
-          }}
-        >
-          {porbeArray.map((item, index) => (
-            <ProbeName
-              key={index}
-              onClick={() => handleClickProbe(item)}
-              $isClick={sublink === item}
+      <DiagramWpper>
+        <DiagramImg src={images.machine} $isZoom={isZoom} />
+        <Step1 src={images.diagram} $isZoom={isZoom} />
+        <BtnWrapper>
+          <Fab
+            color="primary"
+            aria-label="add"
+            onClick={handleZoomDiagram}
+            sx={{ marginBottom: 1 }}
+          >
+            {isZoom ? <ExpandMoreOutlinedIcon /> : <ExpandLessOutlinedIcon />}
+          </Fab>
+        </BtnWrapper>
+
+        <AnimatePresence>
+          {isZoom && (
+            <ZooWrapper
+              initial={{
+                top: "100%",
+                left: "50%",
+                transform: "translate(-50%,0%)",
+              }}
+              animate={{ top: "6%" }}
+              exit={{ top: "100%" }}
+              transition={{ duration: 0.1 }}
             >
-              <Link to={`/semi/parts/${sublink}`}>{item}</Link>
-            </ProbeName>
-          ))}
-        </div>
-        <Headline
-          item={{ ...itemsDetail[`${sublink}`] }}
-          text="
-        We provide the necessary parts for the probe card."
-        />
-
-        {sublink === "probe" && (
-          <DiagramWpper>
-            <DiagramImg src={images.machine} $isZoom={isZoom} />
-            <Step1 src={images.diagram} $isZoom={isZoom} />
-            <BtnWrapper>
-              <ZoomBtn onClick={handleZoomDiagram} $isZoom={isZoom}>
-                <i class="fa-solid fa-plus"></i>
-              </ZoomBtn>
-            </BtnWrapper>
-
-            <AnimatePresence>
-              {isZoom && (
-                <ZooWrapper
-                  initial={{
-                    top: "100%",
-                    left: "50%",
-                    transform: "translate(-50%,0%)",
-                  }}
-                  animate={{ top: "6%" }}
-                  exit={{ top: "100%" }}
-                  transition={{ duration: 0.1 }}
-                >
-                  <Cards class="cards">
+              {/* <Cards class="cards">
                     <h1
                       style={{
                         gridColumnStart: 1,
@@ -294,14 +246,16 @@ function Probe() {
                         <CardText>{item.title}</CardText>
                       </Card>
                     ))}
-                  </Cards>
-                </ZooWrapper>
-              )}
-            </AnimatePresence>
-          </DiagramWpper>
-        )}
-      </Wrapper>
-      <Footer />
+                  </Cards> */}
+              <CardWrapper>
+                {item.map((item, index) => (
+                  <Cards title={item.title} img={item.img} link={item.link} />
+                ))}
+              </CardWrapper>
+            </ZooWrapper>
+          )}
+        </AnimatePresence>
+      </DiagramWpper>
     </>
   );
 }

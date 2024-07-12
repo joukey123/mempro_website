@@ -39,7 +39,7 @@ const OverText = styled(motion.span)`
 function LinkBtn({ icon, link, text }) {
   const [isMouseOn, setIsMouseOn] = useState(false);
   const handleMouseOn = () => {
-    setIsMouseOn(true);
+    setIsMouseOn(false);
   };
   const handleMouseLeave = () => {
     setIsMouseOn(false);

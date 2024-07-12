@@ -9,7 +9,15 @@ import { motion, useAnimate } from "framer-motion";
 import step1 from "../../img/diamond/step1.svg";
 import step3 from "../../img/diamond/step3.svg";
 import Headline from "../../components/article/Headline";
+import { Collapse, Fab } from "@mui/material";
 
+import ReplayIcon from "@mui/icons-material/Replay";
+import ZoomInIcon from "@mui/icons-material/ZoomIn";
+import ZoomOutIcon from "@mui/icons-material/ZoomOut";
+import ContentsTitle from "../../components/ContentsTitle";
+import Carousel from "../../components/Carousel";
+import Application from "../../components/Application";
+import Features from "../../components/Features";
 const Wrapper = styled.div`
   width: 100%;
   max-width: 1280px;
@@ -23,7 +31,7 @@ const Wrapper = styled.div`
 const DiagramWpper = styled.div`
   width: 100%;
   max-width: 1100px;
-  height: 500px;
+  height: 600px;
   margin: 0 auto;
   border-radius: 15px;
   background-color: ${(props) => props.theme.colors.white};
@@ -38,14 +46,14 @@ const DiagramImg = styled(motion.img)`
   height: 500px;
   object-fit: contain;
   object-position: center center;
-  transform: scale(0.8);
+  transform: scale(0.9);
   z-index: 99;
-  animation: ${(props) =>
-    props.$isZoom ? "zoomin .3s ease forwards" : "zoomout .3s ease forwards"};
+  margin-top: 50px;
+  animation: ${(props) => props.$isZoom && "zoomin .3s ease forwards"};
 
   @keyframes zoomin {
     from {
-      transform: scale(0.8);
+      transform: scale(0.9);
     }
     to {
       transform: scale(3) translateX(20%) translateY(10%);
@@ -56,7 +64,7 @@ const DiagramImg = styled(motion.img)`
       transform: scale(3);
     }
     to {
-      transform: scale(0.8);
+      transform: scale(0.9);
     }
   }
 `;
@@ -69,17 +77,17 @@ const Contents = styled.h2`
   font-weight: 400;
 `;
 
-const ContentsTitle = styled.div`
-  border-bottom: 0.3px solid rgba(0, 0, 0, 0.3);
-  padding-bottom: 3px;
-  max-width: 1100px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 30px;
-  font-size: 18px;
-  font-weight: 600;
-`;
+// const ContentsTitle = styled.div`
+//   border-bottom: 0.3px solid rgba(0, 0, 0, 0.3);
+//   padding-bottom: 3px;
+//   max-width: 1100px;
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+//   margin-bottom: 30px;
+//   font-size: 18px;
+//   font-weight: 600;
+// `;
 
 const ImgSlider = styled.div`
   width: 100%;
@@ -177,6 +185,9 @@ const BtnWrapper = styled.div`
   position: absolute;
   right: 50px;
   bottom: 50px;
+  visibility: ${(props) => props.$isPlay && "hidden"};
+  display: flex;
+  flex-direction: column;
 `;
 
 const ZoomBtn = styled.button`
@@ -203,8 +214,8 @@ const ZoomBtn = styled.button`
 
 const ZoomImg = styled(motion.img)`
   position: absolute;
-  top: 270px;
-  left: 280px;
+  top: 320px;
+  left: 260px;
   width: 150px;
   height: 150px;
 `;
@@ -232,7 +243,11 @@ function DiamondWire() {
   const [isZoom, setIsZoom] = useState(false);
   const [playAnimation, setPlayAnimation] = useState(false);
   const length = contents.sem.length;
+  const [expendClicked, setExpendClicked] = useState(true);
 
+  const showContent = (show) => {
+    setExpendClicked(show);
+  };
   const handleImgSlider = (text) => {
     if (text === "prev") {
       setIndex((prev) => (prev === 0 ? (prev = length - 1) : prev - 1));
@@ -246,16 +261,19 @@ function DiamondWire() {
   };
 
   const handlePlayAnimtion = () => {
-    setPlayAnimation(false);
+    setPlayAnimation(true);
     setTimeout(() => {
-      setPlayAnimation(true);
-    }, 100);
+      setPlayAnimation(false);
+    }, 5000);
   };
 
   useEffect(() => {
     setTimeout(() => {
       setPlayAnimation(true);
     }, 1000);
+    setTimeout(() => {
+      setPlayAnimation(false);
+    }, 5000);
   }, []);
 
   return (
@@ -267,8 +285,8 @@ function DiamondWire() {
           <DiagramImg
             src={images}
             $isZoom={isZoom}
-            initial={{ scale: 0.8 }}
-            animate={{ scale: 0.8 }}
+            initial={{ scale: 0.9 }}
+            animate={{ scale: 0.9 }}
           />
           {playAnimation && (
             <>
@@ -279,7 +297,7 @@ function DiamondWire() {
                 transition={{ duration: 2, delay: 1 }}
                 $isZoom={isZoom}
               />
-              (
+
               <Step2
                 src={step3}
                 initial={{ top: "46%", opacity: 0, zIndex: 98 }}
@@ -287,17 +305,33 @@ function DiamondWire() {
                 transition={{ duration: 1, delay: 2.2 }}
                 $isZoom={isZoom}
               />
-              )
             </>
           )}
 
-          <BtnWrapper>
-            <ZoomBtn onClick={handlePlayAnimtion}>
+          <BtnWrapper $isPlay={playAnimation}>
+            <Fab
+              color="primary"
+              aria-label="add"
+              onClick={handleZoomDiagram}
+              sx={{ marginBottom: 1 }}
+            >
+              {isZoom ? <ZoomOutIcon /> : <ZoomInIcon />}
+            </Fab>
+            <Fab
+              color="primary"
+              aria-label="add"
+              onClick={handlePlayAnimtion}
+              sx={{ marginBottom: 1 }}
+            >
+              <ReplayIcon />
+            </Fab>
+
+            {/* <ZoomBtn onClick={handlePlayAnimtion}>
               <i class="fa-solid fa-arrows-rotate"></i>
             </ZoomBtn>
             <ZoomBtn onClick={handleZoomDiagram} $isZoom={isZoom}>
               <i class="fa-solid fa-magnifying-glass"></i>
-            </ZoomBtn>
+            </ZoomBtn> */}
           </BtnWrapper>
           {isZoom && (
             <ZoomImg
@@ -309,57 +343,9 @@ function DiamondWire() {
           )}
         </DiagramWpper>
         <Contents>
-          <div className="features" style={{ margin: "150px 0" }}>
-            <ContentsTitle>
-              <span>Features</span>
-            </ContentsTitle>
-            <ContentsWrapper
-              $length={contents.features.length}
-              style={{ gap: 150 }}
-            >
-              {contents.features.map((item, index) => (
-                <IconWrapper key={index}>
-                  <Icon className={`img${index}`} src={item.icon} />
-                  <div>{item.text}</div>
-                </IconWrapper>
-              ))}
-            </ContentsWrapper>
-          </div>
-          <div className="sem" style={{ margin: "150px 0" }}>
-            <ContentsTitle>
-              <span>SEM</span>
-            </ContentsTitle>
-            <ImgSlider>
-              <ImgSliderBtn onClick={() => handleImgSlider("prev")}>
-                <i className="fa-solid fa-chevron-left"></i>
-              </ImgSliderBtn>
-              <ImgSliderWrapper>
-                <ImgSliderBox src={contents.sem[index].img} />
-                <span>{contents.sem[index].text}</span>
-                <CircleBox>
-                  {contents.sem.map((item, indexs) => (
-                    <Circle key={indexs} $isActive={indexs === index}></Circle>
-                  ))}
-                </CircleBox>
-              </ImgSliderWrapper>
-              <ImgSliderBtn onClick={() => handleImgSlider("next")}>
-                <i className="fa-solid fa-chevron-right"></i>
-              </ImgSliderBtn>
-            </ImgSlider>
-          </div>
-          <div className="components" style={{ marginTop: "150px " }}>
-            <ContentsTitle>
-              <span>Components</span>
-            </ContentsTitle>
-            <ContentsWrapper $length={contents.applications.length}>
-              {contents.applications.map((item) => (
-                <div>
-                  <ApplicationImg src={item.img} />
-                  <div>{item.text}</div>
-                </div>
-              ))}
-            </ContentsWrapper>
-          </div>
+          <Features contents={contents} />
+          <Carousel contents={contents} />
+          <Application contents={contents} />
         </Contents>
       </Wrapper>
 
