@@ -25,6 +25,7 @@ export const useCategory = () => {
 
     if (paths.length > 0) {
       const mainPath = paths[0];
+
       const mainItem = items.find((item) => item.link === mainPath);
       if (mainItem) {
         foundCategory = mainItem.category;

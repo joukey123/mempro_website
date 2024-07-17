@@ -122,15 +122,15 @@ const CantileverProbeInfo = ({ tableHeader }) => (
           y1="105.3"
           x2="471.17"
           y2="105.3"
-          $hover={tableHeader === "Pin Length"}
+          $hover={tableHeader === "3"}
         />
         <Polygon
           points="4.6 107.3 1.15 105.3 4.6 103.31 4.6 107.3"
-          $hover={tableHeader === "Pin Length"}
+          $hover={tableHeader === "3"}
         />
         <Polygon
           points="470.58 107.3 474.04 105.3 470.58 103.31 470.58 107.3"
-          $hover={tableHeader === "Pin Length"}
+          $hover={tableHeader === "3"}
         />
       </g>
       {/* X-position */}
@@ -140,15 +140,15 @@ const CantileverProbeInfo = ({ tableHeader }) => (
           y1="56.63"
           x2="50.7"
           y2="56.63"
-          $hover={tableHeader === "X-position"}
+          $hover={tableHeader === "0"}
         />
         <Polygon
           points="4.6 58.62 1.15 56.63 4.6 54.63 4.6 58.62"
-          $hover={tableHeader === "X-position"}
+          $hover={tableHeader === "0"}
         />
         <Polygon
           points="50.11 58.62 53.57 56.63 50.11 54.63 50.11 58.62"
-          $hover={tableHeader === "X-position"}
+          $hover={tableHeader === "0"}
         />
       </g>
       <text
@@ -236,15 +236,15 @@ const CantileverProbeInfo = ({ tableHeader }) => (
           y1="81.52"
           x2="138.2"
           y2="81.52"
-          $hover={tableHeader === "Taper Length"}
+          $hover={tableHeader === "2"}
         />
         <Polygon
           points="4.6 83.52 1.15 81.52 4.6 79.53 4.6 83.52"
-          $hover={tableHeader === "Taper Length"}
+          $hover={tableHeader === "2"}
         />
         <Polygon
           points="137.62 83.52 141.07 81.52 137.62 79.53 137.62 83.52"
-          $hover={tableHeader === "Taper Length"}
+          $hover={tableHeader === "2"}
         />
       </g>
       <text
@@ -294,30 +294,30 @@ const CantileverProbeInfo = ({ tableHeader }) => (
         x2="105.93"
         y2="39"
       />
-      {/* taper Diameter */}
+      {/* Tap Diameter */}
       <g>
         <Line
-          $hover={tableHeader === "Taper Diameter"}
+          $hover={tableHeader === "1"}
           x1="112.56"
           y1="43.12"
           x2="112.56"
           y2="48.75"
         />
         <Polygon
-          $hover={tableHeader === "Taper Diameter"}
+          $hover={tableHeader === "1"}
           points="110.07 43.85 112.56 39.54 115.06 43.85 110.07 43.85"
         />
       </g>
       <g>
         <Line
-          $hover={tableHeader === "Taper Diameter"}
+          $hover={tableHeader === "1"}
           x1="112.56"
           y1="18.86"
           x2="112.56"
           y2="11.89"
         />
         <Polygon
-          $hover={tableHeader === "Taper Diameter"}
+          $hover={tableHeader === "1"}
           points="115.06 18.13 112.56 22.45 110.07 18.13 115.06 18.13"
         />
       </g>
@@ -368,10 +368,10 @@ const CantileverProbeInfo = ({ tableHeader }) => (
           y1="43.12"
           x2="480.67"
           y2="48.75"
-          $hover={tableHeader === "Pin Diameter"}
+          $hover={tableHeader === "4"}
         />
         <Polygon
-          $hover={tableHeader === "Pin Diameter"}
+          $hover={tableHeader === "4"}
           points="478.18 43.85 480.67 39.54 483.16 43.85 478.18 43.85"
         />
       </g>
@@ -381,10 +381,10 @@ const CantileverProbeInfo = ({ tableHeader }) => (
           y1="18.86"
           x2="480.67"
           y2="11.89"
-          $hover={tableHeader === "Pin Diameter"}
+          $hover={tableHeader === "4"}
         />
         <Polygon
-          $hover={tableHeader === "Pin Diameter"}
+          $hover={tableHeader === "4"}
           points="483.16 18.13 480.67 22.45 478.18 18.13 483.16 18.13"
         />
       </g>

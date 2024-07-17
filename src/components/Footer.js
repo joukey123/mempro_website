@@ -17,6 +17,9 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import EmailIcon from "@mui/icons-material/Email";
 import Tooltip from "@mui/material/Tooltip";
 import Fab from "@mui/material/Fab";
+import BusinessIcon from "@mui/icons-material/Business";
+import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
+import FaxIcon from "@mui/icons-material/Fax";
 
 const FooterWrapper = styled.div`
   width: 100%;
@@ -73,6 +76,7 @@ const InfoAddress = styled.div`
   display: flex;
   flex-direction: column;
   width: 40%;
+
   h2 {
     line-height: 1.2;
   }
@@ -91,7 +95,6 @@ const Link = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  transform: scale(0.9);
 `;
 function Footer() {
   const [offices, setOffices] = useState(0);
@@ -130,7 +133,16 @@ function Footer() {
         {match ? <Logo $url={logo} /> : <Logo $url={logo2} />}
         <Info>
           <InfoAddress>
-            <h1>ADDRESS</h1>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                marginBottom: "15px",
+              }}
+            >
+              <BusinessIcon sx={{ marginRight: 1 }} />
+              <h1>ADDRESS</h1>
+            </div>
             <h2 id="nation">
               <NationSpan
                 onClick={() => handleOffices("korea")}
@@ -149,13 +161,40 @@ function Footer() {
             <h2 id="add">{add[offices].address}</h2>
           </InfoAddress>
           <Tell>
-            <h1>TEL</h1>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                marginBottom: "5px",
+              }}
+            >
+              <PhoneAndroidIcon sx={{ marginRight: 0.5 }} />
+              <h1>TEL</h1>
+            </div>
             <h2>{add[offices].tell}</h2>
-            <h1>FAX</h1>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                marginBottom: "5px",
+              }}
+            >
+              <FaxIcon sx={{ marginRight: 0.5 }} />
+              <h1>FAX</h1>
+            </div>
             <h2>{add[offices].fax}</h2>
           </Tell>
           <Mail>
-            <h1>MAIL</h1>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                marginBottom: "5px",
+              }}
+            >
+              <EmailIcon sx={{ marginRight: 0.5 }} />
+              <h1>MAIL</h1>
+            </div>
             <h2>{add[offices].mail}</h2>
           </Mail>
           <Link>
@@ -166,9 +205,9 @@ function Footer() {
                 arrow
               >
                 <Fab
-                  color="primary"
                   target="_blank"
                   onClick={() => window.open(`${item.link}`)}
+                  sx={{ backgroundColor: "rgba(0,0,0,0.1)", boxShadow: 0 }}
                 >
                   {item.icon}
                 </Fab>

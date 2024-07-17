@@ -6,18 +6,12 @@ import { items } from "../data";
 import Office from "../pages/about/Office";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import Alert from "@mui/material/Alert";
-import AlertTitle from "@mui/material/AlertTitle";
 const Wrapper = styled.div`
   width: 100%;
   max-width: 1280px;
-  padding: 0px 0 50px 80px;
+  padding: 60px 0 30px 80px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  margin: 0px auto;
   margin-bottom: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 `;
 
 const Category = styled.h1`
@@ -162,34 +156,136 @@ function CurrentNav() {
   };
 
   const handleSelectSub = (item) => {
+    console.log(item);
     setSelectSubCategory(item);
     navigate(`${getSubcategoryLink(item)}`);
   };
   return (
     <Wrapper>
-      <ToggleButtonGroup
-        color="primary"
-        value={selectAboutMenu}
-        exclusive
-        aria-label="Platform"
+      <Category>
+        {currentCategory}
+        {currentCategory !== "about MEMPro" &&
+          currentCategory !== "contact" && (
+            <>
+              &nbsp; &nbsp; &middot; &nbsp; &nbsp;
+              <span>Parts</span>
+            </>
+          )}
+      </Category>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+        }}
       >
-        {aboutMenu.map((item, index) => (
-          <ToggleButton
-            value={item}
-            key={index}
-            onClick={() => handleSelectAboutMenu(item)}
-            sx={{ textTransform: "capitalize", width: 180, height: 50.88 }}
+        {currentDiagrams.length > 0 && currentCategory !== "about MEMPro" ? (
+          <ToggleButtonGroup
+            color="primary"
+            value={selectDiagram}
+            exclusive
+            aria-label="Platform"
           >
-            {item}
-          </ToggleButton>
-        ))}
-      </ToggleButtonGroup>
-      <Alert
-        severity="info"
-        sx={{ width: "100%", maxWidth: 450, margin: "0px auto" }}
-      >
-        We provide the necessary parts for the probe card.
-      </Alert>
+            {currentDiagrams.map((diagram, index) => (
+              <ToggleButton
+                value={diagram}
+                key={index}
+                onClick={() => handleDiagramClick(diagram)}
+                sx={{ textTransform: "capitalize", width: 180, height: 40 }}
+              >
+                {diagram}
+              </ToggleButton>
+            ))}
+          </ToggleButtonGroup>
+        ) : (
+          <>
+            <ToggleButtonGroup
+              color="primary"
+              value={selectAboutMenu}
+              exclusive
+              aria-label="Platform"
+            >
+              {aboutMenu.map((item, index) => (
+                <ToggleButton
+                  value={item}
+                  key={index}
+                  onClick={() => handleSelectAboutMenu(item)}
+                  sx={{ textTransform: "capitalize", width: 180, height: 40 }}
+                >
+                  {/* <Link
+                  $isClick={item.toLocaleLowerCase() === lo}
+                  to={`/about/${item.toLocaleLowerCase()}`}
+                 
+                > */}
+                  {item}
+                  {/* </Link> */}
+                </ToggleButton>
+              ))}
+            </ToggleButtonGroup>
+          </>
+        )}
+
+        {/* {currentDiagrams.length > 0 && currentCategory !== "about MEMPro" ? (
+        <Diagrams>
+          {currentDiagrams.map((diagram, index) => (
+            <li key={index} onClick={() => handleDiagramClick(diagram)}>
+              <DiagramLink $isClick={selectDiagram === diagram}>
+                {diagram}
+              </DiagramLink>
+            </li>
+          ))}
+        </Diagrams>
+      ) : (
+        <>
+          <ToggleButtonGroup
+            color="primary"
+            value={selectAboutMenu}
+            exclusive
+            aria-label="Platform"
+          >
+            {aboutMenu.map((item, index) => (
+              <ToggleButton
+                key={index}
+                value={item}
+                onClick={() => handleSelectAboutMenu(item)}
+              >
+                <Link
+                  $isClick={item.toLocaleLowerCase() === lo}
+                  to={`/about/${item.toLocaleLowerCase()}`}
+                >
+                {item}
+                </Link>
+              </ToggleButton>
+            ))}
+          </ToggleButtonGroup>
+        </>
+      )} */}
+        {currentCategory !== "about MEMPro" &&
+          currentCategory !== "contact" && (
+            <ToggleButtonGroup
+              color="warning"
+              value={selectSubCategory}
+              exclusive
+              aria-label="Platform"
+              sx={{ marginTop: 2 }}
+            >
+              {currentSubcategory.map((item, index) => (
+                <ToggleButton
+                  key={index}
+                  value={item}
+                  onClick={() => handleSelectSub(item)}
+                  sx={{ textTransform: "capitalize", width: 180, height: 40 }}
+                >
+                  {/* <SubLink
+                to={getSubcategoryLink(item)}
+                $isClick={item === currentSubcategoryName}
+              > */}
+                  {item}
+                  {/* </SubLink> */}
+                </ToggleButton>
+              ))}
+            </ToggleButtonGroup>
+          )}
+      </div>
     </Wrapper>
   );
 }

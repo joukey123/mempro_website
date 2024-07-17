@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Header from "../../components/Header";
-import CurrentNav from "../../components/CurrentNav";
+import CurrentNav from "../CurrentNav";
 import { useCategory } from "../../Hook/useCategory";
 import Breadcrumbs from "./Breadcrumbs";
 const Warpper = styled.div`
@@ -50,7 +50,6 @@ function PageHeader() {
           <BlackBox />
         </ImgWarpper>
         <Breadcrumbs />
-        {/* <CurrentNav /> */}
       </Warpper>
     </>
   );

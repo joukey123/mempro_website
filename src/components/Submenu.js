@@ -6,12 +6,12 @@ import { machine } from "../data";
 const Wrapper = styled(motion.div)`
   display: flex;
   flex-direction: row;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(255, 255, 255, 0.96);
   color: black;
   position: absolute;
   top: 30px;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 5px;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.4);
 `;
 const SubmenuWrapper = styled.ul`

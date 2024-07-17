@@ -111,7 +111,7 @@ const TubeInfo = ({ tableHeader }) => (
     <g id="uuid-2e67e37d-1e8a-49a0-aa41-04b3434105d7" data-name="레이어 1">
       <g>
         <Line
-          $hover={tableHeader === "Standard Length"}
+          $hover={tableHeader === "4"}
           class="uuid-d320c057-5045-435d-8c7c-427fea932d58"
           x1="3.11"
           y1="60.02"
@@ -119,12 +119,12 @@ const TubeInfo = ({ tableHeader }) => (
           y2="33.03"
         />
         <Polygon
-          $hover={tableHeader === "Standard Length"}
+          $hover={tableHeader === "4"}
           class="uuid-d033623d-63c6-46bb-a65f-e3556e9a9307"
           points="3.88 61.95 .25 60.29 3.5 57.97 3.88 61.95"
         />
         <Polygon
-          $hover={tableHeader === "Standard Length"}
+          $hover={tableHeader === "4"}
           class="uuid-d033623d-63c6-46bb-a65f-e3556e9a9307"
           points="283.37 35.07 286.61 32.75 282.99 31.1 283.37 35.07"
         />
@@ -219,7 +219,7 @@ const TubeInfo = ({ tableHeader }) => (
       />
       <g>
         <Line
-          $hover={tableHeader === "Standard Wall Thickness"}
+          $hover={tableHeader === "2"}
           class="uuid-d320c057-5045-435d-8c7c-427fea932d58"
           x1="394.35"
           y1="54.59"
@@ -227,14 +227,14 @@ const TubeInfo = ({ tableHeader }) => (
           y2="54.59"
         />
         <Polygon
-          $hover={tableHeader === "Standard Wall Thickness"}
+          $hover={tableHeader === "2"}
           class="uuid-d033623d-63c6-46bb-a65f-e3556e9a9307"
           points="395.08 57.08 390.76 54.59 395.08 52.1 395.08 57.08"
         />
       </g>
       <g>
         <Line
-          $hover={tableHeader === "Standard Wall Thickness"}
+          $hover={tableHeader === "2"}
           class="uuid-d320c057-5045-435d-8c7c-427fea932d58"
           x1="379.44"
           y1="54.59"
@@ -242,14 +242,14 @@ const TubeInfo = ({ tableHeader }) => (
           y2="54.59"
         />
         <Polygon
-          $hover={tableHeader === "Standard Wall Thickness"}
+          $hover={tableHeader === "2"}
           class="uuid-d033623d-63c6-46bb-a65f-e3556e9a9307"
           points="378.71 52.1 383.03 54.59 378.71 57.08 378.71 52.1"
         />
       </g>
       <g>
         <Line
-          $hover={tableHeader === "Standard Outside Diameter"}
+          $hover={tableHeader === "3"}
           class="uuid-d320c057-5045-435d-8c7c-427fea932d58"
           x1="386.88"
           y1="104.25"
@@ -257,22 +257,19 @@ const TubeInfo = ({ tableHeader }) => (
           y2="104.25"
         />
         <Polygon
-          $hover={tableHeader === "Standard Outside Diameter"}
+          $hover={tableHeader === "3"}
           class="uuid-d033623d-63c6-46bb-a65f-e3556e9a9307"
           points="387.47 106.25 384.01 104.25 387.47 102.26 387.47 106.25"
         />
         <Polygon
-          $hover={tableHeader === "Standard Outside Diameter"}
+          $hover={tableHeader === "3"}
           class="uuid-d033623d-63c6-46bb-a65f-e3556e9a9307"
           points="439.27 106.25 442.72 104.25 439.27 102.26 439.27 106.25"
         />
       </g>
       <g>
         <Line
-          $hover={
-            tableHeader === "Nominal Inside Diameter" ||
-            tableHeader === "Tolerance of Inside Diameter"
-          }
+          $hover={tableHeader === "0" || tableHeader === "1"}
           class="uuid-d320c057-5045-435d-8c7c-427fea932d58"
           x1="432.99"
           y1="17.79"
@@ -280,18 +277,12 @@ const TubeInfo = ({ tableHeader }) => (
           y2="17.79"
         />
         <Polygon
-          $hover={
-            tableHeader === "Nominal Inside Diameter" ||
-            tableHeader === "Tolerance of Inside Diameter"
-          }
+          $hover={tableHeader === "0" || tableHeader === "1"}
           class="uuid-d033623d-63c6-46bb-a65f-e3556e9a9307"
           points="432.41 15.8 435.86 17.79 432.41 19.79 432.41 15.8"
         />
         <Polygon
-          $hover={
-            tableHeader === "Nominal Inside Diameter" ||
-            tableHeader === "Tolerance of Inside Diameter"
-          }
+          $hover={tableHeader === "0" || tableHeader === "1"}
           class="uuid-d033623d-63c6-46bb-a65f-e3556e9a9307"
           points="394.22 15.8 390.76 17.79 394.22 19.79 394.22 15.8"
         />

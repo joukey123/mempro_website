@@ -18,6 +18,8 @@ import ContentsTitle from "../../components/ContentsTitle";
 import Carousel from "../../components/Carousel";
 import Application from "../../components/Application";
 import Features from "../../components/Features";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+
 const Wrapper = styled.div`
   width: 100%;
   max-width: 1280px;
@@ -267,14 +269,14 @@ function DiamondWire() {
     }, 5000);
   };
 
-  useEffect(() => {
-    setTimeout(() => {
-      setPlayAnimation(true);
-    }, 1000);
-    setTimeout(() => {
-      setPlayAnimation(false);
-    }, 5000);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setPlayAnimation(true);
+  //   }, 1000);
+  //   setTimeout(() => {
+  //     setPlayAnimation(false);
+  //   }, 5000);
+  // }, []);
 
   return (
     <>
@@ -323,7 +325,7 @@ function DiamondWire() {
               onClick={handlePlayAnimtion}
               sx={{ marginBottom: 1 }}
             >
-              <ReplayIcon />
+              <PlayArrowIcon />
             </Fab>
 
             {/* <ZoomBtn onClick={handlePlayAnimtion}>

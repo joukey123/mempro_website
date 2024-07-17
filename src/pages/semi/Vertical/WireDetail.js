@@ -172,14 +172,14 @@ function WireDetail({ contents, needle }) {
   ];
 
   const forceColumns = [
-    "Item",
+    "Category",
     "Ø30\nRhenium Tungsten",
     "Ø40\nRhenium Tungsten",
     "Ø50\nTungsten",
     "Ø70\nTungsten",
   ];
 
-  const data = React.useMemo(() => contents.spec2, []);
+  const data = React.useMemo(() => contents.spec, []);
   const forceData = React.useMemo(() => contents.force, []);
   const [tableHeader, setTableHeader] = useState("");
   const [index, setIndex] = useState(0);

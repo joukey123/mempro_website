@@ -2,6 +2,11 @@
 <svg id="uuid-a1771986-d1ce-4d9b-9377-80762ac82bba" data-name="레이어 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 297.25 304.48">
   <defs>
     <style>
+
+    * {
+      font-size: 8px;
+
+    }
       .uuid-da35f2e5-7446-43fb-8f2d-be4d7a3e37a3, .uuid-98abb488-b1ce-478b-959d-59349039061a {
         fill: #0269b7;
       }
@@ -11,7 +16,7 @@
       }
 
       .uuid-98abb488-b1ce-478b-959d-59349039061a, .uuid-0f7956f6-81b6-4676-82cc-a1d43b873f23 {
-        font-size: 13px;
+        font-size: 8px;
       }
 
       .uuid-98abb488-b1ce-478b-959d-59349039061a, .uuid-0f7956f6-81b6-4676-82cc-a1d43b873f23, .uuid-b16efc57-df13-4323-925b-3966d3fe9cbb, .uuid-dcd0c259-bd83-4eae-aaa0-a6dd0743fb8f {
@@ -51,7 +56,7 @@
       }
 
       .uuid-b16efc57-df13-4323-925b-3966d3fe9cbb, .uuid-dcd0c259-bd83-4eae-aaa0-a6dd0743fb8f {
-        font-size: 10px;
+        font-size: 8px;
       }
 
       .uuid-dcd0c259-bd83-4eae-aaa0-a6dd0743fb8f {
@@ -94,9 +99,9 @@
       <rect class="uuid-0e89eb17-85c1-4b76-ab79-f9dff73da239" x="81.46" y="251.85" width="135.52" height="5.66"/>
       <rect class="uuid-0e89eb17-85c1-4b76-ab79-f9dff73da239" x="58.43" y="257.5" width="177.26" height="11.14"/>
       <text class="uuid-dcd0c259-bd83-4eae-aaa0-a6dd0743fb8f" transform="translate(231.98 218.09)"><tspan x="0" y="0">Plasma</tspan></text>
-      <text class="uuid-b16efc57-df13-4323-925b-3966d3fe9cbb" transform="translate(134.57 248.65)"><tspan class="uuid-ea09815f-8977-46eb-8615-a0361eb09c58" x="0" y="0">W</tspan><tspan x="9.16" y="0">a</tspan><tspan class="uuid-10f3b19a-0731-4545-82a3-b7f688f0c6f7" x="14.66" y="0">f</tspan><tspan x="18.03" y="0">er</tspan></text>
-      <text class="uuid-98abb488-b1ce-478b-959d-59349039061a" transform="translate(119.89 170.45)"><tspan x="0" y="0">Elect</tspan><tspan class="uuid-bf8e1222-93eb-4a95-9a4f-6494e242c369" x="29.99" y="0">r</tspan><tspan x="34.66" y="0">ode</tspan></text>
-      <text class="uuid-0f7956f6-81b6-4676-82cc-a1d43b873f23" transform="translate(115.79 282.27)"><tspan class="uuid-095b5169-58d1-45e5-a0c2-f653dec0b0b9" x="0" y="0">F</tspan><tspan x="6.79" y="0">ocus Ring</tspan></text>
+      <text class="uuid-b16efc57-df13-4323-925b-3966d3fe9cbb" transform="translate(134.57 248.65)"><tspan class="uuid-ea09815f-8977-46eb-8615-a0361eb09c58" x="0" y="0">Wafer</tspan><tspan x="9.16" y="0"></tspan><tspan class="uuid-10f3b19a-0731-4545-82a3-b7f688f0c6f7" x="14.66" y="0"></tspan><tspan x="18.03" y="0"></tspan></text>
+      <text class="uuid-98abb488-b1ce-478b-959d-59349039061a" transform="translate(130.89 170.45)"><tspan x="0" y="0">Electrode</tspan><tspan class="uuid-bf8e1222-93eb-4a95-9a4f-6494e242c369" x="29.99" y="0"></tspan><tspan x="34.66" y="0"></tspan></text>
+      <text class="uuid-0f7956f6-81b6-4676-82cc-a1d43b873f23" transform="translate(120.79 280.27)"><tspan class="uuid-095b5169-58d1-45e5-a0c2-f653dec0b0b9" x="0" y="0"></tspan><tspan x="6.79" y="0">Focus Ring</tspan></text>
     </g>
   </g>
 </svg>

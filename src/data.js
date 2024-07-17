@@ -186,7 +186,7 @@ export const items = [
         diagram: "EDS-cantilever",
         subcategory: [
           { name: "Cantilever", link: "cantilever" },
-          { name: "Cantilever-Stiffener", link: "stiffener" },
+          // { name: "Cantilever-Stiffener", link: "stiffener" },
           { name: "Cantilever-Probe", link: "cprobe" },
           { name: "PI-Tube", link: "tube" },
         ],
@@ -195,9 +195,16 @@ export const items = [
         diagram: "EDS-vertical",
         subcategory: [
           { name: "Vertical", link: "vertical" },
-          { name: "Vertical-Stiffener", link: "vstiffener" },
+          // { name: "Vertical-Stiffener", link: "vstiffener" },
           { name: "Vertical-Probe", link: "vprobe" },
-          { name: "Ceramic HoleGuide", link: "ceramic" },
+          // { name: "Ceramic HoleGuide", link: "ceramic" },
+        ],
+      },
+      {
+        diagram: "Manufacture",
+        subcategory: [
+          { name: "Stiffener", link: "stiffener" },
+          { name: "Ceramic Hole Guide", link: "ceramic" },
         ],
       },
     ],
@@ -537,7 +544,7 @@ export const itemsDetail = {
     title: "Probe",
     description:
       "Are used to connect the integrated circuits located on a wafer to the ATE (Automated Test Equipment) to test that the electrical parameters and performance meet requirements before they are manufactured and shipped out.",
-    warning: "We provide the necessary parts for the probe card.",
+    // warning: "We provide the necessary parts for the probe card.",
 
     images: {
       machine: cantilever_machie,
@@ -581,7 +588,7 @@ export const itemsDetail = {
     title: "Cantilever Structure",
     description:
       "Are used to connect the integrated circuits located on a wafer to the ATE (Automated Test Equipment) to test that the electrical parameters and performance meet requirements before they are manufactured and shipped out.",
-    warning: "We provide the necessary parts for the probe card.",
+    // warning: "We provide the necessary parts for the probe card.",
     images: {
       part1: cantilever_part1,
       part2: cantilever_part2,
@@ -596,14 +603,17 @@ export const itemsDetail = {
       {
         title: "stiffener",
         img: item_stiffener,
+        link: "stiffener",
       },
       {
         title: "probe",
         img: item_probe,
+        link: "cprobe",
       },
       {
         title: "PI-Tube",
         img: item_pitube,
+        link: "tube",
       },
     ],
   },
@@ -661,7 +671,6 @@ export const itemsDetail = {
         img: coaxial,
         spec: [
           {
-            category: "Coaxial",
             specification: "Customizable",
             materialProbe: "Customizable",
             materialTube: "Brass (Au-Plated)",
@@ -800,7 +809,7 @@ export const itemsDetail = {
     title: "Vertical Structure",
     description:
       "Are used to connect the integrated circuits located on a wafer to the ATE (Automated Test Equipment) to test that the electrical parameters and performance meet requirements before they are manufactured and shipped out.",
-    warning: "We provide the necessary parts for the probe card.",
+    // warning: "We provide the necessary parts for the probe card.",
     images: {
       part1: vertical_part1,
       part2: vertical_part2,
@@ -936,7 +945,7 @@ export const itemsDetail = {
         img: wire,
         type: wireType,
 
-        spec2: [
+        spec: [
           {
             materialDiameter: "15 µm",
             toleranceA: "+2/-1",

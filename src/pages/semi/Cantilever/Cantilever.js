@@ -14,8 +14,7 @@ import ReplayIcon from "@mui/icons-material/Replay";
 import Cards from "../../../components/article/Cards";
 import Chip from "@mui/material/Chip";
 import Probe from "../Probe";
-import ZoomInOutlinedIcon from "@mui/icons-material/ZoomInOutlined";
-import ZoomOutOutlinedIcon from "@mui/icons-material/ZoomOutOutlined";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 
 import ExpandLessOutlinedIcon from "@mui/icons-material/ExpandLessOutlined";
 import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
@@ -178,6 +177,13 @@ const Part = styled(motion.img)`
   visibility: ${(props) => props.$isPlay && "hidden"};
   filter: ${(props) => props.$isZoom && "blur(10px)"};
 `;
+
+const StyledChip = styled(Chip)({
+  "&:hover": {
+    backgroundColor: "#1976D2", // 원하는 색상으로 변경
+    color: "#fff", // 원하는 텍스트 색상으로 변경
+  },
+});
 function Cantilever() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -208,14 +214,14 @@ function Cantilever() {
     }, 4000);
   };
 
-  useEffect(() => {
-    setTimeout(() => {
-      setPlayAnimation(true);
-    }, 1000);
-    setTimeout(() => {
-      setPlayAnimation(false);
-    }, 5000);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setPlayAnimation(true);
+  //   }, 1000);
+  //   setTimeout(() => {
+  //     setPlayAnimation(false);
+  //   }, 5000);
+  // }, []);
 
   const lines = {
     hidden: {
@@ -235,6 +241,10 @@ function Cantilever() {
     top: 0;
     left: 0;
     visibility: ${(props) => (props.$isPlay || props.$isZoom) && "hidden"};
+  `;
+
+  const SpanDiv = styled.div`
+    opacity: ${(props) => (props.$isPlay ? 0 : 1)};
   `;
 
   return (
@@ -405,33 +415,67 @@ function Cantilever() {
                   animate="visible"
                   transition={{ delay: 1 }}
                 />
+                <motion.line
+                  x1="31%"
+                  y1="550"
+                  x2="22%"
+                  y2="550"
+                  stroke="black"
+                  stroke-width="1"
+                  variants={lines}
+                  initial="hidden"
+                  animate="visible"
+                  transition={{ delay: 1 }}
+                />
               </svg>
-              <motion.span
-                style={{
-                  position: "absolute",
-                  top: 185,
-                  left: "32.5%",
-                  fontSize: 18,
-                }}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.5 }}
-              >
-                <Chip label="Stiffener" />
-              </motion.span>
-              <motion.span
-                style={{
-                  position: "absolute",
-                  top: 585,
-                  left: "8.5%",
-                  fontSize: 18,
-                }}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.5 }}
-              >
-                <Chip label="Probe, PI-Tube" />
-              </motion.span>
+              <SpanDiv $isPlay={playAnimation}>
+                <motion.span
+                  style={{
+                    position: "absolute",
+                    top: 185,
+                    left: "32.5%",
+                    fontSize: 18,
+                  }}
+                  initial={{ visibility: "hidden" }}
+                  animate={{ visibility: "visible" }}
+                  transition={{ delay: 1.5 }}
+                >
+                  <Link to={`/semi/parts/stiffener`}>
+                    <StyledChip label="Stiffener" />
+                  </Link>
+                </motion.span>
+                <motion.span
+                  style={{
+                    position: "absolute",
+                    top: 585,
+                    left: "14%",
+                    fontSize: 18,
+                  }}
+                  initial={{ visibility: "hidden" }}
+                  animate={{ visibility: "visible" }}
+                  transition={{ delay: 1.5 }}
+                >
+                  <Link to={`/semi/parts/cprobe`}>
+                    <StyledChip label="Probe" />
+                  </Link>
+                </motion.span>
+
+                <motion.span
+                  style={{
+                    position: "absolute",
+                    top: 535,
+                    left: "15%",
+                    fontSize: 18,
+                  }}
+                  initial={{ visibility: "hidden" }}
+                  animate={{ visibility: "visible" }}
+                  transition={{ delay: 1.5 }}
+                >
+                  <Link to={`/semi/parts/tube`}>
+                    <StyledChip label="PI-Tube" />
+                  </Link>
+                </motion.span>
+              </SpanDiv>
             </Line>
             {/* cantilever animation start */}
             {playAnimation && (
@@ -525,7 +569,7 @@ function Cantilever() {
                   aria-label="replay"
                   onClick={handlePlayAnimation}
                 >
-                  <ReplayIcon />
+                  <PlayArrowIcon />
                 </Fab>
               )}
             </BtnWrapper>

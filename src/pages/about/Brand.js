@@ -13,6 +13,9 @@ import Ci3 from "../../img/3.svg";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { AnimatePresence } from "framer-motion";
+import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
+import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import Snackbar from "@mui/material/Snackbar";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -45,6 +48,9 @@ const Title = styled.h1`
   font-weight: 800;
   margin-bottom: 5px;
   color: ${(props) => props.$color};
+  span {
+    font-size: 32px;
+  }
 `;
 const Text = styled.span`
   font-size: 1rem;
@@ -121,6 +127,7 @@ const TextBox = styled.div`
   span {
     margin: 3% 0;
     font-weight: 400;
+    font-size: 24px;
   }
 `;
 
@@ -178,6 +185,11 @@ const CiBtn = styled.div`
   justify-content: center;
   color: black;
   cursor: pointer;
+  svg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   &:hover {
     background-color: ${(props) => props.theme.colors.gray};
   }
@@ -243,8 +255,14 @@ function Brand() {
   ];
   const [index, setIndex] = useState(0);
   const [hoveredColorIndex, setHoveredColorIndex] = useState(null);
+  const [snakBarOpen, setSnakBarOpen] = useState(false);
+
   const copyColorNumber = (item) => {
     navigator.clipboard.writeText(item);
+    setSnakBarOpen(true);
+  };
+  const handleClose = () => {
+    setSnakBarOpen(false);
   };
   return (
     <>
@@ -265,7 +283,10 @@ function Brand() {
             <Text>Export Achievement</Text>
           </Box>
           <Box>
-            <Img $url={output} style={{ transform: "translateX(20px)" }} />
+            <Img
+              $url={output}
+              style={{ transform: " scale(1.25) translateX(20px)" }}
+            />
             <Title $color={"#008B3E"}>
               <CountUp end={9000000} duration={3} /> +
             </Title>
@@ -310,7 +331,7 @@ function Brand() {
                 );
               }}
             >
-              <i className="fa-solid fa-chevron-left"></i>
+              <NavigateBeforeIcon />
             </CiBtn>
             <CiImgWrapper>
               <CiImgBox $url={CiImages[index]}></CiImgBox>
@@ -327,7 +348,7 @@ function Brand() {
                 );
               }}
             >
-              <i className="fa-solid fa-chevron-right"></i>
+              <NavigateNextIcon />
             </CiBtn>
           </SliderWrapper>
           <Dec style={{ width: "650px" }}>
@@ -384,6 +405,12 @@ function Brand() {
             ))}
           </ColorBoxWrapper>
         </CiWrapper>
+        <Snackbar
+          open={snakBarOpen}
+          autoHideDuration={5000}
+          onClose={handleClose}
+          message="Copied to Clipboard!"
+        />
       </Wrapper>
       <Footer />
     </>

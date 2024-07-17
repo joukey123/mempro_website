@@ -7,7 +7,15 @@ import { useTable } from "react-table";
 import line from "../../../img/line.svg";
 import Footer from "../../../components/Footer";
 import TubeInfo from "./TubeInfo";
-
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+} from "@mui/material";
 const Wrapper = styled.div`
   width: 100%;
   max-width: 1280px;
@@ -51,62 +59,107 @@ const TableWrapper = styled.div`
   margin: 0 auto;
   padding: 0 50px;
 `;
-
-const Table = styled.table`
-  width: 100%;
-  max-width: 1200px;
-  height: 140px;
-  border-collapse: collapse;
-  text-align: center;
-  font-weight: 300;
-  font-size: 15px;
-
-  :first-child tr {
-    background: linear-gradient(to right, #2467a2, #253b78);
-  }
-  tr,
-  td {
-    padding: 15px;
-    border: 0.1px solid ${(props) => props.theme.colors.border};
-    &:hover {
-      background-color: ${(props) => props.theme.colors.white};
-    }
-  }
-  th {
-    color: white;
-    padding: 15px;
-    font-weight: 600;
-    width: 100px;
-    align-content: center;
+const StyledTableHead = styled(TableHead)`
+  && {
+    background: ${(props) => props.theme.palette.table.main};
   }
 `;
 
+const StyledTableCell = styled(TableCell)`
+  && {
+    text-align: center;
+    border-right: 1px solid #dfdfdf;
+    font-size: 16px;
+  }
+`;
+
+const StyledTableRow = styled(TableRow)(({ index }) => ({
+  "&:hover": {
+    backgroundColor: "#f5f5f5",
+    // ...(index === 0 && {
+    //   "& td:last-child": {
+    //     backgroundColor: "white",
+    //   },
+    //   "& td:nth-last-child(2)": {
+    //     backgroundColor: "white",
+    //   },
+    //   "& td:nth-last-child(3)": {
+    //     backgroundColor: "white",
+    //   },
+    // }),
+    // ...(index === 6 && {
+    //   "& td:last-child": {
+    //     backgroundColor: "white",
+    //   },
+    // }),
+  },
+}));
+
+// const Table = styled.table`
+//   width: 100%;
+//   max-width: 1200px;
+//   height: 140px;
+//   border-collapse: collapse;
+//   text-align: center;
+//   font-weight: 300;
+//   font-size: 15px;
+
+//   :first-child tr {
+//     background: linear-gradient(to right, #2467a2, #253b78);
+//   }
+//   tr,
+//   td {
+//     padding: 15px;
+//     border: 0.1px solid ${(props) => props.theme.colors.border};
+//     &:hover {
+//       background-color: ${(props) => props.theme.colors.white};
+//     }
+//   }
+//   th {
+//     color: white;
+//     padding: 15px;
+//     font-weight: 600;
+//     width: 100px;
+//     align-content: center;
+//   }
+// `;
+
 function Tube() {
-  const columns = React.useMemo(
-    () => [
-      { Header: "Nominal Inside Diameter", accessor: "nominalInsideDiameter" },
-      {
-        Header: "Tolerance of Inside Diameter",
-        accessor: "toleranceInsideDiameter",
-      },
-      { Header: "Standard Wall Thickness", accessor: "wallThickness" },
-      { Header: "Standard Outside Diameter", accessor: "outsideDiameter" },
-      { Header: "Standard Length", accessor: "length" },
-      { Header: "MOQ", accessor: "moq" },
-    ],
-    []
-  );
+  // const columns = React.useMemo(
+  //   () => [
+  //     { Header: "Nominal Inside Diameter", accessor: "nominalInsideDiameter" },
+  //     {
+  //       Header: "Tolerance of Inside Diameter",
+  //       accessor: "toleranceInsideDiameter",
+  //     },
+  //     { Header: "Standard Wall Thickness", accessor: "wallThickness" },
+  //     { Header: "Standard Outside Diameter", accessor: "outsideDiameter" },
+  //     { Header: "Standard Length", accessor: "length" },
+  //     { Header: "MOQ", accessor: "moq" },
+  //   ],
+  //   []
+  // );
+
+  const columns = [
+    "Nominal\nInside\nDiameter",
+    "Tolerance\nof\nInside\nDiameter",
+    "Standard\nWall\nThickness",
+    "Standard\nOutside\nDiameter",
+    "Standard\nLength",
+    "MOQ",
+  ];
   const data = React.useMemo(() => itemsDetail["tube"].spec[0].items, []);
   const location = useLocation();
   const paths = location.pathname.split("/").filter(Boolean);
   const [sublink, setSublink] = useState(paths[2]);
   const tube = itemsDetail[`${sublink}`];
-  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    useTable({ columns, data });
+  // const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+  //   useTable({ columns, data });
   const [tableHeader, setTableHeader] = useState("");
 
   const handleTableHeader = (tableheader) => {
-    setTableHeader(tableheader);
+    const tableheadertoString = String(tableheader);
+    setTableHeader(tableheadertoString);
   };
 
   return (
@@ -117,7 +170,7 @@ function Tube() {
           <NeedleImg src={tube.img} />
           <TubeInfo tableHeader={tableHeader} />
         </StructureWarpper>
-        <TableWrapper>
+        {/* <TableWrapper>
           <Table {...getTableProps()}>
             <thead>
               {headerGroups.map((headerGroup) => (
@@ -155,7 +208,70 @@ function Tube() {
               })}
             </tbody>
           </Table>
-        </TableWrapper>
+        </TableWrapper> */}
+        <TableContainer
+          component={Paper}
+          sx={{ width: "100%", maxWidth: 1100, margin: "0 auto" }}
+        >
+          <Table aria-label="transposed table">
+            <StyledTableHead>
+              <TableRow>
+                {columns.map((column) => (
+                  <StyledTableCell
+                    align="right"
+                    key={column}
+                    sx={{ color: "white" }}
+                  >
+                    {column}
+                  </StyledTableCell>
+                ))}
+              </TableRow>
+            </StyledTableHead>
+            <TableBody>
+              {data.map((row, index) => (
+                <StyledTableRow key={index} index={index}>
+                  <StyledTableCell
+                    align="center"
+                    sx={{ width: 200 }}
+                    onMouseOver={() => handleTableHeader(0)}
+                    onMouseLeave={() => handleTableHeader("")}
+                  >
+                    {row.nominalInsideDiameter}
+                  </StyledTableCell>
+                  <StyledTableCell
+                    onMouseOver={() => handleTableHeader(1)}
+                    onMouseLeave={() => handleTableHeader("")}
+                    sx={{ width: 200 }}
+                  >
+                    {row.toleranceInsideDiameter}
+                  </StyledTableCell>
+                  <StyledTableCell
+                    onMouseOver={() => handleTableHeader(2)}
+                    onMouseLeave={() => handleTableHeader("")}
+                    sx={{ width: 200 }}
+                  >
+                    {row.wallThickness}
+                  </StyledTableCell>
+                  <StyledTableCell
+                    onMouseOver={() => handleTableHeader(3)}
+                    onMouseLeave={() => handleTableHeader("")}
+                    sx={{ width: 200 }}
+                  >
+                    {row.outsideDiameter}
+                  </StyledTableCell>
+                  <StyledTableCell
+                    onMouseOver={() => handleTableHeader(4)}
+                    onMouseLeave={() => handleTableHeader("")}
+                    sx={{ width: 200 }}
+                  >
+                    {row.length}
+                  </StyledTableCell>
+                  <StyledTableCell>{row.moq}</StyledTableCell>
+                </StyledTableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
       </Wrapper>
       <Footer />
     </>

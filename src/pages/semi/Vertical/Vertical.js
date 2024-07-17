@@ -16,7 +16,8 @@ import Chip from "@mui/material/Chip";
 import Probe from "../Probe";
 import ExpandLessOutlinedIcon from "@mui/icons-material/ExpandLessOutlined";
 import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
-
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import Background from "three/examples/jsm/renderers/common/Background.js";
 const Wrapper = styled.div`
   width: 100%;
   max-width: 1280px;
@@ -176,6 +177,16 @@ const Part = styled(motion.img)`
   visibility: ${(props) => props.$isPlay && "hidden"};
   filter: ${(props) => props.$isZoom && "blur(10px)"};
 `;
+
+const StyledChip = styled(Chip)({
+  "&:hover": {
+    backgroundColor: "#1976D2", // 원하는 색상으로 변경
+    color: "#fff", // 원하는 텍스트 색상으로 변경
+  },
+});
+const SpanDiv = styled.div`
+  opacity: ${(props) => (props.$isPlay ? 0 : 1)};
+`;
 function Vertical() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -206,14 +217,14 @@ function Vertical() {
     }, 4000);
   };
 
-  useEffect(() => {
-    setTimeout(() => {
-      setPlayAnimation(true);
-    }, 1000);
-    setTimeout(() => {
-      setPlayAnimation(false);
-    }, 5000);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setPlayAnimation(true);
+  //   }, 1000);
+  //   setTimeout(() => {
+  //     setPlayAnimation(false);
+  //   }, 5000);
+  // }, []);
 
   const lines = {
     hidden: {
@@ -448,59 +459,69 @@ function Vertical() {
                   transition={{ delay: 1 }}
                 />
               </svg>
-              <motion.span
-                style={{
-                  position: "absolute",
-                  top: 135,
-                  left: "31.5%",
-                  fontSize: 18,
-                }}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.5 }}
-              >
-                <Chip label="Stiffener" />
-              </motion.span>
+              <SpanDiv $isPlay={playAnimation}>
+                <motion.span
+                  style={{
+                    position: "absolute",
+                    top: 135,
+                    left: "31.5%",
+                    fontSize: 18,
+                  }}
+                  initial={{ visibility: "hidden" }}
+                  animate={{ visibility: "visible" }}
+                  transition={{ delay: 1.5 }}
+                >
+                  <Link to={`/semi/parts/vstiffener`}>
+                    <StyledChip label="Stiffener" />
+                  </Link>
+                </motion.span>
 
-              <motion.span
-                style={{
-                  position: "absolute",
-                  top: 475,
-                  left: "14%",
-                  fontSize: 18,
-                }}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.5 }}
-              >
-                <Chip label="Ceramic Hole" />
-              </motion.span>
-              <motion.span
-                style={{
-                  position: "absolute",
-                  top: 575,
-                  left: "6%",
-                  fontSize: 18,
-                }}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.5 }}
-              >
-                <Chip label="Ceramic Guide Plate" />
-              </motion.span>
-              <motion.span
-                style={{
-                  position: "absolute",
-                  top: 735,
-                  left: "50%",
-                  fontSize: 18,
-                }}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.5 }}
-              >
-                <Chip label="Cobra, Wire, Short, PEMS" />
-              </motion.span>
+                <motion.span
+                  style={{
+                    position: "absolute",
+                    top: 475,
+                    left: "14%",
+                    fontSize: 18,
+                  }}
+                  initial={{ visibility: "hidden" }}
+                  animate={{ visibility: "visible" }}
+                  transition={{ delay: 1.5 }}
+                >
+                  <Link to={`/semi/parts/ceramic`}>
+                    <StyledChip label="Ceramic Hole" />
+                  </Link>
+                </motion.span>
+                <motion.span
+                  style={{
+                    position: "absolute",
+                    top: 575,
+                    left: "6%",
+                    fontSize: 18,
+                  }}
+                  initial={{ visibility: "hidden" }}
+                  animate={{ visibility: "visible" }}
+                  transition={{ delay: 1.5 }}
+                >
+                  <Link to={`/semi/parts/ceramic`}>
+                    <StyledChip label="Ceramic Guide Plate" />
+                  </Link>
+                </motion.span>
+                <motion.span
+                  style={{
+                    position: "absolute",
+                    top: 735,
+                    left: "50%",
+                    fontSize: 18,
+                  }}
+                  initial={{ visibility: "hidden" }}
+                  animate={{ visibility: "visible" }}
+                  transition={{ delay: 1.5 }}
+                >
+                  <Link to={`/semi/parts/vprobe`}>
+                    <StyledChip label="Cobra, Wire, Short, PEMS" />
+                  </Link>
+                </motion.span>
+              </SpanDiv>
             </Line>
             {/* vertical animation start */}
             {playAnimation && (
@@ -693,7 +714,7 @@ function Vertical() {
                   aria-label="replay"
                   onClick={handlePlayAnimation}
                 >
-                  <ReplayIcon />
+                  <PlayArrowIcon />
                 </Fab>
               )}
             </BtnWrapper>

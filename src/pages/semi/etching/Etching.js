@@ -149,10 +149,10 @@ const MaterialText = styled.span`
 `;
 
 const MaterialImg = styled.img`
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   object-fit: cover;
-  background-color: red;
+  object-position: center;
 `;
 
 const BtnWrapper = styled.div`
@@ -309,17 +309,19 @@ function Etching() {
                   display: "flex",
                   flexDirection: "column",
                   alignItems: "center",
-                  "& > *": {
-                    m: 2,
-                  },
                 }}
               >
-                <ButtonGroup variant="text" aria-label="Basic button group">
+                <ButtonGroup
+                  variant="text"
+                  aria-label="Basic button group"
+                  sx={{ marginBottom: 5 }}
+                >
                   {contents.material.map((item, index) => (
                     <Button
                       key={index}
                       onClick={() => handleClickMaterial(item.text, index)}
                       $isClick={index === selectMaterial}
+                      disabled={index === selectMaterial}
                     >
                       {item.text}
                     </Button>
@@ -330,10 +332,20 @@ function Etching() {
                   style={{ rowGap: 1, columnGap: 30 }}
                 >
                   {selectImg.map((item) => (
-                    <MaterialImg src={item.img} />
-                  ))}
-                  {selectImg.map((item) => (
-                    <div>{item.title}</div>
+                    <div style={{ position: "relative" }}>
+                      <MaterialImg src={item.img} />
+                      <div
+                        style={{
+                          backgroundColor: "rgba(0,0,0,0.8)",
+                          color: "white",
+                          position: "absolute",
+                          bottom: 0,
+                          width: "100%",
+                        }}
+                      >
+                        {item.title}
+                      </div>
+                    </div>
                   ))}
                 </ContentsWrapper>
               </Box>

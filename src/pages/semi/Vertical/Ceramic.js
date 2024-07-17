@@ -9,9 +9,11 @@ import ceramic_plus from "../../../img/vertical/ceramic_zoom.svg";
 import Fab from "@mui/material/Fab";
 
 import ReplayIcon from "@mui/icons-material/Replay";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 
 import ExpandLessOutlinedIcon from "@mui/icons-material/ExpandLessOutlined";
 import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
+
 const Wrapper = styled.div`
   width: 100%;
   max-width: 1280px;
@@ -54,7 +56,7 @@ const ImgBox = styled.div`
   position: absolute;
   top: 45%;
   left: 50%;
-  transform: scale(0.9) translate(-50%, -50%);
+  transform: scale(0.9) translate(-50%, -60%);
   filter: ${(props) => props.$isPlus && "blur(10px)"};
 `;
 const Step1 = styled(motion.img)`
@@ -126,7 +128,7 @@ const ZoomImg = styled.img`
 
 const CeramicText = styled.span`
   position: absolute;
-  top: 85%;
+  top: 76%;
   left: 52.5%;
   transform: translate(-50%, -50%);
   color: white;
@@ -142,24 +144,33 @@ function Ceramic() {
   const [animate2, setAnimate2] = useState(true);
   const [playAnimaion, setPlayAnimation] = useState(false);
   const [isPlus, setIsPlus] = useState(false);
-  const handlePlayAnimation = () => {
-    setPlayAnimation(false);
+  // const handlePlayAnimation = () => {
+  //   setPlayAnimation(false);
 
+  //   setTimeout(() => {
+  //     setPlayAnimation(true);
+  //     setAnimate1(true);
+  //     setAnimate2(true);
+  //   }, 0);
+  // };
+
+  const handlePlayAnimation = () => {
+    setPlayAnimation(true);
     setTimeout(() => {
-      setPlayAnimation(true);
+      setPlayAnimation(false);
       setAnimate1(true);
       setAnimate2(true);
-    }, 0);
+    }, 6000);
   };
 
   const handlePlusItem = () => {
     setIsPlus((prev) => !prev);
   };
-  useEffect(() => {
-    setTimeout(() => {
-      setPlayAnimation(true);
-    }, 0);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setPlayAnimation(true);
+  //   }, 0);
+  // }, []);
 
   return (
     <>
@@ -189,15 +200,15 @@ function Ceramic() {
                   src={images.step3}
                   style={{ maxWidth: "15px", height: "150px", opacity: 0 }}
                   initial={{
-                    top: "78.7%",
+                    top: "79%",
                     left: "-42%",
-                    transform: "translate(-100%, -50%)",
+                    transform: "translate(-100%, -52%)",
                     opacity: 0,
                   }}
                   animate={{
                     top: "79%",
                     left: "-31%",
-                    transform: "translate(-100%, -50%)",
+                    transform: "translate(-100%, -52%)",
                     opacity: animate1 ? 1 : 0,
                   }}
                   transition={{
@@ -210,15 +221,15 @@ function Ceramic() {
                   src={images.step3}
                   style={{ maxWidth: "15px", height: "150px", opacity: 0 }}
                   initial={{
-                    top: "78.7%",
+                    top: "79%",
                     left: "-13%",
-                    transform: "translate(-100%, -50%)",
+                    transform: "translate(-100%, -52%)",
                     opacity: 0,
                   }}
                   animate={{
                     top: "79%",
                     left: "-2.5%",
-                    transform: "translate(-100%, -50%)",
+                    transform: "translate(-100%, -52%)",
                     opacity: animate2 ? 1 : 0,
                   }}
                   transition={{
@@ -280,7 +291,7 @@ function Ceramic() {
               <i class="fa-solid fa-play"></i>
             </ZoomBtn>
           </BtnWrapper> */}
-          <BtnWrapper $isPlus={isPlus}>
+          <BtnWrapper $isPlus={isPlus} $isPlay={playAnimaion}>
             <Fab
               color="primary"
               aria-label="add"
@@ -295,7 +306,7 @@ function Ceramic() {
                 aria-label="replay"
                 onClick={handlePlayAnimation}
               >
-                <ReplayIcon />
+                <PlayArrowIcon />
               </Fab>
             )}
           </BtnWrapper>
