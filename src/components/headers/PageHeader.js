@@ -49,7 +49,7 @@ function PageHeader() {
           <Img src={headerImges} alt={currentCategory} />
           <BlackBox />
         </ImgWarpper>
-        <Breadcrumbs />
+        {currentCategory !== "contact" && <Breadcrumbs />}
       </Warpper>
     </>
   );

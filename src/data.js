@@ -4,6 +4,7 @@ import machines from "./img/machines.svg";
 //header 이미지 경로
 import aboutImg from "../src/img/about.jpg";
 import semiImg from "../src/img/semi.jpg";
+import contactImg from "../src/img/contact.jpg";
 
 // warning
 import semo_ex from "./img/semo_ex.svg";
@@ -121,6 +122,45 @@ import item_pitube from "../src/img/cantilever/item_pi-tube.svg";
 import { type } from "@testing-library/user-event/dist/type";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
 import FormatBoldIcon from "@mui/icons-material/FormatBold";
+
+//stiffener
+import canti1_svg from "../src/img/stiffener/canti1_svg.svg";
+import canti2_svg from "../src/img/stiffener/canti2_svg.svg";
+import cis_svg from "../src/img/stiffener/cis_svg.svg";
+
+import memory_model from "../src/img/stiffener/memory_model.gltf";
+
+import vertical1_svg from "../src/img/stiffener/vertical1_svg.svg";
+import vertical2_svg from "../src/img/stiffener/vertical2_svg.svg";
+import vertical3_svg from "../src/img/stiffener/vertical3_svg.svg";
+import vertical4_svg from "../src/img/stiffener/vertical4_svg.svg";
+import memory_svg from "../src/img/stiffener/memory_svg.svg";
+import hifix_svg from "../src/img/stiffener/hifix.svg";
+
+import shape1_svg from "../src/img/ceramic/shap1.svg";
+import shape2_svg from "../src/img/ceramic/shap2.svg";
+import shape3_svg from "../src/img/ceramic/shap3.svg";
+import shape4_svg from "../src/img/ceramic/shap4.svg";
+import shape5_svg from "../src/img/ceramic/shap5.svg";
+
+import Canti1Model from "./components/3D/Canti1Model";
+import Canti2Model from "./components/3D/Canti2Model";
+import Cis from "./components/3D/Cis";
+import Vertical1Model from "./components/3D/Vertical1Model";
+import Vertical2Model from "./components/3D/Vertical2Model";
+import Vertical3Model from "./components/3D/Vertical3Model";
+import Vertical4Model from "./components/3D/Vertical4Model";
+import MemoryModel from "./components/3D/MemoryModel";
+import HiFix from "./components/3D/HiFix";
+
+import Shape1Model from "./components/3D/Shape1Model";
+import Shape2Model from "./components/3D/Shape2Model";
+import Shape3Model from "./components/3D/Shape3Model";
+import Shape4Model from "./components/3D/Shape4Model";
+import Shape5Model from "./components/3D/Shape5Model";
+
+import ultraflex from "./img/ceramic/ultraFlex.svg";
+import vpc93 from "./img/ceramic/vpc93.svg";
 
 export const linkBtns = [
   {
@@ -283,6 +323,7 @@ export const items = [
   {
     category: "contact",
     link: "contact",
+    headerImg: contactImg,
   },
 ];
 
@@ -620,6 +661,61 @@ export const itemsDetail = {
 
   stiffener: {
     nation: ["Made in Taiwan"],
+    types: {
+      "canti (DDI)": [
+        {
+          model: <Canti1Model />,
+          img: canti1_svg,
+        },
+        {
+          model: <Canti2Model />,
+          img: canti2_svg,
+        },
+        // Add more models and images as needed
+      ],
+
+      cis: [
+        {
+          model: <Cis />,
+          img: cis_svg,
+        },
+      ],
+
+      vertical: [
+        {
+          model: <Vertical1Model />,
+          img: vertical1_svg,
+        },
+        {
+          model: <Vertical2Model />,
+          img: vertical2_svg,
+        },
+        {
+          model: <Vertical3Model />,
+          img: vertical3_svg,
+        },
+        {
+          model: <Vertical4Model />,
+          img: vertical4_svg,
+        },
+      ],
+      memory: [
+        {
+          model: <MemoryModel />,
+          img: memory_svg,
+        },
+      ],
+      ETC: [
+        {
+          model: <Vertical3Model />,
+          img: vertical3_svg,
+        },
+        {
+          model: <HiFix />,
+          img: hifix_svg,
+        },
+      ],
+    },
     title: "Stiffener",
     images: {
       stiffener,
@@ -1207,6 +1303,37 @@ export const itemsDetail = {
       step2: ceramic_step2,
       step3: ceramic_step3,
       step4: ceramic_step4,
+    },
+
+    types: {
+      shape: [
+        {
+          model: <Shape1Model />,
+          img: shape1_svg,
+        },
+        {
+          model: <Shape2Model />,
+          img: shape2_svg,
+        },
+        {
+          model: <Shape3Model />,
+          img: shape3_svg,
+        },
+        {
+          model: <Shape4Model />,
+          img: shape4_svg,
+        },
+        {
+          model: <Shape5Model />,
+          img: shape5_svg,
+        },
+      ],
+    },
+    contents: {
+      assemble: [
+        { text: "Ultra Flex", img: ultraflex },
+        { text: "VPC 93K", img: vpc93 },
+      ],
     },
   },
 };

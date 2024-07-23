@@ -18,6 +18,7 @@ import Office from "./pages/about/Office";
 import Ecatalog from "./pages/about/Ecatalog";
 import Brand from "./pages/about/Brand";
 import Probe from "./pages/semi/Probe";
+import Contact from "./pages/semi/Contact";
 
 function Router() {
   return (
@@ -45,6 +46,7 @@ function Router() {
           <Route path="vstiffener" element={<Vstiffener />} />
           <Route path="ceramic" element={<Ceramic />} />
         </Route>
+        <Route path="contact" element={<Contact />} />
       </Routes>
     </BrowserRouter>
   );

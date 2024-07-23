@@ -1,6 +1,6 @@
 import { itemsDetail } from "../../../data";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import Headline from "../../../components/article/Headline";
@@ -9,6 +9,15 @@ import line from "../../../img/line.svg";
 
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
+import {
+  Stack,
+  Button,
+  ToggleButton,
+  ToggleButtonGroup,
+  Collapse,
+} from "@mui/material";
+import ThreeModel from "../../../components/3D/ThreeModel";
+import dgree from "../../../img/stiffener/dgree.svg";
 
 const Warapper = styled.div`
   width: 100%;
@@ -19,6 +28,7 @@ const Warapper = styled.div`
   flex-direction: column;
   padding: 0 50px;
   position: relative;
+  align-items: center;
 `;
 const StructureWarpper = styled.div`
   width: 100%;
@@ -33,7 +43,10 @@ const StructureWarpper = styled.div`
   position: relative;
   overflow: hidden;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  margin-top: 50px;
 `;
 
 const DiagramWpper = styled.div`
@@ -96,36 +109,110 @@ const GrayBox = styled.div`
   bottom: 0;
   z-index: 0;
 `;
+
+const TypeImg = styled.div`
+  width: 100px;
+  height: 100px;
+  background: url(${(props) => props.$url}) no-repeat center;
+  margin: 0 20px;
+`;
+
+const TypeWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const DgreeImg = styled.div`
+  width: 80px;
+  height: 80px;
+  background: url(${dgree}) no-repeat center;
+  opacity: 0.2;
+  position: absolute;
+  top: 50px;
+  left: 50px;
+`;
+
 function Stiffener() {
   const location = useLocation();
   const paths = location.pathname.split("/").filter(Boolean);
-  const porbeArray = ["probe", "cantilever", "vertical"];
   const [sublink, setSublink] = useState(paths[2]);
-  const { images, contents, item, warning } = itemsDetail[`${sublink}`];
-  const [imgIndex, setImgIndex] = useState(0);
+  const { contents, types } = itemsDetail[`${sublink}`];
+  const [modelIndex, setModelIndex] = useState();
+  const [selectItem, setSelectItem] = useState(false);
+  const [type, setType] = useState("");
 
-  const handleSelectImg = (index) => {
-    setImgIndex(index);
+  const totalType = Object.keys(types);
+
+  const handleClickType = (index) => {
+    setModelIndex(index);
+    setSelectItem(true);
+  };
+
+  const handleToggleChange = (event, newIndex) => {
+    if (newIndex !== null) {
+      setModelIndex(newIndex);
+    }
+  };
+  const handleType = (item) => {
+    setType(item);
   };
 
   return (
     <>
       <Warapper>
         <Headline item={{ ...itemsDetail[`${sublink}`] }} />
-        <StructureWarpper>
-          <DiagramImg src={contents.items[imgIndex]} />
+        <Stack
+          direction="row"
+          spacing={5}
+          sx={{ margin: "50px 0" }}
+          justifyContent="center"
+        >
+          {totalType?.map((item, index) => (
+            <Button
+              variant="outlined"
+              size="large"
+              value={item}
+              key={index}
+              onClick={() => handleType(item)}
+              disabled={item === type}
+            >
+              {item}
+            </Button>
+          ))}
+        </Stack>
+        <ToggleButtonGroup
+          value={modelIndex}
+          onChange={handleToggleChange}
+          exclusive
+        >
+          {types[type]?.map((item, index) => (
+            <ToggleButton value={index}>
+              <TypeImg
+                $url={item.img}
+                onClick={() => handleClickType(index)}
+              ></TypeImg>
+            </ToggleButton>
+          ))}
+        </ToggleButtonGroup>
+        {selectItem && (
+          <StructureWarpper>
+            {/* <DiagramImg src={contents.items[ModelIndex]} />
           <ItemImgBox>
             {contents.items.map((item, index) => (
               <ItemImg
                 key={index}
                 src={item}
                 onClick={() => handleSelectImg(index)}
-                $isClick={index === imgIndex}
+                $isClick={index === ModelIndex}
               />
             ))}
           </ItemImgBox>
-          <GrayBox></GrayBox>
-        </StructureWarpper>
+          <GrayBox></GrayBox> */}
+            <ThreeModel types={types} number={modelIndex} type={type} />
+            <DgreeImg />
+          </StructureWarpper>
+        )}
       </Warapper>
       <Footer />
     </>

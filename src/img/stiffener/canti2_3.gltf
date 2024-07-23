@@ -1,0 +1,134 @@
+{
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 60,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 28,
+      "max": [
+        0.011364428429139872,
+        0.004766503786430398,
+        0.005999999848427251
+      ],
+      "min": [
+        -0.011364428429139761,
+        -0.004766503786430398,
+        -0.005999999848427251
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 28,
+      "max": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 28,
+      "max": [
+        0.7411763693481224,
+        1.0
+      ],
+      "min": [
+        0.0,
+        0.0
+      ],
+      "type": "VEC2"
+    }
+  ],
+  "asset": {
+    "generator": "Adobe Illustrator",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 240,
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 336,
+      "byteOffset": 240,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 336,
+      "byteOffset": 576,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 224,
+      "byteOffset": 912,
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 1136,
+      "uri": "data:application/octet-stream;base64,BgAAAAcAAAAEAAAABAAAAAUAAAAGAAAAAwAAAAIAAAAAAAAAAQAAAAAAAAACAAAACAAAAAwAAAAOAAAACAAAAA4AAAAWAAAACAAAABYAAAAUAAAACAAAABQAAAAMAAAACQAAAA8AAAAQAAAACQAAABAAAAAYAAAACQAAABgAAAAXAAAACQAAABcAAAAPAAAACgAAABEAAAASAAAACgAAABIAAAAaAAAACgAAABoAAAAZAAAACgAAABkAAAARAAAACwAAABMAAAANAAAACwAAAA0AAAAVAAAACwAAABUAAAAbAAAACwAAABsAAAATAAAA3jE6PFUwnLumm8S73jE6PFUwnDumm8S73jE6vFUwnDumm8S73jE6vFUwnLumm8S73jE6PFUwnLumm8Q73jE6PFUwnDumm8Q73jE6vFUwnDumm8Q73jE6vFUwnLumm8Q73jE6PAAAAAAAAAAAAAAAJVUwnDsAAAAA3jE6vAAAAAAAAAAAAAAAJVUwnLsAAAAA3jE6PFUwnLumm8S73jE6PFUwnLumm8S73jE6PFUwnDumm8S73jE6PFUwnDumm8S73jE6vFUwnDumm8S73jE6vFUwnDumm8S73jE6vFUwnLumm8S73jE6vFUwnLumm8S73jE6PFUwnLumm8Q73jE6PFUwnLumm8Q73jE6PFUwnDumm8Q73jE6PFUwnDumm8Q73jE6vFUwnDumm8Q73jE6vFUwnDumm8Q73jE6vFUwnLumm8Q73jE6vFUwnLumm8Q7AAAAAAAAAAAAAIC/AAAAAAAAAAAAAIC/AAAAAAAAAAAAAIC/AAAAAAAAAAAAAIC/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AACAPwAAAAAAAAAAAAAAAAAAgD8AAAAAAACAvwAAAAAAAAAAAAAAAAAAgL8AAAAAAACAPwAAAAAAAAAAAAAAAAAAgL8AAAAAAACAPwAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAgD8AAAAAAACAvwAAAAAAAAAAAACAvwAAAAAAAAAAAAAAAAAAgL8AAAAAAACAPwAAAAAAAAAAAAAAAAAAgL8AAAAAAACAPwAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAgD8AAAAAAACAvwAAAAAAAAAAAACAvwAAAAAAAAAAAAAAAAAAgL8AAAAAAAAAAPzKRj8AAAAAfzQPP7iIBD9/NA8/uIgEP/zKRj+4iAQ/AACAP7iIBD+DaUg/AAAAAINpSD8AAAAAAACAP2Fb3j1aL9U+wPL2Plov1T5hW949PPILPsDy9j488gs+s1A2NjyUDT+8vT0/PPKLPqtaXj48lA0/DtRkPjyUDT+8vT0/PJQNP7NQNjY88os+q1pePjzyiz4O1GQ+PPKLPrNQNjY8No8+vL09PwAAAACrWl4+PDaPPg7UZD48No8+vL09Pzw2jz6zUDY2AAAAAKtaXj4AAAAADtRkPgAAAAA="
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.56640625,
+          0.56640625,
+          0.56640625,
+          1.0
+        ],
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.4000000059604645
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 2,
+            "POSITION": 1,
+            "TEXCOORD_0": 3
+          },
+          "indices": 0,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0
+    }
+  ],
+  "scenes": [
+    {
+      "nodes": [
+        0
+      ]
+    }
+  ]
+}
