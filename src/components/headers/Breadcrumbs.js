@@ -21,7 +21,7 @@ const Category = styled.h1`
 `;
 
 function Breadcrumbs() {
-  const { currentCategory, selectDiagram } = useCategory();
+  const { currentCategory, selectDiagram, type } = useCategory();
   return (
     <Wrapper>
       <Category>
@@ -29,7 +29,7 @@ function Breadcrumbs() {
         {currentCategory !== "about MEMPro" &&
           currentCategory !== "contact" && (
             <>
-              &nbsp; &nbsp; &middot; &nbsp; <span>Parts</span>
+              &nbsp; &nbsp; &middot; &nbsp; <span>{type}</span>
             </>
           )}
         {currentCategory !== "about MEMPro" &&

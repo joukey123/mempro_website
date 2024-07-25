@@ -101,7 +101,7 @@ function Submenu({
                     {item.subcategories &&
                       item.subcategories.map((names, index) => (
                         <Link
-                          to={`/${categoryLink}/${item.category}/${names.link}`}
+                          to={`/${categoryLink}/${item.type}/${names.link}`}
                           key={index}
                         >
                           <SubCategory key={index}>{names.diagram}</SubCategory>

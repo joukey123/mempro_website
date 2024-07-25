@@ -203,7 +203,10 @@ const ZoomImg = styled.img`
   top: -5%;
 `;
 
-const StyledButton = styled(Button)``;
+const StyledButton = styled(Button)`
+  color: ${(props) => props.$disabled && "#E4E4E4"} !important;
+  border-color: ${(props) => props.$disabled && "#E4E4E4"} !important;
+`;
 function Etching() {
   const sublink = "etching";
   const { images, contents } = itemsDetail[`${sublink}`];
@@ -317,14 +320,14 @@ function Etching() {
                   sx={{ marginBottom: 5 }}
                 >
                   {contents.material.map((item, index) => (
-                    <Button
+                    <StyledButton
                       key={index}
                       onClick={() => handleClickMaterial(item.text, index)}
                       $isClick={index === selectMaterial}
-                      disabled={index === selectMaterial}
+                      $disabled={index !== selectMaterial}
                     >
                       {item.text}
-                    </Button>
+                    </StyledButton>
                   ))}
                 </ButtonGroup>
                 <ContentsWrapper

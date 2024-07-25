@@ -161,6 +161,32 @@ import Shape5Model from "./components/3D/Shape5Model";
 
 import ultraflex from "./img/ceramic/ultraFlex.svg";
 import vpc93 from "./img/ceramic/vpc93.svg";
+import machineImg from "./img/machineImg.jpg";
+
+//machine
+import sanding_330 from "./img/machine/sanding_330.svg";
+import sanding_vertical from "./img/machine/sanding_vertical.svg";
+import sanding_multi from "./img/machine/sanding_multi.svg";
+import sanding_idling from "./img/machine/sanding_idling.svg";
+import sanding_vision from "./img/machine/sanding_vision.svg";
+import bending_length from "./img/machine/bending.svg";
+import manual_330 from "./img/machine/manual_330.svg";
+import manual_440 from "./img/machine/manual_440.svg";
+import manual_480 from "./img/machine/manual_480.svg";
+import manual_520 from "./img/machine/manual_520.svg";
+import punching from "./img/machine/punching.svg";
+import r from "./img/machine/r.svg";
+import roll from "./img/machine/roll.svg";
+import ccc from "./img/machine/ccc.svg";
+import lifeCycle from "./img/machine/lifeCycle.svg";
+import mrc_contact from "./img/machine/mrc_contact.svg";
+import multi_auto from "./img/machine/multi_auto.svg";
+import aging from "./img/machine/socket_aging.svg";
+import sanding_blueprint from "./img/machine/sanding_blueprint_img.svg";
+//machineIcon
+import blueprint from "./img/icon/blueprint.svg";
+import compact from "./img/icon/compact.svg";
+import easy from "./img/icon/easy.svg";
 
 export const linkBtns = [
   {
@@ -249,6 +275,7 @@ export const items = [
       },
     ],
   },
+
   {
     category: "led",
     subcategories: [
@@ -329,32 +356,35 @@ export const items = [
 
 export const machine = [
   {
-    category: "machine",
+    category: "semiconductor",
+    type: "machine",
+    link: "semi",
+    headerImg: machineImg,
     subcategories: [
       {
         diagram: "Sanding Machine",
         subcategory: [
-          { name: "330 Sanding Machine", link: "330" },
-          { name: "Vertical Sanding Machine", link: "vertical" },
-          { name: "Multi Sanding Machine", link: "multi" },
-          { name: "Vision Sanding Machine", link: "vision" },
-          { name: "Idling Sanding Machine", link: "idling" },
+          { name: "330 Sanding Machine", link: "sanding" },
+          { name: "Vertical Sanding Machine", link: "sanding" },
+          { name: "Multi Sanding Machine", link: "sanding" },
+          { name: "Vision Sanding Machine", link: "sanding" },
+          { name: "Idling Sanding Machine", link: "sanding" },
         ],
         link: "sanding",
       },
 
       {
         diagram: "Bending Machine",
-        subcategory: [{ name: "Length Benging Machine", link: "length" }],
+        subcategory: [{ name: "Length Benging Machine", link: "bending" }],
         link: "bending",
       },
       {
         diagram: "Manual Prober",
         subcategory: [
-          { name: "330 Manual Prober", link: "330" },
-          { name: "440 Manual Prober", link: "440" },
-          { name: "480 Manual Prober", link: "480" },
-          { name: "520 Semi Auto Prober", link: "520" },
+          { name: "330 Manual Prober", link: "manual" },
+          { name: "440 Manual Prober", link: "manual" },
+          { name: "480 Manual Prober", link: "manual" },
+          { name: "520 Semi Auto Prober", link: "manual" },
         ],
         link: "manual",
       },
@@ -366,30 +396,29 @@ export const machine = [
       {
         diagram: "Prober Tester",
         subcategory: [
-          { name: "Probe C.C.C Tester", link: "ccc" },
-          { name: "Probe Life Cycle Tester", link: "lifecycle" },
+          { name: "Probe C.C.C Tester", link: "tester" },
+          { name: "Probe Life Cycle Tester", link: "tester" },
         ],
         link: "tester",
       },
       {
         diagram: "PogoPin Caulking",
         subcategory: [
-          { name: "R-Caulking Machine", link: "rcaulking" },
-          { name: "Roll Caulking Machine", link: "rollcaulking" },
+          { name: "R-Caulking Machine", link: "pogo" },
+          { name: "Roll Caulking Machine", link: "pogo" },
         ],
         link: "pogo",
       },
       {
         diagram: "Rubber Socket Tester",
         subcategory: [
-          { name: "MRC Contact Machine", link: "mrc" },
-          { name: "Multi Auto Contact Machine", link: "multi" },
-          { name: "Socket Aging Machine", link: "socket" },
+          { name: "MRC Contact Machine", link: "rubber" },
+          { name: "Multi Auto Contact Machine", link: "rubber" },
+          { name: "Socket Aging Machine", link: "rubber" },
         ],
         link: "rubber",
       },
     ],
-    link: "machine",
   },
 ];
 
@@ -410,7 +439,412 @@ export const books = [
     url: "http://mempro.myqnapcloud.com:80/",
   },
 ];
-
+export const machineDetail = {
+  sanding: {
+    nation: ["Made in Korea"],
+    title: "Sanding Machine",
+    description:
+      "Used to sand the cross section of the wafer's contact area with the probe card.",
+    contents: {
+      330: {
+        num: "330",
+        title: "330 Auto Sanding Machine",
+        model: "JKSM-B330",
+        img: sanding_330,
+        video: "http://www.mempro.co.kr/sanding.mp4",
+        features: [
+          { img: blueprint, text: "Ø330 or under" },
+          { img: compact, text: "compact size" },
+          { img: easy, text: "simple and easy" },
+        ],
+        subTitle: "Basic and Economy Models",
+        des: "With a Chuck Accuracy of ±2μm, dual motion types (circular and linear), support for card sizes up 300Ø or under, a Z-axis motor with 0.25μm resolution, and an attachabled scope arm, it’s the ultimate choice for efficient and accurate probe card pin grinding. Elevate your precision needs with this fundamental yet powerful machine.",
+        spc: [
+          {
+            model: "JKSM-B330",
+            probeCardSize: "~Ø330",
+            machineSize: "450 x 665 x 408 (WxDxH) 120kg",
+          },
+        ],
+      },
+      vertical: {
+        num: "vertical",
+        title: "Vertical Auto Sanding Machine",
+        model: "JKVT-330",
+        img: sanding_vertical,
+        video: "http://www.mempro.co.kr/sanding.mp4",
+        features: [
+          { img: blueprint, text: "Ø480 or under" },
+          { img: compact, text: "Z-axis stage high torque motor" },
+        ],
+        subTitle:
+          "It's Precision chuck base attachment is an affordable choice",
+        des: "Achieving an exceptional Chuck-to-Base flatness and parallelism of 7μm,it guarantees unmatched accuracy. Featuring circular motion capabilities, compatibility with card sizes up to 480Ø, a high-speed Z-axis operation, and a selection of four versatile jig options, this machine excels across diverse applications.",
+        spc: [
+          {
+            model: "JKVT-330",
+            probeCardSize: "~Ø480",
+            machineSize: "680 x 770 x 1015 (WxDxH) 250kg",
+          },
+        ],
+      },
+      multi: {
+        num: "multi",
+        title: "Multi Auto Sanding Machine",
+        model: "JKMT-330",
+        img: sanding_multi,
+        video: "http://www.mempro.co.kr/sanding.mp4",
+        features: [
+          { img: blueprint, text: "Ø480 or under" },
+          { img: blueprint, text: "Z-axis stage high torque motor" },
+        ],
+        subTitle: "Utilizes seven motions to achieving ±2.5μm flatness",
+        des: "With an intuitive interface, operators of all skill levels can access fast and high-precision operations in diverse enviroments.",
+        spc: [
+          {
+            model: "JKMT-330",
+            probeCardSize: "~Ø480",
+            machineSize: "590 x 840 x 1000 (WxDxH) 450kg",
+          },
+        ],
+      },
+      vision: {
+        num: "vision",
+        title: "Vision Auto Sanding Machine",
+        model: "JKSM-V330",
+        img: sanding_vision,
+        video: "http://www.mempro.co.kr/sanding.mp4",
+        features: [
+          { img: blueprint, text: "Ø480 or under" },
+          { img: blueprint, text: "Z-axis stage high torque motor" },
+        ],
+        subTitle: "Designed for probe cards size 480Ø or Smaller",
+        des: "It features seven distinct motion types to enhance operational efficiency. It seamlessly provides real-time contact position verification through a camera, with a control facilitated by dedicated PC software for superior efficiency. Additionally, it offers advanced coaxial and box lighting options to further enhance performance.",
+        spc: [
+          {
+            model: "JKSM-V330",
+            probeCardSize: "~Ø480",
+            machineSize: "1015 x 935 x 1305 (WxDxH) 450kg",
+          },
+        ],
+      },
+      idling: {
+        num: "idling",
+        title: "Idling Auto Sanding Machine",
+        model: "JKHI-330",
+        img: sanding_idling,
+        video: "http://www.mempro.co.kr/sanding.mp4",
+        features: [
+          { img: blueprint, text: "Ø480 or under" },
+          { img: blueprint, text: "Z-axis stage high torque motor" },
+        ],
+        subTitle:
+          "It's Precision chuck base attachment is an affordable choice",
+        des: "Achieving an exceptional Chuck-to-Base flatness and parallelism of 7μm,it guarantees unmatched accuracy. Featuring circular motion capabilities, compatibility with card sizes up to 480Ø, a high-speed Z-axis operation, and a selection of four versatile jig options, this machine excels across diverse applications.",
+        spc: [
+          {
+            model: "JKHI-330",
+            probeCardSize: "~Ø480",
+            machineSize: "1294 x 929 x 1394 (WxDxH) 450kg",
+          },
+        ],
+      },
+    },
+    blueImg: sanding_blueprint,
+  },
+  bending: {
+    nation: ["Made in Korea"],
+    title: "Bending Machine",
+    description:
+      "The Probe of porbe cards demand delicate and precise processing.",
+    contents: {
+      Length: {
+        title: "Length Bending Machine",
+        model: "JLBS-100",
+        img: bending_length,
+        video: "http://www.mempro.co.kr/bending.mp4",
+        features: [
+          { text: "Ø330 or under" },
+          { text: "compact size" },
+          { text: "simple ande easy" },
+        ],
+        subTitle: "Bends Probe to desired angles and lengths.",
+        des: "Achieving an exceptional Chuck-to-Base flatness and parallelism of 7μm, it guarantees unmatched accuracy. Featuring circular motion capabilities, compatibility with card sizes up to 480Ø, a high-speed Z-axis operation and a selection of four versatile jig options, this machine excels across diverse applications.",
+        spc: [
+          {
+            model: "JLBS-100",
+            machineSize: "287 x 219 x 112 (WxDxH) 15kg",
+          },
+        ],
+      },
+    },
+  },
+  manual: {
+    nation: ["Made in Korea"],
+    title: "Manual Prober",
+    description:
+      "Used to correct alignment in the pinpoint of a probe card wafer contact area and the mask glass dot.",
+    contents: {
+      330: {
+        num: 330,
+        title: "330 Manual Prober",
+        model: "JKMPCM12",
+        img: manual_330,
+        video: "http://www.mempro.co.kr/prober.mp4",
+        features: [
+          { text: "Ø330 or under" },
+          { text: "Enables fine adjustments to Z-axis" },
+        ],
+        subTitle: "The 330 Manual prober optimizes probe cards with under Ø300",
+        des: "This product is equipped with manual stages for X, Y, and θ, enabling precise positional adjustments. It also provides the capability to move the microscope along the X and Y axises for precise sample observation, and fine adjustment along theZ-axis for achieving the desired height. It delivers excellent testing and adjustment performance to users.",
+        spc: [
+          {
+            model: "JKMPCM12",
+            probeCardSize: "~Ø330",
+            machineSize: "474 x 637 x 407 (WxDxH) 120kg",
+          },
+        ],
+      },
+      440: {
+        num: 440,
+        title: "440 Manual Prober",
+        model: "JKMPCM17",
+        img: manual_440,
+        video: "http://www.mempro.co.kr/prober.mp4",
+        features: [
+          { text: "Ø440 or under" },
+          { text: "Enables fine adjustments to Z-axis" },
+        ],
+        subTitle: "Excels as a high-performance instrument",
+        des: "It is equipped with manual stages for X, Y, and 0, facilitating precise positional adjustments. Additionally, its movable microscope along the X and Y axes allows accurate sample observation, while the fine adjustment along the Z-axis ensures customization to the desired height. The 440 MANUAL PROBER caters to users seeking exceptional testing and adjustment performance.",
+        spc: [
+          {
+            model: "JKMPCM17",
+            probeCardSize: "~Ø440",
+            machineSize: "564 x 708 x 525 (WxDxH) 81kg",
+          },
+        ],
+      },
+      480: {
+        num: 480,
+        title: "480 Manual Prober",
+        model: "JKMPCM18",
+        img: manual_480,
+        video: "http://www.mempro.co.kr/prober.mp4",
+        features: [
+          { text: "Ø480 or under" },
+          { text: "Enables fine adjustments to Z-axis" },
+        ],
+        subTitle: "Tailored for porbe card with 480Ø or less",
+        des: "It also includes optional features,such as: a table that offers  flatness and parallelism of 0.01 and a shock absorber for smooth Z-axis reciprocating movement, which enhances precision testing and adjustments.",
+        spc: [
+          {
+            model: "JKMPCM18",
+            probeCardSize: "~Ø480",
+            machineSize: "800 x 1073 x 1384 (WxDxH) 370kg",
+          },
+        ],
+      },
+      520: {
+        num: 520,
+        title: "520 Manual Prober",
+        model: "JKAP-520",
+        img: manual_520,
+        video: "http://www.mempro.co.kr/prober.mp4",
+        features: [
+          { text: "Ø520 or under" },
+          { text: "Enables fine adjustments to Z-axis" },
+        ],
+        subTitle: "Most advanced model that prioritizes user convenience",
+        des: "This system enables easy manipulation of the microscope's X, Y, and Z axes, along with convenient control of the alignment glass through a remote or a 7-inch touch panel. Users can also opt for manual adjustments, ensuring maximum usability and efficiency.",
+        spc: [
+          {
+            model: "JKAP-520",
+            probeCardSize: "~Ø520",
+            machineSize: "1200 x 895 x 1316 (WxDxH) 530kg",
+          },
+        ],
+      },
+    },
+  },
+  punching: {
+    nation: ["Made in Korea"],
+    title: "Punching Machine",
+    description: "Used to drill a hole in mask film.",
+    contents: {
+      punching: {
+        title: "Mask Film Punching Machine",
+        model: "JKPM220",
+        img: punching,
+        video: "http://www.mempro.co.kr/punching.mp4",
+        features: [
+          { text: "saved coordinate CSV file" },
+          { text: "Achieves accuracy of ±0.005 μm" },
+          { text: "real-time display" },
+        ],
+        subTitle: "Achieves a position accuracy of ±0.005 μm",
+        des: "Our mask film punching machine resolves these technical challenges efficiently,providing precise and accurate punching operations required for creating mask films that align with the needle array on the Probe card, ensuring accurate inspection of each needle based on the wafer's pad coordinates.",
+        spc: [
+          {
+            model: "JKPM220",
+            machineSize: "1570 x 800 x 1810 (WxDxH) 600kg",
+          },
+        ],
+      },
+    },
+  },
+  rubber: {
+    nation: ["Made in Korea"],
+    title: "Rubber Socket Tester",
+    description:
+      "An advanced facility designed for the purpose of evaluating the force and contact resistance of rubber sockets.",
+    contents: {
+      mrc: {
+        title: "MRC Contact Machine",
+        model: "JKACM-3030",
+        img: mrc_contact,
+        video: "http://www.mempro.co.kr/rubber.mp4",
+        features: [
+          { text: "Individual Recipe Application" },
+          { text: "Fast Tact Time" },
+          { text: "User-Friendly Interface" },
+        ],
+        subTitle: "US precision multimeter for accuracy",
+        des: "The automatic alignment system, utilizes an aligning camera, to facilitate individualized model managemen through separate recipe application. Real-time job monitoring via side camera allows for instant production status checks. With an average measurement time of 0.25 seconds per bump, the system operates fully automatic after product loading. The model-specific indexing operation introduces horizontal and vertical probe auto-adaptive system, ensuring exceptional efficiency and accuracy.",
+        spc: [
+          {
+            model: "JKACM-3030",
+            machineSize: "1220 x 1100 x 2220 (WxDxH) 950kg",
+          },
+        ],
+      },
+      multi: {
+        title: "Multi Auto Contact Machine",
+        model: "JKMACM-220",
+        img: multi_auto,
+        video: "http://www.mempro.co.kr/rubber.mp4",
+        features: [
+          { text: "Individual Recipe Application" },
+          { text: "Fast Tact Time" },
+          { text: "User-Friendly Interface" },
+        ],
+        subTitle: "Measures two bumps simultaneously with automatic alignment",
+        des: "Achieving a swift 0.25 second average measurement for each bump with a fully automatic system, it enhances efficiency through a model-specific indexing operation. The system excels in temperature management with a 120-degree evaluation system and a water-cooled chiller. Pin-to-pin inspection enables the force and contact resistance evaluation of individual pins of the rubber and socket contacts, coupled with automatic C.C.C testing.",
+        spc: [
+          {
+            model: "JKMACM-220",
+            machineSize: "1100 x 770 x  1793 (WxDxH) 820kg",
+          },
+        ],
+      },
+      aging: {
+        title: "Socket Aging Machine",
+        model: "JKMAM-230",
+        img: aging,
+        video: "http://www.mempro.co.kr/rubber.mp4",
+        features: [
+          { text: "Individual Recipe Application" },
+          { text: "Fast Tact Time" },
+          { text: "User-Friendly Interface" },
+        ],
+        subTitle: "Reduce bump surface contact resistance after UV exposure",
+        des: "It can simultaneously handle three rubber sockets with three Z-Axes, and has the capability to mount 21 products on two tables which allows for cross-linking operations. Additionally, it is equipped with three loading cells with a maximum weight of 50kg each, it automatically records the load’s value during the O.D application, thus achieving a 5um positional accuracy for the X, Y, and Z-Axes. The implementation of a force overload prevention ensures stable operations. It guarantees reliable performance even under high-load conditions.",
+        spc: [
+          {
+            model: "JKMAM-230",
+            machineSize: "1684 x 960 x  1782 (WxDxH) 830kg",
+          },
+        ],
+      },
+    },
+  },
+  tester: {
+    nation: ["Made in Korea"],
+    title: "Probe Tester",
+    description:
+      "Used to evaluate the properties of  a product through the C.C.C evaluation of  probe and lifecycle test.",
+    contents: {
+      ccc: {
+        title: "Probe C.C.C Tester",
+        model: "JKTT-50",
+        img: ccc,
+        video: "http://www.mempro.co.kr/tester.mp4",
+        features: [
+          { text: "Force, Current, Resistance and Voltage Evaluation" },
+          { text: "real-time video" },
+        ],
+        subTitle:
+          "Perfect for users seeking a product with current carrying capacity",
+        des: "This tester allows for force, current application, resistance, voltage, and temperature evaluations up to 150 degrees. All data is automatically saved in real-time. During the test, users can monitor updated force and resistance graphs in real-time and observe and assess probes through the vision system.",
+        spc: [
+          {
+            model: "JKTT-50",
+            machineSize: "1500 x 1120 x 1388 (WxDxH) 500kg",
+          },
+        ],
+      },
+      lifeCycle: {
+        title: "Probe Life Cycle Tester",
+        model: "JKACM-8080",
+        img: lifeCycle,
+        video: "http://www.mempro.co.kr/tester.mp4",
+        features: [
+          { text: "contact at 300 cycles / m" },
+          { text: "real-time video" },
+        ],
+        subTitle: "Full-contact function Z-axis at up to 300 cycles/min",
+        des: "It allows for temperature evaluations up to 150 degrees and automatically stores pin-to-pin force data. To enhance testing accuracy by blocking external influences, an external case is applied. Users can monitor real-time operations with in the enclosed environment through the vision system.",
+        spc: [
+          {
+            model: "JKACM-8080",
+            machineSize: "1242 x 1092 x 9048 (WxDxH) 288kg",
+          },
+        ],
+      },
+    },
+  },
+  pogo: {
+    nation: ["Made in Korea"],
+    title: "PogoPin Caulking Machine",
+    description:
+      "To assemble Pogo pins into finished products, it is essential to assemble and secure the plunger, barrel.",
+    contents: {
+      rCaulking: {
+        title: "R-Caulking Machine",
+        model: "JKRC-2045",
+        img: r,
+        video: "http://www.mempro.co.kr/pogo.mp4",
+        features: [{ text: "20 Pogo Pin / jig" }, { text: "real-time video" }],
+        subTitle: "Automated caulking of R points on fasteners",
+        des: "It incorporates an automatic alignment function using VISION technology. Real-time job monitoring is enabled through the application of a side camera. Each jig is equipped to handle 20 fasteners, ensuring efficient processing. With an average processing time of less than 1 second per unit, this machine guarantees rapid and precise operations.",
+        spc: [
+          {
+            model: "JKRC-2045",
+            machineSize: "1280 x 950 x 1540 (WxDxH) 550kg",
+          },
+        ],
+      },
+      roll: {
+        title: "Roll Caulking Machine",
+        model: "JKRM-220",
+        img: roll,
+        video: "http://www.mempro.co.kr/pogo.mp4",
+        features: [
+          { text: "Adaptable to a fine-pitch product" },
+          { text: "real-time video" },
+        ],
+        subTitle: "Automates caulking, with a camera monitoring quality",
+        des: "It can process one fastener per operation ,with an average processing time of less than 5 seconds, ensuring both speed and precision. The utilization of a linear gauge allows for easy control of tool processing depth, and the tool attachment and  detachment are user-friendly. Moreover,it is adaptable to fine-pitch products, meeting various job requirements.",
+        spc: [
+          {
+            model: "JKRM-220",
+            machineSize: "1090 x 680 x 1510 (WxDxH) 370kg",
+          },
+        ],
+      },
+    },
+  },
+};
 export const itemsDetail = {
   diamond: {
     nation: ["Made in Korea"],

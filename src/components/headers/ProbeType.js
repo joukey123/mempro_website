@@ -13,7 +13,11 @@ import Tooltip from "@mui/material/Tooltip";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { itemsDetail } from "../../data";
-
+import styled from "styled-components";
+const StyledButton = styled(Button)`
+  color: ${(props) => props.$disabled && "#E4E4E4"} !important;
+  border-color: ${(props) => props.$disabled && "#E4E4E4"} !important;
+`;
 function ProbeType({ cards, onData, IsNeedleChange }) {
   const [selectSystem, setSelectSystem] = useState("");
   const [selectCard, setSelectCard] = useState("");
@@ -353,16 +357,16 @@ function ProbeType({ cards, onData, IsNeedleChange }) {
             justifyContent="center"
           >
             {totalNeedle?.map((item, index) => (
-              <Button
+              <StyledButton
                 variant="outlined"
                 size="large"
                 value={item}
                 onClick={(event) => handleClickNeedle(event)}
-                disabled={selectNeedle === item}
+                $disabled={selectNeedle !== item}
                 key={index}
               >
                 {item}
-              </Button>
+              </StyledButton>
             ))}
           </Stack>
         </>

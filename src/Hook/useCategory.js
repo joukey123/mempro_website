@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { items } from "../data";
+import { items, machine } from "../data";
 
 export const useCategory = () => {
   const location = useLocation();
@@ -25,41 +25,83 @@ export const useCategory = () => {
 
     if (paths.length > 0) {
       const mainPath = paths[0];
+      const isMachine = paths[1];
 
-      const mainItem = items.find((item) => item.link === mainPath);
-      if (mainItem) {
-        foundCategory = mainItem.category;
-        if (mainItem.type) {
-          type = mainItem.type;
-        } else {
-          type = "";
-        }
-        img = mainItem.headerImg; //배경이미지
-        if (mainItem.subcategories) {
-          diagrams = mainItem.subcategories.map(
-            (subcategory) => subcategory.diagram
-          );
-
-          // 서브카테고리를 찾고 저장
-          if (paths.length > 1) {
-            const desiredSubcategory = paths[paths.length - 1];
-            const matchedSubcategory = mainItem.subcategories.find(
-              (subcategory) =>
-                subcategory.subcategory.some(
-                  (sub) => sub.link === desiredSubcategory
-                )
+      if (isMachine === "machine") {
+        const mainItem = machine.find((item) => item.link === mainPath);
+        if (mainItem) {
+          foundCategory = mainItem.category;
+          if (mainItem.type) {
+            type = mainItem.type;
+          } else {
+            type = "";
+          }
+          img = mainItem?.headerImg; //배경이미지
+          if (mainItem.subcategories) {
+            diagrams = mainItem.subcategories.map(
+              (subcategory) => subcategory.diagram
             );
 
-            if (matchedSubcategory) {
-              diagram = matchedSubcategory.diagram; //selectDiagram
-              const matchedSub = matchedSubcategory.subcategory.find(
-                (sub) => sub.link === desiredSubcategory
+            // 서브카테고리를 찾고 저장
+            if (paths.length > 1) {
+              const desiredSubcategory = paths[paths.length - 1];
+              const matchedSubcategory = mainItem.subcategories.find(
+                (subcategory) =>
+                  subcategory.subcategory.some(
+                    (sub) => sub.link === desiredSubcategory
+                  )
               );
-              foundSubcategoryName = matchedSub ? matchedSub.name : "";
-              foundSubcategoryLink = matchedSub ? matchedSub.link : "";
-              foundSubcategoryNames = matchedSubcategory.subcategory.map(
-                (sub) => sub.name
+
+              if (matchedSubcategory) {
+                diagram = matchedSubcategory.diagram; //selectDiagram
+                const matchedSub = matchedSubcategory.subcategory.find(
+                  (sub) => sub.link === desiredSubcategory
+                );
+                foundSubcategoryName = matchedSub ? matchedSub.name : "";
+                foundSubcategoryLink = matchedSub ? matchedSub.link : "";
+                foundSubcategoryNames = matchedSubcategory.subcategory.map(
+                  (sub) => sub.name
+                );
+              }
+            }
+          }
+        }
+      } else {
+        const mainItem = items.find((item) => item.link === mainPath);
+        if (mainItem) {
+          foundCategory = mainItem.category;
+          if (mainItem.type) {
+            type = mainItem.type;
+          } else {
+            type = "";
+          }
+          img = mainItem.headerImg; //배경이미지
+          if (mainItem.subcategories) {
+            diagrams = mainItem.subcategories.map(
+              (subcategory) => subcategory.diagram
+            );
+
+            // 서브카테고리를 찾고 저장
+            if (paths.length > 1) {
+              const desiredSubcategory = paths[paths.length - 1];
+              const matchedSubcategory = mainItem.subcategories.find(
+                (subcategory) =>
+                  subcategory.subcategory.some(
+                    (sub) => sub.link === desiredSubcategory
+                  )
               );
+
+              if (matchedSubcategory) {
+                diagram = matchedSubcategory.diagram; //selectDiagram
+                const matchedSub = matchedSubcategory.subcategory.find(
+                  (sub) => sub.link === desiredSubcategory
+                );
+                foundSubcategoryName = matchedSub ? matchedSub.name : "";
+                foundSubcategoryLink = matchedSub ? matchedSub.link : "";
+                foundSubcategoryNames = matchedSubcategory.subcategory.map(
+                  (sub) => sub.name
+                );
+              }
             }
           }
         }

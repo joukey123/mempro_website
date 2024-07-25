@@ -40,7 +40,7 @@ const Img = styled.img`
 `;
 function PageHeader() {
   const { headerImges, currentCategory } = useCategory();
-
+  console.log(headerImges);
   return (
     <>
       <Header />

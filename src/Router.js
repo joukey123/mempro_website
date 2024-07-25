@@ -19,6 +19,14 @@ import Ecatalog from "./pages/about/Ecatalog";
 import Brand from "./pages/about/Brand";
 import Probe from "./pages/semi/Probe";
 import Contact from "./pages/semi/Contact";
+import Sanding from "./pages/semi/Machine/Sanding";
+import Bending from "./pages/semi/Machine/Bending";
+import Manual from "./pages/semi/Machine/Manual";
+import Punching from "./pages/semi/Machine/Punching";
+import Tester from "./pages/semi/Machine/Tester";
+import Pogo from "./pages/semi/Machine/Pogo";
+import Rubber from "./pages/semi/Machine/Rubber";
+import Machine from "./pages/semi/Machine";
 
 function Router() {
   return (
@@ -45,6 +53,16 @@ function Router() {
           <Route path="vprobe" element={<Vprobe />} />
           <Route path="vstiffener" element={<Vstiffener />} />
           <Route path="ceramic" element={<Ceramic />} />
+        </Route>
+        <Route path="/semi/machine" element={<Machine />}>
+          <Route index element={<Navigate to="sanding" />} />
+          <Route path="sanding" element={<Sanding />} />
+          <Route path="bending" element={<Bending />} />
+          <Route path="manual" element={<Manual />} />
+          <Route path="punching" element={<Punching />} />
+          <Route path="tester" element={<Tester />} />
+          <Route path="pogo" element={<Pogo />} />
+          <Route path="rubber" element={<Rubber />} />
         </Route>
         <Route path="contact" element={<Contact />} />
       </Routes>

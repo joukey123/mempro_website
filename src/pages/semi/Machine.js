@@ -2,7 +2,7 @@ import styled from "styled-components";
 import PageHeader from "../../components/headers/PageHeader";
 import { Outlet } from "react-router-dom";
 
-function Semi() {
+function Machine() {
   return (
     <>
       <PageHeader />
@@ -11,4 +11,4 @@ function Semi() {
   );
 }
 
-export default Semi;
+export default Machine;

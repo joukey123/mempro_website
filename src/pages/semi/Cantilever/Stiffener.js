@@ -132,7 +132,10 @@ const DgreeImg = styled.div`
   top: 50px;
   left: 50px;
 `;
-
+const StyledButton = styled(Button)`
+  color: ${(props) => props.$disabled && "#E4E4E4"} !important;
+  border-color: ${(props) => props.$disabled && "#E4E4E4"} !important;
+`;
 function Stiffener() {
   const location = useLocation();
   const paths = location.pathname.split("/").filter(Boolean);
@@ -169,16 +172,16 @@ function Stiffener() {
           justifyContent="center"
         >
           {totalType?.map((item, index) => (
-            <Button
+            <StyledButton
               variant="outlined"
               size="large"
               value={item}
               key={index}
               onClick={() => handleType(item)}
-              disabled={item === type}
+              $disabled={item !== type}
             >
               {item}
-            </Button>
+            </StyledButton>
           ))}
         </Stack>
         <ToggleButtonGroup

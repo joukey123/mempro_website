@@ -60,7 +60,7 @@ function Banner({ width }) {
     autoSlideInterval.current = setInterval(() => {
       setCurrentIndex((prev) => (prev >= bannerLength - 1 ? 0 : prev + 1));
       setDirection("left");
-    }, 3000);
+    }, 5000);
   };
 
   const nextImgBanner = () => {
