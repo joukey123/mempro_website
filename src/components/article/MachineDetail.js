@@ -2,26 +2,32 @@ import styled from "styled-components";
 import ContentsTitle from "../ContentsTitle";
 import MachineDimensions from "../MachineDimensions";
 import MachineVideo from "./MachineVideo";
+import { Collapse } from "@mui/material";
+import { useState } from "react";
+import Divider from "@mui/material/Divider";
+import MachineImgBoxS from "./MachineImgBoxS";
 
 const MachinInfoWrapper = styled.div`
   width: 100%;
-  max-width: 1280px;
-  padding: 0 50px;
+  max-width: 1100px;
+  padding: 0 0px;
+  margin: 0 auto;
   margin-top: 100px;
   display: flex;
+  border: 1px solid #ededed;
+  border-radius: 4px;
+  padding: 50px 0;
 `;
 
 const MachineImgBox = styled.div`
   width: 50%;
   max-width: 600px;
-  height: 500px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #ededed;
 `;
 const MachinImg = styled.div`
-  width: 55%;
+  width: 60%;
   height: 500px;
   background: url(${(props) => props.$url}) center no-repeat;
   background-size: contain;
@@ -30,9 +36,7 @@ const MachinTextBox = styled.div`
   width: 50%;
   display: flex;
   flex-direction: column;
-  border: 1px solid #ededed;
   padding: 45px;
-  height: 500px;
 `;
 const MachinTextModel = styled.span`
   font-size: 16px;
@@ -40,7 +44,7 @@ const MachinTextModel = styled.span`
 `;
 const MachinTextTitle = styled.span`
   color: #1976d2;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 35px;
   white-space: pre-line;
   line-height: 1.1;
@@ -51,7 +55,7 @@ const MachinTextSubTitle = styled.span`
   padding: 5px;
   margin-bottom: 12px;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.2;
   letter-spacing: -0.1px;
 `;
@@ -64,7 +68,7 @@ const MachineFeatures = styled.div`
   width: 100%;
   height: auto;
   align-items: center;
-  margin-top: 30px;
+  margin-top: 36px;
 `;
 
 const FeaturesIconBox = styled.div`
@@ -72,8 +76,11 @@ const FeaturesIconBox = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 0 25px 0px 0;
+  width: 30%;
+  margin: 5px;
+  padding: 5px;
 `;
+
 const FeaturesIcon = styled.img`
   height: 50px;
   object-fit: contain;
@@ -103,13 +110,38 @@ const ImgSection = styled.div`
   margin-left: 5px;
   display: none;
 `;
-function MachineDetail({ info, blueImg }) {
+
+const OptionWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ededed;
+  width: 19%;
+  margin: 10px;
+  border-radius: 4px;
+  img {
+    height: 100px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    object-fit: contain;
+  }
+`;
+
+function MachineDetail({ info, blueImg, options }) {
+  const [expendClicked, setExpendClicked] = useState(true);
+  const showContent = (show) => {
+    setExpendClicked(show);
+  };
   return (
     <>
       <MachinInfoWrapper>
         <MachineImgBox>
-          <MachinImg $url={info?.img} />
+          {/* <MachinImg $url={info?.img} /> */}
+          <MachineImgBoxS src={info?.img} alt={info?.title} />
         </MachineImgBox>
+        <Divider orientation="vertical" variant="middle" flexItem />
+
         <MachinTextBox>
           <MachinTextModel>{info?.model}</MachinTextModel>
           <MachinTextTitle>
@@ -122,7 +154,7 @@ function MachineDetail({ info, blueImg }) {
           <MachinTextDes>{info?.des}</MachinTextDes>
           <MachineFeatures>
             {info?.features.map((item, index) => (
-              <FeaturesIconBox>
+              <FeaturesIconBox key={index}>
                 <FeaturesIcon src={item.img} />
                 <span
                   style={{
@@ -142,14 +174,29 @@ function MachineDetail({ info, blueImg }) {
       </MachinInfoWrapper>
       <Contents>
         <InfoSection className="infoSection">
-          <div className="dimensions">
+          <div className="dimensions" style={{ marginTop: "-50px" }}>
             <MachineDimensions data={info.spc} />
           </div>
           <div className="video">
             <MachineVideo url={info.video} />
           </div>
+          {options && (
+            <div className="options">
+              <ContentsTitle title={"Sanding Jig"} onData={showContent} />
+              <Collapse in={expendClicked}>
+                <div style={{ display: "flex" }}>
+                  {options.map((item, index) => (
+                    <OptionWrapper key={index}>
+                      <img src={item.img} alt={item.text} />
+                      <span style={{ padding: "20px 0" }}>{item.text}</span>
+                    </OptionWrapper>
+                  ))}
+                </div>
+              </Collapse>
+            </div>
+          )}
         </InfoSection>
-        <ImgSection className="imgSection" $url={blueImg}></ImgSection>
+        {/* <ImgSection className="imgSection" $url={blueImg}></ImgSection> */}
       </Contents>
     </>
   );

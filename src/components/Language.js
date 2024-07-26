@@ -1,6 +1,13 @@
 import { Dropdown, Flag } from "semantic-ui-react";
 import styled from "styled-components";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import "semantic-ui-css/semantic.min.css"; // Semantic UI CSS 파일 로드
 
+const StyleArrowDropDownIcon = styled(ArrowDropDownIcon)`
+  position: absolute;
+  right: 20px;
+  color: gray;
+`;
 const FixedDropdown = styled(Dropdown)`
   width: 150px !important; // 원하는 너비로 설정
   .menu {
@@ -31,6 +38,7 @@ function Language() {
       search
       selection
       options={languageOptions}
+      icon={<StyleArrowDropDownIcon />} // react-icons 패키지에서 가져온 아이콘 사용
     />
   );
 }

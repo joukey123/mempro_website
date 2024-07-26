@@ -217,7 +217,6 @@ function Stiffener() {
           </StructureWarpper>
         )}
       </Warapper>
-      <Footer />
     </>
   );
 }

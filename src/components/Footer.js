@@ -4,7 +4,7 @@ import logo2 from "../img/logo3.svg";
 import LinkBtn from "./LinkBtn";
 import { linkBtns, add } from "../data.js";
 import { useState } from "react";
-import { useMatch } from "react-router-dom";
+import { useMatch, useNavigate } from "react-router-dom";
 import SpeedDial from "@mui/material/SpeedDial";
 import SpeedDialIcon from "@mui/material/SpeedDialIcon";
 import SpeedDialAction from "@mui/material/SpeedDialAction";
@@ -20,17 +20,18 @@ import Fab from "@mui/material/Fab";
 import BusinessIcon from "@mui/icons-material/Business";
 import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
 import FaxIcon from "@mui/icons-material/Fax";
-
+import MenuBookIcon from "@mui/icons-material/MenuBook";
 const FooterWrapper = styled.div`
   width: 100%;
   max-width: 1280px;
-  padding: 15px 30px;
+  padding: 40px 30px;
   color: ${(props) =>
     props.$isHome ? props.theme.colors.white : props.theme.colors.black};
-  font-size: 0.9rem;
+  font-size: 1rem;
   border-top: 0.5px solid ${(props) => props.theme.colors.stroke};
   margin: 0 auto;
-  margin-top: 150px;
+  margin-top: 80px;
+
   h1 {
     font-weight: bold;
     margin-bottom: 3px;
@@ -45,7 +46,6 @@ const FooterWrapper = styled.div`
     }
   }
   #copyrighter {
-    font-size: 0.6rem;
     text-align: center;
     font-weight: 200;
   }
@@ -64,12 +64,11 @@ const Logo = styled.div`
   width: 190px;
   height: 30px;
   background: url(${(props) => props.$url}) no-repeat;
-  margin-bottom: 1.5%;
+  margin-bottom: 20px;
   filter: grayscale(1);
 `;
 const Info = styled.div`
   display: flex;
-  justify-content: space-between;
   margin-bottom: 10px;
 `;
 const InfoAddress = styled.div`
@@ -85,18 +84,56 @@ const InfoAddress = styled.div`
   }
 `;
 const Tell = styled.div`
-  width: 20%;
+  display: flex;
+  align-items: center;
 `;
 const Mail = styled.div`
-  width: 20%;
+  display: flex;
+  align-items: center;
 `;
 const Link = styled.div`
-  width: 10%;
+  width: 20%;
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: center;
+`;
+
+const CustomSpeedDialAction = styled((props) => {
+  const { icon, tooltipTitle, onClick, ...other } = props;
+  return (
+    <SpeedDialAction
+      icon={
+        <Box
+          display="flex"
+          flexDirection="row"
+          alignItems="center"
+          sx={{ padding: "0 10px" }}
+        >
+          {icon}
+          <span style={{ marginLeft: "10px", fontSize: "15px" }}>
+            {props.children}
+          </span>
+        </Box>
+      }
+      tooltipTitle={tooltipTitle}
+      onClick={onClick}
+      {...other}
+    />
+  );
+})`
+  background-color: #f59e39 !important;
+  width: 100% !important;
+  height: 50px !important;
+  border-radius: 15px !important;
+  display: flex !important;
+  color: white !important;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2) !important;
+  &:hover {
+    background-color: #eea03b !important;
+  }
 `;
 function Footer() {
+  const navigate = useNavigate();
   const [offices, setOffices] = useState(0);
   const match = useMatch("/");
   const handleOffices = (nation) => {
@@ -109,10 +146,17 @@ function Footer() {
 
   const actions = [
     {
+      icon: <MenuBookIcon />,
+      name: "Catalog",
+      func: function () {
+        window.open("http://www.mempro.co.kr", "_blank");
+      },
+    },
+    {
       icon: <EmailIcon />,
       name: "Mail",
       func: function () {
-        console.log("hello2");
+        navigate("/contact");
       },
     },
 
@@ -127,6 +171,7 @@ function Footer() {
       },
     },
   ];
+
   return (
     <>
       <FooterWrapper $isHome={match}>
@@ -136,78 +181,79 @@ function Footer() {
             <div
               style={{
                 display: "flex",
-                alignItems: "center",
-                marginBottom: "15px",
               }}
             >
-              <BusinessIcon sx={{ marginRight: 1 }} />
-              <h1>ADDRESS</h1>
+              {/* <BusinessIcon sx={{ marginRight: 1 }} /> */}
+              <h1 style={{ marginRight: "30px" }}>ADDRESS</h1>
+              <h2 id="nation">
+                <NationSpan
+                  onClick={() => handleOffices("korea")}
+                  $isClick={offices === 0}
+                >
+                  {add[0].nation}
+                </NationSpan>
+                <span>|</span>
+                <NationSpan
+                  onClick={() => handleOffices("taiwan")}
+                  $isClick={offices === 1}
+                >
+                  {add[1].nation}
+                </NationSpan>
+              </h2>
             </div>
-            <h2 id="nation">
-              <NationSpan
-                onClick={() => handleOffices("korea")}
-                $isClick={offices === 0}
-              >
-                {add[0].nation}
-              </NationSpan>
-              <span>|</span>
-              <NationSpan
-                onClick={() => handleOffices("taiwan")}
-                $isClick={offices === 1}
-              >
-                {add[1].nation}
-              </NationSpan>
-            </h2>
+
             <h2 id="add">{add[offices].address}</h2>
           </InfoAddress>
-          <Tell>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                marginBottom: "5px",
-              }}
-            >
-              <PhoneAndroidIcon sx={{ marginRight: 0.5 }} />
-              <h1>TEL</h1>
-            </div>
-            <h2>{add[offices].tell}</h2>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                marginBottom: "5px",
-              }}
-            >
-              <FaxIcon sx={{ marginRight: 0.5 }} />
-              <h1>FAX</h1>
-            </div>
-            <h2>{add[offices].fax}</h2>
-          </Tell>
-          <Mail>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                marginBottom: "5px",
-              }}
-            >
-              <EmailIcon sx={{ marginRight: 0.5 }} />
-              <h1>MAIL</h1>
-            </div>
-            <h2>{add[offices].mail}</h2>
-          </Mail>
+          <div style={{ width: "40%" }}>
+            <Tell>
+              <div
+                style={{
+                  display: "flex",
+                  marginRight: "30px",
+                }}
+              >
+                {/* <PhoneAndroidIcon sx={{ marginRight: 0.5 }} /> */}
+                <h1 style={{ marginRight: "15px" }}>TEL</h1>
+                <h2>{add[offices].tell}</h2>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                }}
+              >
+                {/* <FaxIcon sx={{ marginRight: 0.5 }} /> */}
+                <h1 style={{ marginRight: "15px" }}>FAX</h1>
+                <h2>{add[offices].fax}</h2>
+              </div>
+            </Tell>
+
+            <Mail>
+              <div
+                style={{
+                  display: "flex",
+                }}
+              >
+                {/* <EmailIcon sx={{ marginRight: 0.5 }} /> */}
+                <h1 style={{ marginRight: "15px" }}>MAIL</h1>
+                <h2>{add[offices].mail}</h2>
+              </div>
+            </Mail>
+          </div>
           <Link>
             {linkBtns.map((item, index) => (
               <Tooltip
+                key={index}
                 sx={{ textTransform: "capitalize" }}
                 title={item.text}
-                arrow
               >
                 <Fab
                   target="_blank"
                   onClick={() => window.open(`${item.link}`)}
-                  sx={{ backgroundColor: "rgba(0,0,0,0.1)", boxShadow: 0 }}
+                  sx={{
+                    backgroundColor: "rgba(0,0,0,0.1)",
+                    boxShadow: 0,
+                    margin: 1,
+                  }}
                 >
                   {item.icon}
                 </Fab>
@@ -215,7 +261,7 @@ function Footer() {
             ))}
           </Link>
         </Info>
-        <div id="copyrighter">
+        <div id="copyrighter" style={{ fontSize: "12px" }}>
           Copyright &copy; MEMPro. All rights reserved.
         </div>
       </FooterWrapper>
@@ -232,18 +278,26 @@ function Footer() {
           ariaLabel="SpeedDial"
           icon={<SpeedDialIcon />}
           sx={{
-            "& .MuiSpeedDial-fab": { backgroundColor: "#4C4C4C" },
-            "& .MuiSpeedDial-fab:hover": { backgroundColor: "#4C4C4C" },
+            "& .MuiSpeedDial-fab": {
+              backgroundColor: "#1B3756",
+              color: "white",
+            },
+            "& .MuiSpeedDial-fab:hover": {
+              backgroundColor: "#1B3756",
+              color: "white",
+            },
             zIndex: 99999,
           }}
         >
           {actions.map((action) => (
-            <SpeedDialAction
+            <CustomSpeedDialAction
               key={action.name}
               icon={action.icon}
-              tooltipTitle={action.name}
               onClick={action.func}
-            />
+              className={action.name}
+            >
+              {action.name}
+            </CustomSpeedDialAction>
           ))}
         </SpeedDial>
       </Box>

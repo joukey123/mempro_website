@@ -107,7 +107,6 @@ function Cprobe() {
           </Box>
         </Collapse>
       </Wrapper>
-      <Footer />
     </>
   );
 }

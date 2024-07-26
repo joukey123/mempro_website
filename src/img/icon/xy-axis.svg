@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="uuid-9b424a41-8a0d-464d-b3ac-04434af14813" data-name="레이어 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68.85 58.11">
+  <defs>
+    <style>
+      .uuid-5bfb01a6-6737-4413-a680-cde86a7e0247 {
+        fill: #1976d2;
+      }
+
+      .uuid-5bfb01a6-6737-4413-a680-cde86a7e0247, .uuid-047cae04-49f6-4b17-97c7-c6a1806b4676 {
+        stroke-width: 0px;
+      }
+
+      .uuid-047cae04-49f6-4b17-97c7-c6a1806b4676 {
+        fill: #151a23;
+      }
+
+      .uuid-aece1b17-ffed-42a3-b37b-8975889e8537 {
+        fill: none;
+        stroke-width: 2px;
+      }
+
+      .uuid-aece1b17-ffed-42a3-b37b-8975889e8537, .uuid-4385f1f3-a5bf-4b2f-8026-cb72e81cff35 {
+        stroke: #151a23;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .uuid-4385f1f3-a5bf-4b2f-8026-cb72e81cff35 {
+        fill: #fff;
+        fill-rule: evenodd;
+        stroke-width: 2.08px;
+      }
+    </style>
+  </defs>
+  <g id="uuid-a16b7ceb-51be-4fa4-a911-1d9796c81737" data-name="레이어 1">
+    <g>
+      <polygon class="uuid-4385f1f3-a5bf-4b2f-8026-cb72e81cff35" points="59.23 43.06 59.23 15.05 34.97 1.04 10.71 15.05 10.71 43.06 34.97 57.06 59.23 43.06"/>
+      <g>
+        <line class="uuid-aece1b17-ffed-42a3-b37b-8975889e8537" x1="35.22" y1="47.62" x2="35.11" y2="25.81"/>
+        <g>
+          <line class="uuid-aece1b17-ffed-42a3-b37b-8975889e8537" x1="17.18" y1="18.65" x2="62.83" y2="48.25"/>
+          <polygon class="uuid-047cae04-49f6-4b17-97c7-c6a1806b4676" points="58.9 51.64 68.85 52.15 64.32 43.27 58.9 51.64"/>
+        </g>
+        <g>
+          <line class="uuid-aece1b17-ffed-42a3-b37b-8975889e8537" x1="52.57" y1="19.47" x2="6.02" y2="49.66"/>
+          <polygon class="uuid-047cae04-49f6-4b17-97c7-c6a1806b4676" points="4.53 44.68 0 53.56 9.96 53.05 4.53 44.68"/>
+        </g>
+      </g>
+      <g>
+        <circle class="uuid-5bfb01a6-6737-4413-a680-cde86a7e0247" cx="34.43" cy="29.05" r="10.41"/>
+        <circle class="uuid-aece1b17-ffed-42a3-b37b-8975889e8537" cx="34.43" cy="29.05" r="10.41"/>
+      </g>
+    </g>
+  </g>
+</svg>

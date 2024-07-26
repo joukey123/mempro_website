@@ -28,10 +28,13 @@ const StyledTableCell = styled(TableCell)`
 
 function MachineDimensions({ data, maxWidth }) {
   const [expendClicked, setExpendClicked] = useState(true);
-
+  console.log(data, "data");
   const showContent = (show) => {
     setExpendClicked(show);
   };
+  const hasProbeCardSize = data.find(
+    (item) => item.probeCardSize && item.probeCardSize.trim() !== ""
+  );
 
   return (
     <div className="dimensions">
@@ -47,11 +50,13 @@ function MachineDimensions({ data, maxWidth }) {
                 <StyledTableCell align="center" sx={{ color: "white" }}>
                   Model
                 </StyledTableCell>
+                {hasProbeCardSize && (
+                  <StyledTableCell align="center" sx={{ color: "white" }}>
+                    ProbeCard Size
+                  </StyledTableCell>
+                )}
                 <StyledTableCell align="center" sx={{ color: "white" }}>
-                  ProbeCard Size
-                </StyledTableCell>
-                <StyledTableCell align="center" sx={{ color: "white" }}>
-                  Machine Size{" "}
+                  Machine Size
                 </StyledTableCell>
               </TableRow>
             </StyledTableHead>
@@ -66,9 +71,13 @@ function MachineDimensions({ data, maxWidth }) {
                   }}
                 >
                   <StyledTableCell align="center">{row.model}</StyledTableCell>
-                  <StyledTableCell align="center">
-                    {row.probeCardSize}
-                  </StyledTableCell>
+
+                  {hasProbeCardSize && (
+                    <StyledTableCell align="center">
+                      {row.probeCardSize}
+                    </StyledTableCell>
+                  )}
+
                   <StyledTableCell align="center">
                     {row.machineSize}
                   </StyledTableCell>

@@ -207,6 +207,23 @@ const StyledButton = styled(Button)`
   color: ${(props) => props.$disabled && "#E4E4E4"} !important;
   border-color: ${(props) => props.$disabled && "#E4E4E4"} !important;
 `;
+
+const OptionWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ededed;
+  margin: 15px;
+  width: 150px;
+  border-radius: 4px;
+  overflow: hidden;
+  img {
+    height: 150px;
+    width: 150px;
+    object-fit: cover;
+  }
+`;
 function Etching() {
   const sublink = "etching";
   const { images, contents } = itemsDetail[`${sublink}`];
@@ -330,11 +347,8 @@ function Etching() {
                     </StyledButton>
                   ))}
                 </ButtonGroup>
-                <ContentsWrapper
-                  $length={selectImg.length}
-                  style={{ rowGap: 1, columnGap: 30 }}
-                >
-                  {selectImg.map((item) => (
+
+                {/* {selectImg.map((item) => (
                     <div style={{ position: "relative" }}>
                       <MaterialImg src={item.img} />
                       <div
@@ -349,14 +363,20 @@ function Etching() {
                         {item.title}
                       </div>
                     </div>
+                  ))} */}
+                <div style={{ display: "flex" }}>
+                  {selectImg.map((item, index) => (
+                    <OptionWrapper key={index}>
+                      <img src={item.img} alt={item.title} />
+                      <span style={{ padding: "10px 0" }}>{item.title}</span>
+                    </OptionWrapper>
                   ))}
-                </ContentsWrapper>
+                </div>
               </Box>
             </Collapse>
           </div>
         </Contents>
       </Wrapper>
-      <Footer />
     </>
   );
 }

@@ -27,6 +27,7 @@ import Tester from "./pages/semi/Machine/Tester";
 import Pogo from "./pages/semi/Machine/Pogo";
 import Rubber from "./pages/semi/Machine/Rubber";
 import Machine from "./pages/semi/Machine";
+import NotFound from "./pages/home/NotFound";
 
 function Router() {
   return (
@@ -65,6 +66,7 @@ function Router() {
           <Route path="rubber" element={<Rubber />} />
         </Route>
         <Route path="contact" element={<Contact />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

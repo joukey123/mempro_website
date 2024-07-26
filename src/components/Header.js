@@ -6,6 +6,7 @@ import { Link, useLocation } from "react-router-dom";
 import Language from "./Language";
 import { useEffect, useRef, useState } from "react";
 import Submenu from "./Submenu";
+import "semantic-ui-css/semantic.min.css";
 
 const HeaderWrapper = styled.div`
   position: fixed;

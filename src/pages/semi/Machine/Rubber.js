@@ -2,6 +2,8 @@ import styled from "styled-components";
 import Headline from "../../../components/article/Headline";
 import { machineDetail } from "../../../data";
 import Machines from "../../../components/article/Machines";
+import { useState } from "react";
+import MachineDetail from "../../../components/article/MachineDetail";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -17,18 +19,26 @@ function Rubber() {
   const sublink = "rubber";
   const { contents } = machineDetail[`${sublink}`];
   const machinBtnArray = Object.values(contents).map(
-    ({ title, model, img }) => ({
+    ({ num, title, model, img }) => ({
+      num,
       title,
       model,
       img,
     })
   );
+  const [model, setModel] = useState("");
+  const info = contents[model];
+
+  const selectModel = (item) => {
+    setModel(item);
+  };
 
   return (
     <>
       <Wrapper>
         <Headline item={{ ...machineDetail[`${sublink}`] }} />
-        <Machines machinBtnArray={machinBtnArray} />
+        <Machines machinBtnArray={machinBtnArray} onModel={selectModel} />
+        {info && <MachineDetail info={info} />}
       </Wrapper>
     </>
   );

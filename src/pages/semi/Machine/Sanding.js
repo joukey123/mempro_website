@@ -18,7 +18,7 @@ const Wrapper = styled.div`
 
 function Sanding() {
   const sublink = "sanding";
-  const { contents, blueImg } = machineDetail[`${sublink}`];
+  const { contents, blueImg, options } = machineDetail[`${sublink}`];
   const machinBtnArray = Object.values(contents).map(
     ({ num, title, model, img }) => ({
       num,
@@ -38,9 +38,8 @@ function Sanding() {
       <Wrapper>
         <Headline item={{ ...machineDetail[`${sublink}`] }} />
         <Machines machinBtnArray={machinBtnArray} onModel={selectModel} />
-        {info && <MachineDetail info={info} blueImg={blueImg} />}
+        {info && <MachineDetail info={info} options={options} />}
       </Wrapper>
-      <Footer />
     </>
   );
 }

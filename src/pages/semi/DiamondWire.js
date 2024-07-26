@@ -350,8 +350,6 @@ function DiamondWire() {
           <Application contents={contents} />
         </Contents>
       </Wrapper>
-
-      <Footer />
     </>
   );
 }

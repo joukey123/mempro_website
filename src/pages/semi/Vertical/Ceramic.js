@@ -495,7 +495,6 @@ function Ceramic() {
           </div>
         </Contents>
       </Wrapper>
-      <Footer />
     </>
   );
 }

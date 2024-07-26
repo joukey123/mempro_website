@@ -773,7 +773,6 @@ function Vertical() {
 
         {/* vertical end */}
       </Wrapper>
-      <Footer />
     </>
   );
 }

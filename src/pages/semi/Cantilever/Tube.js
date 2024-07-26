@@ -273,7 +273,6 @@ function Tube() {
           </Table>
         </TableContainer>
       </Wrapper>
-      <Footer />
     </>
   );
 }

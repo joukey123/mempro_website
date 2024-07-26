@@ -628,7 +628,6 @@ function Cantilever() {
 
         {/* cantilever end */}
       </Wrapper>
-      <Footer />
     </>
   );
 }

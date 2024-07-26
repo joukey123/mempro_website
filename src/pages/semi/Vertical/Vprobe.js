@@ -88,7 +88,6 @@ function Vprobe() {
           </Box>
         </Collapse>
       </Wrapper>
-      <Footer />
     </>
   );
 }

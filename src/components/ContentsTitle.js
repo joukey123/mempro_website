@@ -18,6 +18,7 @@ const ContentTitle = styled.div`
 const StyledToggleButton = styled(ToggleButton)`
   border: 0 !important;
   transform: scale(0.8);
+  background-color: transparent !important;
 `;
 
 function ContentsTitle({ title, onData }) {
