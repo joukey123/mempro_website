@@ -7,6 +7,9 @@ import Language from "./Language";
 import { useEffect, useRef, useState } from "react";
 import Submenu from "./Submenu";
 import "semantic-ui-css/semantic.min.css";
+import MenuIcon from "@mui/icons-material/Menu";
+import MobileMenu from "./mobile/MobileMenu";
+import Collapse from "@mui/material/Collapse";
 
 const HeaderWrapper = styled.div`
   position: fixed;
@@ -15,10 +18,10 @@ const HeaderWrapper = styled.div`
   transform: translate(-50%, 0%);
   z-index: 9999;
   width: 100%;
+  height: 80px;
   max-width: 1280px;
   display: flex;
   align-items: center;
-  padding: 0 30px;
   background-color: ${(props) => (props.$isMain ? "transparent" : "white")};
   box-shadow: ${(props) =>
     props.$isMain ? null : "0px 3px 1px -2px rgba(0, 0, 0, 0.2)"};
@@ -40,6 +43,7 @@ const Logo = styled.div`
     no-repeat;
   background-size: contain;
   background-position: center;
+  margin-left: 30px;
 `;
 
 const NavWrapper = styled.div`
@@ -49,7 +53,9 @@ const NavWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 700px;
+  @media (max-width: 1023px) {
+    display: none;
+  }
 `;
 const Nav = styled.ul`
   width: 100%;
@@ -75,6 +81,18 @@ const NavMenu = styled.li`
 `;
 const LanguageWrapper = styled.div`
   transform: scale(0.8);
+  display: none;
+`;
+
+const MenuIconWrapper = styled.div`
+  display: none;
+  cursor: pointer;
+
+  @media (max-width: 1023px) {
+    display: block;
+    position: absolute;
+    right: 30px;
+  }
 `;
 
 function Header() {
@@ -82,7 +100,15 @@ function Header() {
   const [isMain, setIsMain] = useState(false);
   const [activeMenu, setActiveMenu] = useState(null);
   const [hoveredLiWidth, setHoveredLiWidth] = useState(null);
+  const [openMobileMenu, setOpenMobileMenu] = useState(false);
 
+  const handleDataFromChild = (data) => {
+    setOpenMobileMenu(data);
+  };
+
+  const handleOpenMobileMenu = () => {
+    setOpenMobileMenu((prev) => !prev);
+  };
   useEffect(() => {
     if (location.pathname === "/") {
       setIsMain(true);
@@ -150,9 +176,16 @@ function Header() {
           ))}
         </Nav>
       </NavWrapper>
+      <MenuIconWrapper onClick={handleOpenMobileMenu}>
+        <MenuIcon fontSize="large" />
+      </MenuIconWrapper>
       <LanguageWrapper>
         <Language />
       </LanguageWrapper>
+      <Collapse orientation="horizontal" in={openMobileMenu}>
+        {/* {openMobileMenu && <MobileMenu onData={handleDataFromChild} />}*/}
+        <MobileMenu onData={handleDataFromChild} />
+      </Collapse>
     </HeaderWrapper>
   );
 }

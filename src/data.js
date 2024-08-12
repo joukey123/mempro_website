@@ -197,6 +197,10 @@ import cost from "./img/icon/cost.svg";
 import z_axis from "./img/icon/z-axis.svg";
 import xy_axis from "./img/icon/xy-axis.svg";
 
+//logo
+import logoImg from "./img/0.svg";
+
+export const logo = logoImg;
 export const linkBtns = [
   {
     text: "blog",
