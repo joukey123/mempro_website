@@ -3,29 +3,39 @@ import Grid from "@mui/material/Unstable_Grid2"; // Grid version 2
 import Collapse from "@mui/material/Collapse";
 import { useState } from "react";
 import ContentsTitle from "./ContentsTitle";
-
+const ApplicationBox = styled.div`
+  margin: 150px 0;
+  @media (max-width: 1023px) {
+    margin-top: -50px;
+    margin-bottom: 0px;
+  }
+`;
 const ApplicationImg = styled.img`
   width: 200px;
   height: 200px;
   object-fit: cover;
   border-radius: 10px;
+  @media (max-width: 1023px) {
+    width: 100px;
+    height: 100px;
+  }
 `;
 
 const StyledGridContainer = styled(Grid)``;
 function Application({ contents }) {
   const [expendClicked, setExpendClicked] = useState(true);
-
   const showContent = (show) => {
     setExpendClicked(show);
   };
   return (
-    <div className="application" style={{ margin: "150px 0" }}>
+    <ApplicationBox className="application">
       <ContentsTitle title={"Application"} onData={showContent} />
       <Collapse in={expendClicked}>
         <StyledGridContainer container spacing={3}>
           {contents.applications.map((item) => (
             <Grid
-              xs={12 / contents.applications.length}
+              xs={6}
+              md={12 / contents.applications.length}
               sx={{ textAlign: "center" }}
             >
               <ApplicationImg src={item.img} />
@@ -34,7 +44,7 @@ function Application({ contents }) {
           ))}
         </StyledGridContainer>
       </Collapse>
-    </div>
+    </ApplicationBox>
   );
 }
 

@@ -6,11 +6,20 @@ import { useState } from "react";
 import Collapse from "@mui/material/Collapse";
 import ContentsTitle from "./ContentsTitle";
 import { WidthFull } from "@mui/icons-material";
-
+const FeaturesBox = styled.div`
+  margin: 150px 0;
+  @media (max-width: 1023px) {
+    margin: 100px 0;
+  }
+`;
 const Icon = styled.img`
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   object-fit: contain;
+  @media (max-width: 1023px) {
+    width: 80px;
+    height: 80px;
+  }
 `;
 const StyledGridContainer = styled(Grid)``;
 
@@ -27,14 +36,14 @@ function Features({ contents, maxWidth }) {
     setRowNumber(4);
   }
   return (
-    <div className="features" style={{ margin: "150px 0" }}>
+    <FeaturesBox className="features">
       <ContentsTitle title={"Features"} onData={showContent} />
       <Collapse in={expendClicked}>
         <Box sx={{ flexGrow: 1, maxWidth, margin: "0 auto" }}>
           <StyledGridContainer container spacing={3}>
             {contents.features.map((item, index) => (
               <Grid
-                xs={maxNumber / 2}
+                xs={12 / length}
                 md={rowNumber}
                 key={index}
                 sx={{
@@ -42,7 +51,7 @@ function Features({ contents, maxWidth }) {
                 }}
               >
                 <Icon className={`img${index}`} src={item.icon} />
-                <div style={{ marginTop: 20, textTransform: "capitalize" }}>
+                <div style={{ marginTop: 0, textTransform: "capitalize" }}>
                   {item.text}
                 </div>
               </Grid>
@@ -50,7 +59,7 @@ function Features({ contents, maxWidth }) {
           </StyledGridContainer>
         </Box>
       </Collapse>
-    </div>
+    </FeaturesBox>
   );
 }
 

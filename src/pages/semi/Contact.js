@@ -15,7 +15,7 @@ import AlertTitle from "@mui/material/AlertTitle";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormGroup from "@mui/material/FormGroup";
-import { Fade } from "@mui/material";
+import { Fade, useMediaQuery } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import CircularProgress from "@mui/material/CircularProgress";
 import Banner from "../../components/article/Banner";
@@ -25,6 +25,9 @@ const Warpper = styled.div`
   max-width: 1280px;
   margin: 50px auto;
   display: flex;
+  @media (max-width: 1023px) {
+    flex-direction: column;
+  }
 `;
 
 const ContactTitle = styled.h1`
@@ -77,6 +80,7 @@ function Contact() {
   const [agree, setAgree] = useState(false);
   const checkboxRef = useRef(null);
   const [isLoading, setIsLoading] = useState(false); // 로딩 상태 추가
+  const isMobile = useMediaQuery("(max-width: 1023px)");
 
   const onLoad = () => {
     // this reaches out to the hCaptcha JS API and runs the
@@ -155,12 +159,13 @@ function Contact() {
       )}
 
       <Warpper>
-        <div className="office" style={{ width: "60%" }}>
+        <div className="office" style={{ width: isMobile ? "100%" : "60%" }}>
           <div
             style={{
-              paddingLeft: 20,
+              paddingLeft: isMobile ? 0 : 20,
               width: "90%",
               borderBottom: ".5px solid rgba(0,0,0,0.2)",
+              margin: isMobile && "0 auto",
               marginBottom: "50px",
             }}
           >
@@ -177,7 +182,7 @@ function Contact() {
             <OfficeAdd
               className="officeAdd"
               style={{
-                display: "felx",
+                display: isMobile ? "none" : "flex",
               }}
             >
               <Avatar
@@ -214,10 +219,11 @@ function Contact() {
         <div
           className="form"
           style={{
-            width: "60%",
+            width: isMobile ? "90%" : "60%",
             backgroundColor: "#1976D2",
-            padding: "40px 35px",
+            padding: isMobile ? "10px" : "15px",
             borderRadius: "5px",
+            margin: isMobile && "0 auto",
           }}
         >
           <form

@@ -7,6 +7,7 @@ import Footer from "../../components/Footer";
 import { useState } from "react";
 import { add } from "../../data";
 import build from "../../img/build.svg";
+import { useMediaQuery } from "@mui/material";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -23,6 +24,7 @@ const MapWrapper = styled.div`
   height: 500px;
   margin: 0 auto;
   position: relative;
+  overflow-y: hidden;
 `;
 const Map = styled.div`
   background: url(${worldmap}) no-repeat top center;
@@ -30,9 +32,9 @@ const Map = styled.div`
   width: 100%;
   max-width: 900px;
   height: 500px;
+  margin: 0 auto;
   filter: grayscale(1);
   opacity: 0.2;
-  margin: 0 auto;
 `;
 const Pin = styled(motion.img)`
   width: 40px;
@@ -102,11 +104,22 @@ const OfficeAddrss = styled.div`
       background-color: ${(props) => props.theme.colors.blue}; // 기본 버튼 색상
     }
   }
+
+  @media (max-width: 1023px) {
+    width: 90%;
+    flex-direction: column;
+    margin-top: 0px;
+    div:first-child {
+      margin-bottom: 20px;
+    }
+  }
 `;
+const OfficeMotionBox = styled(motion.div)``;
 
 function Office() {
   const [isTrade, setIsTrade] = useState(false);
   const [isOffice, setIsOffice] = useState(true);
+
   const handleClick = (event) => {
     if (event.target.innerText === "Trade Partners") {
       setIsTrade(true);
@@ -281,13 +294,13 @@ function Office() {
                 {/* USA */}
                 <Pin
                   src={pin}
-                  initial={{ opacity: 0, top: 75 - 30, left: 100 }}
-                  animate={{ opacity: 1, top: 75, left: 100 }}
+                  initial={{ opacity: 0, top: 75 - 30, right: 760 }}
+                  animate={{ opacity: 1, top: 75, right: 760 }}
                   transition={{ delay: 1.2 }}
                 />
                 <Nation
-                  initial={{ opacity: 0, top: 135, left: 95 }}
-                  animate={{ opacity: 1, top: 135, left: 95 }}
+                  initial={{ opacity: 0, top: 135, right: 755 }}
+                  animate={{ opacity: 1, top: 135, right: 755 }}
                   transition={{ delay: 1.3 }}
                 >
                   USA
@@ -310,7 +323,6 @@ function Office() {
                 >
                   Korea
                 </OfficeNation>
-
                 {/* Taiwan */}
                 <OfficePin
                   src={pin}
@@ -338,6 +350,7 @@ function Office() {
                 padding: 20,
                 borderRadius: 10,
                 boxShadow: "1px 1px 5px rgba(0,0,0,0.05)",
+                margin: 5,
               }}
             >
               <div
@@ -348,7 +361,7 @@ function Office() {
                 }}
               >
                 <img src={build} width={40} style={{ marginRight: 15 }} />
-                <div>
+                <div style={{ width: "90%" }}>
                   <div
                     style={{ fontSize: 16, marginBottom: 8, fontWeight: 300 }}
                   >
@@ -361,7 +374,6 @@ function Office() {
                 <button
                   href="#"
                   style={{
-                    marginLeft: 130,
                     display: "block",
                     textAlign: "right",
                     padding: "5px 10px 5px 10px",
@@ -378,7 +390,7 @@ function Office() {
               <div
                 style={{
                   fontSize: 14,
-                  width: 400,
+                  width: "100%",
                   marginTop: 10,
                   lineHeight: 1.3,
                 }}

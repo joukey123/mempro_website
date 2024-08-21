@@ -18,6 +18,10 @@ import ExpandLessOutlinedIcon from "@mui/icons-material/ExpandLessOutlined";
 import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import Background from "three/examples/jsm/renderers/common/Background.js";
+import { useMediaQuery } from "@mui/material";
+import Button from "@mui/material/Button";
+import ButtonGroup from "@mui/material/ButtonGroup";
+import VerticalAnimationMobile from "../Cantilever/VerticalAnimationMobile";
 const Wrapper = styled.div`
   width: 100%;
   max-width: 1280px;
@@ -27,6 +31,9 @@ const Wrapper = styled.div`
   flex-direction: column;
   padding: 0 50px;
   position: relative;
+  @media (max-width: 1023px) {
+    padding: 0 30px;
+  }
 `;
 const DiagramWpper = styled.div`
   width: 100%;
@@ -67,6 +74,16 @@ const BtnWrapper = styled.div`
   visibility: ${(props) => props.$isPlay && "hidden"};
   display: flex;
   flex-direction: column;
+  @media (max-width: 1023px) {
+    transform: scale(0.7);
+    flex-direction: row;
+    z-index: 999;
+    right: 30px;
+    bottom: 30px;
+    .btn1 {
+      margin-right: 10px;
+    }
+  }
 `;
 
 const ZoomBtn = styled.button`
@@ -168,6 +185,9 @@ const StructureWarpper = styled.div`
   overflow: hidden;
   display: flex;
   justify-content: center;
+  @media (max-width: 1023px) {
+    height: 550px;
+  }
 `;
 
 const Part = styled(motion.img)`
@@ -197,7 +217,17 @@ function Vertical() {
   const { images, contents, item, warning } = itemsDetail[`${sublink}`];
   const [isZoom, setIsZoom] = useState(false);
   const [playAnimation, setPlayAnimation] = useState(false);
+  const [triggerAnimation, setTriggerAnimation] = useState(false);
 
+  const isMobile = useMediaQuery("(max-width: 1023px)");
+  useEffect(() => {
+    setTriggerAnimation(false);
+    const timeout = setTimeout(() => {
+      setTriggerAnimation(true);
+    }, 10); // Small delay to allow state to reset
+
+    return () => clearTimeout(timeout);
+  }, [isMobile]);
   const handleZoomDiagram = () => {
     setIsZoom((prev) => !prev);
   };
@@ -277,254 +307,281 @@ function Vertical() {
           ))}
         </div> */}
 
-        <Tap
+        {/* <Tap
           data={porbeArray}
           handleClickProbe={handleClickProbe}
           sublink={sublink}
-        />
+        /> */}
         <Headline item={{ ...itemsDetail[`${sublink}`] }} />
         {sublink === "probe" && <Probe images={images} item={item} />}
+        {sublink === "vertical" && isMobile && (
+          <ButtonGroup
+            sx={{ width: "100%", mb: 2 }}
+            variant="contained"
+            orientation="vertical"
+          >
+            <Button onClick={() => navigate("/semi/parts/stiffener")}>
+              Stiffener
+            </Button>
+            <Button onClick={() => navigate("/semi/parts/cprobe")}>
+              Cobra, Wire, Short, PEMS
+            </Button>
+            <Button onClick={() => navigate("/semi/parts/tube")}>
+              Ceramic Hole / Plate
+            </Button>
+          </ButtonGroup>
+        )}
         {/* vertical start */}
         {sublink === "vertical" && (
           <StructureWarpper>
             <DiagramImg src={images.machine} $isZoom={isZoom} />
-            <Part
-              src={images.part1}
-              $isPlay={playAnimation}
-              initial={{
-                translateX: 200,
-                translateY: -100 + 50,
-                scale: 0.8,
-                zIndex: 10,
-              }}
-              transition={{ duration: 2 }}
-              $isZoom={isZoom}
-            />
-            <Part
-              src={images.part2}
-              $isPlay={playAnimation}
-              initial={{
-                translateX: 120,
-                translateY: 20 + 50,
-                scale: 0.2,
-                opacity: 0.2,
-                zIndex: 9,
-              }}
-              transition={{ duration: 2 }}
-              $isZoom={isZoom}
-            />
-            <Part
-              src={images.part3}
-              $isPlay={playAnimation}
-              initial={{
-                translateX: 100,
-                translateY: 40 + 50,
-                scale: 0.15,
-                opacity: 1,
-                zIndex: 8,
-              }}
-              transition={{ duration: 2 }}
-              $isZoom={isZoom}
-            />
-            <Part
-              src={images.part4}
-              $isPlay={playAnimation}
-              initial={{
-                translateX: 30,
-                translateY: 120 + 50,
-                rotate: 5,
-                scale: 0.85,
-                zIndex: 7,
-                opacity: 0.2,
-              }}
-              transition={{ duration: 2 }}
-              $isZoom={isZoom}
-            />
-            <Part
-              src={images.part5}
-              $isPlay={playAnimation}
-              initial={{
-                translateX: -80,
-                translateY: 300 + 50,
-                scale: 0.4,
-                zIndex: 6,
-              }}
-              transition={{ duration: 2 }}
-              $isZoom={isZoom}
-            />
-            <Part
-              src={images.part6}
-              $isPlay={playAnimation}
-              initial={{
-                translateX: -120,
-                translateY: 350 + 50,
-                scale: 0.3,
-                opacity: 0.2,
 
-                zIndex: 6,
-              }}
-              transition={{ duration: 2 }}
-              $isZoom={isZoom}
-            />
-            <Part
-              src={images.part7}
-              $isPlay={playAnimation}
-              initial={{
-                translateX: -150,
-                translateY: 380 + 50,
-                scale: 0.24,
-                opacity: 1,
-              }}
-              transition={{ duration: 2 }}
-              $isZoom={isZoom}
-            />
-            <Part
-              src={images.part8}
-              $isPlay={playAnimation}
-              initial={{
-                translateX: -180,
-                translateY: 430 + 50,
-                scale: 0.3,
-                opacity: 1,
-              }}
-              transition={{ duration: 2 }}
-              $isZoom={isZoom}
-            />
-            <Part
-              src={images.part9}
-              $isPlay={playAnimation}
-              initial={{
-                translateX: -250,
-                translateY: 410 + 50,
-                scale: 0.3,
-                opacity: 1,
-              }}
-              transition={{ duration: 2 }}
-              $isZoom={isZoom}
-            />
+            {isMobile ? (
+              <VerticalAnimationMobile isAnimation={playAnimation} />
+            ) : (
+              <>
+                <Part
+                  src={images.part1}
+                  $isPlay={playAnimation}
+                  initial={{
+                    translateX: 200,
+                    translateY: -100 + 50,
+                    scale: 0.8,
+                    zIndex: 10,
+                  }}
+                  transition={{ duration: 2 }}
+                  $isZoom={isZoom}
+                />
+                <Part
+                  src={images.part2}
+                  $isPlay={playAnimation}
+                  initial={{
+                    translateX: 120,
+                    translateY: 20 + 50,
+                    scale: 0.2,
+                    opacity: 0.2,
+                    zIndex: 9,
+                  }}
+                  transition={{ duration: 2 }}
+                  $isZoom={isZoom}
+                />
+                <Part
+                  src={images.part3}
+                  $isPlay={playAnimation}
+                  initial={{
+                    translateX: 100,
+                    translateY: 40 + 50,
+                    scale: 0.15,
+                    opacity: 1,
+                    zIndex: 8,
+                  }}
+                  transition={{ duration: 2 }}
+                  $isZoom={isZoom}
+                />
+                <Part
+                  src={images.part4}
+                  $isPlay={playAnimation}
+                  initial={{
+                    translateX: 30,
+                    translateY: 120 + 50,
+                    rotate: 5,
+                    scale: 0.85,
+                    zIndex: 7,
+                    opacity: 0.2,
+                  }}
+                  transition={{ duration: 2 }}
+                  $isZoom={isZoom}
+                />
+                <Part
+                  src={images.part5}
+                  $isPlay={playAnimation}
+                  initial={{
+                    translateX: -80,
+                    translateY: 300 + 50,
+                    scale: 0.4,
+                    zIndex: 6,
+                  }}
+                  transition={{ duration: 2 }}
+                  $isZoom={isZoom}
+                />
+                <Part
+                  src={images.part6}
+                  $isPlay={playAnimation}
+                  initial={{
+                    translateX: -120,
+                    translateY: 350 + 50,
+                    scale: 0.3,
+                    opacity: 0.2,
 
-            <Line style={{}} $isPlay={playAnimation} $isZoom={isZoom}>
-              <svg
-                style={{
-                  width: "100%",
-                  height: "100%",
-                }}
-              >
-                <motion.line
-                  x1="55%"
-                  y1="150"
-                  x2="39%"
-                  y2="150"
-                  stroke="black"
-                  stroke-width="1"
-                  variants={lines}
-                  initial="hidden"
-                  animate="visible"
-                  transition={{ delay: 1 }}
-                />
-                <motion.line
-                  x1="35%"
-                  y1="490"
-                  x2="25%"
-                  y2="490"
-                  stroke="black"
-                  stroke-width="1"
-                  variants={lines}
-                  initial="hidden"
-                  animate="visible"
-                  transition={{ delay: 1 }}
-                />
-                <motion.line
-                  x1="31%"
-                  y1="590"
-                  x2="21%"
-                  y2="590"
-                  stroke="black"
-                  stroke-width="1"
-                  variants={lines}
-                  initial="hidden"
-                  animate="visible"
-                  transition={{ delay: 1 }}
-                />
-                <motion.line
-                  x1="30%"
-                  y1="750"
-                  x2="50%"
-                  y2="750"
-                  stroke="black"
-                  stroke-width="1"
-                  variants={lines}
-                  initial="hidden"
-                  animate="visible"
-                  transition={{ delay: 1 }}
-                />
-              </svg>
-              <SpanDiv $isPlay={playAnimation}>
-                <motion.span
-                  style={{
-                    position: "absolute",
-                    top: 135,
-                    left: "31.5%",
-                    fontSize: 18,
+                    zIndex: 6,
                   }}
-                  initial={{ visibility: "hidden" }}
-                  animate={{ visibility: "visible" }}
-                  transition={{ delay: 1.5 }}
-                >
-                  <Link to={`/semi/parts/vstiffener`}>
-                    <StyledChip label="Stiffener" />
-                  </Link>
-                </motion.span>
+                  transition={{ duration: 2 }}
+                  $isZoom={isZoom}
+                />
+                <Part
+                  src={images.part7}
+                  $isPlay={playAnimation}
+                  initial={{
+                    translateX: -150,
+                    translateY: 380 + 50,
+                    scale: 0.24,
+                    opacity: 1,
+                  }}
+                  transition={{ duration: 2 }}
+                  $isZoom={isZoom}
+                />
+                <Part
+                  src={images.part8}
+                  $isPlay={playAnimation}
+                  initial={{
+                    translateX: -180,
+                    translateY: 430 + 50,
+                    scale: 0.3,
+                    opacity: 1,
+                  }}
+                  transition={{ duration: 2 }}
+                  $isZoom={isZoom}
+                />
+                <Part
+                  src={images.part9}
+                  $isPlay={playAnimation}
+                  initial={{
+                    translateX: -250,
+                    translateY: 410 + 50,
+                    scale: 0.3,
+                    opacity: 1,
+                  }}
+                  transition={{ duration: 2 }}
+                  $isZoom={isZoom}
+                />
+              </>
+            )}
 
-                <motion.span
+            {!isMobile && (
+              <Line style={{}} $isPlay={playAnimation} $isZoom={isZoom}>
+                <svg
                   style={{
-                    position: "absolute",
-                    top: 475,
-                    left: "14%",
-                    fontSize: 18,
+                    width: "100%",
+                    height: "100%",
                   }}
-                  initial={{ visibility: "hidden" }}
-                  animate={{ visibility: "visible" }}
-                  transition={{ delay: 1.5 }}
                 >
-                  <Link to={`/semi/parts/ceramic`}>
-                    <StyledChip label="Ceramic Hole" />
-                  </Link>
-                </motion.span>
-                <motion.span
-                  style={{
-                    position: "absolute",
-                    top: 575,
-                    left: "6%",
-                    fontSize: 18,
-                  }}
-                  initial={{ visibility: "hidden" }}
-                  animate={{ visibility: "visible" }}
-                  transition={{ delay: 1.5 }}
-                >
-                  <Link to={`/semi/parts/ceramic`}>
-                    <StyledChip label="Ceramic Guide Plate" />
-                  </Link>
-                </motion.span>
-                <motion.span
-                  style={{
-                    position: "absolute",
-                    top: 735,
-                    left: "50%",
-                    fontSize: 18,
-                  }}
-                  initial={{ visibility: "hidden" }}
-                  animate={{ visibility: "visible" }}
-                  transition={{ delay: 1.5 }}
-                >
-                  <Link to={`/semi/parts/vprobe`}>
-                    <StyledChip label="Cobra, Wire, Short, PEMS" />
-                  </Link>
-                </motion.span>
-              </SpanDiv>
-            </Line>
+                  <motion.line
+                    x1="55%"
+                    y1="150"
+                    x2="39%"
+                    y2="150"
+                    stroke="black"
+                    stroke-width="1"
+                    variants={lines}
+                    initial="hidden"
+                    animate="visible"
+                    transition={{ delay: 1 }}
+                  />
+                  <motion.line
+                    x1="35%"
+                    y1="490"
+                    x2="25%"
+                    y2="490"
+                    stroke="black"
+                    stroke-width="1"
+                    variants={lines}
+                    initial="hidden"
+                    animate="visible"
+                    transition={{ delay: 1 }}
+                  />
+                  <motion.line
+                    x1="31%"
+                    y1="590"
+                    x2="21%"
+                    y2="590"
+                    stroke="black"
+                    stroke-width="1"
+                    variants={lines}
+                    initial="hidden"
+                    animate="visible"
+                    transition={{ delay: 1 }}
+                  />
+                  <motion.line
+                    x1="30%"
+                    y1="750"
+                    x2="50%"
+                    y2="750"
+                    stroke="black"
+                    stroke-width="1"
+                    variants={lines}
+                    initial="hidden"
+                    animate="visible"
+                    transition={{ delay: 1 }}
+                  />
+                </svg>
+                <SpanDiv $isPlay={playAnimation}>
+                  <motion.span
+                    style={{
+                      position: "absolute",
+                      top: 135,
+                      left: "31.5%",
+                      fontSize: 18,
+                    }}
+                    initial={{ visibility: "hidden" }}
+                    animate={{ visibility: "visible" }}
+                    transition={{ delay: 1.5 }}
+                  >
+                    <Link to={`/semi/parts/vstiffener`}>
+                      <StyledChip label="Stiffener" />
+                    </Link>
+                  </motion.span>
+
+                  <motion.span
+                    style={{
+                      position: "absolute",
+                      top: 475,
+                      left: "14%",
+                      fontSize: 18,
+                    }}
+                    initial={{ visibility: "hidden" }}
+                    animate={{ visibility: "visible" }}
+                    transition={{ delay: 1.5 }}
+                  >
+                    <Link to={`/semi/parts/ceramic`}>
+                      <StyledChip label="Ceramic Hole" />
+                    </Link>
+                  </motion.span>
+                  <motion.span
+                    style={{
+                      position: "absolute",
+                      top: 575,
+                      left: "6%",
+                      fontSize: 18,
+                    }}
+                    initial={{ visibility: "hidden" }}
+                    animate={{ visibility: "visible" }}
+                    transition={{ delay: 1.5 }}
+                  >
+                    <Link to={`/semi/parts/ceramic`}>
+                      <StyledChip label="Ceramic Guide Plate" />
+                    </Link>
+                  </motion.span>
+                  <motion.span
+                    style={{
+                      position: "absolute",
+                      top: 735,
+                      left: "50%",
+                      fontSize: 18,
+                    }}
+                    initial={{ visibility: "hidden" }}
+                    animate={{ visibility: "visible" }}
+                    transition={{ delay: 1.5 }}
+                  >
+                    <Link to={`/semi/parts/vprobe`}>
+                      <StyledChip label="Cobra, Wire, Short, PEMS" />
+                    </Link>
+                  </motion.span>
+                </SpanDiv>
+              </Line>
+            )}
+
             {/* vertical animation start */}
-            {playAnimation && (
+            {playAnimation && !isMobile && (
               <>
                 <Part
                   src={images.part1}
@@ -534,12 +591,16 @@ function Vertical() {
                     scale: 0.8,
                     zIndex: 10,
                   }}
-                  animate={{
-                    translateX: 200 - 150,
-                    translateY: -100 + 230 + 50,
-                    scale: 0.8,
-                    zIndex: 10,
-                  }}
+                  animate={
+                    triggerAnimation
+                      ? {
+                          translateX: 200 - 150,
+                          translateY: -100 + 230 + 50,
+                          scale: 0.8,
+                          zIndex: 10,
+                        }
+                      : {}
+                  }
                   transition={{ duration: 2 }}
                   $isZoom={isZoom}
                 />
@@ -553,13 +614,17 @@ function Vertical() {
                     opacity: 1,
                     zIndex: 9,
                   }}
-                  animate={{
-                    translateX: 120 - 85,
-                    translateY: 15 + 165 + 50,
-                    scale: 0.2,
-                    opacity: 1,
-                    zIndex: 9,
-                  }}
+                  animate={
+                    triggerAnimation
+                      ? {
+                          translateX: 120 - 85,
+                          translateY: 15 + 165 + 50,
+                          scale: 0.2,
+                          opacity: 1,
+                          zIndex: 9,
+                        }
+                      : {}
+                  }
                   transition={{ duration: 2 }}
                   $isZoom={isZoom}
                 />
@@ -572,13 +637,17 @@ function Vertical() {
                     opacity: 1,
                     zIndex: 8,
                   }}
-                  animate={{
-                    translateX: 100 - 70,
-                    translateY: 40 + 135 + 50,
-                    scale: 0.15,
-                    opacity: 1,
-                    zIndex: 8,
-                  }}
+                  animate={
+                    triggerAnimation
+                      ? {
+                          translateX: 100 - 70,
+                          translateY: 40 + 135 + 50,
+                          scale: 0.15,
+                          opacity: 1,
+                          zIndex: 8,
+                        }
+                      : {}
+                  }
                   transition={{ duration: 2 }}
                   $isZoom={isZoom}
                 />
@@ -591,13 +660,17 @@ function Vertical() {
                     scale: 0.85,
                     zIndex: 7,
                   }}
-                  animate={{
-                    translateX: 30,
-                    translateY: 120 + 20 + 50,
-                    rotate: 5,
-                    scale: 0.85,
-                    zIndex: 7,
-                  }}
+                  animate={
+                    triggerAnimation
+                      ? {
+                          translateX: 30,
+                          translateY: 120 + 20 + 50,
+                          rotate: 5,
+                          scale: 0.85,
+                          zIndex: 7,
+                        }
+                      : {}
+                  }
                   transition={{ duration: 2 }}
                   $isZoom={isZoom}
                 />
@@ -609,12 +682,16 @@ function Vertical() {
                     scale: 0.4,
                     zIndex: 6,
                   }}
-                  animate={{
-                    translateX: -80 + 50,
-                    translateY: 300 - 20 + 50,
-                    scale: 0.4,
-                    zIndex: 6,
-                  }}
+                  animate={
+                    triggerAnimation
+                      ? {
+                          translateX: -80 + 50,
+                          translateY: 300 - 20 + 50,
+                          scale: 0.4,
+                          zIndex: 6,
+                        }
+                      : {}
+                  }
                   transition={{ duration: 2 }}
                   $isZoom={isZoom}
                 />
@@ -627,13 +704,17 @@ function Vertical() {
                     opacity: 1,
                     zIndex: 5,
                   }}
-                  animate={{
-                    translateX: -120 + 80,
-                    translateY: 350 - 50 + 50,
-                    scale: 0.3,
-                    opacity: 1,
-                    zIndex: 5,
-                  }}
+                  animate={
+                    triggerAnimation
+                      ? {
+                          translateX: -120 + 80,
+                          translateY: 350 - 50 + 50,
+                          scale: 0.3,
+                          opacity: 1,
+                          zIndex: 5,
+                        }
+                      : {}
+                  }
                   transition={{ duration: 2 }}
                   $isZoom={isZoom}
                 />
@@ -646,13 +727,17 @@ function Vertical() {
                     opacity: 1,
                     zIndex: 3,
                   }}
-                  animate={{
-                    translateX: -150 + 110,
-                    translateY: 380 - 80 + 50,
-                    scale: 0.24,
-                    opacity: 1,
-                    zIndex: 3,
-                  }}
+                  animate={
+                    triggerAnimation
+                      ? {
+                          translateX: -150 + 110,
+                          translateY: 380 - 80 + 50,
+                          scale: 0.24,
+                          opacity: 1,
+                          zIndex: 3,
+                        }
+                      : {}
+                  }
                   transition={{ duration: 2 }}
                   $isZoom={isZoom}
                 />
@@ -665,13 +750,17 @@ function Vertical() {
                     opacity: 1,
                     zIndex: 2,
                   }}
-                  animate={{
-                    translateX: -180 + 140,
-                    translateY: 430 - 110 + 40,
-                    scale: 0.3,
-                    opacity: 1,
-                    zIndex: 2,
-                  }}
+                  animate={
+                    triggerAnimation
+                      ? {
+                          translateX: -180 + 140,
+                          translateY: 430 - 110 + 40,
+                          scale: 0.3,
+                          opacity: 1,
+                          zIndex: 2,
+                        }
+                      : {}
+                  }
                   transition={{ duration: 2 }}
                   $isZoom={isZoom}
                 />
@@ -683,12 +772,16 @@ function Vertical() {
                     scale: 0.3,
                     opacity: 1,
                   }}
-                  animate={{
-                    translateX: -250 + 150,
-                    translateY: 410 - 140 + 40,
-                    scale: 0.3,
-                    opacity: 1,
-                  }}
+                  animate={
+                    triggerAnimation
+                      ? {
+                          translateX: -250 + 150,
+                          translateY: 410 - 140 + 40,
+                          scale: 0.3,
+                          opacity: 1,
+                        }
+                      : {}
+                  }
                   transition={{ duration: 2 }}
                   $isZoom={isZoom}
                 />
@@ -696,18 +789,20 @@ function Vertical() {
             )}
 
             <BtnWrapper $isPlay={playAnimation}>
-              <Fab
-                color="primary"
-                aria-label="add"
-                onClick={handleZoomDiagram}
-                sx={{ marginBottom: 1 }}
-              >
-                {isZoom ? (
-                  <ExpandMoreOutlinedIcon />
-                ) : (
-                  <ExpandLessOutlinedIcon />
-                )}
-              </Fab>
+              {isMobile ? null : (
+                <Fab
+                  color="primary"
+                  aria-label="add"
+                  onClick={handleZoomDiagram}
+                  sx={{ marginBottom: 1 }}
+                >
+                  {isZoom ? (
+                    <ExpandMoreOutlinedIcon />
+                  ) : (
+                    <ExpandLessOutlinedIcon />
+                  )}
+                </Fab>
+              )}
               {!isZoom && (
                 <Fab
                   color="primary"

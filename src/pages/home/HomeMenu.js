@@ -6,15 +6,14 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { items } from "../../data";
 import MessageBox from "../../components/MessageBox";
 import { Link } from "react-router-dom";
+import { useMediaQuery } from "@mui/material";
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 100vh;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 900px;
 `;
 const ImgWrapper = styled(motion.div)`
   width: 100%;
@@ -27,7 +26,8 @@ const ImgWrapper = styled(motion.div)`
 `;
 
 const Img = styled.img`
-  filter: grayscale(1);
+  filter: ${(props) => (props.$mobile ? "grayscale(0)" : "grayscale(1)")};
+  transform: ${(props) => (props.$mobile ? "scale(1.3)" : "scale(1)")};
   max-width: 1200px;
   position: absolute;
   top: 50px;
@@ -69,9 +69,11 @@ const Svg = styled.svg`
 `;
 const MessageWrapper = styled.div`
   width: 100%;
-  height: 20vh;
   display: flex;
   justify-content: center;
+  position: absolute;
+  bottom: 0;
+  transform: scale(1.5);
 `;
 function HomeMenu() {
   const [mouseover, setMouseover] = useState(false);
@@ -82,7 +84,9 @@ function HomeMenu() {
       (Math.ceil((1220 / 1100) * 10000) / 10000).toFixed(4)
     )
   );
+
   const gifImg = useRef(null);
+  const isMobile = useMediaQuery("(max-width: 1023px)");
 
   useEffect(() => {
     const handleResize = () => {
@@ -112,13 +116,13 @@ function HomeMenu() {
   };
 
   const { scrollYProgress } = useScroll();
-  const scale = useTransform(scrollYProgress, [0, 1.1], [0.2, 1.3]);
+  const scale = useTransform(scrollYProgress, [0, 0.5, 0.8], [0, 1, 0]);
   const ref = useRef(null);
 
   return (
     <Wrapper ref={ref}>
       <ImgWrapper style={{ scale }}>
-        <Img src={map} />
+        <Img src={map} $mobile={isMobile} />
         <div
           style={{
             position: "absolute",
@@ -143,7 +147,7 @@ function HomeMenu() {
           )}
         </div>
 
-        {mouseover && (
+        {mouseover && !isMobile && (
           <>
             {/* <MaskImg $isMouseOver={mouseover} $categoies={"led"}>
               <Lottie
@@ -211,11 +215,10 @@ function HomeMenu() {
             </svg>
           </>
         )}
+        <MessageWrapper>
+          <MessageBox text={"궁금한 제품을 선택해 보세요."} type={"close"} />
+        </MessageWrapper>
       </ImgWrapper>
-      <MessageWrapper>
-        <MessageBox text={"궁금한 제품을 선택해 보세요."} type={"close"} />
-      </MessageWrapper>
-      <div></div>
     </Wrapper>
   );
 }

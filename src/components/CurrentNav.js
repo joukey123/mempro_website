@@ -8,6 +8,7 @@ import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import Alert from "@mui/material/Alert";
 import AlertTitle from "@mui/material/AlertTitle";
+import { useMediaQuery } from "@mui/material";
 const Wrapper = styled.div`
   width: 100%;
   max-width: 1280px;
@@ -18,6 +19,10 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media (max-width: 1023px) {
+    flex-direction: column;
+    padding: 0;
+  }
 `;
 
 const Category = styled.h1`
@@ -106,9 +111,9 @@ function CurrentNav() {
   const aboutMenu = ["Company", "Office", "E-catalog"];
   const [selectAboutMenu, setSelectAboutMenu] = useState("Company");
   const [selectSubCategory, setSelectSubCategory] = useState("");
-
   const location = useLocation();
   const lo = location.pathname.split("/")[3];
+  const isMobile = useMediaQuery("(max-width: 1023px)");
 
   useEffect(() => {
     setSelectSubCategory(`${currentSubcategory[0]}`);
@@ -172,6 +177,9 @@ function CurrentNav() {
         value={selectAboutMenu}
         exclusive
         aria-label="Platform"
+        sx={{
+          width: isMobile ? "90%" : null,
+        }}
       >
         {aboutMenu.map((item, index) => (
           <ToggleButton
@@ -186,7 +194,11 @@ function CurrentNav() {
       </ToggleButtonGroup>
       <Alert
         severity="info"
-        sx={{ width: "100%", maxWidth: 450, margin: "0px auto" }}
+        sx={{
+          width: isMobile ? "90%" : "100%",
+          maxWidth: 450,
+          margin: isMobile ? "15px auto" : "0px auto",
+        }}
       >
         We provide the necessary parts for the probe card.
       </Alert>

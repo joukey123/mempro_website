@@ -7,14 +7,14 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
 
 const Svg = styled(motion.svg)`
-  width: 35%;
-  height: auto;
-  position: absolute;
-  top: -14%;
-  left: 27%;
+  width: 150px;
 `;
 
 const lightBlue = {

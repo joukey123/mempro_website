@@ -4,10 +4,17 @@ import React from "react";
 import styled, { keyframes } from "styled-components";
 
 const SVG = styled.svg`
-  max-width: 900px;
+  max-width: 800px;
+  position: absolute;
+  width: 100%;
+  max-width: 800px;
   top: 45%;
   left: 50%;
-  transform: translate(5%, -5%) scale(0.9);
+  transform: translate(-50%, -50%);
+  @media (max-width: 1023px) {
+    width: 95%;
+    transform: translate(-50%, -46%);
+  }
 `;
 const Line = styled.line`
   stroke: ${(props) =>

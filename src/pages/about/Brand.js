@@ -16,6 +16,7 @@ import { AnimatePresence } from "framer-motion";
 import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import Snackbar from "@mui/material/Snackbar";
+import { useSwipeable } from "react-swipeable";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -27,6 +28,12 @@ const Info = styled.div`
   display: flex;
   justify-content: center;
   margin-bottom: 180px;
+
+  @media (max-width: 1023px) {
+    overflow: hidden;
+    width: 90%;
+    margin: 50px auto;
+  }
 `;
 const Box = styled.div`
   display: flex;
@@ -34,6 +41,11 @@ const Box = styled.div`
   align-items: center;
   justify-content: center;
   margin: 0 8%;
+  @media (max-width: 1023px) {
+    margin: 0;
+    width: 33%;
+    transform: scale(0.6);
+  }
 `;
 const Img = styled.div`
   background: url(${(props) => props.$url}) no-repeat center bottom;
@@ -53,7 +65,13 @@ const Title = styled.h1`
   }
 `;
 const Text = styled.span`
-  font-size: 1rem;
+  font-size: 18px;
+  font-weight: lighter;
+  @media (max-width: 1023px) {
+    font-size: 24px;
+    text-align: center;
+    margin-top: 5px;
+  }
 `;
 const ValueWrapper = styled.div`
   display: flex;
@@ -77,11 +95,18 @@ const StyleTitle = styled.h1`
   font-size: 3rem;
   font-family: "Abril Fatface", cursive;
   margin-bottom: 20px;
+  @media (max-width: 1023px) {
+    width: 100%;
+    text-align: center;
+  }
 `;
 const Dec = styled.p`
   width: 45%;
   text-align: center;
   letter-spacing: -0.5px;
+  @media (max-width: 1023px) {
+    width: 80%;
+  }
 `;
 const ValueImgWrapper = styled.div`
   width: 100%;
@@ -90,6 +115,10 @@ const ValueImgWrapper = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: 50px;
+  @media (max-width: 1023px) {
+    transform: scale(0.8);
+    margin-top: 10px;
+  }
 `;
 const ValueBox = styled.div`
   width: 100%;
@@ -101,6 +130,7 @@ const ValueBox = styled.div`
   &:last-child {
     margin-top: 30px;
   }
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
 `;
 const Illust = styled.div`
   width: 50%;
@@ -164,7 +194,13 @@ const CiImgBox = styled.div`
   height: 350px;
   border-radius: 50px;
   border: 0.7px solid #a1a1a1;
-  background: url(${(props) => props.$url});
+  background: url(${(props) => props.$url}) no-repeat center;
+  background-size: cover;
+  @media (max-width: 1023px) {
+    width: 90%;
+    height: 180px;
+    border-radius: 15px;
+  }
 `;
 const CiImgNav = styled.div`
   width: 100%;
@@ -193,6 +229,9 @@ const CiBtn = styled.div`
   &:hover {
     background-color: ${(props) => props.theme.colors.gray};
   }
+  @media (max-width: 1023px) {
+    display: none;
+  }
 `;
 const Circle = styled.div`
   width: 10px;
@@ -217,6 +256,9 @@ const ColorBoxWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
+  @media (max-width: 1023px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;
 
 const ColorBox = styled.div`
@@ -228,6 +270,10 @@ const ColorBox = styled.div`
   color: white;
   border: 0.5px solid #a1a1a1;
   cursor: pointer;
+  @media (max-width: 1023px) {
+    width: 150px;
+    border-radius: 15px;
+  }
 `;
 const CopyMessage = styled(motion.div)`
   position: absolute;
@@ -238,10 +284,10 @@ const CopyMessage = styled(motion.div)`
       ? "rgba(0,0,0,0.5)"
       : "rgba(255, 255, 255, 0.5)"};
   text-align: center;
-  padding: 10px 0;
-  width: 40%;
-  border-radius: 15px;
+  padding: 10px 20px;
+  border-radius: 10px;
   font-size: 0.8rem;
+  transform: translate(-50%, -50%) !important;
 `;
 function Brand() {
   const CiImages = [Ci0, Ci1, Ci2, Ci3];
@@ -264,6 +310,18 @@ function Brand() {
   const handleClose = () => {
     setSnakBarOpen(false);
   };
+  const handleSwipedLeft = () => {
+    setIndex((prev) => (prev === 0 ? CiImages.length - 1 : prev - 1));
+  };
+  const handleSwipedRight = () => {
+    setIndex((prev) => (prev === CiImages.length - 1 ? 0 : prev + 1));
+  };
+  const handlers = useSwipeable({
+    onSwipedLeft: handleSwipedLeft,
+    onSwipedRight: handleSwipedRight,
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true, // 마우스로도 슬라이드할 수 있도록 함
+  });
   return (
     <>
       <Wrapper>
@@ -280,7 +338,7 @@ function Brand() {
             <Title $color={"#024D91"}>
               <CountUp end={4000000} duration={3} /> +
             </Title>
-            <Text>Export Achievement</Text>
+            <Text>Export</Text>
           </Box>
           <Box>
             <Img
@@ -324,16 +382,10 @@ function Brand() {
         <CiWrapper>
           <BlackBox>CI</BlackBox>
           <SliderWrapper>
-            <CiBtn
-              onClick={() => {
-                setIndex((prev) =>
-                  prev === 0 ? CiImages.length - 1 : prev - 1
-                );
-              }}
-            >
+            <CiBtn onClick={handleSwipedLeft}>
               <NavigateBeforeIcon />
             </CiBtn>
-            <CiImgWrapper>
+            <CiImgWrapper {...handlers}>
               <CiImgBox $url={CiImages[index]}></CiImgBox>
               <CiImgNav>
                 {CiImages.map((item, itemIndex) => (
@@ -341,21 +393,15 @@ function Brand() {
                 ))}
               </CiImgNav>
             </CiImgWrapper>
-            <CiBtn
-              onClick={() => {
-                setIndex((prev) =>
-                  prev === CiImages.length - 1 ? 0 : prev + 1
-                );
-              }}
-            >
+            <CiBtn onClick={handleSwipedRight}>
               <NavigateNextIcon />
             </CiBtn>
           </SliderWrapper>
-          <Dec style={{ width: "650px" }}>
+          <Dec>
             약속과 신뢰를 시각적으로 나타내며, 정육각형을 통해 고객사와의 균형과
             조화를 상징하며 글로벌 비즈니스와 다양한 거래를 조화롭게 관리하는
-            능력을 표현합니다. <br></br> 로고에 포함된 'M'자는 멤프로가 글로벌
-            무대에서 중심적인 역할을 하는 리더십을 상징합니다.
+            능력을 표현합니다. 로고에 포함된 'M'자는 멤프로가 글로벌 무대에서
+            중심적인 역할을 하는 리더십을 상징합니다.
           </Dec>
           <ColorBoxWrapper>
             {Color.map((item, index) => (
@@ -384,15 +430,13 @@ function Brand() {
                     <CopyMessage
                       initial={{
                         scale: 0,
-                        translateX: -50,
-                        translateY: -20,
+
                         opacity: 0,
                       }}
                       animate={{ scale: 1, opacity: 1 }}
                       exit={{
                         scale: 0,
-                        translateX: -50,
-                        translateY: -20,
+
                         opacity: 0,
                       }}
                       $number={index}

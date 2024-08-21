@@ -62,6 +62,9 @@ import cantileverNeedle from "../src/img/cantilever/cantilever_needle.svg";
 import bending from "../src/img/cantilever/bending.svg";
 import coating from "../src/img/cantilever/coating.svg";
 import tube from "../src/img/cantilever/tube.svg";
+import mobile_tube1 from "../src/img/cantilever/tube_mobile_1.svg";
+import mobile_tube2 from "../src/img/cantilever/tube_mobile_2.svg";
+
 import coaxial from "../src/img/cantilever/coaxial.svg";
 
 //vertical
@@ -198,7 +201,7 @@ import z_axis from "./img/icon/z-axis.svg";
 import xy_axis from "./img/icon/xy-axis.svg";
 
 //logo
-import logoImg from "./img/0.svg";
+import logoImg from "./img/nav_logo.svg";
 
 export const logo = logoImg;
 export const linkBtns = [
@@ -254,7 +257,7 @@ export const items = [
         diagram: "wafer",
         subcategory: [
           { name: "Diamond Wire", link: "diamond" },
-          { name: "Twist Diamond Wire", link: "twistdiamond" },
+          // { name: "Twist Diamond Wire", link: "twistdiamond" },
         ],
       },
       {
@@ -1288,6 +1291,7 @@ export const itemsDetail = {
     title: "PI-Tube",
     description: "The PI-Tube prevents shorts caused by the contact of probe.",
     img: tube,
+    mobileImg: [mobile_tube1, mobile_tube2],
     spec: [
       {
         items: [

@@ -7,6 +7,9 @@ const Wrapper = styled.div`
   padding-left: 80px;
   margin-bottom: 0px;
   margin: 100px 0 30px 0;
+  @media (max-width: 1023px) {
+    padding-left: 20px;
+  }
 `;
 
 const Category = styled.h1`

@@ -10,6 +10,7 @@ import "semantic-ui-css/semantic.min.css";
 import MenuIcon from "@mui/icons-material/Menu";
 import MobileMenu from "./mobile/MobileMenu";
 import Collapse from "@mui/material/Collapse";
+import { useMediaQuery } from "@mui/material";
 
 const HeaderWrapper = styled.div`
   position: fixed;
@@ -22,11 +23,13 @@ const HeaderWrapper = styled.div`
   max-width: 1280px;
   display: flex;
   align-items: center;
-  background-color: ${(props) => (props.$isMain ? "transparent" : "white")};
   box-shadow: ${(props) =>
     props.$isMain ? null : "0px 3px 1px -2px rgba(0, 0, 0, 0.2)"};
   color: ${(props) =>
     props.$isMain ? props.theme.colors.white : props.theme.colors.black};
+  background-color: ${(props) =>
+    props.$isScrolled ? "#0a0b14" : props.$isMain ? "transparent" : "white"};
+  transition: background-color 0.3 ease;
 `;
 const LogoWrapper = styled.div`
   width: 100%;
@@ -48,7 +51,7 @@ const Logo = styled.div`
 
 const NavWrapper = styled.div`
   width: 100%;
-  max-width: 900px;
+  /* max-width: 900px; */
   height: 80px;
   display: flex;
   align-items: center;
@@ -101,7 +104,8 @@ function Header() {
   const [activeMenu, setActiveMenu] = useState(null);
   const [hoveredLiWidth, setHoveredLiWidth] = useState(null);
   const [openMobileMenu, setOpenMobileMenu] = useState(false);
-
+  const [isScrolled, setIsScrolled] = useState(false);
+  const isMobile = useMediaQuery("(max-width: 1023px)");
   const handleDataFromChild = (data) => {
     setOpenMobileMenu(data);
   };
@@ -117,6 +121,25 @@ function Header() {
     }
   }, [location]);
 
+  useEffect(() => {
+    setOpenMobileMenu(false);
+  }, [window.innerWidth > 1023]);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > (isMobile ? 500 : 955)) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   const handleMouseOver = (index, event) => {
     setActiveMenu(index);
     setHoveredLiWidth(event.currentTarget.offsetWidth);
@@ -127,7 +150,7 @@ function Header() {
   };
 
   return (
-    <HeaderWrapper $isMain={isMain}>
+    <HeaderWrapper $isMain={isMain} $isScrolled={isScrolled && isMain}>
       <LogoWrapper>
         <Link to={"/"}>
           <Logo $isMain={isMain} />
@@ -147,15 +170,21 @@ function Header() {
               style={{ position: "relative" }}
               $isSelect={location.pathname.split("/")[1] === item.link}
             >
-              <Link
-                to={item.type ? `/${item.link}/${item.type}` : `/${item.link}`}
-                style={{
-                  color: activeMenu === index ? "inherit" : "inherit",
-                  fontWeight: activeMenu === index && "bold",
-                }}
-              >
-                {item.category}
-              </Link>
+              {(item.category === "semiconductor" ||
+                item.category === "contact" ||
+                item.category === "about MEMPro") && (
+                <Link
+                  to={
+                    item.type ? `/${item.link}/${item.type}` : `/${item.link}`
+                  }
+                  style={{
+                    color: activeMenu === index ? "inherit" : "inherit",
+                    fontWeight: activeMenu === index && "bold",
+                  }}
+                >
+                  {item.category}
+                </Link>
+              )}
 
               <Submenu
                 subcategories={item.subcategories}
@@ -176,16 +205,22 @@ function Header() {
           ))}
         </Nav>
       </NavWrapper>
-      <MenuIconWrapper onClick={handleOpenMobileMenu}>
-        <MenuIcon fontSize="large" />
-      </MenuIconWrapper>
+
       <LanguageWrapper>
         <Language />
       </LanguageWrapper>
-      <Collapse orientation="horizontal" in={openMobileMenu}>
-        {/* {openMobileMenu && <MobileMenu onData={handleDataFromChild} />}*/}
-        <MobileMenu onData={handleDataFromChild} />
-      </Collapse>
+
+      {/* {openMobileMenu && <MobileMenu onData={handleDataFromChild} />}*/}
+      {isMobile ? (
+        <>
+          <MenuIconWrapper onClick={handleOpenMobileMenu}>
+            <MenuIcon fontSize="large" />
+          </MenuIconWrapper>
+          <Collapse orientation="horizontal" in={openMobileMenu}>
+            <MobileMenu onData={handleDataFromChild} />
+          </Collapse>
+        </>
+      ) : null}
     </HeaderWrapper>
   );
 }

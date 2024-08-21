@@ -12,12 +12,22 @@ const TextWrapper = styled.div`
   max-width: 1100px;
   margin-bottom: 20px;
 `;
-
+const TitleBox = styled.div`
+  display: flex;
+  align-items: end;
+  @media (max-width: 1023px) {
+    flex-direction: column;
+    align-items: normal;
+  }
+`;
 const Title = styled.h1`
   font-size: 40px;
   font-weight: 600;
   margin-right: 20px;
   text-transform: capitalize;
+  @media (max-width: 1023px) {
+    margin-bottom: 10px;
+  }
 `;
 const Span = styled.span`
   padding: 5px 15px;
@@ -31,6 +41,9 @@ const Span = styled.span`
 const Description = styled.p`
   margin-top: 20px;
   width: 65%;
+  @media (max-width: 1023px) {
+    width: 100%;
+  }
 `;
 
 const Warining = styled.img`
@@ -66,7 +79,7 @@ function Headline({ item, text }) {
   }, [timeoutId]);
   return (
     <TextWrapper style={{ display: "flex" }}>
-      <div style={{ display: "flex", alignItems: "end" }}>
+      <TitleBox>
         <Title>{item.title}</Title>
         {item.warning && <SnackbarBox text={item.warning} />}
         <Stack direction="row" spacing={1}>
@@ -75,7 +88,7 @@ function Headline({ item, text }) {
               <Chip label={item} variant="outlined" color="warning" />
             ))}
         </Stack>
-      </div>
+      </TitleBox>
       {item.description && <Description>{item.description}</Description>}
     </TextWrapper>
   );

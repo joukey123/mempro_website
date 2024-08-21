@@ -18,6 +18,12 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 
 import ExpandLessOutlinedIcon from "@mui/icons-material/ExpandLessOutlined";
 import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
+import { useMediaQuery } from "@mui/material";
+
+import CantileverAnimationMobile from "./CantileverAnimationMobile";
+import Button from "@mui/material/Button";
+import ButtonGroup from "@mui/material/ButtonGroup";
+
 const Wrapper = styled.div`
   width: 100%;
   max-width: 1280px;
@@ -27,6 +33,9 @@ const Wrapper = styled.div`
   flex-direction: column;
   padding: 0 50px;
   position: relative;
+  @media (max-width: 1023px) {
+    padding: 0 30px;
+  }
 `;
 const DiagramWpper = styled.div`
   width: 100%;
@@ -67,6 +76,16 @@ const BtnWrapper = styled.div`
   visibility: ${(props) => props.$isPlay && "hidden"};
   display: flex;
   flex-direction: column;
+  @media (max-width: 1023px) {
+    transform: scale(0.7);
+    flex-direction: row;
+    z-index: 999;
+    right: 30px;
+    bottom: 30px;
+    .btn1 {
+      margin-right: 10px;
+    }
+  }
 `;
 
 const ZoomBtn = styled.button`
@@ -168,6 +187,9 @@ const StructureWarpper = styled.div`
   overflow: hidden;
   display: flex;
   justify-content: center;
+  @media (max-width: 1023px) {
+    height: 550px;
+  }
 `;
 
 const Part = styled(motion.img)`
@@ -194,7 +216,16 @@ function Cantilever() {
   const { images, contents, item, warning } = itemsDetail[`${sublink}`];
   const [isZoom, setIsZoom] = useState(false);
   const [playAnimation, setPlayAnimation] = useState(false);
+  const [triggerAnimation, setTriggerAnimation] = useState(false);
+  const isMobile = useMediaQuery("(max-width: 1023px)");
+  useEffect(() => {
+    setTriggerAnimation(false);
+    const timeout = setTimeout(() => {
+      setTriggerAnimation(true);
+    }, 10); // Small delay to allow state to reset
 
+    return () => clearTimeout(timeout);
+  }, [isMobile]);
   const handleZoomDiagram = () => {
     setIsZoom((prev) => !prev);
   };
@@ -250,11 +281,11 @@ function Cantilever() {
   return (
     <>
       <Wrapper>
-        <Tap
+        {/* <Tap
           data={porbeArray}
           handleClickProbe={handleClickProbe}
           sublink={sublink}
-        />
+        /> */}
         <Headline
           item={{ ...itemsDetail[`${sublink}`] }}
           text="
@@ -330,155 +361,199 @@ function Cantilever() {
             </AnimatePresence>
           </DiagramWpper>
         )} */}
-
+        {sublink === "cantilever" && isMobile && (
+          <ButtonGroup
+            sx={{ width: "100%", mb: 2 }}
+            variant="contained"
+            orientation="vertical"
+          >
+            <Button onClick={() => navigate("/semi/parts/stiffener")}>
+              Cantilever
+            </Button>
+            <Button onClick={() => navigate("/semi/parts/cprobe")}>
+              Probe
+            </Button>
+            <Button onClick={() => navigate("/semi/parts/tube")}>
+              PI-Tube
+            </Button>
+          </ButtonGroup>
+        )}
         {/* cantilever start */}
         {sublink === "cantilever" && (
           <StructureWarpper>
             <DiagramImg src={images.machine} $isZoom={isZoom} />
-
-            <Part
-              src={images.part1}
-              $isPlay={playAnimation}
-              initial={{
-                translateX: 150 + 50,
-                translateY: -20,
-                scale: 0.8,
-              }}
-              transition={{ duration: 2 }}
-              $isZoom={isZoom}
-            />
-
-            <Part
-              src={images.part2}
-              $isPlay={playAnimation}
-              initial={{
-                translateX: 60 + 50,
-                translateY: 100,
-                scale: 0.15,
-                opacity: 0.2,
-              }}
-              transition={{ duration: 2 }}
-              $isZoom={isZoom}
-            />
-            <Part
-              src={images.part3}
-              $isPlay={playAnimation}
-              initial={{
-                translateX: -50 + 50,
-                translateY: 220,
-                scale: 0.8,
-                opacity: 0.2,
-              }}
-              transition={{ duration: 2 }}
-              $isZoom={isZoom}
-            />
-            <Part
-              src={images.part4}
-              $isPlay={playAnimation}
-              initial={{
-                translateX: -180 + 50,
-                translateY: 400,
-                scale: 0.5,
-                rotate: 5,
-              }}
-              transition={{ duration: 2 }}
-              $isZoom={isZoom}
-            />
-            <Line style={{}} $isPlay={playAnimation} $isZoom={isZoom}>
-              <svg
-                style={{
-                  width: "100%",
-                  height: "100%",
-                }}
-              >
-                <motion.line
-                  x1="53%"
-                  y1="200"
-                  x2="40%"
-                  y2="200"
-                  stroke="black"
-                  stroke-width="1"
-                  variants={lines}
-                  initial="hidden"
-                  animate="visible"
-                  transition={{ delay: 1 }}
+            {isMobile ? (
+              <CantileverAnimationMobile isAnimation={playAnimation} />
+            ) : (
+              <>
+                <Part
+                  src={images.part1}
+                  $isPlay={playAnimation}
+                  $isZoom={isZoom}
+                  animate={
+                    triggerAnimation
+                      ? {
+                          translateX: 200,
+                          translateY: -20,
+                          scale: 0.8,
+                        }
+                      : {}
+                  }
+                  initial={false} // Prevents Framer Motion from applying the initial prop on mount
+                  transition={{ duration: 2 }}
                 />
-                <motion.line
-                  x1="33%"
-                  y1="600"
-                  x2="20%"
-                  y2="600"
-                  stroke="black"
-                  stroke-width="1"
-                  variants={lines}
-                  initial="hidden"
-                  animate="visible"
-                  transition={{ delay: 1 }}
-                />
-                <motion.line
-                  x1="31%"
-                  y1="550"
-                  x2="22%"
-                  y2="550"
-                  stroke="black"
-                  stroke-width="1"
-                  variants={lines}
-                  initial="hidden"
-                  animate="visible"
-                  transition={{ delay: 1 }}
-                />
-              </svg>
-              <SpanDiv $isPlay={playAnimation}>
-                <motion.span
-                  style={{
-                    position: "absolute",
-                    top: 185,
-                    left: "32.5%",
-                    fontSize: 18,
-                  }}
-                  initial={{ visibility: "hidden" }}
-                  animate={{ visibility: "visible" }}
-                  transition={{ delay: 1.5 }}
-                >
-                  <Link to={`/semi/parts/stiffener`}>
-                    <StyledChip label="Stiffener" />
-                  </Link>
-                </motion.span>
-                <motion.span
-                  style={{
-                    position: "absolute",
-                    top: 585,
-                    left: "14%",
-                    fontSize: 18,
-                  }}
-                  initial={{ visibility: "hidden" }}
-                  animate={{ visibility: "visible" }}
-                  transition={{ delay: 1.5 }}
-                >
-                  <Link to={`/semi/parts/cprobe`}>
-                    <StyledChip label="Probe" />
-                  </Link>
-                </motion.span>
 
-                <motion.span
+                <Part
+                  src={images.part2}
+                  $isPlay={playAnimation}
+                  animate={
+                    triggerAnimation
+                      ? {
+                          translateX: 60 + 50,
+                          translateY: 100,
+                          scale: 0.15,
+                          opacity: 0.2,
+                        }
+                      : {}
+                  }
+                  transition={{ duration: 2 }}
+                  $isZoom={isZoom}
+                />
+                <Part
+                  src={images.part3}
+                  $isPlay={playAnimation}
+                  animate={
+                    triggerAnimation
+                      ? {
+                          translateX: -50 + 50,
+                          translateY: 220,
+                          scale: 0.8,
+                          opacity: 0.2,
+                        }
+                      : {}
+                  }
+                  transition={{ duration: 2 }}
+                  $isZoom={isZoom}
+                />
+                <Part
+                  src={images.part4}
+                  $isPlay={playAnimation}
+                  animate={
+                    triggerAnimation
+                      ? {
+                          translateX: -180 + 50,
+                          translateY: 400,
+                          scale: 0.5,
+                          rotate: 5,
+                        }
+                      : {}
+                  }
+                  transition={{ duration: 2 }}
+                  $isZoom={isZoom}
+                />
+              </>
+            )}
+
+            {!isMobile && (
+              <Line style={{}} $isPlay={playAnimation} $isZoom={isZoom}>
+                <svg
                   style={{
-                    position: "absolute",
-                    top: 535,
-                    left: "15%",
-                    fontSize: 18,
+                    width: "100%",
+                    height: "100%",
                   }}
-                  initial={{ visibility: "hidden" }}
-                  animate={{ visibility: "visible" }}
-                  transition={{ delay: 1.5 }}
                 >
-                  <Link to={`/semi/parts/tube`}>
-                    <StyledChip label="PI-Tube" />
-                  </Link>
-                </motion.span>
-              </SpanDiv>
-            </Line>
+                  <motion.line
+                    x1={"54%"}
+                    y1={"20%"}
+                    x2={"40%"}
+                    y2={"20%"}
+                    stroke="black"
+                    stroke-width="1"
+                    variants={lines}
+                    initial="hidden"
+                    animate="visible"
+                    transition={{ delay: 1 }}
+                  />
+                  <motion.line
+                    x1={"33%"}
+                    y1={"600"}
+                    x2={"20%"}
+                    y2={"600"}
+                    stroke="black"
+                    stroke-width="1"
+                    variants={lines}
+                    initial="hidden"
+                    animate="visible"
+                    transition={{ delay: 1 }}
+                  />
+                  {isMobile ? null : (
+                    <motion.line
+                      x1="31%"
+                      y1="550"
+                      x2="22%"
+                      y2="550"
+                      stroke="black"
+                      stroke-width="1"
+                      variants={lines}
+                      initial="hidden"
+                      animate="visible"
+                      transition={{ delay: 1 }}
+                    />
+                  )}
+                </svg>
+                <SpanDiv $isPlay={playAnimation}>
+                  <motion.span
+                    style={{
+                      position: "absolute",
+                      top: "18%",
+                      left: "32.5%",
+                      fontSize: 18,
+                    }}
+                    initial={{ visibility: "hidden" }}
+                    animate={{ visibility: "visible" }}
+                    transition={{ delay: 1.5 }}
+                  >
+                    <Link to={`/semi/parts/stiffener`}>
+                      <StyledChip label="Stiffener" />
+                    </Link>
+                  </motion.span>
+                  <motion.span
+                    style={{
+                      position: "absolute",
+                      top: "73%",
+                      left: "14%",
+                      fontSize: 18,
+                    }}
+                    initial={{ visibility: "hidden" }}
+                    animate={{ visibility: "visible" }}
+                    transition={{ delay: 1.5 }}
+                  >
+                    <Link to={`/semi/parts/cprobe`}>
+                      <StyledChip label="Probe" />
+                    </Link>
+                  </motion.span>
+
+                  <motion.span
+                    style={{
+                      position: "absolute",
+                      top: "67%",
+                      left: "15%",
+                      fontSize: 18,
+                    }}
+                    initial={{ visibility: "hidden" }}
+                    animate={{ visibility: "visible" }}
+                    transition={{ delay: 1.5 }}
+                  >
+                    <Link to={`/semi/parts/tube`}>
+                      <StyledChip label="PI-Tube" />
+                    </Link>
+                  </motion.span>
+                </SpanDiv>
+              </Line>
+            )}
+
             {/* cantilever animation start */}
-            {playAnimation && (
+            {playAnimation && !isMobile && (
               <>
                 <Part
                   src={images.part1}
@@ -551,18 +626,21 @@ function Cantilever() {
             )}
 
             <BtnWrapper $isPlay={playAnimation}>
-              <Fab
-                color="primary"
-                aria-label="add"
-                onClick={handleZoomDiagram}
-                sx={{ marginBottom: 1 }}
-              >
-                {isZoom ? (
-                  <ExpandMoreOutlinedIcon />
-                ) : (
-                  <ExpandLessOutlinedIcon />
-                )}
-              </Fab>
+              {isMobile ? null : (
+                <Fab
+                  color="primary"
+                  aria-label="add"
+                  onClick={handleZoomDiagram}
+                  sx={{ marginBottom: 1 }}
+                  className="btn1"
+                >
+                  {isZoom ? (
+                    <ExpandMoreOutlinedIcon />
+                  ) : (
+                    <ExpandLessOutlinedIcon />
+                  )}
+                </Fab>
+              )}
               {!isZoom && (
                 <Fab
                   color="primary"

@@ -21,6 +21,8 @@ import BusinessIcon from "@mui/icons-material/Business";
 import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
 import FaxIcon from "@mui/icons-material/Fax";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
+import { useMediaQuery } from "@mui/material";
+
 const FooterWrapper = styled.div`
   width: 100%;
   max-width: 1280px;
@@ -49,6 +51,11 @@ const FooterWrapper = styled.div`
     text-align: center;
     font-weight: 200;
   }
+  @media (max-width: 1023px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 const NationSpan = styled.span`
   cursor: pointer;
@@ -66,10 +73,17 @@ const Logo = styled.div`
   background: url(${(props) => props.$url}) no-repeat;
   margin-bottom: 20px;
   filter: grayscale(1);
+  @media (max-width: 1023px) {
+    background-position: center center;
+    margin-bottom: 30px;
+  }
 `;
 const Info = styled.div`
   display: flex;
   margin-bottom: 10px;
+  @media (max-width: 1023px) {
+    flex-direction: column;
+  }
 `;
 const InfoAddress = styled.div`
   display: flex;
@@ -82,10 +96,38 @@ const InfoAddress = styled.div`
   #add {
     width: 80%;
   }
+  @media (max-width: 1023px) {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    #add {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  }
+`;
+const ContactNum = styled.div`
+  width: 40%;
+  @media (max-width: 1023px) {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 const Tell = styled.div`
   display: flex;
   align-items: center;
+  @media (max-width: 1023px) {
+    flex-direction: column;
+    align-items: center;
+    :first-child {
+      margin-right: 0;
+    }
+  }
 `;
 const Mail = styled.div`
   display: flex;
@@ -96,6 +138,11 @@ const Link = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  @media (max-width: 1023px) {
+    width: 100%;
+    margin: 10px 0;
+    transform: scale(0.8);
+  }
 `;
 
 const CustomSpeedDialAction = styled((props) => {
@@ -136,6 +183,8 @@ function Footer() {
   const navigate = useNavigate();
   const [offices, setOffices] = useState(0);
   const match = useMatch("/");
+  const isMobile = useMediaQuery("(max-width: 1023px)");
+
   const handleOffices = (nation) => {
     if (nation === "korea") {
       setOffices(0);
@@ -204,7 +253,7 @@ function Footer() {
 
             <h2 id="add">{add[offices].address}</h2>
           </InfoAddress>
-          <div style={{ width: "40%" }}>
+          <ContactNum>
             <Tell>
               <div
                 style={{
@@ -238,7 +287,7 @@ function Footer() {
                 <h2>{add[offices].mail}</h2>
               </div>
             </Mail>
-          </div>
+          </ContactNum>
           <Link>
             {linkBtns.map((item, index) => (
               <Tooltip
@@ -250,7 +299,6 @@ function Footer() {
                   target="_blank"
                   onClick={() => window.open(`${item.link}`)}
                   sx={{
-                    backgroundColor: "rgba(0,0,0,0.1)",
                     boxShadow: 0,
                     margin: 1,
                   }}
@@ -270,8 +318,9 @@ function Footer() {
           transform: "translateZ(0px)",
           flexGrow: 1,
           position: "fixed",
-          bottom: "12%",
+          bottom: "10%",
           right: "5%",
+          display: isMobile && "none",
         }}
       >
         <SpeedDial

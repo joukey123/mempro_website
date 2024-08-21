@@ -69,6 +69,7 @@ function MessageBox({ text, type }) {
   const refInfo = useRef(null);
   const isInView = useInView(refInfo, { triggerOnce: true, threshold: 0.5 });
   const [isClosed, setIsClosed] = useState(false);
+  const sectionIndex = window.scrollY / window.innerHeight;
 
   useEffect(() => {
     if (isInView) {
@@ -81,8 +82,8 @@ function MessageBox({ text, type }) {
   useEffect(() => {
     const handleScroll = (event) => {
       const { deltaY } = event;
-      const sectionIndex = Math.round(window.scrollY / window.innerHeight);
-      if (deltaY > 0 && sectionIndex > 0) {
+
+      if (sectionIndex > 1.3) {
         setIsClosed(true);
       } else {
         setIsClosed(false);
@@ -93,7 +94,7 @@ function MessageBox({ text, type }) {
     return () => {
       window.removeEventListener("wheel", handleScroll);
     };
-  }, []);
+  }, [sectionIndex]);
 
   const animateVariants = (delay) => ({
     hidden: { opacity: 0, y: 50 },

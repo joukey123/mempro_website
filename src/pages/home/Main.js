@@ -10,19 +10,17 @@ import Header from "../../components/Header";
 import { Canvas } from "@react-three/fiber";
 import FallingStars from "../../components/FallingStars";
 
-const MainWrapper = styled.div``;
-const Section = styled.div`
-  height: 100vh;
-  overflow: hidden;
-  min-height: 800px;
+const MainWrapper = styled.div`
   background-color: #0a0b14;
 `;
+const Section = styled.div``;
 
 const Section1 = styled(Section)`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 `;
 
 const Section2 = styled(Section)`
@@ -30,94 +28,14 @@ const Section2 = styled(Section)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-width: 1000px;
+  height: 800px;
 `;
 const StarCanvasBox = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 500px;
   position: absolute;
 `;
 function Main() {
-  const [parts, setParts] = useState([]);
-  const [currentWindowHeight, setCurrentWindoHeiht] = useState(
-    window.innerHeight
-  );
-  const handelTop = () => {
-    const startPosition = window.scrollY;
-    const duration = 600; // in milliseconds
-    let startTime = null;
-
-    const animateScroll = (currentTime) => {
-      if (!startTime) startTime = currentTime;
-      const timeElapsed = currentTime - startTime;
-      const run = ease(timeElapsed, startPosition, -startPosition, duration);
-      window.scrollTo(0, run);
-      if (timeElapsed < duration) requestAnimationFrame(animateScroll);
-    };
-
-    const ease = (t, b, c, d) => {
-      t /= d / 2;
-      if (t < 1) return (c / 2) * t * t + b;
-      t--;
-      return (-c / 2) * (t * (t - 2) - 1) + b;
-    };
-
-    requestAnimationFrame(animateScroll);
-  };
-
-  useEffect(() => {
-    const handleScroll = (event) => {
-      const { deltaY } = event;
-      const sectionIndex = Math.round(window.scrollY / window.innerHeight);
-      if (deltaY > 0) {
-        // Scroll down
-        const nextSectionIndex = sectionIndex + 1;
-        if (nextSectionIndex < 3) {
-          scroller.scrollTo(`section${nextSectionIndex}`, {
-            duration: 800,
-            delay: 0,
-            smooth: "easeInOutQuart",
-          });
-        }
-      } else {
-        // Scroll up
-        const previousSectionIndex = sectionIndex - 1;
-        if (previousSectionIndex > 0) {
-          scroller.scrollTo(`section${previousSectionIndex}`, {
-            duration: 800,
-            delay: 0,
-            smooth: "easeInOutQuart",
-          });
-        }
-        if (previousSectionIndex === 0) {
-          handelTop();
-        }
-      }
-    };
-
-    window.addEventListener("wheel", handleScroll);
-    window.addEventListener("beforeunload", handelTop);
-
-    return () => {
-      window.removeEventListener("wheel", handleScroll);
-      window.removeEventListener("beforeunload", handelTop);
-    };
-  }, []);
-
-  useEffect(() => {
-    const handleResize = () => {
-      let preHeight = currentWindowHeight;
-      setCurrentWindoHeiht(window.innerHeight);
-      if (preHeight < currentWindowHeight) {
-        handelTop();
-      }
-    };
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [window.innerHeight]);
-
   return (
     <MainWrapper>
       <Header />
@@ -131,16 +49,17 @@ function Main() {
         </StarCanvasBox>
         <HomeMenu />
       </Section1>
+
       <Section2 id="section2">
         <HomeAbout />
-        <Footer />
       </Section2>
       {/* <Section3 id="section3" />
       <ul>
-        {parts.map((part, index) => (
-          <li key={index}>{part}</li>
+      {parts.map((part, index) => (
+        <li key={index}>{part}</li>
         ))}
-      </ul> */}
+        </ul> */}
+      <Footer />
     </MainWrapper>
   );
 }

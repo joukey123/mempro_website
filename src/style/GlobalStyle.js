@@ -62,20 +62,16 @@ table {
 	border-spacing: 0;
 }
 .Typewriter {
-	width: 500px;
-	height: 500px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
 }
 a {
 	text-decoration: none;
 	color: inherit;
 }
-@media (max-width: 1000px) {
-   
-    .typewriter-box {
-      top: 40% !important;
-      left: 50% !important;
-    }
-  }
+
 `;
 
 export default GlobalStyle;

@@ -9,7 +9,7 @@ import { motion, useAnimate } from "framer-motion";
 import step1 from "../../img/diamond/step1.svg";
 import step3 from "../../img/diamond/step3.svg";
 import Headline from "../../components/article/Headline";
-import { Collapse, Fab } from "@mui/material";
+import { Collapse, Fab, useMediaQuery } from "@mui/material";
 
 import ReplayIcon from "@mui/icons-material/Replay";
 import ZoomInIcon from "@mui/icons-material/ZoomIn";
@@ -20,6 +20,8 @@ import Application from "../../components/Application";
 import Features from "../../components/Features";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 
+import mobileZoom from "../../img/diamond/mobileZoom.svg";
+
 const Wrapper = styled.div`
   width: 100%;
   max-width: 1280px;
@@ -28,6 +30,9 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding: 0 50px;
+  @media (max-width: 1023px) {
+    padding: 0 30px;
+  }
 `;
 
 const DiagramWpper = styled.div`
@@ -40,6 +45,9 @@ const DiagramWpper = styled.div`
   padding: 0 50px;
   position: relative;
   overflow: hidden;
+  @media (max-width: 1023px) {
+    height: 300px;
+  }
 `;
 
 const DiagramImg = styled(motion.img)`
@@ -52,7 +60,17 @@ const DiagramImg = styled(motion.img)`
   z-index: 99;
   margin-top: 50px;
   animation: ${(props) => props.$isZoom && "zoomin .3s ease forwards"};
-
+  /* @media (max-width: 1023px) {
+    animation: ${(props) => props.$isZoom && "mobilezoomin .3s ease forwards"};
+  }
+  @keyframes mobilezoomin {
+    from {
+      transform: scale(0.9);
+    }
+    to {
+      transform: scale(3.5) translateX(70px) translateY(-80px);
+    }
+  } */
   @keyframes zoomin {
     from {
       transform: scale(0.9);
@@ -68,6 +86,13 @@ const DiagramImg = styled(motion.img)`
     to {
       transform: scale(0.9);
     }
+  }
+  @media (max-width: 1023px) {
+    margin-top: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
   }
 `;
 
@@ -190,6 +215,16 @@ const BtnWrapper = styled.div`
   visibility: ${(props) => props.$isPlay && "hidden"};
   display: flex;
   flex-direction: column;
+  @media (max-width: 1023px) {
+    right: 0;
+    bottom: 0;
+    flex-direction: row;
+    transform: scale(0.7);
+    z-index: 99;
+    .btn1 {
+      margin-right: 10px;
+    }
+  }
 `;
 
 const ZoomBtn = styled.button`
@@ -220,14 +255,22 @@ const ZoomImg = styled(motion.img)`
   left: 260px;
   width: 150px;
   height: 150px;
+  @media (max-width: 1023px) {
+    display: none;
+  }
 `;
 
 const Step1 = styled(motion.img)`
   width: 40%;
   height: 40%;
   position: absolute;
-  left: 320px;
   visibility: ${(props) => props.$isZoom && "hidden"};
+  @media (max-width: 1023px) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    z-index: 100;
+  }
 `;
 const Step2 = styled(motion.img)`
   width: 40%;
@@ -236,8 +279,20 @@ const Step2 = styled(motion.img)`
   top: 80px;
   left: 320px;
   visibility: ${(props) => props.$isZoom && "hidden"};
+  @media (max-width: 1023px) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+  }
 `;
-
+const MobileZoom = styled.img`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: scale(5) translate(20%, -7%);
+`;
 function DiamondWire() {
   const sublink = "diamond";
   const { images, contents } = itemsDetail[`${sublink}`];
@@ -246,7 +301,7 @@ function DiamondWire() {
   const [playAnimation, setPlayAnimation] = useState(false);
   const length = contents.sem.length;
   const [expendClicked, setExpendClicked] = useState(true);
-
+  const isMobile = useMediaQuery("(max-width: 1023px)");
   const showContent = (show) => {
     setExpendClicked(show);
   };
@@ -284,12 +339,7 @@ function DiamondWire() {
         <Headline item={{ ...itemsDetail[`${sublink}`] }} />
 
         <DiagramWpper>
-          <DiagramImg
-            src={images}
-            $isZoom={isZoom}
-            initial={{ scale: 0.9 }}
-            animate={{ scale: 0.9 }}
-          />
+          <DiagramImg src={images} $isZoom={isZoom} />
           {playAnimation && (
             <>
               <Step1
@@ -316,6 +366,7 @@ function DiamondWire() {
               aria-label="add"
               onClick={handleZoomDiagram}
               sx={{ marginBottom: 1 }}
+              className="btn1"
             >
               {isZoom ? <ZoomOutIcon /> : <ZoomInIcon />}
             </Fab>
@@ -338,6 +389,16 @@ function DiamondWire() {
           {isZoom && (
             <ZoomImg
               src={zoomImg}
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.3 }}
+            />
+          )}
+
+          {isZoom && isMobile && (
+            <MobileZoom
+              $isZoom={isZoom}
+              src={mobileZoom}
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.3 }}

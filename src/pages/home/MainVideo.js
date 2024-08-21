@@ -1,27 +1,24 @@
 import styled, { keyframes } from "styled-components";
 import Typewriter from "typewriter-effect";
 import WheelAnimation from "../../components/WheelAnimation";
+import { useMediaQuery } from "@mui/material";
 
 const VideoBox = styled.div`
-  height: 100vh;
+  width: 100%;
   position: relative;
   background: linear-gradient(90deg, #06080b, #1a222e);
   overflow: hidden;
+  display: flex;
 `;
 
 const Video = styled.video`
-  min-width: 100%;
-  height: 100%;
   width: 100%;
+  max-width: 100%;
+  aspect-ratio: ${(props) => props.$ratio};
   object-fit: cover;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 `;
 const TypewriterBox = styled.div`
   color: white;
-  font-size: 75px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -35,9 +32,9 @@ const Span = styled.span`
   position: absolute;
   color: white;
   left: 50%;
-  bottom: 3%;
+  bottom: 0px;
   z-index: 99;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) ${(props) => props.$mobile && "scale(.7)"};
   font-size: 16px;
   font-weight: lighter;
   display: flex;
@@ -52,27 +49,59 @@ const Span = styled.span`
 `;
 
 function MainVideo() {
+  const isMobile = useMediaQuery("(max-width: 1023px)");
+
   return (
     <>
       <VideoBox>
-        <TypewriterBox className="typewriter-box">
-          <Typewriter
-            options={{
-              strings: [
-                '<div style="display:flex; flex-direction:column; align-items:center; font-size:70px;"><span style="font-size:100px !important;   margin-bottom: -70px">Commitment</span><br>&amp;<br><span style="font-size:100px !important">Trust</span></div>',
-              ],
-              autoStart: true,
-              loop: true,
-            }}
-          />
-        </TypewriterBox>
-        <Span>
+        <Span $mobile={isMobile}>
           {/* <span>Trading Service for YOU</span> */}
           <WheelAnimation />
         </Span>
-        <Video loop autoPlay muted $windowHeight={window.innerHeight}>
-          <source src="https://mempro.myqnapcloud.com:85/2.mp4"></source>
-        </Video>
+        {isMobile ? (
+          <Video
+            muted
+            autoPlay
+            playsInline
+            loop
+            src="https://mempro.myqnapcloud.com:85/mobile.mp4"
+            $ratio={12 / 19}
+          ></Video>
+        ) : (
+          <Video
+            muted
+            autoPlay
+            playsInline
+            loop
+            src="https://mempro.myqnapcloud.com:85/pc.mp4"
+            $ratio={16 / 9}
+          ></Video>
+        )}
+        <TypewriterBox className="typewriter-box">
+          {isMobile ? (
+            <Typewriter
+              options={{
+                cursor: "",
+                strings: [
+                  '<div style="display:flex; flex-direction:column; align-items:center; font-size:50px;"><span style="font-size:60px !important;   margin-bottom: -70px">Commitment</span><br>&amp;<br><span style="font-size:60px !important">Trust</span></div>',
+                ],
+                autoStart: true,
+                loop: true,
+              }}
+            />
+          ) : (
+            <Typewriter
+              options={{
+                cursor: "",
+                strings: [
+                  '<div style="display:flex; flex-direction:column; align-items:center; font-size:70px;"><span style="font-size:100px !important;   margin-bottom: -70px">Commitment</span><br>&amp;<br><span style="font-size:100px !important">Trust</span></div>',
+                ],
+                autoStart: true,
+                loop: true,
+              }}
+            />
+          )}
+        </TypewriterBox>
       </VideoBox>
     </>
   );

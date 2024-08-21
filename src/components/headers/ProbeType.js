@@ -14,6 +14,7 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { itemsDetail } from "../../data";
 import styled from "styled-components";
+import { useMediaQuery } from "@mui/material";
 const StyledButton = styled(Button)`
   color: ${(props) => props.$disabled && "#E4E4E4"} !important;
   border-color: ${(props) => props.$disabled && "#E4E4E4"} !important;
@@ -90,6 +91,7 @@ function ProbeType({ cards, onData, IsNeedleChange }) {
   const typesForSelectedSystem = selectSystem
     ? getTypesBySystem(cards, selectSystem)
     : [];
+  const isMobile = useMediaQuery("(max-width: 1023px)");
 
   useEffect(() => {
     setSelectCard("");
@@ -113,7 +115,7 @@ function ProbeType({ cards, onData, IsNeedleChange }) {
     <div
       style={{
         display: "flex",
-        paddingLeft: 50,
+        paddingLeft: isMobile ? 0 : 50,
         flexDirection: "column",
         marginBottom: "100px",
         width: "100%",
@@ -159,6 +161,7 @@ function ProbeType({ cards, onData, IsNeedleChange }) {
             alignItems: "center",
             marginTop: "50px",
             justifyContent: "center",
+            flexDirection: isMobile ? "column" : "row",
           }}
         >
           {cardSystems.length !== 0 && (
@@ -341,11 +344,13 @@ function ProbeType({ cards, onData, IsNeedleChange }) {
               </div>
             </div>
           </Collapse>
-          <Tooltip title="Reset" arrow>
-            <IconButton sx={{ marginLeft: 2 }} onClick={handleReset}>
-              <RotateLeftIcon />
-            </IconButton>
-          </Tooltip>
+          {selectNeedle && (
+            <Tooltip title="Reset" arrow>
+              <IconButton sx={{ marginLeft: 2 }} onClick={handleReset}>
+                <RotateLeftIcon />
+              </IconButton>
+            </Tooltip>
+          )}
         </div>
       )}
       {alignType === "Item" && (

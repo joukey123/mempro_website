@@ -2,13 +2,29 @@ import styled from "styled-components";
 import line from "../../../img/line.svg";
 import CoatingInfo from "./CoatingInfo";
 import { useState } from "react";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableRow,
+  Paper,
+} from "@mui/material";
 
 const Wrapper = styled.div``;
-
+const StyledTableCell = styled(TableCell)`
+  && {
+    text-align: center;
+    border-right: 1px solid #dfdfdf;
+    font-size: 16px;
+    background: ${(props) => props.theme.palette.table.main};
+    color: white;
+  }
+`;
 const StructureWarpper = styled.div`
   width: 100%;
   max-width: 1100px;
-  height: 700px;
+  height: 500px;
   margin: 0 auto;
   border-radius: 8px;
   background: url(${line}) center center;
@@ -19,6 +35,11 @@ const StructureWarpper = styled.div`
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  @media (max-width: 1023px) {
+    height: 300px;
+  }
 `;
 const SpecWrapper = styled.div`
   border-top: 1px solid ${(props) => props.theme.colors.blue};
@@ -26,11 +47,8 @@ const SpecWrapper = styled.div`
 `;
 const NeedleImg = styled.img`
   width: 100%;
-  max-width: 875px;
+  max-width: 800px;
   position: absolute;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -70%) scale(0.95);
 `;
 
 const Number = styled.span`
@@ -66,7 +84,7 @@ function CoatingDetail({ contents }) {
       <StructureWarpper>
         <NeedleImg src={coating.img} />
         <CoatingInfo hover={specId} />
-        <SpecWrapper>
+        {/* <SpecWrapper>
           {coating.spec.map((item, index) => (
             <div
               key={index}
@@ -87,8 +105,58 @@ function CoatingDetail({ contents }) {
               <span>{item.description}</span>
             </div>
           ))}
-        </SpecWrapper>
+        </SpecWrapper> */}
       </StructureWarpper>
+      <TableContainer component={Paper} sx={{ marginTop: "10px" }}>
+        <Table>
+          <TableBody>
+            {coating.spec.map((item, index) => (
+              <TableRow
+                key={index}
+                onMouseOver={() => handleSpecOver(index, item.id)}
+                onMouseLeave={handleSpecLeave}
+                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                style={{
+                  cursor: "pointer",
+                  backgroundColor:
+                    specIndex + 1 === item.id ? "#f5f5f5" : "inherit",
+                }}
+              >
+                <StyledTableCell
+                  component="th"
+                  scope="row"
+                  sx={{
+                    fontWeight: specIndex + 1 === item.id ? "bold" : "normal",
+                    width: "10%",
+                  }}
+                >
+                  {item.id}
+                </StyledTableCell>
+                <TableCell
+                  sx={{
+                    fontWeight: 500,
+                    width: "20%",
+                    fontSize: "16px",
+                  }}
+                  style={{ borderRight: "1px solid #dfdfdf" }}
+                >
+                  {item.name}:
+                </TableCell>
+                <TableCell
+                  sx={{
+                    fontWeight: 300,
+                    fontSize: "16px",
+                    width: "70%",
+                  }}
+                  style={{ borderRight: "1px solid #dfdfdf" }}
+                >
+                  {item.description}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </Wrapper>
   );
 }

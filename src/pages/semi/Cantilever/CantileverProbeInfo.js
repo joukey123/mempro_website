@@ -10,6 +10,9 @@ const SVG = styled.svg`
   top: 45%;
   left: 50%;
   transform: translate(-49%, -24%);
+  @media (max-width: 1023px) {
+    width: 95%;
+  }
 `;
 const Line = styled.line`
   stroke: ${(props) =>

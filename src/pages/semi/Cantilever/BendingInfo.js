@@ -5,9 +5,13 @@ import styled, { keyframes } from "styled-components";
 
 const SVG = styled.svg`
   max-width: 900px;
+  width: 95%;
   top: 45%;
   left: 50%;
-  transform: translate(-40%, -8%) scale(0.8);
+  transform: translate(-45%, 9%) scale(0.5);
+  @media (max-width: 1023px) {
+    transform: translate(-24%, 6%) scale(0.4);
+  }
 `;
 const Line = styled.line`
   stroke: ${(props) =>

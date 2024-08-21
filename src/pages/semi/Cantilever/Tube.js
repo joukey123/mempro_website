@@ -7,6 +7,7 @@ import { useTable } from "react-table";
 import line from "../../../img/line.svg";
 import Footer from "../../../components/Footer";
 import TubeInfo from "./TubeInfo";
+
 import {
   Table,
   TableBody,
@@ -15,6 +16,7 @@ import {
   TableHead,
   TableRow,
   Paper,
+  useMediaQuery,
 } from "@mui/material";
 const Wrapper = styled.div`
   width: 100%;
@@ -26,6 +28,15 @@ const Wrapper = styled.div`
   flex-direction: column;
   position: relative;
   padding: 0 50px;
+  @media (max-width: 1023px) {
+    padding: 0 30px;
+    .css-1q1u3t4-MuiTableRow-root {
+      td {
+        padding: 10px 0;
+        letter-spacing: -0.2px;
+      }
+    }
+  }
 `;
 const StructureWarpper = styled.div`
   width: 100%;
@@ -42,6 +53,17 @@ const StructureWarpper = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 30px;
+
+  @media (max-width: 1023px) {
+    #uuid-af7b25da-c89e-49c5-a7c5-4646792f8bbb {
+      width: 90%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    height: 150px;
+  }
 `;
 
 const NeedleImg = styled.img`
@@ -153,6 +175,7 @@ function Tube() {
   const paths = location.pathname.split("/").filter(Boolean);
   const [sublink, setSublink] = useState(paths[2]);
   const tube = itemsDetail[`${sublink}`];
+
   // const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
   //   useTable({ columns, data });
   const [tableHeader, setTableHeader] = useState("");
@@ -167,7 +190,15 @@ function Tube() {
       <Wrapper>
         <Headline item={{ ...itemsDetail[`${sublink}`] }} />
         <StructureWarpper>
+          {/* {isMobile ? (
+            tube.mobileImg.map((item, index) => (
+              <NeedleImg src={item} key={index} />
+            ))
+          ) : (
+            <NeedleImg src={tube.img} />
+          )} */}
           <NeedleImg src={tube.img} />
+
           <TubeInfo tableHeader={tableHeader} />
         </StructureWarpper>
         {/* <TableWrapper>
@@ -211,7 +242,11 @@ function Tube() {
         </TableWrapper> */}
         <TableContainer
           component={Paper}
-          sx={{ width: "100%", maxWidth: 1100, margin: "0 auto" }}
+          sx={{
+            width: "100%",
+            maxWidth: 1100,
+            margin: "0 auto",
+          }}
         >
           <Table aria-label="transposed table">
             <StyledTableHead>

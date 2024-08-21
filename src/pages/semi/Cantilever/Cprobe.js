@@ -25,6 +25,9 @@ const Wrapper = styled.div`
   flex-direction: column;
   position: relative;
   padding: 0 50px;
+  @media (max-width: 1023px) {
+    padding: 30px;
+  }
 `;
 
 const Contents = styled.h2`

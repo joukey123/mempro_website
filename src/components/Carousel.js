@@ -7,8 +7,9 @@ import Button from "@mui/material/Button";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import { useEffect, useState } from "react";
-import { Collapse } from "@mui/material";
+import { Collapse, useMediaQuery } from "@mui/material";
 import ContentsTitle from "./ContentsTitle";
+import { transform } from "framer-motion";
 
 function Carousel({ contents }) {
   const images = contents.sem;
@@ -38,6 +39,7 @@ function Carousel({ contents }) {
   //     clearInterval(interval);
   //   };
   // }, []);
+  const isMobile = useMediaQuery("(max-width: 1023px)");
 
   return (
     <div className="carousel">
@@ -45,7 +47,7 @@ function Carousel({ contents }) {
       <Collapse in={expendClicked}>
         <Box
           sx={{
-            maxWidth: 1100,
+            maxWidth: 1200,
             flexGrow: 1,
             display: "flex",
             flexDirection: "column",
@@ -58,13 +60,12 @@ function Carousel({ contents }) {
             component="img"
             sx={{
               width: 1200,
-              height: 300,
+              height: isMobile ? 150 : 300,
               display: "block",
               maxWidth: 1200,
               overflow: "hidden",
               width: "100%",
               objectFit: "cover",
-              bgcolor: "red",
             }}
             src={images[activeStep].img}
             alt={images[activeStep].text}
@@ -77,14 +78,15 @@ function Carousel({ contents }) {
               alignItems: "center",
               justifyContent: "center",
               height: 50,
-              pl: 2,
               bgcolor: "#F5F5F5",
               width: "100%",
               marginBottom: 2,
               borderTop: ".5px solid black",
             }}
           >
-            <Typography>{images[activeStep].text}</Typography>
+            <Typography sx={{ letterSpacing: "-.2px" }}>
+              {images[activeStep].text}
+            </Typography>
           </Paper>
           <MobileStepper
             sx={{ width: "100%", maxWidth: 1000 }}

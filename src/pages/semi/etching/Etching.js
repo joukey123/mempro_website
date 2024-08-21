@@ -23,6 +23,9 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding: 0 50px;
+  @media (max-width: 1023px) {
+    padding: 0 30px;
+  }
 `;
 
 const DiagramWpper = styled.div`
@@ -39,6 +42,9 @@ const DiagramWpper = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  @media (max-width: 1023px) {
+    height: 500px;
+  }
 `;
 const DiagramImg = styled(motion.img)`
   width: 100%;
@@ -50,6 +56,10 @@ const DiagramImg = styled(motion.img)`
   animation-duration: 0.5s;
   filter: ${(props) => props.$isZoom && "blur(10px)"};
   top: 30px;
+  @media (max-width: 1023px) {
+    width: 90%;
+    top: 0px;
+  }
 `;
 const Step1 = styled.div`
   width: 100%;
@@ -63,6 +73,10 @@ const Step1 = styled.div`
   left: 50%;
   transform: translate(-50%, -45%);
   filter: ${(props) => props.$isZoom && "blur(10px)"};
+  @media (max-width: 1023px) {
+    transform: translate(-50%, -45%) scale(0.6);
+    transform-origin: center;
+  }
 `;
 
 const Step2 = styled.img`
@@ -159,6 +173,12 @@ const BtnWrapper = styled.div`
   position: absolute;
   right: 50px;
   bottom: 50px;
+  @media (max-width: 1023px) {
+    transform: scale(0.7);
+    z-index: 102;
+    right: 10px;
+    bottom: 10px;
+  }
 `;
 
 const ZoomBtn = styled.button`
@@ -194,6 +214,9 @@ const ZooWrapper = styled(motion.div)`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media (max-width: 1023px) {
+    height: 500px;
+  }
 `;
 const ZoomImg = styled.img`
   width: 100%;
@@ -201,6 +224,9 @@ const ZoomImg = styled.img`
   height: 650px;
   position: relative;
   top: -5%;
+  @media (max-width: 1023px) {
+    width: 90%;
+  }
 `;
 
 const StyledButton = styled(Button)`
@@ -218,10 +244,32 @@ const OptionWrapper = styled.div`
   width: 150px;
   border-radius: 4px;
   overflow: hidden;
+  @media (max-width: 1023px) {
+    width: 130px;
+  }
   img {
     height: 150px;
     width: 150px;
     object-fit: cover;
+    @media (max-width: 1023px) {
+      width: 130px;
+      height: 130px;
+    }
+  }
+`;
+
+const Material = styled.div`
+  margin: 150px 0;
+  @media (max-width: 1023px) {
+    margin: 0 0;
+  }
+`;
+
+const GridWapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(${(props) => props.$imgLength}, 1fr);
+  @media (max-width: 1023px) {
+    grid-template-columns: repeat(2, 1fr);
   }
 `;
 function Etching() {
@@ -247,6 +295,7 @@ function Etching() {
   const handleZoomDiagram = () => {
     setIsZoom((prev) => !prev);
   };
+
   return (
     <>
       <Wrapper>
@@ -321,7 +370,7 @@ function Etching() {
         <Contents>
           <Features contents={contents} maxWidth={600} />
 
-          <div className="material" style={{ marginTop: "150px" }}>
+          <Material className="material">
             <ContentsTitle title={"Material"} onData={showContent} />
             <Collapse in={expendClicked}>
               <Box
@@ -364,17 +413,17 @@ function Etching() {
                       </div>
                     </div>
                   ))} */}
-                <div style={{ display: "flex" }}>
+                <GridWapper $imgLength={selectImg.length}>
                   {selectImg.map((item, index) => (
                     <OptionWrapper key={index}>
                       <img src={item.img} alt={item.title} />
                       <span style={{ padding: "10px 0" }}>{item.title}</span>
                     </OptionWrapper>
                   ))}
-                </div>
+                </GridWapper>
               </Box>
             </Collapse>
-          </div>
+          </Material>
         </Contents>
       </Wrapper>
     </>

@@ -2,15 +2,52 @@ import styled from "styled-components";
 import line from "../../../img/line.svg";
 import BendinInfo from "./BendingInfo";
 import { useState } from "react";
-
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableRow,
+  Paper,
+} from "@mui/material";
 const Wrapper = styled.div``;
 
+const StyledTableCell = styled(TableCell)`
+  && {
+    text-align: center;
+    border-right: 1px solid #dfdfdf;
+    font-size: 16px;
+    background: ${(props) => props.theme.palette.table.main};
+    color: white;
+  }
+`;
+const StyledTableRow = styled(TableRow)(({ index }) => ({
+  "&:hover": {
+    backgroundColor: "#f5f5f5",
+    // ...(index === 0 && {
+    //   "& td:last-child": {
+    //     backgroundColor: "white",
+    //   },
+    //   "& td:nth-last-child(2)": {
+    //     backgroundColor: "white",
+    //   },
+    //   "& td:nth-last-child(3)": {
+    //     backgroundColor: "white",
+    //   },
+    // }),
+    // ...(index === 6 && {
+    //   "& td:last-child": {
+    //     backgroundColor: "white",
+    //   },
+    // }),
+  },
+}));
 const StructureWarpper = styled.div`
   width: 100%;
   max-width: 1100px;
   height: 500px;
   margin: 0 auto;
-  border-radius: 8px;
+  border-radius: 8px 8px 0 0;
   background: url(${line}) center center;
   background-size: cover;
   background-color: ${(props) => props.theme.colors.white};
@@ -18,19 +55,27 @@ const StructureWarpper = styled.div`
   position: relative;
   overflow: hidden;
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
+  @media (max-width: 1023px) {
+    padding: 0;
+    height: auto;
+  }
 `;
 const BendingSpecWrapper = styled.div`
   border-top: 1px solid ${(props) => props.theme.colors.blue};
-  padding-top: 50px;
+  background-color: #f5f5f5;
+  padding: 30px;
+  border-radius: 0 0 8px 8px;
 `;
 const NeedleImg = styled.img`
-  width: 100%;
+  width: 95%;
   max-width: 875px;
   position: absolute;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -120%);
+  @media (max-width: 1023px) {
+    transform: translateX(70%) scale(2);
+  }
 `;
 
 const Number = styled.span`
@@ -66,29 +111,74 @@ function BendingDetail({ contents }) {
       <StructureWarpper>
         <NeedleImg src={bending.img} />
         <BendinInfo hover={specId} />
-        <BendingSpecWrapper>
-          {bending.spec.map((item, index) => (
-            <div
-              key={index}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                marginBottom: 15,
-                fontWeight: 300,
-                fontSize: "18px",
-              }}
-              onMouseOver={() => handleSpecOver(index, item.id)}
-              onMouseLeave={handleSpecLeave}
-            >
-              <Number $hover={specIndex + 1 === item.id}>{item.id}</Number>
-              <span style={{ fontWeight: "500", marginRight: 20 }}>
-                {item.name} :
-              </span>
-              <span>{item.description}</span>
-            </div>
-          ))}
-        </BendingSpecWrapper>
       </StructureWarpper>
+      {/* <BendingSpecWrapper>
+        {bending.spec.map((item, index) => (
+          <div
+            key={index}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              marginBottom: 15,
+              fontWeight: 300,
+              fontSize: "18px",
+            }}
+            onMouseOver={() => handleSpecOver(index, item.id)}
+            onMouseLeave={handleSpecLeave}
+          >
+            <Number $hover={specIndex + 1 === item.id}>{item.id}</Number>
+            <span style={{ fontWeight: "500", marginRight: 20 }}>
+              {item.name} :
+            </span>
+            <span>{item.description}</span>
+          </div>
+        ))}
+      </BendingSpecWrapper> */}
+      <TableContainer component={Paper} sx={{ marginTop: "10px" }}>
+        <Table>
+          <TableBody>
+            {bending.spec.map((item, index) => (
+              <TableRow
+                key={index}
+                onMouseOver={() => handleSpecOver(index, item.id)}
+                onMouseLeave={handleSpecLeave}
+                style={{
+                  cursor: "pointer",
+                  backgroundColor:
+                    specIndex + 1 === item.id ? "#f5f5f5" : "inherit",
+                }}
+              >
+                <StyledTableCell
+                  style={{
+                    fontWeight: specIndex + 1 === item.id ? "500" : "300",
+                    fontSize: "16px",
+                  }}
+                >
+                  {item.id}
+                </StyledTableCell>
+                <TableCell
+                  style={{
+                    fontWeight: "500",
+                    fontSize: "16px",
+                    borderRight: "1px solid #dfdfdf",
+                  }}
+                >
+                  {item.name}
+                </TableCell>
+                <TableCell
+                  style={{
+                    fontWeight: "300",
+                    fontSize: "16px",
+                    borderRight: "1px solid #dfdfdf",
+                  }}
+                >
+                  {item.description}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </Wrapper>
   );
 }

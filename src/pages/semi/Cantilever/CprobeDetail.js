@@ -17,6 +17,9 @@ import {
 } from "@mui/material";
 const Wrapper = styled.div`
   padding: 0 50px;
+  @media (max-width: 1023px) {
+    padding: 0;
+  }
 `;
 
 const NeedleName = styled.h1`
@@ -42,6 +45,10 @@ const StructureWarpper = styled(motion.div)`
   display: flex;
   flex-direction: column;
   margin-bottom: 30px;
+  @media (max-width: 1023px) {
+    height: 300px;
+    padding: 20px;
+  }
 `;
 
 const NeedleImg = styled.img`
@@ -51,6 +58,9 @@ const NeedleImg = styled.img`
   top: 45%;
   left: 50%;
   transform: translate(-50%, -30%);
+  @media (max-width: 1023px) {
+    width: 95%;
+  }
 `;
 const TableWrapper = styled.div`
   width: 100%;

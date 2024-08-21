@@ -9,6 +9,7 @@ import Background from "three/examples/jsm/renderers/common/Background.js";
 import { useEffect, useRef, useState } from "react";
 import Slide from "@mui/material/Slide";
 import { useNavigate } from "react-router-dom"; // useNavigate 훅을 가져옵니다
+import { useMediaQuery } from "@mui/material";
 
 const Warpper = styled.div`
   width: 100%;
@@ -18,29 +19,39 @@ const Warpper = styled.div`
   overflow: hidden;
   cursor: pointer;
   position: relative;
+  @media (max-width: 1023px) {
+    margin: 30px 0;
+  }
 `;
 
-const BannerImgBox = styled.div`
+const BannerImg = styled.div`
   width: 100%;
   height: 200px;
   background: url(${(props) => props.$url}) center no-repeat;
   background-size: cover;
   transition: background-color 0.3s ease; /* transition 추가 */
+  opacity: ${(props) => (props.$show ? 1 : 0)};
   position: absolute;
   top: 0;
   left: 0;
-  opacity: ${(props) => (props.$show ? 1 : 0)};
+  @media (max-width: 1023px) {
+    background-size: contain;
+  }
 `;
 const ButtonContainer = styled.div`
   position: absolute;
   width: 95%;
-  background-color: rebeccapurple;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
   opacity: ${(props) => (props.isVisible ? 1 : 0)};
   transition: opacity 0.3s ease;
+`;
+
+const ImgWrapper = styled.div`
+  width: 100%;
+  height: 200px;
+  background-color: red;
 `;
 function Banner({ width }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -48,7 +59,6 @@ function Banner({ width }) {
   const bannerLength = bannerItem.length; //2
   const autoSlideInterval = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
-
   const navigate = useNavigate(); // useNavigate 훅을 사용하여 navigate 함수를 가져옵니다
 
   useEffect(() => {
@@ -102,15 +112,14 @@ function Banner({ width }) {
           style={{
             position: "relative",
             width: "100%",
-            height: "100%",
+            height: "200px",
             overflow: "hidden",
-            top: 0,
-            left: 0,
+            backgroundColor: "black",
           }}
         >
           {bannerItem.map((item, index) => (
             <Slide direction={direction} in={currentIndex === index}>
-              <BannerImgBox
+              <BannerImg
                 key={index}
                 $url={item.img}
                 onClick={() => handleClickBanner(item.link)}
