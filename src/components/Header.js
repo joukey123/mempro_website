@@ -167,14 +167,14 @@ function Header() {
       <Banner
         text={"Explore our full range of products and services."}
         linkText={"Click Here to Access Our Catalog"}
-        link={"https://mempro.myqnapcloud.com:85/"}
+        link={"https://www.mempro.co.kr:84"}
         color={"#eceb98"}
         fontColor={"black"}
       />
       <Banner
         text={"2024 SEMICON Taiwan. Booth S7948, 4th, HALL 2"}
         linkText={"Click Here! Booth"}
-        link={"https://mempro.myqnapcloud.com:8081/semiconMap.png"}
+        link={"https://mempro.co.kr/semiconMap.png"}
         color={"#574298"}
         fontColor={"white"}
       />

@@ -199,7 +199,7 @@ function Footer() {
       icon: <MenuBookIcon />,
       name: "Catalog",
       func: function () {
-        window.open("https://mempro.myqnapcloud.com:85/", "_blank");
+        window.open("https://www.mempro.co.kr:84", "_blank");
       },
     },
     {

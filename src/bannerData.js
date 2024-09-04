@@ -10,6 +10,6 @@ export const bannerItem = [
   {
     title: "semicon_taiwan_2024",
     img: semicon2024,
-    link: "https://mempro.myqnapcloud.com:8081/semiconMap.png",
+    link: "https://www.mempro.co.kr/semiconMap.png",
   },
 ];

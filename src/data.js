@@ -233,7 +233,7 @@ export const linkBtns = [
   {
     text: "catalog",
     icon: <MenuBookIcon />,
-    link: "https://mempro.myqnapcloud.com:85/",
+    link: "https://www.mempro.co.kr:84",
   },
 ];
 
@@ -494,7 +494,7 @@ export const books = [
       },
     ],
     img: semiBook,
-    url: "https://mempro.myqnapcloud.com:85/",
+    url: "https://www.mempro.co.kr:84",
   },
 ];
 export const machineDetail = {
@@ -516,7 +516,7 @@ export const machineDetail = {
         title: "330 Auto Sanding Machine",
         model: "JKSM-B330",
         img: sanding_330,
-        video: "https://mempro.myqnapcloud.com:85/sanding.mp4",
+        video: "https://www.mempro.co.kr/sanding.mp4",
         features: [
           { img: blueprint, text: "~Ø330" },
           { img: compact, text: "compact size" },
@@ -537,7 +537,7 @@ export const machineDetail = {
         title: "Vertical Auto Sanding Machine",
         model: "JKVT-330",
         img: sanding_vertical,
-        video: "https://mempro.myqnapcloud.com:85/sanding.mp4",
+        video: "https://www.mempro.co.kr/sanding.mp4",
         features: [
           { img: blueprint, text: "~Ø480" },
           { img: motor, text: "Z-axis stage high torque motor" },
@@ -558,7 +558,7 @@ export const machineDetail = {
         title: "Multi Auto Sanding Machine",
         model: "JKMT-330",
         img: sanding_multi,
-        video: "https://mempro.myqnapcloud.com:85/sanding.mp4",
+        video: "https://www.mempro.co.kr/sanding.mp4",
         features: [
           { img: blueprint, text: "~Ø480" },
           { img: motor, text: "Z-axis stage high torque motor" },
@@ -578,7 +578,7 @@ export const machineDetail = {
         title: "Vision Auto Sanding Machine",
         model: "JKSM-V330",
         img: sanding_vision,
-        video: "https://mempro.myqnapcloud.com:85/sanding.mp4",
+        video: "https://www.mempro.co.kr/sanding.mp4",
         features: [
           { img: blueprint, text: "~Ø480" },
           { img: motor, text: "Z-axis stage high torque motor" },
@@ -598,7 +598,7 @@ export const machineDetail = {
         title: "Idling Auto Sanding Machine",
         model: "JKHI-330",
         img: sanding_idling,
-        video: "https://mempro.myqnapcloud.com:85/sanding.mp4",
+        video: "https://www.mempro.co.kr/sanding.mp4",
         features: [
           { img: blueprint, text: "~Ø480" },
           { img: motor, text: "Z-axis stage high torque motor" },
@@ -628,7 +628,7 @@ export const machineDetail = {
         title: "Length Bending Machine",
         model: "JLBS-100",
         img: bending_length,
-        video: "https://mempro.myqnapcloud.com:85/bending.mp4",
+        video: "https://www.mempro.co.kr/bending.mp4",
         features: [
           { img: cost, text: "coast saving" },
           { img: easy, text: "simple/easy" },
@@ -655,7 +655,7 @@ export const machineDetail = {
         title: "330 Manual Prober",
         model: "JKMPCM12",
         img: manual_330,
-        video: "https://mempro.myqnapcloud.com:85/prober.mp4",
+        video: "https://www.mempro.co.kr/prober.mp4",
         features: [
           { img: blueprint, text: "~Ø330" },
           { img: xy_axis, text: "X, Y-axis manual stage" },
@@ -676,7 +676,7 @@ export const machineDetail = {
         title: "440 Manual Prober",
         model: "JKMPCM17",
         img: manual_440,
-        video: "https://mempro.myqnapcloud.com:85/prober.mp4",
+        video: "https://www.mempro.co.kr/prober.mp4",
         features: [
           { img: blueprint, text: "~Ø440" },
           { img: xy_axis, text: "X, Y-axis manual stage" },
@@ -697,7 +697,7 @@ export const machineDetail = {
         title: "480 Manual Prober",
         model: "JKMPCM18",
         img: manual_480,
-        video: "https://mempro.myqnapcloud.com:85/prober.mp4",
+        video: "https://www.mempro.co.kr/prober.mp4",
         features: [
           { img: blueprint, text: "~Ø480" },
           { img: xy_axis, text: "X, Y-axis manual stage" },
@@ -718,7 +718,7 @@ export const machineDetail = {
         title: "520 Manual Prober",
         model: "JKAP-520",
         img: manual_520,
-        video: "https://mempro.myqnapcloud.com:85/prober.mp4",
+        video: "https://www.mempro.co.kr/prober.mp4",
         features: [
           { img: blueprint, text: "~Ø520" },
           { img: xy_axis, text: "X, Y-axis manual stage" },
@@ -746,7 +746,7 @@ export const machineDetail = {
         title: "Mask Film Punching Machine",
         model: "JKPM220",
         img: punching,
-        video: "https://mempro.myqnapcloud.com:85/mask.mp4",
+        video: "https://www.mempro.co.kr/mask.mp4",
         features: [
           { img: csv, text: "saved coordinate CSV file" },
           { img: achieves, text: "Achieves accuracy of ±0.005 μm" },
@@ -774,7 +774,7 @@ export const machineDetail = {
         title: "MRC Contact Machine",
         model: "JKACM-3030",
         img: mrc_contact,
-        video: "https://mempro.myqnapcloud.com:85/rubber.mp4",
+        video: "https://www.mempro.co.kr/rubber.mp4",
         features: [
           { img: recipe, text: "Individual Recipe Application" },
           { img: tacktime, text: "Fast Tact Time" },
@@ -794,7 +794,7 @@ export const machineDetail = {
         title: "Multi Auto Contact Machine",
         model: "JKMACM-220",
         img: multi_auto,
-        video: "https://mempro.myqnapcloud.com:85/rubber.mp4",
+        video: "https://www.mempro.co.kr/rubber.mp4",
         features: [
           { img: recipe, text: "Individual Recipe Application" },
           { img: tacktime, text: "Fast Tact Time" },
@@ -814,7 +814,7 @@ export const machineDetail = {
         title: "Socket Aging Machine",
         model: "JKMAM-230",
         img: aging,
-        video: "https://mempro.myqnapcloud.com:85/rubber.mp4",
+        video: "https://www.mempro.co.kr/rubber.mp4",
         features: [
           { img: recipe, text: "Individual Recipe Application" },
           { img: tacktime, text: "Fast Tact Time" },
@@ -842,7 +842,7 @@ export const machineDetail = {
         title: "Probe C.C.C Tester",
         model: "JKTT-50",
         img: ccc,
-        video: "https://mempro.myqnapcloud.com:85/tester.mp4",
+        video: "https://www.mempro.co.kr/tester.mp4",
         features: [
           {
             img: evalution,
@@ -865,7 +865,7 @@ export const machineDetail = {
         title: "Probe Life Cycle Tester",
         model: "JKACM-8080",
         img: lifeCycle,
-        video: "https://mempro.myqnapcloud.com:85/tester.mp4",
+        video: "https://www.mempro.co.kr/tester.mp4",
         features: [
           { img: contact, text: "contact at 300 cycles / m" },
           { img: display, text: "real-time video" },
@@ -892,7 +892,7 @@ export const machineDetail = {
         title: "R-Caulking Machine",
         model: "JKRC-2045",
         img: r,
-        video: "https://mempro.myqnapcloud.com:85/pogo.mp4",
+        video: "https://www.mempro.co.kr/pogo.mp4",
         features: [
           { img: pogopin20, text: "20 Pogo Pin / jig" },
           { img: display, text: "real-time video" },
@@ -911,7 +911,7 @@ export const machineDetail = {
         title: "Roll Caulking Machine",
         model: "JKRM-220",
         img: roll,
-        video: "https://mempro.myqnapcloud.com:85/pogo.mp4",
+        video: "https://www.mempro.co.kr/pogo.mp4",
         features: [
           { img: finepitch, text: "Adaptable to a fine-pitch product" },
           { img: display, text: "real-time video" },

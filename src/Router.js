@@ -29,7 +29,15 @@ import Rubber from "./pages/semi/Machine/Rubber";
 import Machine from "./pages/semi/Machine";
 import NotFound from "./pages/home/NotFound";
 import ScrollToTop from "./Hook/ScrollToTop";
+import { useEffect } from "react";
+function CatalogRedirect() {
+  useEffect(() => {
+    window.history.replaceState(null, "", "/catalogs");
+    window.location.href = "https://www.mempro.co.kr:84";
+  }, []);
 
+  return null; // 이 컴포넌트는 리다이렉트만 수행하고 렌더링할 내용은 없습니다.
+}
 function Router() {
   return (
     <BrowserRouter>
@@ -69,6 +77,8 @@ function Router() {
           <Route path="rubber" element={<Rubber />} />
         </Route>
         <Route path="contact" element={<Contact />} />
+        <Route path="/catalogs" element={<CatalogRedirect />} />
+
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
