@@ -1,59 +1,66 @@
-import { motion, useAnimation, useInView } from "framer-motion";
+import {
+  motion,
+  useAnimation,
+  useInView,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import CloseIcon from "@mui/icons-material/Close";
+import { useMediaQuery } from "@mui/material";
 const Wrap = styled(motion.div)`
-  background-color: ${(props) => props.theme.colors.box};
-  border-radius: 40px;
-  display: flex;
+  /* background-color: ${(props) => props.theme.colors.box}; */
+  background-color: #0068b7;
+  width: fit-content;
+  border-radius: 8px;
   align-items: center;
   justify-content: center;
-  position: relative;
   margin: 0 auto;
-  height: 56px;
-  min-width: 300px;
+  height: 50px;
+  padding: 20px;
+  color: white;
+  display: ${(props) => (props.$isClosed ? "none" : "flex")};
+  white-space: nowrap;
+  margin-top: -300px;
+  @media (max-width: 1023px) {
+    margin-top: -50px;
+  }
 `;
 const Contents = styled.span`
-  font-size: 1rem;
-  font-weight: 200;
-  color: ${(props) => props.theme.colors.white};
-  position: relative;
-  right: 22px;
-  min-width: 180px;
+  font-size: 18px;
+  font-weight: 300;
+  border-right: 1px solid white;
+  padding-right: 20px;
 `;
 const Btn = styled.button`
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
   color: white;
-  background-color: ${(props) => props.theme.colors.blue};
+  background-color: transparent;
   border: 0;
-  position: absolute;
-  right: 3px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  margin-left: 15px;
   i {
     font-size: 25px;
   }
   &:hover {
-    background-color: ${(props) => props.theme.colors.lightBlue};
+    color: ${(props) => props.theme.colors.lightBlue};
     transition: all 0.3s ease-in-out;
   }
 `;
 
 const BtnBox = ({ type, onClose }) => {
   const [close, setClose] = useState(false);
+
   useEffect(() => setClose(false), []);
 
   const handleClose = () => {
     if (type === "close") {
-      console.log("close", type);
       setClose(true);
       onClose(true); // Notify parent component
     } else {
-      console.log("plus");
       onClose(false); // Notify parent component (optional)
     }
   };
@@ -66,59 +73,78 @@ const BtnBox = ({ type, onClose }) => {
 
 function MessageBox({ text, type }) {
   const controls = useAnimation();
-  const refInfo = useRef(null);
-  const isInView = useInView(refInfo, { triggerOnce: true, threshold: 0.5 });
+  const ref = useRef(null);
+  const isInView = useInView(ref, { triggerOnce: false, threshold: 0.5 });
   const [isClosed, setIsClosed] = useState(false);
-  const sectionIndex = window.scrollY / window.innerHeight;
+  const { scrollYProgress } = useScroll();
+  const isMobile = useMediaQuery("(max-width: 1023px)");
+  const scale = useTransform(
+    scrollYProgress,
+    [0, isMobile ? 0.3 : 0.5, 1],
+    [0, isMobile ? 0.8 : 1.2, 0]
+  );
+  const opacity = useTransform(
+    scrollYProgress,
+    [0, isMobile ? 0.3 : 0.7, 0.71],
+    [1, isMobile ? 1 : 1, 0]
+  );
+  const animateVariants = (delay) => ({
+    hidden: { opacity: 0, y: 100 },
+    visible: { opacity: 1, y: 0, transition: { duration: 1, delay } },
+  });
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (isInView) {
       controls.start("visible");
     } else {
       controls.start("hidden");
     }
   }, [isInView, controls]);
-
-  useEffect(() => {
-    const handleScroll = (event) => {
-      const { deltaY } = event;
-
-      if (sectionIndex > 1.3) {
-        setIsClosed(true);
-      } else {
-        setIsClosed(false);
-      }
-    };
-    window.addEventListener("wheel", handleScroll);
-
-    return () => {
-      window.removeEventListener("wheel", handleScroll);
-    };
-  }, [sectionIndex]);
-
-  const animateVariants = (delay) => ({
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 1, delay } },
-    exit: { opacity: 0, y: 50, transition: { duration: 1 } },
-  });
-
-  const location = window.innerHeight;
-
   const handleClose = (closeState) => {
     setIsClosed(closeState);
   };
+  // useEffect(() => {
+  //   if (isInView) {
+  //     controls.start("visible");
+  //   } else {
+  //     controls.start("hidden");
+  //   }
+  // }, [isInView, controls]);
+
+  // useEffect(() => {
+  //   const handleScroll = (event) => {
+  //     const { deltaY } = event;
+
+  //     if (sectionIndex > 1.3) {
+  //       setIsClosed(true);
+  //     } else {
+  //       setIsClosed(false);
+  //     }
+  //   };
+  //   window.addEventListener("wheel", handleScroll);
+
+  //   return () => {
+  //     window.removeEventListener("wheel", handleScroll);
+  //   };
+  // }, [sectionIndex]);
+
+  // const animateVariants = (delay) => ({
+  //   hidden: { opacity: 0, y: 50 },
+  //   visible: { opacity: 1, y: 0, transition: { duration: 1, delay } },
+  //   exit: { opacity: 0, y: 50, transition: { duration: 1 } },
+  // });
+
   return (
     <Wrap
-      ref={refInfo}
-      $location={location}
-      style={{ display: isClosed ? "none" : "flex" }}
+      ref={ref}
+      $isClosed={isClosed}
       initial="hidden"
       animate={controls}
-      variants={animateVariants(0.5)}
-      exit="exit"
+      variants={animateVariants(0)}
+      style={{ scale, opacity }}
     >
       <Contents>{text}</Contents>
-      <BtnBox type={type} onClose={handleClose} />
+      {type && <BtnBox type={type} onClose={handleClose} />}
     </Wrap>
   );
 }

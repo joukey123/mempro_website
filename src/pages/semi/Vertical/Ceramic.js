@@ -16,6 +16,7 @@ import {
   ToggleButton,
   ToggleButtonGroup,
   Collapse,
+  useMediaQuery,
 } from "@mui/material";
 import ReplayIcon from "@mui/icons-material/Replay";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
@@ -24,6 +25,7 @@ import ExpandLessOutlinedIcon from "@mui/icons-material/ExpandLessOutlined";
 import ExpandMoreOutlinedIcon from "@mui/icons-material/ExpandMoreOutlined";
 import ThreeModel from "../../../components/3D/ThreeModel";
 import dgree from "../../../img/stiffener/dgree.svg";
+import useAnimateOnInView from "../../../Hook/useAnimationOnInView";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -34,6 +36,9 @@ const Wrapper = styled.div`
   flex-direction: column;
   padding: 0 50px;
   position: relative;
+  @media (max-width: 1023px) {
+    padding: 30px;
+  }
 `;
 const Contents = styled.h2`
   width: 100%;
@@ -49,37 +54,50 @@ const DiagramWpper = styled.div`
   margin: 0 auto;
   border-radius: 15px;
   background-color: ${(props) => props.theme.colors.white};
-  padding: 0 50px;
-  position: relative;
+  padding: 30px;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-direction: column;
+  position: relative;
+  @media (max-width: 1230px) {
+    height: 580px;
+  }
 `;
 const DiagramImg = styled(motion.img)`
-  width: 100%;
-  max-width: 1100px;
-  height: 500px;
-  object-fit: contain;
-  object-position: center center;
+  height: 400px;
+
   transform: scale(0.8);
   z-index: 99;
   filter: ${(props) => props.$isPlus && "blur(10px)"};
+  @media (max-width: 1230px) {
+    height: 300px;
+  }
 `;
 
 const ImgBox = styled.div`
   width: 100%;
-  max-width: 550px;
-  height: 100%;
-  background: url(${(props) => props.$url}) no-repeat;
-  background-position: center center;
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  transform: scale(0.9) translate(-50%, -60%);
+  max-width: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  @media (max-width: 1230px) {
+    margin-top: -50px;
+  }
+`;
+const Img = styled.img`
+  width: 100%;
+  max-width: 500px;
   filter: ${(props) => props.$isPlus && "blur(10px)"};
+  @media (max-width: 1230px) {
+    max-width: 350px;
+  }
+  position: absolute;
 `;
 const Step1 = styled(motion.img)`
-  width: 100%;
-  max-width: 400px;
-  position: relative;
+  position: absolute;
   object-fit: contain;
   object-position: center center;
   filter: ${(props) => props.$isPlus && "blur(10px)"};
@@ -101,8 +119,13 @@ const StructureWarpper = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 50px;
+  @media (max-width: 1023px) {
+    padding: 0px;
+    height: 500px;
+  }
 `;
-// const BtnWrapper = styled.div`
+// const BtnWrapper = styled.div`mempro123
+
 //   position: absolute;
 //   right: 50px;
 //   bottom: 50px;
@@ -117,6 +140,16 @@ const BtnWrapper = styled.div`
   visibility: ${(props) => props.$isPlay && "hidden"};
   display: flex;
   flex-direction: column;
+  @media (max-width: 1023px) {
+    right: 0;
+    bottom: 0;
+    flex-direction: row;
+    transform: scale(0.7);
+    z-index: 102;
+    .btn1 {
+      margin-right: 10px;
+    }
+  }
 `;
 const ZoomBtn = styled.button`
   display: flex;
@@ -161,10 +194,10 @@ const ZoomImg = styled.img`
 
 const CeramicText = styled.span`
   position: absolute;
-  top: 76%;
-  left: 52.5%;
-  transform: translate(-50%, -50%);
-  color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 2000%);
+  color: black;
   font-size: 20;
   visibility: ${(props) => props.$isPlus && "hidden"};
 `;
@@ -174,6 +207,10 @@ const TypeImg = styled.div`
   height: 100px;
   background: url(${(props) => props.$url}) no-repeat center;
   margin: 0 20px;
+  @media (max-width: 1023px) {
+    width: 50px;
+    height: 50px;
+  }
 `;
 
 const DgreeImg = styled.div`
@@ -184,6 +221,12 @@ const DgreeImg = styled.div`
   position: absolute;
   top: 50px;
   left: 50px;
+  @media (max-width: 1023px) {
+    width: 50px;
+    height: 50px;
+    top: 25px;
+    left: 25px;
+  }
 `;
 
 const AssembleWrapper = styled.div`
@@ -193,7 +236,7 @@ const AssembleWrapper = styled.div`
   align-items: center;
   justify-content: center;
 `;
-const ImgWrapper = styled.div`
+const ImgWrapper = styled(motion.div)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -204,6 +247,10 @@ const ImgDiv = styled.div`
   width: 250px;
   height: 250px;
   background: url(${(props) => props.$url}) center no-repeat;
+  @media (max-width: 1023px) {
+    width: 150px;
+    height: 150px;
+  }
 `;
 const ImgText = styled.span`
   width: 100%;
@@ -212,6 +259,8 @@ const ImgText = styled.span`
   text-align: center;
   margin-top: 10px;
 `;
+
+const MotionToggleButton = motion(ToggleButton);
 function Ceramic() {
   const location = useLocation();
   const paths = location.pathname.split("/").filter(Boolean);
@@ -235,11 +284,14 @@ function Ceramic() {
   // };
   const [expendClicked, setExpendClicked] = useState(true);
   const [expendClickedAssemble, setExpendClickedAssemble] = useState(true);
+  const [deviceType, setDeviceType] = useState("desktop");
   const showContent = (show) => {
     setExpendClicked(show);
     setSelectItem(false);
     setModelIndex();
   };
+
+  const isMobile = useMediaQuery("(max-width: 1023px)");
 
   const showContent2Assemble = (show) => {
     setExpendClickedAssemble(show);
@@ -274,6 +326,22 @@ function Ceramic() {
     }
   };
 
+  const {
+    ref: boxRef,
+    controls: boxControls,
+    animateVariants: boxVariants,
+  } = useAnimateOnInView(0, 0.3);
+
+  useEffect(() => {
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+    if (/android/i.test(userAgent) || /iPad|iPhone|iPod/.test(userAgent)) {
+      setDeviceType("mobile");
+    } else {
+      setDeviceType("desktop");
+    }
+  }, []);
+
   return (
     <>
       <Wrapper>
@@ -281,36 +349,70 @@ function Ceramic() {
         <DiagramWpper>
           <DiagramImg src={images.machine} $isPlus={isPlus} />
 
-          <ImgBox $url={images.step1} $isPlus={isPlus}>
+          <ImgBox className="imgBoxWhen">
+            <Img src={images.step1} $isPlus={isPlus} />
+
             {playAnimaion && (
               <>
                 <Step1
                   src={images.step2}
                   initial={{
-                    top: "66.5%",
-                    left: "-10.5%",
-                    transform: "scale(.15) translate(-100%, -100%)",
+                    top: "50%",
+                    left: "50%",
+                    transform:
+                      isMobile && deviceType === "mobile"
+                        ? "translate(-225%, 470%)"
+                        : isMobile && deviceType === "desktop"
+                        ? "translate(-285%, 608%)"
+                        : "translate(-250%, 545%)",
                   }}
                   animate={{
                     top: "66.5%",
                     left: "60.0%",
-                    transform: "scale(.15) translate(-100%, -100%)",
+                    transform:
+                      isMobile && deviceType === "mobile"
+                        ? "translate(80%, 485%)"
+                        : isMobile && deviceType === "desktop"
+                        ? "translate(90%, 612%)"
+                        : "translate(90%, 545%)",
                   }}
                   transition={{ duration: 5, delay: 1 }}
+                  style={{
+                    willChange: "transform", // 애니메이션 성능을 향상시키기 위해 추가
+                    width: isMobile ? "50px" : "80px",
+                    zIndex: 99,
+                  }}
                 />
                 <Step1
                   src={images.step3}
-                  style={{ maxWidth: "15px", height: "150px", opacity: 0 }}
+                  style={{
+                    willChange: "transform", // 애니메이션 성능을 향상시키기 위해 추가
+
+                    maxWidth: "15px",
+                    height:
+                      isMobile && deviceType === "mobile" ? "85px" : "150px",
+                    opacity: 1,
+                  }}
                   initial={{
-                    top: "79%",
-                    left: "-42%",
-                    transform: "translate(-100%, -52%)",
+                    top: "50%",
+                    left: "50%",
+                    transform:
+                      isMobile && deviceType === "mobile"
+                        ? "translate(-1000%, 130%)"
+                        : isMobile && deviceType === "desktop"
+                        ? "translate(-900%, 90%)"
+                        : "translate(-1300%, 146%)",
                     opacity: 0,
                   }}
                   animate={{
-                    top: "79%",
-                    left: "-31%",
-                    transform: "translate(-100%, -52%)",
+                    top: "50%",
+                    left: "50%",
+                    transform:
+                      isMobile && deviceType === "mobile"
+                        ? "translate(-500%, 130%)"
+                        : isMobile && deviceType === "desktop"
+                        ? "translate(-400%, 90%)"
+                        : "translate(-500%, 146%)",
                     opacity: animate1 ? 1 : 0,
                   }}
                   transition={{
@@ -321,39 +423,66 @@ function Ceramic() {
                 />
                 <Step1
                   src={images.step3}
-                  style={{ maxWidth: "15px", height: "150px", opacity: 0 }}
+                  style={{
+                    maxWidth: "15px",
+                    height:
+                      isMobile && deviceType === "mobile" ? "85px" : "150px",
+                    opacity: 0,
+                  }}
                   initial={{
-                    top: "79%",
-                    left: "-13%",
-                    transform: "translate(-100%, -52%)",
+                    top: "50%",
+                    left: "50%",
+                    transform:
+                      isMobile && deviceType === "mobile"
+                        ? "translate(500%, 130%)"
+                        : isMobile && deviceType === "desktop"
+                        ? "translate(400%, 90%)"
+                        : "translate(500%, 146%)",
                     opacity: 0,
                   }}
                   animate={{
-                    top: "79%",
-                    left: "-2.5%",
-                    transform: "translate(-100%, -52%)",
+                    top: "50%",
+                    left: "50%",
+                    transform:
+                      isMobile && deviceType === "mobile"
+                        ? "translate(1000%, 130%)"
+                        : isMobile && deviceType === "desktop"
+                        ? "translate(750%, 90%)"
+                        : "translate(1000%, 146%)",
                     opacity: animate2 ? 1 : 0,
                   }}
                   transition={{
                     duration: 1,
-                    delay: animate2 ? 3.3 : -100,
+                    delay: animate2 ? 3.4 : -100,
                   }}
                   onAnimationComplete={() => setAnimate2(false)}
                 />
                 <Step1
                   src={images.step4}
                   initial={{
-                    top: "73.8%",
-                    left: "-33%",
-                    transform: "translate(-100%, -50%) scaleX(1)",
-                    width: "100px",
+                    top: "50%",
+                    left: "50%",
+                    transform:
+                      isMobile && deviceType === "mobile"
+                        ? "translate(-120%, 2055%) scaleX(1)"
+                        : isMobile && deviceType === "desktop"
+                        ? "translate(-150%, 2655%) scaleX(1)"
+                        : "translate(-180%, 3850%) scaleX(1)",
+
+                    width: "60px",
                   }}
                   animate={{
-                    top: "73.8%",
-                    left: "-33%",
-                    transform: "translate(-100%, -50%) scaleX(0)",
-                    transformOrigin: "right",
-                    width: "100px",
+                    top: "50%",
+                    left: "50%",
+                    transform:
+                      isMobile && deviceType === "mobile"
+                        ? "translate(-120%, 2055%) scaleX(0)"
+                        : isMobile && deviceType === "desktop"
+                        ? "translate(-150%, 2655%) scaleX(0)"
+                        : "translate(-180%, 3850%) scaleX(0)",
+                    transformOrigin: "right bottom",
+                    WebkitTransformOrigin: "right bottom", // 사파리 벤더 프리픽스
+                    width: "60px",
                   }}
                   transition={{
                     duration: 1,
@@ -363,17 +492,29 @@ function Ceramic() {
                 <Step1
                   src={images.step4}
                   initial={{
-                    top: "72%",
-                    left: "77%",
-                    transform: "translate(-100%, -50%) scaleX(1)",
-                    width: "100px",
+                    top: "50%",
+                    left: "50%",
+                    transform:
+                      isMobile && deviceType === "mobile"
+                        ? "translate(40%, 2055%) scaleX(1)"
+                        : isMobile && deviceType === "desktop"
+                        ? "translate(60%, 2655%) scaleX(1)"
+                        : "translate(85%, 3850%) scaleX(1)",
+                    width: "60px",
                   }}
                   animate={{
-                    top: "72%",
-                    left: "77%",
-                    transform: "translate(-100%, -50%) scaleX(0)",
-                    transformOrigin: "right",
-                    width: "100px",
+                    top: "50%",
+                    left: "50%",
+                    transform:
+                      isMobile && deviceType === "mobile"
+                        ? "translate(40%, 2055%) scaleX(0)"
+                        : isMobile && deviceType === "desktop"
+                        ? "translate(60%, 2655%) scaleX(0)"
+                        : "translate(85%, 3850%) scaleX(0)",
+                    transformOrigin: "right bottom",
+                    WebkitTransformOrigin: "right bottom", // 사파리 벤더 프리픽스
+
+                    width: "60px",
                   }}
                   transition={{
                     duration: 1,
@@ -382,9 +523,9 @@ function Ceramic() {
                 />
               </>
             )}
+            {/* <CeramicText $isPlus={isPlus}>Ceramic</CeramicText> */}
           </ImgBox>
 
-          <CeramicText $isPlus={isPlus}>Ceramic</CeramicText>
           {/* <BtnWrapper $isPlus={isPlus}>
             <ZoomBtn onClick={handlePlusItem} $isPlus={isPlus}>
               <i class="fa-solid fa-plus"></i>
@@ -396,6 +537,7 @@ function Ceramic() {
           <BtnWrapper $isPlay={playAnimaion}>
             {
               <Fab
+                className="btn1"
                 color="primary"
                 aria-label="add"
                 onClick={handlePlusItem}
@@ -453,14 +595,30 @@ function Ceramic() {
                   value={modelIndex}
                   onChange={handleToggleChange}
                   exclusive
+                  sx={{
+                    display: isMobile && "grid",
+                    gridTemplateColumns: isMobile && "repeat(3,1fr)",
+                    gap: isMobile && "10px",
+                  }}
                 >
                   {types["shape"].map((item, index) => (
-                    <ToggleButton value={index}>
+                    <MotionToggleButton
+                      value={index}
+                      sx={{
+                        borderLeft:
+                          isMobile &&
+                          "1px solid rgba(0, 0, 0, 0.12) !important",
+                      }}
+                      ref={boxRef}
+                      initial="hidden"
+                      animate={boxControls}
+                      variants={boxVariants(index * 0.3)}
+                    >
                       <TypeImg
                         $url={item.img}
                         onClick={() => handleClickType(index)}
                       ></TypeImg>
-                    </ToggleButton>
+                    </MotionToggleButton>
                   ))}
                 </ToggleButtonGroup>
                 <Collapse
@@ -485,7 +643,12 @@ function Ceramic() {
             <Collapse in={expendClickedAssemble}>
               <AssembleWrapper>
                 {contents["assemble"].map((item, index) => (
-                  <ImgWrapper>
+                  <ImgWrapper
+                    ref={boxRef}
+                    initial="hidden"
+                    animate={boxControls}
+                    variants={boxVariants(index * 0.5)}
+                  >
                     <ImgDiv $url={item.img} />
                     <ImgText>{item.text}</ImgText>
                   </ImgWrapper>

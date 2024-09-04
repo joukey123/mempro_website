@@ -1,16 +1,25 @@
 import styled from "styled-components";
 import { Button } from "@mui/material";
 import { useState } from "react";
+import { motion } from "framer-motion";
+import useAnimateOnInView from "../../Hook/useAnimationOnInView";
 const BtnWrapper = styled.div`
   width: 100%;
   max-width: 1280px;
   padding: 0 50px;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
   margin-top: 30px;
+
+  @media (max-width: 1023px) {
+    padding: 0px;
+    overflow-x: scroll;
+    padding-bottom: 30px;
+  }
 `;
 
 const StyledButton = styled(Button)`
-  max-width: 250px;
+  width: 200px;
   color: ${(props) => props.$disabled && "#E4E4E4"} !important;
   border-color: ${(props) => props.$disabled && "#E4E4E4"} !important;
   padding: 30px 20px !important;
@@ -21,8 +30,19 @@ const StyledButton = styled(Button)`
     color: ${(props) => props.$disabled && "#E4E4E4"} !important;
   }
   margin-right: 20px !important;
+  @media (max-width: 1023px) {
+    width: 200px;
+    padding: 5px !important;
+    span {
+      text-align: center !important;
+      margin-bottom: 5px;
+    }
+    img {
+      margin-bottom: 10px;
+    }
+  }
 `;
-
+const MotionStyledButton = motion(StyledButton);
 const MachineImg = styled.img`
   width: 150px;
   height: 150px;
@@ -37,6 +57,12 @@ function Machines({ machinBtnArray, onModel }) {
     setType(item);
     onModel(num);
   };
+
+  const {
+    ref: boxRef,
+    controls: boxControls,
+    animateVariants: boxVariants,
+  } = useAnimateOnInView(0, 0.3);
   return (
     <BtnWrapper>
       {machinBtnArray.map((item, index) => (

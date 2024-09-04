@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="uuid-549cb137-8491-43b8-a77c-cabd66a8973b" data-name="레이어 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 41.29 52.1">
+  <defs>
+    <style>
+      .uuid-6d6263b8-e012-4906-847a-68719760f6ac, .uuid-5827fedf-f8ec-42f2-a330-a0e7d6c02bab, .uuid-c701482a-f645-49b3-a4be-4fc4c42ba763 {
+        stroke-width: 0px;
+      }
+
+      .uuid-6d6263b8-e012-4906-847a-68719760f6ac, .uuid-4761483b-0e4c-4239-8718-5a99810a0e3b, .uuid-b2e2af7c-4a12-492e-861d-855fd1a5f4b7 {
+        fill: none;
+      }
+
+      .uuid-5827fedf-f8ec-42f2-a330-a0e7d6c02bab {
+        fill: #000;
+      }
+
+      .uuid-c701482a-f645-49b3-a4be-4fc4c42ba763 {
+        fill: #1976d2;
+      }
+
+      .uuid-4761483b-0e4c-4239-8718-5a99810a0e3b {
+        stroke-width: 2.26px;
+      }
+
+      .uuid-4761483b-0e4c-4239-8718-5a99810a0e3b, .uuid-b2e2af7c-4a12-492e-861d-855fd1a5f4b7 {
+        stroke: #000;
+        stroke-linecap: round;
+        stroke-miterlimit: 10;
+      }
+
+      .uuid-b2e2af7c-4a12-492e-861d-855fd1a5f4b7 {
+        stroke-width: 2.26px;
+      }
+    </style>
+  </defs>
+  <g id="uuid-89184e23-03a1-4a9c-ac7c-11b970601933" data-name="레이어 1">
+    <line class="uuid-6d6263b8-e012-4906-847a-68719760f6ac" x1="37.69" y1="13.84" x2="36.35" y2="12.58"/>
+    <path class="uuid-b2e2af7c-4a12-492e-861d-855fd1a5f4b7" d="M36.35,32.33V12.58L24.28,1.13H6.42C3.5,1.13,1.13,3.5,1.13,6.41v44.56h24.84"/>
+    <polyline class="uuid-4761483b-0e4c-4239-8718-5a99810a0e3b" points="36.35 12.58 24.28 12.58 24.28 1.13"/>
+    <path class="uuid-5827fedf-f8ec-42f2-a330-a0e7d6c02bab" d="M14.77,11.42l-.31,1.42h-3.75l-.38,1.77h3.28l-.28,1.31h-3.27l-.68,3.16h-1.67l1.61-7.66h5.45Z"/>
+    <path class="uuid-5827fedf-f8ec-42f2-a330-a0e7d6c02bab" d="M12.99,22.63l-1.62,7.66h-1.68l1.61-7.66h1.69Z"/>
+    <path class="uuid-5827fedf-f8ec-42f2-a330-a0e7d6c02bab" d="M9.58,42.59l-.88-7.66h1.68l.5,5.75h.02l2.91-5.75h1.75l-4.09,7.66h-1.9Z"/>
+    <path class="uuid-c701482a-f645-49b3-a4be-4fc4c42ba763" d="M28.31,51.02c-.75,1.45-2.54,1.19-2.95-.39l-1.69-5.13c-1.77-4.56-8.62-11.05-13.01-13.99h0c1.02.68,12.72,2.47,16.93,8.62l13.7-14.09h0l-10.53,20.26-2.45,4.71Z"/>
+  </g>
+</svg>

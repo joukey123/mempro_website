@@ -14,10 +14,25 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { itemsDetail } from "../../data";
 import styled from "styled-components";
-import { useMediaQuery } from "@mui/material";
+import { Alert, capitalize, useMediaQuery } from "@mui/material";
+import { transform } from "framer-motion";
 const StyledButton = styled(Button)`
   color: ${(props) => props.$disabled && "#E4E4E4"} !important;
   border-color: ${(props) => props.$disabled && "#E4E4E4"} !important;
+`;
+
+const GridBox = styled.div`
+  display: grid;
+  width: 90%;
+  margin: 30px auto;
+  grid-template-columns: repeat(${(props) => props.$number}, 1fr);
+  gap: 15px;
+  @media (max-width: 1023px) {
+    grid-template-columns: repeat(
+      ${(props) => Math.min(3, Math.ceil(props.$number / 2))},
+      1fr
+    );
+  }
 `;
 function ProbeType({ cards, onData, IsNeedleChange }) {
   const [selectSystem, setSelectSystem] = useState("");
@@ -28,7 +43,6 @@ function ProbeType({ cards, onData, IsNeedleChange }) {
   // const tableref = useRef();
   const [isCardChange, setIsCardChange] = useState(false);
   const [isSystemChange, setIsSystemChange] = useState(false);
-
   const findNeedle = cards.find(
     (card) => card.type.toLowerCase() === selectCard.toLowerCase()
   );
@@ -115,9 +129,8 @@ function ProbeType({ cards, onData, IsNeedleChange }) {
     <div
       style={{
         display: "flex",
-        paddingLeft: isMobile ? 0 : 50,
         flexDirection: "column",
-        marginBottom: "100px",
+        marginBottom: "50px",
         width: "100%",
         maxWidth: "1100px",
       }}
@@ -154,6 +167,18 @@ function ProbeType({ cards, onData, IsNeedleChange }) {
           </Select>
         </FormControl>
       </div>
+      <Alert
+        severity="info"
+        sx={{
+          marginTop: 1,
+          "& .MuiAlert-message": {
+            fontSize: isMobile ? "13px" : "16px",
+          },
+        }}
+      >
+        Probe material types may vary, but detailed specifications are similar
+        or identical.
+      </Alert>
       {alignType === "Type" && (
         <div
           style={{
@@ -162,12 +187,18 @@ function ProbeType({ cards, onData, IsNeedleChange }) {
             marginTop: "50px",
             justifyContent: "center",
             flexDirection: isMobile ? "column" : "row",
+            textAlign: isMobile ? "center" : "left",
           }}
         >
           {cardSystems.length !== 0 && (
             <div className="systemType">
-              <FormControl sx={{ m: 1, minWidth: 160 }} color="success">
-                <InputLabel sx={{ fontSize: 15 }}>Memory Type</InputLabel>
+              <FormControl
+                sx={{ m: 1, minWidth: 160, textTransform: "capitalize" }}
+                color="success"
+              >
+                <InputLabel sx={{ fontSize: 15, textTransform: "capitalize" }}>
+                  Memory Type
+                </InputLabel>
                 <Select
                   value={selectSystem}
                   label="System Type"
@@ -182,7 +213,11 @@ function ProbeType({ cards, onData, IsNeedleChange }) {
                   }}
                 >
                   {cardSystems.map((item, index) => (
-                    <MenuItem key={index} value={item}>
+                    <MenuItem
+                      key={index}
+                      value={item}
+                      sx={{ textTransform: "capitalize" }}
+                    >
                       {item}
                     </MenuItem>
                   ))}
@@ -202,12 +237,24 @@ function ProbeType({ cards, onData, IsNeedleChange }) {
                 style={{
                   display: "flex",
                   alignItems: "center",
+                  flexDirection: isMobile ? "column" : "row",
                 }}
               >
                 <div>
-                  <TrendingFlatIcon color="disabled" fontSize="small" />
+                  {isMobile ? (
+                    <TrendingFlatIcon
+                      color="disabled"
+                      fontSize="small"
+                      sx={{ transform: "rotate(90deg)" }}
+                    />
+                  ) : (
+                    <TrendingFlatIcon color="disabled" fontSize="small" />
+                  )}
                 </div>
-                <div className="cardType">
+                <div
+                  className="cardType"
+                  style={{ textTransform: "capitalize" }}
+                >
                   <FormControl sx={{ m: 1, minWidth: 160 }}>
                     <InputLabel sx={{ fontSize: 15 }}>Card Type</InputLabel>
 
@@ -250,7 +297,7 @@ function ProbeType({ cards, onData, IsNeedleChange }) {
               </div>
             </Collapse>
           ) : (
-            <div className="cardType">
+            <div className="cardType" style={{ textTransform: "capitalize" }}>
               <FormControl sx={{ m: 1, minWidth: 160 }}>
                 <InputLabel sx={{ fontSize: 15 }}>Card Type</InputLabel>
 
@@ -269,20 +316,12 @@ function ProbeType({ cards, onData, IsNeedleChange }) {
                 >
                   {typesForSelectedSystem.length !== 0
                     ? typesForSelectedSystem.map((item, index) => (
-                        <MenuItem
-                          value={item}
-                          key={index}
-                          sx={{ textTransform: "capitalize" }}
-                        >
+                        <MenuItem value={item} key={index}>
                           {item}
                         </MenuItem>
                       ))
                     : cards.map((item, index) => (
-                        <MenuItem
-                          value={item.type}
-                          key={index}
-                          sx={{ textTransform: "capitalize" }}
-                        >
+                        <MenuItem value={item.type} key={index}>
                           {item.type.charAt(0).toUpperCase() +
                             item.type.slice(1)}
                         </MenuItem>
@@ -296,7 +335,9 @@ function ProbeType({ cards, onData, IsNeedleChange }) {
           <Collapse
             in={selectCard && isCardChange}
             orientation="horizontal"
-            style={{ transformOrigin: "0 0 0" }}
+            style={{
+              transformOrigin: "0 0 0",
+            }}
             // {...(selectCard && isCardChange ? { timeout: 1300 } : {})}
           >
             <div>
@@ -304,11 +345,20 @@ function ProbeType({ cards, onData, IsNeedleChange }) {
                 style={{
                   display: "flex",
                   alignItems: "center",
+                  flexDirection: isMobile ? "column" : "row",
                 }}
               >
                 {/* 화살표 */}
                 <div>
-                  <TrendingFlatIcon color="disabled" fontSize="small" />
+                  {isMobile ? (
+                    <TrendingFlatIcon
+                      color="disabled"
+                      fontSize="small"
+                      sx={{ transform: "rotate(90deg)" }}
+                    />
+                  ) : (
+                    <TrendingFlatIcon color="disabled" fontSize="small" />
+                  )}
                 </div>
 
                 <FormControl sx={{ m: 1, minWidth: 250 }} error>
@@ -328,6 +378,7 @@ function ProbeType({ cards, onData, IsNeedleChange }) {
                       backgroundColor: "#FDF4ED",
                       color: "#D32F2F",
                       height: 50,
+                      textTransform: "capitalize",
                     }}
                     onChange={(event) => handleClickNeedle(event)}
                     MenuProps={{
@@ -335,7 +386,11 @@ function ProbeType({ cards, onData, IsNeedleChange }) {
                     }}
                   >
                     {findNeedle?.needle.map((item, index) => (
-                      <MenuItem value={item} key={index}>
+                      <MenuItem
+                        value={item}
+                        key={index}
+                        sx={{ textTransform: "capitalize" }}
+                      >
                         {item}
                       </MenuItem>
                     ))}
@@ -355,12 +410,13 @@ function ProbeType({ cards, onData, IsNeedleChange }) {
       )}
       {alignType === "Item" && (
         <>
-          <Stack
+          {/* <Stack
             direction="row"
-            spacing={5}
+            spacing={1}
             sx={{ marginTop: "50px" }}
             justifyContent="center"
-          >
+          > */}
+          <GridBox $number={totalNeedle?.length}>
             {totalNeedle?.map((item, index) => (
               <StyledButton
                 variant="outlined"
@@ -373,15 +429,16 @@ function ProbeType({ cards, onData, IsNeedleChange }) {
                 {item}
               </StyledButton>
             ))}
-          </Stack>
+          </GridBox>
+          {/* </Stack> */}
         </>
       )}
-      <div style={{ margin: "20px auto" }}>
+      {/* <div style={{ margin: "0px auto" }}>
         <p style={{ fontSize: 13, color: "rgba(0,0,0,0.8)" }}>
-          * Probe 재질에 따른 종류 차이로 상세 스펙은 비슷하거나 동일할 수
-          있습니다.
+          Probe material types may vary, but detailed specifications are similar
+          or identical.
         </p>
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -15,6 +15,7 @@ import {
 } from "@mui/material";
 import ContentsTitle from "../../../components/ContentsTitle";
 import Collapse from "@mui/material/Collapse";
+import useAnimateOnInView from "../../../Hook/useAnimationOnInView";
 
 const StructureWarpper = styled(motion.div)`
   width: 100%;
@@ -28,6 +29,9 @@ const StructureWarpper = styled(motion.div)`
   position: relative;
   overflow: hidden;
   margin-bottom: 30px;
+  @media (max-width: 1023px) {
+    padding: 20px;
+  }
 `;
 
 const NeedleName = styled.h1`
@@ -41,10 +45,9 @@ const NeedleName = styled.h1`
 const NeedleImg = styled.img`
   width: 100%;
   max-width: 900px;
-  margin-bottom: 100px;
 `;
 
-const Contents = styled.h2`
+const Contents = styled(motion.div)`
   width: 100%;
   max-width: 1100px;
   margin: 0 auto;
@@ -97,12 +100,16 @@ const TableWrapper = styled.div`
 `;
 
 const InfoBox = styled.div`
+  width: 100%;
+  height: 500px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
-  padding-top: 170px;
+  @media (max-width: 1023px) {
+    height: 250px;
+  }
 `;
 const StyledTableHead = styled(TableHead)`
   && {
@@ -115,6 +122,7 @@ const StyledTableCell = styled(TableCell)`
     text-align: center;
     border-right: 1px solid #dfdfdf;
     font-size: 16px;
+    padding: 10px !important;
   }
 `;
 
@@ -139,6 +147,9 @@ const StyledTableRow = styled(TableRow)(({ index }) => ({
     }),
   },
 }));
+
+const MotionTableContainer = motion(TableContainer);
+
 function WireDetail({ contents, needle }) {
   const [specIndex, setSpecIndex] = useState();
   const [specId, setSpecId] = useState();
@@ -200,7 +211,9 @@ function WireDetail({ contents, needle }) {
     const numTotext = String(index);
     setTableHeader(numTotext);
   };
-
+  const showContent = (show) => {
+    setExpendClicked(show);
+  };
   const handleImgSlider = (text) => {
     if (text === "prev") {
       setIndex((prev) => (prev === 0 ? (prev = length - 1) : prev - 1));
@@ -208,6 +221,13 @@ function WireDetail({ contents, needle }) {
       setIndex((prev) => (prev === length - 1 ? (prev = 0) : prev + 1));
     }
   };
+
+  const {
+    ref: boxRef,
+    controls: boxControls,
+    animateVariants: boxVariants,
+  } = useAnimateOnInView(0, 0.3);
+
   return (
     <>
       <StructureWarpper>
@@ -220,12 +240,33 @@ function WireDetail({ contents, needle }) {
           <NeedleName>Specification</NeedleName>
         )}
         <InfoBox>
-          <NeedleImg src={contents.img} />
-          <WireInfo specId={specId} tableHeader={tableHeader} />
-          <img
-            src={contents.type}
-            style={{ width: "100%", maxWidth: 500, transform: "scale(.9)" }}
-          />
+          <div
+            style={{
+              width: "100%",
+              height: "70%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              position: "relative",
+            }}
+          >
+            <NeedleImg src={contents.img} />
+            <WireInfo specId={specId} tableHeader={tableHeader} />
+          </div>
+          <div
+            style={{
+              width: "100%",
+              height: "30%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <img
+              src={contents.type}
+              style={{ width: "100%", maxWidth: 500, transform: "scale(.8)" }}
+            />
+          </div>
         </InfoBox>
       </StructureWarpper>
       <TableContainer component={Paper}>
@@ -387,7 +428,7 @@ function WireDetail({ contents, needle }) {
         </Table>
       </TableWrapper> */}
       <Contents>
-        <ContentsTitle title={"Force"} />
+        <ContentsTitle title={"Force"} onData={showContent} />
 
         {/* <ContentsTitle>
           <span>Force</span>
@@ -421,7 +462,12 @@ function WireDetail({ contents, needle }) {
         </TableWrapper> */}
 
         <Collapse in={expendClicked}>
-          <TableContainer component={Paper}>
+          <MotionTableContainer
+            ref={boxRef}
+            initial="hidden"
+            animate={boxControls}
+            variants={boxVariants(0.5)}
+          >
             <Table aria-label="custom table" sx={{ minWidth: 900 }}>
               <StyledTableHead>
                 <TableRow>
@@ -459,7 +505,7 @@ function WireDetail({ contents, needle }) {
                 ))}
               </TableBody>
             </Table>
-          </TableContainer>
+          </MotionTableContainer>
         </Collapse>
         <Carousel contents={contents} />
       </Contents>

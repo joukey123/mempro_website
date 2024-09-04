@@ -368,7 +368,7 @@ function Cantilever() {
             orientation="vertical"
           >
             <Button onClick={() => navigate("/semi/parts/stiffener")}>
-              Cantilever
+              Stiffener
             </Button>
             <Button onClick={() => navigate("/semi/parts/cprobe")}>
               Probe
@@ -384,76 +384,76 @@ function Cantilever() {
             <DiagramImg src={images.machine} $isZoom={isZoom} />
             {isMobile ? (
               <CantileverAnimationMobile isAnimation={playAnimation} />
-            ) : (
-              <>
-                <Part
-                  src={images.part1}
-                  $isPlay={playAnimation}
-                  $isZoom={isZoom}
-                  animate={
-                    triggerAnimation
-                      ? {
-                          translateX: 200,
-                          translateY: -20,
-                          scale: 0.8,
-                        }
-                      : {}
-                  }
-                  initial={false} // Prevents Framer Motion from applying the initial prop on mount
-                  transition={{ duration: 2 }}
-                />
+            ) : // ) : (
+            //   <>
+            //     <Part
+            //       src={images.part1}
+            //       $isPlay={playAnimation}
+            //       $isZoom={isZoom}
+            //       animate={
+            //         triggerAnimation
+            //           ? {
+            //               translateX: 200,
+            //               translateY: -20,
+            //               scale: 0.8,
+            //             }
+            //           : {}
+            //       }
+            //       initial={false} // Prevents Framer Motion from applying the initial prop on mount
+            //       transition={{ duration: 2 }}
+            //     />
 
-                <Part
-                  src={images.part2}
-                  $isPlay={playAnimation}
-                  animate={
-                    triggerAnimation
-                      ? {
-                          translateX: 60 + 50,
-                          translateY: 100,
-                          scale: 0.15,
-                          opacity: 0.2,
-                        }
-                      : {}
-                  }
-                  transition={{ duration: 2 }}
-                  $isZoom={isZoom}
-                />
-                <Part
-                  src={images.part3}
-                  $isPlay={playAnimation}
-                  animate={
-                    triggerAnimation
-                      ? {
-                          translateX: -50 + 50,
-                          translateY: 220,
-                          scale: 0.8,
-                          opacity: 0.2,
-                        }
-                      : {}
-                  }
-                  transition={{ duration: 2 }}
-                  $isZoom={isZoom}
-                />
-                <Part
-                  src={images.part4}
-                  $isPlay={playAnimation}
-                  animate={
-                    triggerAnimation
-                      ? {
-                          translateX: -180 + 50,
-                          translateY: 400,
-                          scale: 0.5,
-                          rotate: 5,
-                        }
-                      : {}
-                  }
-                  transition={{ duration: 2 }}
-                  $isZoom={isZoom}
-                />
-              </>
-            )}
-
+            //     <Part
+            //       src={images.part2}
+            //       $isPlay={playAnimation}
+            //       animate={
+            //         triggerAnimation
+            //           ? {
+            //               translateX: 60 + 50,
+            //               translateY: 100,
+            //               scale: 0.15,
+            //               opacity: 0.2,
+            //             }
+            //           : {}
+            //       }
+            //       transition={{ duration: 2 }}
+            //       $isZoom={isZoom}
+            //     />
+            //     <Part
+            //       src={images.part3}
+            //       $isPlay={playAnimation}
+            //       animate={
+            //         triggerAnimation
+            //           ? {
+            //               translateX: -50 + 50,
+            //               translateY: 220,
+            //               scale: 0.8,
+            //               opacity: 0.2,
+            //             }
+            //           : {}
+            //       }
+            //       transition={{ duration: 2 }}
+            //       $isZoom={isZoom}
+            //     />
+            //     <Part
+            //       src={images.part4}
+            //       $isPlay={playAnimation}
+            //       animate={
+            //         triggerAnimation
+            //           ? {
+            //               translateX: -180 + 50,
+            //               translateY: 400,
+            //               scale: 0.5,
+            //               rotate: 5,
+            //             }
+            //           : {}
+            //       }
+            //       transition={{ duration: 2 }}
+            //       $isZoom={isZoom}
+            //     />
+            //   </>
+            // )
+            null}
             {!isMobile && (
               <Line style={{}} $isPlay={playAnimation} $isZoom={isZoom}>
                 <svg
@@ -551,9 +551,8 @@ function Cantilever() {
                 </SpanDiv>
               </Line>
             )}
-
             {/* cantilever animation start */}
-            {playAnimation && !isMobile && (
+            {!isMobile && (
               <>
                 <Part
                   src={images.part1}
@@ -563,12 +562,16 @@ function Cantilever() {
                     translateY: -20,
                     scale: 0.8,
                   }}
-                  animate={{
-                    translateX: 50 - 60 + 50,
-                    translateY: 80 + 50,
-                    scale: 0.8,
-                    zIndex: 99,
-                  }}
+                  animate={
+                    playAnimation && !isMobile
+                      ? {
+                          translateX: 50 - 60 + 50,
+                          translateY: 80 + 50,
+                          scale: 0.8,
+                          zIndex: 99,
+                        }
+                      : {}
+                  }
                   transition={{ duration: 2 }}
                 />
                 <Part
@@ -578,14 +581,20 @@ function Cantilever() {
                     translateX: 60 + 50,
                     translateY: 100,
                     scale: 0.15,
+                    opacity: 0.2,
                   }}
-                  animate={{
-                    translateX: 50 - 60 + 50,
-                    translateY: 90 + 50,
-                    scale: 0.15,
-                    rotate: -4,
-                    zIndex: 98,
-                  }}
+                  animate={
+                    playAnimation && !isMobile
+                      ? {
+                          translateX: 50 - 60 + 50,
+                          translateY: 90 + 50,
+                          scale: 0.15,
+                          rotate: -4,
+                          zIndex: 98,
+                          opacity: 0.2,
+                        }
+                      : {}
+                  }
                   transition={{ duration: 2 }}
                 />
                 <Part
@@ -595,13 +604,19 @@ function Cantilever() {
                     translateX: -50 + 50,
                     translateY: 220,
                     scale: 0.8,
+                    opacity: 0.2,
                   }}
-                  animate={{
-                    translateX: 50 - 60 + 50,
-                    translateY: 90 + 50,
-                    scale: 0.8,
-                    zIndex: 97,
-                  }}
+                  animate={
+                    playAnimation && !isMobile
+                      ? {
+                          translateX: 50 - 60 + 50,
+                          translateY: 90 + 50,
+                          scale: 0.8,
+                          zIndex: 97,
+                          opacity: 0.2,
+                        }
+                      : {}
+                  }
                   transition={{ duration: 2 }}
                 />
                 <Part
@@ -613,13 +628,15 @@ function Cantilever() {
                     scale: 0.5,
                     rotate: 5,
                   }}
-                  animate={{
-                    translateX: -30 - 60 + 50 + 20,
-                    translateY: 220 + 50 - 20,
-                    scale: 0.5,
-                    rotate: 10,
-                    zIndex: 96,
-                  }}
+                  animate={
+                    playAnimation && !isMobile
+                      ? {
+                          zIndex: 96,
+                          transform:
+                            " translate(-20px, 250px) scale(.5) rotate(185deg)",
+                        }
+                      : {}
+                  }
                   transition={{ duration: 2 }}
                 />
               </>
@@ -651,7 +668,6 @@ function Cantilever() {
                 </Fab>
               )}
             </BtnWrapper>
-
             <AnimatePresence>
               {isZoom && (
                 <ZooWrapper

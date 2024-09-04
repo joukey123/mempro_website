@@ -14,11 +14,12 @@ import Paper from "@mui/material/Paper";
 import Collapse from "@mui/material/Collapse";
 import ContentsTitle from "../../../components/ContentsTitle";
 import Carousel from "../../../components/Carousel";
+import useAnimateOnInView from "../../../Hook/useAnimationOnInView";
+import { motion } from "framer-motion";
 
 const StructureWarpper = styled.div`
   width: 100%;
   max-width: 1100px;
-  height: 450px;
   margin: 0px auto;
   border-radius: 8px;
   background: url(${line}) center center;
@@ -29,13 +30,13 @@ const StructureWarpper = styled.div`
   overflow: hidden;
   margin-bottom: 30px;
   align-content: center;
+  @media (max-width: 1023px) {
+    padding: 20px;
+  }
 `;
 const NeedleName = styled.h1`
   font-size: 18px;
-  position: absolute;
-  top: 50px;
-  left: 50px;
-  z-index: 2;
+
   span {
     color: ${(props) => props.theme.colors.blue};
     font-weight: bold;
@@ -44,20 +45,23 @@ const NeedleName = styled.h1`
 `;
 
 const InfoBox = styled.div`
+  height: 250px;
   display: flex;
+  align-items: center;
   flex-direction: column;
   justify-content: center;
   position: relative;
-  padding-top: 100px;
-  margin-top: 100px;
+  @media (max-width: 1023px) {
+    height: 150px;
+  }
 `;
 const NeedleImg = styled.img`
   width: 100%;
   max-width: 900px;
-  position: absolute;
+  /* position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -40%);
+  transform: translate(-50%, -40%); */
 `;
 
 const StyledTableHead = styled(TableHead)`
@@ -70,6 +74,7 @@ const StyledTableCell = styled(TableCell)`
     text-align: center;
     border-right: 1px solid #dfdfdf;
     font-size: 16px;
+    padding: 10px !important;
   }
 `;
 
@@ -118,13 +123,14 @@ const StyledTableRow = styled(TableRow)(({ index }) => ({
 //   }
 // `;
 
-const Contents = styled.h2`
+const Contents = styled.div`
   width: 100%;
   max-width: 1100px;
   margin: 0 auto;
   font-size: 20px;
   font-weight: 400;
 `;
+const MotionTableContainer = motion(TableContainer);
 
 function ShortDeatail({ contents, needle }) {
   const [index, setIndex] = useState(0);
@@ -142,6 +148,13 @@ function ShortDeatail({ contents, needle }) {
       setIndex((prev) => (prev === length - 1 ? (prev = 0) : prev + 1));
     }
   };
+
+  const {
+    ref: boxRef,
+    controls: boxControls,
+    animateVariants: boxVariants,
+  } = useAnimateOnInView(0, 0.3);
+
   const handleTableHeader = (tableheader) => {
     const numTotext = String(tableheader);
     setTableHeader(numTotext);
@@ -195,7 +208,7 @@ function ShortDeatail({ contents, needle }) {
           </tbody>
         </Table>
       </TableWrapper> */}
-      <TableContainer component={Paper}>
+      <TableContainer component={Paper} sx={{ whiteSpace: "nowrap" }}>
         <Table sx={{ minWidth: 900 }}>
           <StyledTableHead>
             <TableRow>
@@ -249,7 +262,13 @@ function ShortDeatail({ contents, needle }) {
       <Contents>
         <ContentsTitle title={"C.C.C & Force"} onData={showContent} />
         <Collapse in={expendClicked}>
-          <TableContainer component={Paper}>
+          <MotionTableContainer
+            component={Paper}
+            ref={boxRef}
+            initial="hidden"
+            animate={boxControls}
+            variants={boxVariants(0.5)}
+          >
             <Table aria-label="custom table" sx={{ minWidth: 900 }}>
               <StyledTableHead>
                 <TableRow>
@@ -322,7 +341,7 @@ function ShortDeatail({ contents, needle }) {
                 ))}
               </TableBody>
             </Table>
-          </TableContainer>
+          </MotionTableContainer>
         </Collapse>
         <Carousel contents={contents} />
         <Application contents={contents} />

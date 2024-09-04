@@ -15,6 +15,7 @@ import {
   ToggleButton,
   ToggleButtonGroup,
   Collapse,
+  useMediaQuery,
 } from "@mui/material";
 import ThreeModel from "../../../components/3D/ThreeModel";
 import dgree from "../../../img/stiffener/dgree.svg";
@@ -29,6 +30,9 @@ const Warapper = styled.div`
   padding: 0 50px;
   position: relative;
   align-items: center;
+  @media (max-width: 1023px) {
+    padding: 0 30px;
+  }
 `;
 const StructureWarpper = styled.div`
   width: 100%;
@@ -47,6 +51,10 @@ const StructureWarpper = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 50px;
+  @media (max-width: 1023px) {
+    padding: 0px;
+    height: 500px;
+  }
 `;
 
 const DiagramWpper = styled.div`
@@ -111,10 +119,15 @@ const GrayBox = styled.div`
 `;
 
 const TypeImg = styled.div`
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   background: url(${(props) => props.$url}) no-repeat center;
   margin: 0 20px;
+  @media (max-width: 1023px) {
+    width: 40px;
+    height: 40px;
+    margin: 0px;
+  }
 `;
 
 const TypeWrapper = styled.div`
@@ -131,10 +144,49 @@ const DgreeImg = styled.div`
   position: absolute;
   top: 50px;
   left: 50px;
+  @media (max-width: 1023px) {
+    width: 50px;
+    height: 50px;
+    top: 25px;
+    left: 25px;
+  }
 `;
 const StyledButton = styled(Button)`
   color: ${(props) => props.$disabled && "#E4E4E4"} !important;
   border-color: ${(props) => props.$disabled && "#E4E4E4"} !important;
+`;
+
+const GridBox = styled.div`
+  display: grid;
+  width: 100%;
+  margin: 30px auto;
+  grid-template-columns: repeat(${(props) => props.$number}, 1fr);
+  gap: 10px;
+  @media (max-width: 1023px) {
+    grid-template-columns: repeat(
+      ${(props) => Math.min(3, Math.ceil(props.$number / 2))},
+      1fr
+    );
+    :nth-child(1) {
+      grid-column: 1/3;
+    }
+    :nth-child(4) {
+      grid-column: 2; /* 아래 줄 첫 번째 아이템을 두 번째 열로 이동 */
+    }
+    :nth-child(5) {
+      grid-column-start: 3; /* 아래 줄 첫 번째 아이템을 두 번째 열로 이동 */
+    }
+  }
+`;
+
+const ThreeModelWrapper = styled.div`
+  transform: ${(props) => (props.$isMobile ? "scale(0.8)" : "scale(1)")};
+  width: 100%;
+  transition: transform 0.3s ease;
+  background-color: aliceblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 function Stiffener() {
   const location = useLocation();
@@ -165,12 +217,14 @@ function Stiffener() {
     <>
       <Warapper>
         <Headline item={{ ...itemsDetail[`${sublink}`] }} />
-        <Stack
+        {/* <Stack
           direction="row"
           spacing={5}
           sx={{ margin: "50px 0" }}
           justifyContent="center"
-        >
+        > */}
+
+        <GridBox $number={totalType?.length}>
           {totalType?.map((item, index) => (
             <StyledButton
               variant="outlined"
@@ -183,11 +237,18 @@ function Stiffener() {
               {item}
             </StyledButton>
           ))}
-        </Stack>
+        </GridBox>
+        {/* </Stack> */}
         <ToggleButtonGroup
           value={modelIndex}
           onChange={handleToggleChange}
           exclusive
+          sx={{
+            width: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
         >
           {types[type]?.map((item, index) => (
             <ToggleButton value={index}>

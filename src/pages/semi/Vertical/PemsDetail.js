@@ -13,8 +13,10 @@ import Application from "../../../components/Application";
 import Features from "../../../components/Features";
 import Collapse from "@mui/material/Collapse";
 import ContentsTitle from "../../../components/ContentsTitle";
+import { motion } from "framer-motion";
+import useAnimateOnInView from "../../../Hook/useAnimationOnInView";
 
-const StructureWarpper = styled.div`
+const StructureWarpper = styled(motion.div)`
   width: 100%;
   max-width: 1100px;
   margin: 0 auto;
@@ -26,24 +28,26 @@ const StructureWarpper = styled.div`
   position: relative;
   overflow: hidden;
   margin-bottom: 30px;
+  @media (max-width: 1023px) {
+    padding: 20px;
+  }
 `;
 
 const ImgWrapper = styled.div`
   width: 100%;
   max-width: 1100px;
   display: flex;
-  margin: 0 auto;
-  align-items: center;
   flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+  @media (max-width: 1023px) {
+    margin-top: 20px;
+  }
 `;
-const Img = styled.div`
-  width: 1000px;
-  height: 200px;
-  background: url(${(props) => props.$img}) no-repeat;
-  background-position: center center;
-  background-size: contain;
-  transform: rotate(90deg) scale(4);
+
+const Img = styled.img`
+  width: 100%;
+  max-width: 1000px;
 `;
 
 const NeedleName = styled.h1`
@@ -56,30 +60,48 @@ const NeedleName = styled.h1`
 `;
 const ShapeTitleWrapper = styled.div`
   display: flex;
-  margin-top: -20px;
+  margin-bottom: 30px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
 `;
 const BlueBox = styled.span`
   background-color: ${(props) => props.theme.palette.primary.main};
   border: 2px solid ${(props) => props.theme.palette.primary.main};
   color: white;
   padding: 5px 10px;
+  @media (max-width: 1023px) {
+    width: 30%;
+    font-size: 13px;
+    text-align: center;
+  }
 `;
 const TextBox = styled.span`
   border: 2px solid ${(props) => props.theme.palette.primary.main};
   padding: 5px 10px;
+  @media (max-width: 1023px) {
+    width: 70%;
+    font-size: 13px;
+    text-align: center;
+  }
+  @media (max-width: 360px) {
+    height: 40px;
+  }
 `;
 
 const ShapeImgWrapper = styled.div`
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
-  margin-top: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
 `;
 const ImgBox = styled.img`
-  width: 65%;
+  width: 55%;
+  @media (max-width: 1023px) {
+    width: 80%;
+  }
 `;
 
 const StyledTableHead = styled(TableHead)`
@@ -93,6 +115,7 @@ const StyledTableCell = styled(TableCell)`
     text-align: center;
     border-right: 1px solid #dfdfdf;
     font-size: 16px;
+    padding: 10px;
   }
 `;
 const StyledTableRow = styled(TableRow)(({ index }) => ({
@@ -111,12 +134,19 @@ const StyledTableRow = styled(TableRow)(({ index }) => ({
     }),
   },
 }));
+
 function PemsDetail({ contents, needle }) {
   const [expendClicked, setExpendClicked] = useState(true);
 
   const showContent = (show) => {
     setExpendClicked(show);
   };
+
+  const {
+    ref: boxRef,
+    controls: boxControls,
+    animateVariants: boxVariants,
+  } = useAnimateOnInView(0, 0.3);
   return (
     <>
       <StructureWarpper>
@@ -129,13 +159,17 @@ function PemsDetail({ contents, needle }) {
           <NeedleName>Specification</NeedleName>
         )}
         <ImgWrapper>
+          {/* {contents.img.map((item, index) => (
+            <Img src={item} key={index} />
+          ))} */}
+
           {contents.img.map((item, index) => (
-            <Img $img={item} key={index} />
+            <Img src={item} key={index} />
           ))}
         </ImgWrapper>
       </StructureWarpper>
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 900 }}>
+      <TableContainer component={Paper} sx={{ whiteSpace: "nowrap" }}>
+        <Table>
           <StyledTableHead>
             <TableRow>
               <StyledTableCell sx={{ color: "white" }}>
@@ -206,9 +240,15 @@ function PemsDetail({ contents, needle }) {
         <ContentsTitle title={"Shape"} onData={showContent} />
         <Collapse in={expendClicked}>
           {contents.shape.map((item, index) => (
-            <StructureWarpper key={index}>
+            <StructureWarpper
+              key={index}
+              ref={boxRef}
+              initial="hidden"
+              animate={boxControls}
+              variants={boxVariants(index * 0.5)}
+            >
               <ShapeTitleWrapper>
-                <BlueBox>Top Shape</BlueBox>
+                <BlueBox>{item.title}</BlueBox>
                 <TextBox>{item.text}</TextBox>
               </ShapeTitleWrapper>
               <ShapeImgWrapper>

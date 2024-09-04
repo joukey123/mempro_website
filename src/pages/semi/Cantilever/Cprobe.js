@@ -14,6 +14,7 @@ import ContentsTitle from "../../../components/ContentsTitle";
 
 import ProbeType from "../../../components/headers/ProbeType";
 import { Box } from "@mui/material";
+import Application from "../../../components/Application";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -25,6 +26,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   position: relative;
   padding: 0 50px;
+  align-items: center;
   @media (max-width: 1023px) {
     padding: 30px;
   }
@@ -48,6 +50,7 @@ function Cprobe() {
   const [bendingClicked, setBendingClicked] = useState(true);
   const [coatingClicked, setCoatingClicked] = useState(true);
   const [isNeedleChange, setIsNeedleChange] = useState(false);
+
   const showBending = (show) => {
     setBendingClicked(show);
   };
@@ -65,6 +68,7 @@ function Cprobe() {
       setIsNeedleChange((prev) => !prev);
     }, 1000);
   }, [selectNeedle]);
+
   return (
     <>
       <Wrapper>
@@ -75,11 +79,13 @@ function Cprobe() {
           IsNeedleChange={setIsNeedleChange}
         />
 
-        <Collapse in={selectNeedle && isNeedleChange}>
+        <Collapse
+          in={selectNeedle && isNeedleChange}
+          sx={{ width: "100%", maxWidth: "1100px" }}
+        >
           <Box
             sx={{
               width: isNeedleChange ? "auto" : "0",
-
               overflow: "hidden",
             }}
           >
@@ -87,7 +93,7 @@ function Cprobe() {
 
             {selectNeedle !== "Coaxial" && selectNeedle !== "None" && (
               <Contents>
-                <div className="bending" style={{ margin: "0 0" }}>
+                <div className="bending">
                   <ContentsTitle
                     title={"Bending Technology"}
                     onData={showBending}
@@ -96,7 +102,7 @@ function Cprobe() {
                     <BendingDetail contents={contents} />
                   </Collapse>
                 </div>
-                <div className="bending" style={{ margin: "100px 0" }}>
+                <div className="coating">
                   <ContentsTitle
                     title={"Coating Technology"}
                     onData={showCoating}
@@ -105,6 +111,8 @@ function Cprobe() {
                     <CoatingDetail contents={contents} />
                   </Collapse>
                 </div>
+
+                <Application contents={contents} />
               </Contents>
             )}
           </Box>

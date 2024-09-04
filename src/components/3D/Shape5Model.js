@@ -9,14 +9,14 @@ function Shape5Model() {
         path={shape5_1}
         position={[0.0, 0.0, 0.0]}
         rotation={[-0.5, 0.0, 0]}
-        scale={[0.7, 0.7, 0.7]}
+        scale={[0.6, 0.6, 0.6]}
         mapping={"#5B5360"}
       />
       <Model
         path={shape5_2}
         position={[0.0, 0, 0.01]}
         rotation={[-0.5, 0.0, 0]}
-        scale={[0.4, 0.4, 0.4]}
+        scale={[0.3, 0.3, 0.3]}
         mapping={"darkgray"}
       />
     </>

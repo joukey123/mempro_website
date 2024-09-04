@@ -28,10 +28,13 @@ import Pogo from "./pages/semi/Machine/Pogo";
 import Rubber from "./pages/semi/Machine/Rubber";
 import Machine from "./pages/semi/Machine";
 import NotFound from "./pages/home/NotFound";
+import ScrollToTop from "./Hook/ScrollToTop";
 
 function Router() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
+
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/about" element={<About />}>

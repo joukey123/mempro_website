@@ -9,6 +9,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
+  transform: rotate(28deg);
 `;
 const Img = styled(motion.img)`
   position: absolute;
@@ -45,7 +46,7 @@ function VerticalAnimationMobile({ isAnimation }) {
         height={"10%"}
         style={{
           transform: "translate(-20%,-450%)  rotate(-15deg) scale(.8)",
-          opacity: ".4",
+          opacity: ".2",
           zIndex: 98,
         }}
         initial={{
@@ -56,7 +57,7 @@ function VerticalAnimationMobile({ isAnimation }) {
             ? {
                 transform: "translate(-20%,-200%)  rotate(-15deg) scale(.8)",
                 zIndex: 96,
-                opacity: "1",
+                opacity: ".2",
               }
             : {}
         }
@@ -68,6 +69,7 @@ function VerticalAnimationMobile({ isAnimation }) {
         style={{
           transform: "translate(-43%,-130%) scale(.25) rotate(-17deg)",
           zIndex: 97,
+          opacity: ".2",
         }}
         initial={{
           transform: "translate(-43%,-130%) scale(.25) rotate(-17deg)",
@@ -77,6 +79,7 @@ function VerticalAnimationMobile({ isAnimation }) {
             ? {
                 transform: "translate(-43%,-100%) scale(.25) rotate(-17deg)",
                 zIndex: 98,
+                opacity: ".2",
               }
             : {}
         }
@@ -87,7 +90,7 @@ function VerticalAnimationMobile({ isAnimation }) {
         height={"40%"}
         style={{
           transform: "translate(-43%,-90%) rotate(-17deg)",
-          opacity: ".5",
+          opacity: ".2",
           zIndex: 96,
         }}
         initial={{ transform: "translate(-43%,-90%) rotate(-17deg)" }} // 애니메이션 초기 상태
@@ -96,7 +99,7 @@ function VerticalAnimationMobile({ isAnimation }) {
             ? {
                 transform: "translate(-43%,-100%) rotate(-17deg)",
                 zIndex: 97,
-                opacity: "1",
+                opacity: ".2",
               }
             : {}
         }
@@ -125,12 +128,14 @@ function VerticalAnimationMobile({ isAnimation }) {
         style={{
           transform: "translate(-40%,10%) scale(.4) rotate(-25deg)",
           zIndex: 94,
+          opacity: 0.2,
         }}
         initial={{ transform: "translate(-40%,10%) scale(.4) rotate(-25deg)" }} // 애니메이션 초기 상태
         animate={
           isAnimation
             ? {
                 transform: "translate(-40%,-80%) scale(.4) rotate(-25deg)",
+                opacity: ".2",
               }
             : {}
         }

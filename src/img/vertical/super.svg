@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="uuid-f983b696-dff0-44e6-816d-128c357b96e1" data-name="레이어 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60.81 55.88">
+  <defs>
+    <style>
+      .uuid-11f3f600-c025-4c5d-a0b8-2fe0e92730bd {
+        fill: #1976d2;
+        stroke-width: 0px;
+      }
+
+      .uuid-3e7c0b0d-da16-4252-aaaf-1a83a2eed3db {
+        fill: none;
+        stroke: #000;
+        stroke-linecap: round;
+        stroke-miterlimit: 10;
+        stroke-width: 2.26px;
+      }
+    </style>
+  </defs>
+  <g id="uuid-86bea7cd-10f3-4eba-afe8-15ed46d87b7b" data-name="레이어 1">
+    <g>
+      <polygon class="uuid-3e7c0b0d-da16-4252-aaaf-1a83a2eed3db" points="41.93 3.66 45.56 14.85 57.33 14.85 47.81 21.76 51.45 32.95 41.93 26.04 32.41 32.95 36.05 21.76 26.53 14.85 38.29 14.85 41.93 3.66"/>
+      <path class="uuid-11f3f600-c025-4c5d-a0b8-2fe0e92730bd" d="M2.48,55.88c-.53,0-1.06-.18-1.49-.5-.53-.4-.87-.98-.97-1.63-.09-.66.07-1.31.47-1.84l19.52-25.99,3.27,13.97,7.95-11.24-5-1.08,15.69-9.76-3.96,18.05-2.69-4.35-14.3,20.24-3.36-14.37-13.16,17.51c-.47.62-1.21.99-1.98.99Z"/>
+    </g>
+  </g>
+</svg>

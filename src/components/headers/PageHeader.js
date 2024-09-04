@@ -12,8 +12,13 @@ const Warpper = styled.div`
 const ImgWarpper = styled.div`
   width: 100%;
   max-width: 1280px;
-  height: 300px;
+  height: 350px;
   margin-top: 80px;
+  @media (max-width: 1023px) {
+    height: 250px;
+    margin-top: 80px;
+    margin-bottom: 30px;
+  }
 `;
 const BlackBox = styled.div`
   width: 100%;
@@ -37,6 +42,7 @@ const Img = styled.img`
   height: 100%;
   object-position: center 40%;
   object-fit: cover;
+  filter: brightness(0.4);
 `;
 function PageHeader() {
   const { headerImges, currentCategory } = useCategory();
@@ -46,7 +52,7 @@ function PageHeader() {
       <Warpper>
         <ImgWarpper>
           <Img src={headerImges} alt={currentCategory} />
-          <BlackBox />
+          {/* <BlackBox /> */}
         </ImgWarpper>
         {currentCategory !== "contact" && <Breadcrumbs />}
       </Warpper>

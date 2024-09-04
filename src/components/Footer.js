@@ -66,6 +66,7 @@ const NationSpan = styled.span`
   &:hover {
     font-weight: bold;
   }
+  white-space: nowrap;
 `;
 const Logo = styled.div`
   width: 190px;
@@ -168,7 +169,7 @@ const CustomSpeedDialAction = styled((props) => {
     />
   );
 })`
-  background-color: #f59e39 !important;
+  background-color: #014ea2 !important;
   width: 100% !important;
   height: 50px !important;
   border-radius: 15px !important;
@@ -176,7 +177,7 @@ const CustomSpeedDialAction = styled((props) => {
   color: white !important;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2) !important;
   &:hover {
-    background-color: #eea03b !important;
+    background-color: #0068b7 !important;
   }
 `;
 function Footer() {
@@ -198,7 +199,7 @@ function Footer() {
       icon: <MenuBookIcon />,
       name: "Catalog",
       func: function () {
-        window.open("http://www.mempro.co.kr", "_blank");
+        window.open("https://mempro.myqnapcloud.com:85/", "_blank");
       },
     },
     {

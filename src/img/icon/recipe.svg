@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="uuid-8df34cd2-caae-4f7b-a95e-921134f282fc" data-name="레이어 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42.32 33.78">
+  <defs>
+    <style>
+      .uuid-bab08ea8-3944-4ec9-92de-e5ebdaf01083 {
+        fill: #1976d2;
+        stroke-width: 0px;
+      }
+
+      .uuid-cf408ae1-da15-40c4-89fc-06d8861f0505 {
+        fill: none;
+        stroke: #000;
+        stroke-linecap: round;
+        stroke-miterlimit: 10;
+        stroke-width: 2.26px;
+      }
+    </style>
+  </defs>
+  <g id="uuid-9290c82a-9d3d-4610-813a-f5c25e4a8c58" data-name="레이어 1">
+    <g>
+      <line class="uuid-cf408ae1-da15-40c4-89fc-06d8861f0505" x1="4.82" y1="1.13" x2="4.82" y2="32.65"/>
+      <line class="uuid-cf408ae1-da15-40c4-89fc-06d8861f0505" x1="21.16" y1="1.13" x2="21.16" y2="32.65"/>
+      <line class="uuid-cf408ae1-da15-40c4-89fc-06d8861f0505" x1="37.5" y1="1.13" x2="37.5" y2="32.65"/>
+      <circle class="uuid-bab08ea8-3944-4ec9-92de-e5ebdaf01083" cx="4.82" cy="19.43" r="4.82"/>
+      <circle class="uuid-bab08ea8-3944-4ec9-92de-e5ebdaf01083" cx="21.16" cy="8.3" r="4.82"/>
+      <circle class="uuid-bab08ea8-3944-4ec9-92de-e5ebdaf01083" cx="37.5" cy="24.26" r="4.82"/>
+    </g>
+  </g>
+</svg>

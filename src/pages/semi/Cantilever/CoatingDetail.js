@@ -10,8 +10,12 @@ import {
   TableRow,
   Paper,
 } from "@mui/material";
+import { motion } from "framer-motion";
+import useAnimateOnInView from "../../../Hook/useAnimationOnInView";
 
-const Wrapper = styled.div``;
+const Wrapper = styled(motion.div)``;
+const MotionTableContainer = motion(TableContainer);
+
 const StyledTableCell = styled(TableCell)`
   && {
     text-align: center;
@@ -21,7 +25,7 @@ const StyledTableCell = styled(TableCell)`
     color: white;
   }
 `;
-const StructureWarpper = styled.div`
+const StructureWarpper = styled(motion.div)`
   width: 100%;
   max-width: 1100px;
   height: 500px;
@@ -70,6 +74,18 @@ function CoatingDetail({ contents }) {
   const coating = contents.coating;
   const [specIndex, setSpecIndex] = useState();
   const [specId, setSpecId] = useState();
+
+  const {
+    ref: boxRef,
+    controls: boxControls,
+    animateVariants: boxVariants,
+  } = useAnimateOnInView(0, 0.3);
+  const {
+    ref: childRef,
+    controls: childControls,
+    animateVariants: childVariants,
+  } = useAnimateOnInView(0, 0.3);
+
   const handleSpecOver = (index, id) => {
     setSpecIndex(index);
     setSpecId(id);
@@ -81,7 +97,12 @@ function CoatingDetail({ contents }) {
 
   return (
     <Wrapper>
-      <StructureWarpper>
+      <StructureWarpper
+        ref={boxRef}
+        initial="hidden"
+        animate={boxControls}
+        variants={boxVariants(0.3)}
+      >
         <NeedleImg src={coating.img} />
         <CoatingInfo hover={specId} />
         {/* <SpecWrapper>
@@ -107,7 +128,14 @@ function CoatingDetail({ contents }) {
           ))}
         </SpecWrapper> */}
       </StructureWarpper>
-      <TableContainer component={Paper} sx={{ marginTop: "10px" }}>
+      <MotionTableContainer
+        component={Paper}
+        sx={{ marginTop: "10px", whiteSpace: "nowrap" }}
+        ref={childRef}
+        initial="hidden"
+        animate={childControls}
+        variants={childVariants(0.7)}
+      >
         <Table>
           <TableBody>
             {coating.spec.map((item, index) => (
@@ -156,7 +184,7 @@ function CoatingDetail({ contents }) {
             ))}
           </TableBody>
         </Table>
-      </TableContainer>
+      </MotionTableContainer>
     </Wrapper>
   );
 }

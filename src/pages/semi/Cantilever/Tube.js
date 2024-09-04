@@ -262,7 +262,7 @@ function Tube() {
                 ))}
               </TableRow>
             </StyledTableHead>
-            <TableBody>
+            <TableBody sx={{ whiteSpace: "nowrap" }}>
               {data.map((row, index) => (
                 <StyledTableRow key={index} index={index}>
                   <StyledTableCell

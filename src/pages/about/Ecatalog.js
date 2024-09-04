@@ -3,6 +3,8 @@ import Footer from "../../components/Footer";
 import { books } from "../../data";
 import { Link } from "react-router-dom";
 import { Label } from "semantic-ui-react";
+import useAnimateOnInView from "../../Hook/useAnimationOnInView";
+import { motion } from "framer-motion";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -11,6 +13,9 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media (max-width: 1023px) {
+    margin-top: 50px;
+  }
 `;
 const BlackBox = styled.div`
   background-color: ${(props) => props.theme.colors.black};
@@ -23,7 +28,7 @@ const BlackBox = styled.div`
   font-weight: 500;
   margin-bottom: 35px;
 `;
-const BookWrapper = styled.div``;
+const BookWrapper = styled(motion.div)``;
 const Book = styled.div`
   display: flex;
   flex-direction: column;
@@ -55,11 +60,21 @@ const Title = styled.span`
 `;
 const Dec = styled.span``;
 function Ecatalog() {
+  const {
+    ref: boxRef,
+    controls: boxControls,
+    animateVariants: boxVariants,
+  } = useAnimateOnInView(0, 0.3);
   return (
     <>
       <Wrapper>
         <BlackBox>MEMPro Catalog</BlackBox>
-        <BookWrapper>
+        <BookWrapper
+          ref={boxRef}
+          initial="hidden"
+          animate={boxControls}
+          variants={boxVariants(0.2)}
+        >
           {books.map((item, index) => (
             <Link key={index} to={item.url} target="_blank">
               <Book>

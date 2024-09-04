@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import ContentsTitle from "../ContentsTitle";
-import MachineDimensions from "../MachineDimensions";
+import MachineDimensions from "./MachineDimensions";
 import MachineVideo from "./MachineVideo";
-import { Collapse } from "@mui/material";
+import { Collapse, useMediaQuery } from "@mui/material";
 import { useState } from "react";
 import Divider from "@mui/material/Divider";
 import MachineImgBoxS from "./MachineImgBoxS";
+import { motion } from "framer-motion";
+import useAnimateOnInView from "../../Hook/useAnimationOnInView";
 
 const MachinInfoWrapper = styled.div`
   width: 100%;
@@ -17,6 +19,10 @@ const MachinInfoWrapper = styled.div`
   border: 1px solid #ededed;
   border-radius: 4px;
   padding: 50px 0;
+  @media (max-width: 1023px) {
+    flex-direction: column;
+    padding: 0;
+  }
 `;
 
 const MachineImgBox = styled.div`
@@ -25,9 +31,13 @@ const MachineImgBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media (max-width: 1023px) {
+    width: 100%;
+    border-bottom: 1px solid #ededed;
+  }
 `;
 const MachinImg = styled.div`
-  width: 60%;
+  width: 100%;
   height: 500px;
   background: url(${(props) => props.$url}) center no-repeat;
   background-size: contain;
@@ -37,6 +47,10 @@ const MachinTextBox = styled.div`
   display: flex;
   flex-direction: column;
   padding: 45px;
+  @media (max-width: 1023px) {
+    width: 100%;
+    padding: 15px;
+  }
 `;
 const MachinTextModel = styled.span`
   font-size: 16px;
@@ -49,6 +63,9 @@ const MachinTextTitle = styled.span`
   white-space: pre-line;
   line-height: 1.1;
   margin-bottom: 20px;
+  @media (max-width: 1023px) {
+    white-space: normal;
+  }
 `;
 const MachinTextSubTitle = styled.span`
   background-color: #ededed;
@@ -69,6 +86,9 @@ const MachineFeatures = styled.div`
   height: auto;
   align-items: center;
   margin-top: 36px;
+  @media (max-width: 1023px) {
+    margin-left: -5px;
+  }
 `;
 
 const FeaturesIconBox = styled.div`
@@ -76,7 +96,7 @@ const FeaturesIconBox = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 30%;
+  width: ${(props) => `calc(100% / ${props.$number})`};
   margin: 5px;
   padding: 5px;
 `;
@@ -86,7 +106,7 @@ const FeaturesIcon = styled.img`
   object-fit: contain;
   margin-bottom: 10px;
 `;
-const Contents = styled.h2`
+const Contents = styled.div`
   width: 100%;
   max-width: 1080px;
   margin: 0 auto;
@@ -110,8 +130,14 @@ const ImgSection = styled.div`
   margin-left: 5px;
   display: none;
 `;
+const JigWrapper = styled.div`
+  display: flex;
+  @media (max-width: 1023px) {
+    flex-direction: column;
+  }
+`;
 
-const OptionWrapper = styled.div`
+const OptionWrapper = styled(motion.div)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -126,19 +152,44 @@ const OptionWrapper = styled.div`
     margin-bottom: 10px;
     object-fit: contain;
   }
+  @media (max-width: 1023px) {
+    flex-direction: row;
+    width: 100%;
+    padding: 5px;
+    margin: 0 0 10px 0;
+
+    img {
+      height: 80px;
+      margin-top: 0px;
+      margin-bottom: 0px;
+      margin-right: 20px;
+    }
+  }
 `;
 
 function MachineDetail({ info, blueImg, options }) {
   const [expendClicked, setExpendClicked] = useState(true);
+  const isMobile = useMediaQuery("(max-width: 1023px)");
+
   const showContent = (show) => {
     setExpendClicked(show);
   };
+
+  const {
+    ref: boxRef,
+    controls: boxControls,
+    animateVariants: boxVariants,
+  } = useAnimateOnInView(0, 0.3);
   return (
     <>
       <MachinInfoWrapper>
         <MachineImgBox>
           {/* <MachinImg $url={info?.img} /> */}
-          <MachineImgBoxS src={info?.img} alt={info?.title} />
+          {isMobile ? (
+            <MachinImg $url={info?.img} />
+          ) : (
+            <MachineImgBoxS src={info?.img} alt={info?.title} />
+          )}
         </MachineImgBox>
         <Divider orientation="vertical" variant="middle" flexItem />
 
@@ -154,15 +205,13 @@ function MachineDetail({ info, blueImg, options }) {
           <MachinTextDes>{info?.des}</MachinTextDes>
           <MachineFeatures>
             {info?.features.map((item, index) => (
-              <FeaturesIconBox key={index}>
+              <FeaturesIconBox key={index} $number={info?.features.length}>
                 <FeaturesIcon src={item.img} />
                 <span
                   style={{
-                    whiteSpace: "pre-wrap",
+                    // whiteSpace: "pre-wrap",
                     wordWrap: "break-word",
-                    width: "max-content",
                     textAlign: "center",
-                    height: "20px",
                   }}
                 >
                   {item.text.slice(0, 17) + `\n` + item.text.slice(17)}
@@ -184,14 +233,20 @@ function MachineDetail({ info, blueImg, options }) {
             <div className="options">
               <ContentsTitle title={"Sanding Jig"} onData={showContent} />
               <Collapse in={expendClicked}>
-                <div style={{ display: "flex" }}>
+                <JigWrapper>
                   {options.map((item, index) => (
-                    <OptionWrapper key={index}>
+                    <OptionWrapper
+                      key={index}
+                      ref={boxRef}
+                      initial="hidden"
+                      animate={boxControls}
+                      variants={boxVariants(index * 0.3)}
+                    >
                       <img src={item.img} alt={item.text} />
                       <span style={{ padding: "20px 0" }}>{item.text}</span>
                     </OptionWrapper>
                   ))}
-                </div>
+                </JigWrapper>
               </Collapse>
             </div>
           )}

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const BtnBox = styled.button`
   border: 1px solid ${(props) => props.theme.colors.blue};
-  border-radius: 20px;
+  border-radius: 8px;
   color: ${(props) =>
     props.$isClick ? props.theme.colors.white : props.theme.colors.blue};
   background-color: ${(props) =>

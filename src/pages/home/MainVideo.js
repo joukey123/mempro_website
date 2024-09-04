@@ -16,6 +16,7 @@ const Video = styled.video`
   max-width: 100%;
   aspect-ratio: ${(props) => props.$ratio};
   object-fit: cover;
+  height: 100vh;
 `;
 const TypewriterBox = styled.div`
   color: white;
@@ -64,7 +65,7 @@ function MainVideo() {
             autoPlay
             playsInline
             loop
-            src="https://mempro.myqnapcloud.com:85/mobile.mp4"
+            src="http://mempro.co.kr/mobile.mp4"
             $ratio={12 / 19}
           ></Video>
         ) : (
@@ -73,7 +74,7 @@ function MainVideo() {
             autoPlay
             playsInline
             loop
-            src="https://mempro.myqnapcloud.com:85/pc.mp4"
+            src="http://mempro.co.kr/pc.mp4"
             $ratio={16 / 9}
           ></Video>
         )}

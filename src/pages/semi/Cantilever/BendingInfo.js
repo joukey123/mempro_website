@@ -38,6 +38,7 @@ const Path = styled.path`
   transition: all 0.4s ease-in-out;
   stroke-width: 0.7px;
 `;
+
 const BendinInfo = ({ hover }) => (
   <SVG
     id="uuid-6a1a5fc1-dede-4acb-bff9-4153e0436220"

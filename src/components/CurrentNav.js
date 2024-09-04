@@ -22,6 +22,7 @@ const Wrapper = styled.div`
   @media (max-width: 1023px) {
     flex-direction: column;
     padding: 0;
+    margin-bottom: 0px;
   }
 `;
 
@@ -178,7 +179,8 @@ function CurrentNav() {
         exclusive
         aria-label="Platform"
         sx={{
-          width: isMobile ? "90%" : null,
+          width: isMobile ? "100%" : null,
+          padding: isMobile && "0 20px",
         }}
       >
         {aboutMenu.map((item, index) => (
@@ -186,7 +188,12 @@ function CurrentNav() {
             value={item}
             key={index}
             onClick={() => handleSelectAboutMenu(item)}
-            sx={{ textTransform: "capitalize", width: 180, height: 50.88 }}
+            sx={{
+              textTransform: "capitalize",
+              width: 180,
+              height: 50.88,
+              width: isMobile ? "33%" : "200px",
+            }}
           >
             {item}
           </ToggleButton>
@@ -195,9 +202,17 @@ function CurrentNav() {
       <Alert
         severity="info"
         sx={{
-          width: isMobile ? "90%" : "100%",
-          maxWidth: 450,
+          width: isMobile ? "90%" : "null",
           margin: isMobile ? "15px auto" : "0px auto",
+          display: isMobile && "flex",
+          alignItems: isMobile && "center",
+          justifyContent: isMobile && "center",
+          "& .MuiAlert-message": {
+            fontSize: "13px",
+          },
+          "& .css-1ytlwq5-MuiAlert-icon": {
+            display: isMobile ? "none !important" : "flex !important",
+          },
         }}
       >
         We provide the necessary parts for the probe card.

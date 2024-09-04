@@ -6,14 +6,18 @@ import { motion } from "framer-motion";
 import Application from "../../../components/Application";
 import ContentsTitle from "../../../components/ContentsTitle";
 
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Collapse from "@mui/material/Collapse";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableRow,
+  Typography,
+  TableHead,
+} from "@mui/material";
+import useAnimateOnInView from "../../../Hook/useAnimationOnInView";
 
 const StructureWarpper = styled(motion.div)`
   width: 100%;
@@ -23,26 +27,33 @@ const StructureWarpper = styled(motion.div)`
   background: url(${line}) center center;
   background-size: cover;
   background-color: ${(props) => props.theme.colors.white};
-  padding: 50px;
+  padding: 30px;
   overflow: hidden;
-  margin-bottom: 150px;
+  margin-bottom: 20px;
   position: relative;
   align-content: center;
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: 1023px) {
+    padding: 20px;
+  }
 `;
 
 const InfoBox = styled.div`
   display: flex;
+  align-items: center;
   flex-direction: column;
   justify-content: center;
   position: relative;
-  padding-top: 100px;
+  height: 350px;
+  margin-top: 30px;
+  @media (max-width: 1023px) {
+    height: 150px;
+  }
 `;
 const NeedleName = styled.h1`
   font-size: 18px;
-  position: absolute;
-  top: 50px;
-  left: 50px;
-  z-index: 2;
   span {
     color: ${(props) => props.theme.colors.blue};
     font-weight: bold;
@@ -51,9 +62,7 @@ const NeedleName = styled.h1`
 `;
 const NeedleImg = styled.img`
   width: 100%;
-  max-width: 1000px;
-  margin-bottom: 50px;
-  margin-top: 100px;
+  max-width: 800px;
 `;
 
 const SpecWrapper = styled.div`
@@ -111,8 +120,12 @@ const StyledTableCell = styled(TableCell)`
     text-align: center;
     border-right: 1px solid #dfdfdf;
     font-size: 16px;
+    @media (max-width: 1023px) {
+      padding: 10px;
+    }
   }
 `;
+const MotionTableContainer = motion(TableContainer);
 
 function CobraDetail({ contents, needle }) {
   const [specIndex, setSpecIndex] = useState();
@@ -133,6 +146,12 @@ function CobraDetail({ contents, needle }) {
   const showContent = (show) => {
     setExpendClicked(show);
   };
+
+  const {
+    ref: boxRef,
+    controls: boxControls,
+    animateVariants: boxVariants,
+  } = useAnimateOnInView(0, 0.3);
   return (
     <>
       <StructureWarpper>
@@ -148,7 +167,7 @@ function CobraDetail({ contents, needle }) {
           <NeedleImg src={contents.img} />
           <CobraInfo specId={specId} />
 
-          <SpecWrapper>
+          {/* <SpecWrapper>
             {contents.spec.map((item, index) => (
               <Text
                 key={index}
@@ -162,9 +181,43 @@ function CobraDetail({ contents, needle }) {
                 </Column>
               </Text>
             ))}
-          </SpecWrapper>
+          </SpecWrapper> */}
         </InfoBox>
       </StructureWarpper>
+      <TableContainer component={Paper} sx={{ whiteSpace: "nowrap" }}>
+        <Table>
+          <TableBody>
+            {contents.spec.map((item, index) => (
+              <TableRow
+                key={index}
+                onMouseOver={() => handleSpecOver(index, item.id)}
+                onMouseLeave={handleSpecLeave}
+                sx={{
+                  "&:hover": {
+                    backgroundColor: "#f5f5f5", // Optional: Adds a hover effect to the row
+                  },
+                }}
+              >
+                <StyledTableCell
+                  style={{
+                    fontWeight: specIndex + 1 === item.id ? "500" : "300",
+                    fontSize: "16px",
+                    background: `linear-gradient(to right, #2467a2, #253b78)`,
+                    color: "white",
+                    textAlign: "center",
+                  }}
+                >
+                  {item.id}
+                </StyledTableCell>
+                <StyledTableCell style={{ fontWeight: 500 }}>
+                  {item.name}
+                </StyledTableCell>
+                <StyledTableCell>{item.description}</StyledTableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
       <Contents>
         <ContentsTitle title={"C.C.C & Force"} onData={showContent} />
 
@@ -194,8 +247,15 @@ function CobraDetail({ contents, needle }) {
           </tbody>
         </Tabless> */}
         <Collapse in={expendClicked}>
-          <TableContainer component={Paper}>
-            <Table aria-label="custom table" sx={{ minWidth: 900 }}>
+          <MotionTableContainer
+            component={Paper}
+            sx={{ whiteSpace: "nowrap" }}
+            ref={boxRef}
+            initial="hidden"
+            animate={boxControls}
+            variants={boxVariants(0.5)}
+          >
+            <Table>
               <StyledTableHead>
                 <TableRow>
                   <StyledTableCell
@@ -264,7 +324,7 @@ function CobraDetail({ contents, needle }) {
                 ))}
               </TableBody>
             </Table>
-          </TableContainer>
+          </MotionTableContainer>
         </Collapse>
         <Application contents={contents} />
       </Contents>

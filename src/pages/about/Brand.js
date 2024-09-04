@@ -1,7 +1,10 @@
 import styled, { keyframes } from "styled-components";
 import growth from "../../img/growth.svg";
+import expor from "../../img/export.svg";
+import trade from "../../img/trade.svg";
 import award from "../../img/award.svg";
 import output from "../../img/output.svg";
+
 import CountUp from "react-countup/";
 import commit from "../../img/commitment.svg";
 import trust from "../../img/trust.svg";
@@ -17,6 +20,8 @@ import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import Snackbar from "@mui/material/Snackbar";
 import { useSwipeable } from "react-swipeable";
+import Clipboard from "clipboard";
+import useAnimateOnInView from "../../Hook/useAnimationOnInView";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -31,8 +36,9 @@ const Info = styled.div`
 
   @media (max-width: 1023px) {
     overflow: hidden;
-    width: 90%;
-    margin: 50px auto;
+    width: 100%;
+    margin-bottom: 0px;
+    margin: 50px 0;
   }
 `;
 const Box = styled.div`
@@ -44,14 +50,15 @@ const Box = styled.div`
   @media (max-width: 1023px) {
     margin: 0;
     width: 33%;
-    transform: scale(0.6);
+    transform: scale(0.55);
   }
 `;
 const Img = styled.div`
-  background: url(${(props) => props.$url}) no-repeat center bottom;
+  background: url(${(props) => props.$url}) no-repeat center;
   width: 150px;
   height: 150px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
+  background-size: contain;
 `;
 const Title = styled.h1`
   width: 220px;
@@ -67,18 +74,23 @@ const Title = styled.h1`
 const Text = styled.span`
   font-size: 18px;
   font-weight: lighter;
+  font-weight: 500;
+
   @media (max-width: 1023px) {
     font-size: 24px;
     text-align: center;
     margin-top: 5px;
   }
 `;
-const ValueWrapper = styled.div`
+const ValueWrapper = styled(motion.div)`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-bottom: 150px;
+  @media (max-width: 1023px) {
+    margin-bottom: 20px;
+  }
 `;
 const BlackBox = styled.div`
   background-color: ${(props) => props.theme.colors.black};
@@ -89,23 +101,33 @@ const BlackBox = styled.div`
   text-align: center;
   line-height: 40px;
   font-weight: 500;
-  margin-bottom: 35px;
+  margin-bottom: 15px;
+  @media (max-width: 1023px) {
+    margin-bottom: 18px;
+  }
 `;
 const StyleTitle = styled.h1`
   font-size: 3rem;
   font-family: "Abril Fatface", cursive;
+  src: url("path-to-font.woff2") format("woff2"),
+    url("path-to-font.woff") format("woff");
+  font-display: swap;
   margin-bottom: 20px;
   @media (max-width: 1023px) {
     width: 100%;
     text-align: center;
+    letter-spacing: -3px;
+    font-size: 38px;
   }
 `;
 const Dec = styled.p`
   width: 45%;
   text-align: center;
   letter-spacing: -0.5px;
+  font-weight: 300;
+
   @media (max-width: 1023px) {
-    width: 80%;
+    width: 90%;
   }
 `;
 const ValueImgWrapper = styled.div`
@@ -117,26 +139,29 @@ const ValueImgWrapper = styled.div`
   margin-top: 50px;
   @media (max-width: 1023px) {
     transform: scale(0.8);
-    margin-top: 10px;
+    margin-top: 0px;
   }
 `;
-const ValueBox = styled.div`
+const ValueBox = styled(motion.div)`
   width: 100%;
   max-width: 900px;
   height: 250px;
   background: linear-gradient(to right, #6698fa, #004ea2);
-  border-radius: 35px;
+  border-radius: 15px;
   position: relative;
   &:last-child {
     margin-top: 30px;
   }
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+  @media (max-width: 1023px) {
+    height: 180px;
+  }
 `;
 const Illust = styled.div`
   width: 50%;
   height: 100%;
   border-radius: ${(props) =>
-    props.$left ? "0 35px 35px 0" : "35px 0 0px 35px"};
+    props.$left ? "0 15px 15px 0" : "15px 0 0px 15px"};
   background: url(${(props) => props.$url}) no-repeat center center;
   background-size: cover;
   background-color: white;
@@ -161,7 +186,7 @@ const TextBox = styled.div`
   }
 `;
 
-const CiWrapper = styled.div`
+const CiWrapper = styled(motion.div)`
   width: 100%;
   max-width: 1280px;
   display: flex;
@@ -177,6 +202,9 @@ const SliderWrapper = styled.div`
   align-items: center;
   justify-content: center;
   margin-bottom: 30px;
+  @media (max-width: 1023px) {
+    margin-bottom: 20px;
+  }
 `;
 
 const CiImgWrapper = styled.div`
@@ -192,12 +220,12 @@ const CiImgBox = styled.div`
   width: 100%;
   max-width: 900px;
   height: 350px;
-  border-radius: 50px;
+  border-radius: 15px;
   border: 0.7px solid #a1a1a1;
   background: url(${(props) => props.$url}) no-repeat center;
   background-size: cover;
   @media (max-width: 1023px) {
-    width: 90%;
+    width: 80%;
     height: 180px;
     border-radius: 15px;
   }
@@ -258,21 +286,24 @@ const ColorBoxWrapper = styled.div`
   gap: 30px;
   @media (max-width: 1023px) {
     grid-template-columns: repeat(2, 1fr);
+    margin-top: 20px;
+    gap: 10px;
   }
 `;
 
-const ColorBox = styled.div`
+const ColorBox = styled(motion.div)`
   width: 250px;
   height: 100px;
   background-color: ${(props) => props.$bg};
-  border-radius: 25px;
+  border-radius: 12px;
   position: relative;
   color: white;
   border: 0.5px solid #a1a1a1;
   cursor: pointer;
   @media (max-width: 1023px) {
     width: 150px;
-    border-radius: 15px;
+    border-radius: 12px;
+    height: 80px;
   }
 `;
 const CopyMessage = styled(motion.div)`
@@ -303,9 +334,38 @@ function Brand() {
   const [hoveredColorIndex, setHoveredColorIndex] = useState(null);
   const [snakBarOpen, setSnakBarOpen] = useState(false);
 
+  // const copyColorNumber = async (item) => {
+  //   try {
+  //     await navigator.clipboard.writeText(item);
+  //     console.log(item);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  //   setSnakBarOpen(true);
+  // };
+  const {
+    ref: boxRef,
+    controls: boxControls,
+    animateVariants: boxVariants,
+  } = useAnimateOnInView(0, 0.3);
+  const {
+    ref: childRef,
+    controls: childControls,
+    animateVariants: childVariants,
+  } = useAnimateOnInView(0, 0.3);
   const copyColorNumber = (item) => {
-    navigator.clipboard.writeText(item);
-    setSnakBarOpen(true);
+    const clipboard = new Clipboard(".copy-btn", {
+      text: () => item,
+    });
+    clipboard.on("success", () => {
+      setSnakBarOpen(true);
+      clipboard.destroy();
+    });
+    clipboard.on("error", (e) => {
+      console.error("Action:", e.action);
+      console.error("Trigger:", e.trigger);
+      clipboard.destroy();
+    });
   };
   const handleClose = () => {
     setSnakBarOpen(false);
@@ -328,40 +388,50 @@ function Brand() {
         <Info>
           <Box>
             <Img $url={growth} />
-            <Title $color={"#EE7D19"}>
+            <Title $color={"#46CC6B"}>
               <CountUp end={70} duration={3} />% +
             </Title>
-            <Text>Growth rate</Text>
+            <Text>Growth</Text>
           </Box>
           <Box>
-            <Img $url={award} style={{ transform: "scale(1.2)" }} />
-            <Title $color={"#024D91"}>
+            <Img $url={trade} />
+            <Title $color={"#FFD63D"}>
               <CountUp end={4000000} duration={3} /> +
             </Title>
             <Text>Export</Text>
           </Box>
           <Box>
-            <Img
-              $url={output}
-              style={{ transform: " scale(1.25) translateX(20px)" }}
-            />
-            <Title $color={"#008B3E"}>
+            <Img $url={expor} />
+            <Title $color={"#FF5A55"}>
               <CountUp end={9000000} duration={3} /> +
             </Title>
-            <Text>Probe Output</Text>
+            <Text>Output</Text>
           </Box>
         </Info>
-        <ValueWrapper>
-          <BlackBox>핵심가치</BlackBox>
+        <ValueWrapper
+          ref={boxRef}
+          initial="hidden"
+          animate={boxControls}
+          variants={boxVariants(0.5)}
+        >
+          <BlackBox>Values</BlackBox>
           <StyleTitle>Commitment & Trust</StyleTitle>
           <Dec>
-            주식회사 멤프로는 반도체 & 무역 산업의 선두주자로서, 고객과 신뢰의
+            {/* 주식회사 멤프로는 반도체 & 무역 산업의 선두주자로서, 고객과 신뢰의
             바탕으로 최고의 품질과 서비스를 약속드립니다. 혁식을 통해 미래를
-            함께 열어갑니다.
+            함께 열어갑니다. */}
+            We lead in semiconductor and trade industries, delivering top
+            quality and service with customer trust. Through innovation, we
+            shape the future with our clients.
           </Dec>
 
           <ValueImgWrapper>
-            <ValueBox>
+            <ValueBox
+              ref={boxRef}
+              initial="hidden"
+              animate={boxControls}
+              variants={boxVariants(0.8)}
+            >
               <Illust $url={commit} />
               <TextBox>
                 <span>약속</span>
@@ -369,7 +439,12 @@ function Brand() {
                 <span>承诺</span>
               </TextBox>
             </ValueBox>
-            <ValueBox>
+            <ValueBox
+              ref={boxRef}
+              initial="hidden"
+              animate={boxControls}
+              variants={boxVariants(1.2)}
+            >
               <TextBox style={{ left: "0" }}>
                 <span>신뢰</span>
                 <span>Trust</span>
@@ -379,7 +454,12 @@ function Brand() {
             </ValueBox>
           </ValueImgWrapper>
         </ValueWrapper>
-        <CiWrapper>
+        <CiWrapper
+          ref={childRef}
+          initial="hidden"
+          animate={childControls}
+          variants={childVariants(0.5)}
+        >
           <BlackBox>CI</BlackBox>
           <SliderWrapper>
             <CiBtn onClick={handleSwipedLeft}>
@@ -398,10 +478,13 @@ function Brand() {
             </CiBtn>
           </SliderWrapper>
           <Dec>
-            약속과 신뢰를 시각적으로 나타내며, 정육각형을 통해 고객사와의 균형과
+            {/* 약속과 신뢰를 시각적으로 나타내며, 정육각형을 통해 고객사와의 균형과
             조화를 상징하며 글로벌 비즈니스와 다양한 거래를 조화롭게 관리하는
             능력을 표현합니다. 로고에 포함된 'M'자는 멤프로가 글로벌 무대에서
-            중심적인 역할을 하는 리더십을 상징합니다.
+            중심적인 역할을 하는 리더십을 상징합니다. */}
+            The logo visually represents commitment and trust, symbolizing
+            balance and harmony with clients through a hexagon. The ‘M’
+            signifies Mempro’s leadership on the global stage.
           </Dec>
           <ColorBoxWrapper>
             {Color.map((item, index) => (
@@ -411,6 +494,11 @@ function Brand() {
                 onMouseOver={() => setHoveredColorIndex(index)}
                 onMouseLeave={() => setHoveredColorIndex(null)}
                 onClick={() => copyColorNumber(item)}
+                className="copy-btn"
+                ref={childRef}
+                initial="hidden"
+                animate={childControls}
+                variants={childVariants(index * 0.25)}
               >
                 <span
                   style={{

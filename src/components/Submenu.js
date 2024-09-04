@@ -64,26 +64,29 @@ function Submenu({
       {isVisible && (
         <Wrapper
           onMouseOut={handleMouseOut}
-          initial={{ height: 0, opacity: 0 }}
-          exit={{ height: 0, opacity: 0 }}
+          initial={{ x: -125, height: 0, opacity: 0 }}
+          exit={{ x: -125, height: 0, opacity: 0 }}
           animate={{ height: "auto", opacity: 1 }}
         >
           <div>
             <SubmenuWrapper>
-              {subcategories.map((item, index) => (
-                <li key={index}>
-                  <Diagram key={index}>{item.diagram}</Diagram>
-                  {item.subcategory &&
-                    item.subcategory.map((names, index) => (
-                      <Link
-                        to={`/${categoryLink}/${type}/${names.link}`}
-                        key={index}
-                      >
-                        <SubCategory>{names.name}</SubCategory>
-                      </Link>
-                    ))}
-                </li>
-              ))}
+              {subcategories.map(
+                (item, index) =>
+                  item.diagram !== "Machine" && (
+                    <li key={index}>
+                      <Diagram key={index}>{item.diagram}</Diagram>
+                      {item.subcategory &&
+                        item.subcategory.map((names, index) => (
+                          <Link
+                            to={`/${categoryLink}/${type}/${names.link}`}
+                            key={index}
+                          >
+                            <SubCategory>{names.name}</SubCategory>
+                          </Link>
+                        ))}
+                    </li>
+                  )
+              )}
             </SubmenuWrapper>
           </div>
           {/* machine 카테고리도 같이 나오게하는거 */}
@@ -96,7 +99,7 @@ function Submenu({
                       style={{ fontWeight: "bold", marginBottom: "5px" }}
                       key={index}
                     >
-                      {item.category}
+                      {item.type}
                     </Diagram>
                     {item.subcategories &&
                       item.subcategories.map((names, index) => (

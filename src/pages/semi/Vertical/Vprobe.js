@@ -20,6 +20,9 @@ const Wrapper = styled.div`
   flex-direction: column;
   position: relative;
   padding: 0 50px;
+  @media (max-width: 1023px) {
+    padding: 0 30px;
+  }
 `;
 const Table = styled.div`
   width: 100%;

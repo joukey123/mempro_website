@@ -21,6 +21,7 @@ const Section1 = styled(Section)`
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  height: 100vh;
 `;
 
 const Section2 = styled(Section)`
@@ -32,8 +33,8 @@ const Section2 = styled(Section)`
 `;
 const StarCanvasBox = styled.div`
   width: 100%;
-  height: 500px;
   position: absolute;
+  height: 100vh;
 `;
 function Main() {
   return (

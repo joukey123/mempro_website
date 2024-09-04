@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="uuid-47571eab-30b8-4f80-ab0d-75a20ebe5b96" data-name="레이어 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 53.91 38.1">
+  <defs>
+    <style>
+      .uuid-0bbb7fef-299a-4dc4-bab0-d7f385810abb {
+        fill: #1976d2;
+        stroke-width: 0px;
+      }
+
+      .uuid-787d9950-c264-48c9-95d9-435c93055f24 {
+        fill: none;
+        stroke: #000;
+        stroke-linecap: round;
+        stroke-miterlimit: 10;
+        stroke-width: 2.26px;
+      }
+    </style>
+  </defs>
+  <g id="uuid-21338987-0436-4dee-bb2c-9313713e7e62" data-name="레이어 1">
+    <g>
+      <rect class="uuid-787d9950-c264-48c9-95d9-435c93055f24" x="1.13" y="1.13" width="51.65" height="35.84" rx="4.26" ry="4.26"/>
+      <g>
+        <circle class="uuid-0bbb7fef-299a-4dc4-bab0-d7f385810abb" cx="9.23" cy="8.86" r="2.28"/>
+        <circle class="uuid-0bbb7fef-299a-4dc4-bab0-d7f385810abb" cx="18.09" cy="8.86" r="2.28"/>
+        <circle class="uuid-0bbb7fef-299a-4dc4-bab0-d7f385810abb" cx="26.95" cy="8.86" r="2.28"/>
+        <circle class="uuid-0bbb7fef-299a-4dc4-bab0-d7f385810abb" cx="35.82" cy="8.86" r="2.28"/>
+        <circle class="uuid-0bbb7fef-299a-4dc4-bab0-d7f385810abb" cx="44.68" cy="8.86" r="2.28"/>
+        <circle class="uuid-0bbb7fef-299a-4dc4-bab0-d7f385810abb" cx="9.23" cy="15.65" r="2.28"/>
+        <circle class="uuid-0bbb7fef-299a-4dc4-bab0-d7f385810abb" cx="18.09" cy="15.65" r="2.28"/>
+        <circle class="uuid-0bbb7fef-299a-4dc4-bab0-d7f385810abb" cx="26.95" cy="15.65" r="2.28"/>
+        <circle class="uuid-0bbb7fef-299a-4dc4-bab0-d7f385810abb" cx="35.82" cy="15.65" r="2.28"/>
+        <circle class="uuid-0bbb7fef-299a-4dc4-bab0-d7f385810abb" cx="44.68" cy="15.65" r="2.28"/>
+        <circle class="uuid-0bbb7fef-299a-4dc4-bab0-d7f385810abb" cx="9.23" cy="22.45" r="2.28"/>
+        <circle class="uuid-0bbb7fef-299a-4dc4-bab0-d7f385810abb" cx="18.09" cy="22.45" r="2.28"/>
+        <circle class="uuid-0bbb7fef-299a-4dc4-bab0-d7f385810abb" cx="26.95" cy="22.45" r="2.28"/>
+        <circle class="uuid-0bbb7fef-299a-4dc4-bab0-d7f385810abb" cx="35.82" cy="22.45" r="2.28"/>
+        <circle class="uuid-0bbb7fef-299a-4dc4-bab0-d7f385810abb" cx="44.68" cy="22.45" r="2.28"/>
+        <circle class="uuid-0bbb7fef-299a-4dc4-bab0-d7f385810abb" cx="9.23" cy="29.24" r="2.28"/>
+        <circle class="uuid-0bbb7fef-299a-4dc4-bab0-d7f385810abb" cx="18.09" cy="29.24" r="2.28"/>
+        <circle class="uuid-0bbb7fef-299a-4dc4-bab0-d7f385810abb" cx="26.95" cy="29.24" r="2.28"/>
+        <circle class="uuid-0bbb7fef-299a-4dc4-bab0-d7f385810abb" cx="35.82" cy="29.24" r="2.28"/>
+        <circle class="uuid-0bbb7fef-299a-4dc4-bab0-d7f385810abb" cx="44.68" cy="29.24" r="2.28"/>
+      </g>
+    </g>
+  </g>
+</svg>

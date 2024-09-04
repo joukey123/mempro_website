@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="uuid-d90cd6ab-5be1-41ec-a79f-7635d60f55a6" data-name="레이어 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52.72 54.67">
+  <defs>
+    <style>
+      .uuid-9e9d6d0d-5daa-42e3-a12b-582aae9efc68 {
+        stroke-width: 0px;
+      }
+
+      .uuid-9e9d6d0d-5daa-42e3-a12b-582aae9efc68, .uuid-96a6d737-fe0a-4465-974e-5a2ae03669de, .uuid-c634dffc-279a-49af-8ba0-eb878daf2656 {
+        fill: none;
+      }
+
+      .uuid-b3686b6a-4356-4856-b866-a47de6adf6ef {
+        fill: #f7f7f7;
+        font-family: HelveticaNeue-Medium, 'Helvetica Neue';
+        font-size: 15.47px;
+        font-weight: 500;
+        letter-spacing: .06em;
+      }
+
+      .uuid-564f7e0e-aa32-4c33-bb42-363a435f4bfd {
+        fill: #1976d2;
+      }
+
+      .uuid-564f7e0e-aa32-4c33-bb42-363a435f4bfd, .uuid-96a6d737-fe0a-4465-974e-5a2ae03669de {
+        stroke-width: 2.26px;
+      }
+
+      .uuid-564f7e0e-aa32-4c33-bb42-363a435f4bfd, .uuid-96a6d737-fe0a-4465-974e-5a2ae03669de, .uuid-c634dffc-279a-49af-8ba0-eb878daf2656 {
+        stroke: #000;
+        stroke-linecap: round;
+        stroke-miterlimit: 10;
+      }
+
+      .uuid-c634dffc-279a-49af-8ba0-eb878daf2656 {
+        stroke-width: 2.26px;
+      }
+    </style>
+  </defs>
+  <g id="uuid-849952cb-f766-45d6-87d8-8a51d3aba060" data-name="레이어 1">
+    <g>
+      <path class="uuid-c634dffc-279a-49af-8ba0-eb878daf2656" d="M46.07,13.94v32.63H6.65V7.05c0-3.27,2.65-5.92,5.92-5.92h19.98l13.51,12.81Z"/>
+      <polyline class="uuid-96a6d737-fe0a-4465-974e-5a2ae03669de" points="46.07 13.94 32.56 13.94 32.56 1.13"/>
+      <line class="uuid-9e9d6d0d-5daa-42e3-a12b-582aae9efc68" x1="47.56" y1="15.35" x2="46.07" y2="13.94"/>
+      <rect class="uuid-564f7e0e-aa32-4c33-bb42-363a435f4bfd" x="1.13" y="32.53" width="50.46" height="21.01" rx="4.56" ry="4.56"/>
+      <text class="uuid-b3686b6a-4356-4856-b866-a47de6adf6ef" transform="translate(9.99 48.76)"><tspan x="0" y="0">CSV</tspan></text>
+      <rect class="uuid-96a6d737-fe0a-4465-974e-5a2ae03669de" x="12.88" y="7.37" width="10.51" height="10.51" rx="3.21" ry="3.21"/>
+    </g>
+  </g>
+</svg>

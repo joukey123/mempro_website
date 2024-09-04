@@ -3,15 +3,20 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import Model from "./Model";
 import canti1 from "../../../src/img/stiffener/canti1.gltf";
+import { useMediaQuery } from "@mui/material";
 
 function ThreeModel({ types, number, type }) {
+  const isMobile = useMediaQuery("(max-width: 1023px)");
+
   return (
     <>
       <Canvas
         style={{
+          // width: "100%",
+          // maxWidth: "1000px",
+          // height: "1000px",
           width: "100%",
-          maxWidth: "1000px",
-          height: "1000px",
+          height: "100%",
         }}
         camera={{ position: [0, 2, 3], fov: 15 }}
       >
@@ -37,6 +42,7 @@ function ThreeModel({ types, number, type }) {
               rotation={[-0.5, 0.0, 0]}
             />
           )} */}
+
           {types[type][number]?.model}
         </Suspense>
         <OrbitControls

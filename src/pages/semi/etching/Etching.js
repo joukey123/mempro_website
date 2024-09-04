@@ -14,8 +14,9 @@ import AlertTitle from "@mui/material/AlertTitle";
 import ContentsTitle from "../../../components/ContentsTitle";
 import Features from "../../../components/Features";
 import { Collapse, Button, ButtonGroup, Box } from "@mui/material";
+import useAnimateOnInView from "../../../Hook/useAnimationOnInView";
 
-const Wrapper = styled.div`
+const Wrapper = styled(motion.div)`
   width: 100%;
   max-width: 1280px;
   height: 100%;
@@ -216,6 +217,7 @@ const ZooWrapper = styled(motion.div)`
   justify-content: center;
   @media (max-width: 1023px) {
     height: 500px;
+    padding: 0 10px;
   }
 `;
 const ZoomImg = styled.img`
@@ -225,7 +227,7 @@ const ZoomImg = styled.img`
   position: relative;
   top: -5%;
   @media (max-width: 1023px) {
-    width: 90%;
+    height: 400px;
   }
 `;
 
@@ -245,15 +247,15 @@ const OptionWrapper = styled.div`
   border-radius: 4px;
   overflow: hidden;
   @media (max-width: 1023px) {
-    width: 130px;
+    width: 100px;
   }
   img {
     height: 150px;
     width: 150px;
     object-fit: cover;
     @media (max-width: 1023px) {
-      width: 130px;
-      height: 130px;
+      width: 100px;
+      height: 100px;
     }
   }
 `;
@@ -265,13 +267,15 @@ const Material = styled.div`
   }
 `;
 
-const GridWapper = styled.div`
+const GridWapper = styled(motion.div)`
   display: grid;
   grid-template-columns: repeat(${(props) => props.$imgLength}, 1fr);
   @media (max-width: 1023px) {
     grid-template-columns: repeat(2, 1fr);
   }
 `;
+
+const MotionButtonGroup = motion(ButtonGroup);
 function Etching() {
   const sublink = "etching";
   const { images, contents } = itemsDetail[`${sublink}`];
@@ -295,6 +299,16 @@ function Etching() {
   const handleZoomDiagram = () => {
     setIsZoom((prev) => !prev);
   };
+  const {
+    ref: boxRef,
+    controls: boxControls,
+    animateVariants: boxVariants,
+  } = useAnimateOnInView(0, 0.3);
+  const {
+    ref: childRef,
+    controls: childControls,
+    animateVariants: childVariants,
+  } = useAnimateOnInView(0, 0.3);
 
   return (
     <>
@@ -380,10 +394,14 @@ function Etching() {
                   alignItems: "center",
                 }}
               >
-                <ButtonGroup
+                <MotionButtonGroup
                   variant="text"
                   aria-label="Basic button group"
-                  sx={{ marginBottom: 5 }}
+                  sx={{ marginBottom: 3 }}
+                  ref={boxRef}
+                  initial="hidden"
+                  animate={boxControls}
+                  variants={boxVariants(0.3)}
                 >
                   {contents.material.map((item, index) => (
                     <StyledButton
@@ -395,7 +413,7 @@ function Etching() {
                       {item.text}
                     </StyledButton>
                   ))}
-                </ButtonGroup>
+                </MotionButtonGroup>
 
                 {/* {selectImg.map((item) => (
                     <div style={{ position: "relative" }}>
@@ -413,11 +431,19 @@ function Etching() {
                       </div>
                     </div>
                   ))} */}
-                <GridWapper $imgLength={selectImg.length}>
+                <GridWapper
+                  $imgLength={selectImg.length}
+                  ref={childRef}
+                  initial="hidden"
+                  animate={childControls}
+                  variants={childVariants(0.5)}
+                >
                   {selectImg.map((item, index) => (
                     <OptionWrapper key={index}>
                       <img src={item.img} alt={item.title} />
-                      <span style={{ padding: "10px 0" }}>{item.title}</span>
+                      <span style={{ padding: "7px 0", textAlign: "center" }}>
+                        {item.title}
+                      </span>
                     </OptionWrapper>
                   ))}
                 </GridWapper>

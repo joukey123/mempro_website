@@ -25,6 +25,9 @@ import diamondwire_machine from "../src/img/diamond/machine.svg";
 import etching_machine from "../src/img/etching/etching_machine.svg";
 import etching_step1 from "../src/img/etching/etching_step1.svg";
 import etching_diagram from "../src/img/etching/etching_diagram.svg";
+import etching_features1 from "../src/img/etching/etching_features1.svg";
+import etching_features2 from "../src/img/etching/etching_features2.svg";
+
 import img_1 from "../src/img/etching/1.png";
 import img_2 from "../src/img/etching/2.png";
 import img_3 from "../src/img/etching/3.png";
@@ -66,6 +69,9 @@ import mobile_tube1 from "../src/img/cantilever/tube_mobile_1.svg";
 import mobile_tube2 from "../src/img/cantilever/tube_mobile_2.svg";
 
 import coaxial from "../src/img/cantilever/coaxial.svg";
+
+import displayImg from "../src/img/cantilever/display.jpg";
+import logicImg from "../src/img/cantilever/logic.jpg";
 
 //vertical
 
@@ -112,8 +118,12 @@ import shortCoating from "../src/img/vertical/coating.png";
 import pem01 from "../src/img/vertical/pem1.png";
 import pem02 from "../src/img/vertical/pem2.png";
 import pem03 from "../src/img/vertical/pem3.png";
+import pemsImg from "../src/img/vertical/Pems.png";
 import topShape from "../src/img/vertical/topSahpeImg.svg";
 import tipShape from "../src/img/vertical/tipShapeImg.svg";
+
+import pems_features2 from "../src/img/vertical/super.svg";
+import pems_features3 from "../src/img/vertical/shape.svg";
 
 //plus_item
 import item_stiffener from "../src/img/cantilever/item_stiffener.svg";
@@ -199,6 +209,16 @@ import easy from "./img/icon/easy.svg";
 import cost from "./img/icon/cost.svg";
 import z_axis from "./img/icon/z-axis.svg";
 import xy_axis from "./img/icon/xy-axis.svg";
+import motor from "./img/icon/motor.svg";
+import achieves from "./img/icon/achieves.svg";
+import csv from "./img/icon/csv.svg";
+import display from "./img/icon/display.svg";
+import evalution from "./img/icon/evalution.svg";
+import finepitch from "./img/icon/finepitch.svg";
+import pogopin20 from "./img/icon/pogopin20.svg";
+import recipe from "./img/icon/recipe.svg";
+import tacktime from "./img/icon/tacktime.svg";
+import contact from "./img/icon/contact.svg";
 
 //logo
 import logoImg from "./img/nav_logo.svg";
@@ -213,7 +233,7 @@ export const linkBtns = [
   {
     text: "catalog",
     icon: <MenuBookIcon />,
-    link: "http://www.mempro.co.kr",
+    link: "https://mempro.myqnapcloud.com:85/",
   },
 ];
 
@@ -231,8 +251,8 @@ export const add = [
     type: "OverSeas Offices",
     nation: "Taiwan",
     address:
-      "Rm. 1,3F., No.15 Aly.29, Ln. 136, Kangle St., Neihu Dist., Taipai City, Taiwan(R.O.C), 114038",
-    tell: "+886-918-6761502",
+      "13F-9, No. 88, Zhongshan Road, Zhongli District, Taoyuan City, Taiwan",
+    tell: "+886-918-761502",
     fax: "+82 2-6265-2496",
     mail: "mempro_group@mempro.co.kr",
   },
@@ -250,7 +270,7 @@ export const items = [
     link: "semi",
     headerImg: semiImg,
     tag: (
-      <path d="M924.29,143.44l-377.51,215.2-35.12,20.02L213.67,210.14l-.24-.15-22.3-12.87c-16.04-9.26-16.15-24.29-.19-33.57l121.7-70.72c15.96-9.27,41.91-9.26,57.95,0l22.3,12.87c16.06,9.28,42.01,9.26,57.97-.01l25.55-14.85c15.96-9.28,41.93-9.28,58,0l47.7,27.54c16.06,9.27,42.01,9.26,57.97-.01l91.1-52.95c15.96-9.27,41.93-9.27,57.99,0l135.12,78.02Z" />
+      <path d="M486.92,84.97l-213.56,121.74L0,52.43c4.91-1.16,9.51-2.9,13.49-5.21l25.55-14.85c15.96-9.28,41.93-9.28,58,0l47.7,27.54c16.06,9.27,42.01,9.26,57.97,0L293.81,6.95c15.96-9.27,41.93-9.27,57.99,0l135.12,78.02Z" />
     ),
     subcategories: [
       {
@@ -259,10 +279,16 @@ export const items = [
           { name: "Diamond Wire", link: "diamond" },
           // { name: "Twist Diamond Wire", link: "twistdiamond" },
         ],
+        tag: (
+          <path d="M1023.4,270.9l-213.56,121.74-273.36-154.28c4.91-1.16,9.51-2.9,13.49-5.21l25.55-14.85c15.96-9.28,41.93-9.28,58,0l47.7,27.54c16.06,9.27,42.01,9.26,57.97,0l91.1-52.95c15.96-9.27,41.93-9.27,57.99,0l135.12,78.02h0Z" />
+        ),
       },
       {
         diagram: "etching",
         subcategory: [{ name: "Focus Ring Electode", link: "etching" }],
+        tag: (
+          <path d="M809.84,392.64l-163.95,93.46-35.12,20.02-297.99-168.52-.24-.15-22.3-12.87c-16.04-9.26-16.15-24.29-.19-33.57l121.7-70.72c15.96-9.27,41.91-9.26,57.95,0l22.3,12.87c12.06,6.97,29.68,8.69,44.48,5.2l273.36,154.28h0Z" />
+        ),
       },
       {
         diagram: "EDS-cantilever",
@@ -272,6 +298,9 @@ export const items = [
           { name: "Cantilever-Probe", link: "cprobe" },
           { name: "PI-Tube", link: "tube" },
         ],
+        tag: (
+          <path d="M431.01,603.81l167.16,95.02-102.02,64.15-28.39-16.39c-16.06-9.28-42.01-9.27-57.97.01l-19.38,11.26c-15.96,9.28-41.93,9.28-58,0l-221.2-127.71c-16.07-9.27-16.13-24.3-.17-33.58l77.17-44.84c15.96-9.28,15.87-24.32-.19-33.6l-36.38-21c-16.06-9.27-16.15-24.32-.19-33.59l160.55-93.3c15.87-9.22,15.89-24.15.07-33.43l298.7,169.31-179.76,97.69h0Z"></path>
+        ),
       },
       {
         diagram: "EDS-vertical",
@@ -281,6 +310,16 @@ export const items = [
           { name: "Vertical-Probe", link: "vprobe" },
           // { name: "Ceramic HoleGuide", link: "ceramic" },
         ],
+        tag: (
+          <path d="M970.04,674.66l-225.01,130.76c-15.96,9.28-41.93,9.28-57.99.01l-9.41-5.43c-16.06-9.28-42.03-9.28-57.99,0-15.94,9.26-41.91,9.26-57.97-.01l-67.26-38.83,99.58-59.91-169.56-96.38,185.06-101.19,36.76-18.57,218.07,127.66,105.72,61.89h0Z" />
+        ),
+      },
+      {
+        diagram: "Machine",
+        subcategory: [{ name: "sanding", link: "sanding" }],
+        tag: (
+          <path d="M1125.86,404.96l-22.74-13.13c-16.06-9.27-16.17-24.3-.21-33.58l7.65-4.44c15.96-9.28,15.89-24.31-.17-33.58l-86.09-49.7-377.51,215.2,218.07,127.66,193.24-113.91v-32.56s.91-10.13,17.5-10.13c9.29,0,13.67,3.12,15.73,5.86,1.65-3.41,4.59-6.59,9.05-9.18l25.67-14.92h0c15.96-9.27,15.88-24.31-.19-33.59Z" />
+        ),
       },
       {
         diagram: "Manufacture",
@@ -288,6 +327,9 @@ export const items = [
           { name: "Stiffener", link: "stiffener" },
           { name: "Ceramic Hole Guide", link: "ceramic" },
         ],
+        tag: (
+          <path d="M1167.87,524.39l-68.39-39.9c-2.51-1.46-4.61-3.07-6.34-4.77v-12.99s-.95-9.94-17.54-9.94-17.49,10.13-17.49,10.13v27.75s-195,117.86-195,117.86l106.02,62.72,198.92-116.82h0c16.01-9.39,15.93-24.64-.19-34.04Z" />
+        ),
       },
     ],
   },
@@ -452,7 +494,7 @@ export const books = [
       },
     ],
     img: semiBook,
-    url: "http://mempro.myqnapcloud.com:80/",
+    url: "https://mempro.myqnapcloud.com:85/",
   },
 ];
 export const machineDetail = {
@@ -474,7 +516,7 @@ export const machineDetail = {
         title: "330 Auto Sanding Machine",
         model: "JKSM-B330",
         img: sanding_330,
-        video: "http://mempro.myqnapcloud.com:85/sanding.mp4",
+        video: "https://mempro.myqnapcloud.com:85/sanding.mp4",
         features: [
           { img: blueprint, text: "~Ø330" },
           { img: compact, text: "compact size" },
@@ -495,10 +537,10 @@ export const machineDetail = {
         title: "Vertical Auto Sanding Machine",
         model: "JKVT-330",
         img: sanding_vertical,
-        video: "http://mempro.myqnapcloud.com:85/sanding.mp4",
+        video: "https://mempro.myqnapcloud.com:85/sanding.mp4",
         features: [
-          { img: blueprint, text: "Ø480 or under" },
-          { img: compact, text: "Z-axis stage high torque motor" },
+          { img: blueprint, text: "~Ø480" },
+          { img: motor, text: "Z-axis stage high torque motor" },
         ],
         subTitle:
           "It's Precision chuck base attachment is an affordable choice",
@@ -516,10 +558,10 @@ export const machineDetail = {
         title: "Multi Auto Sanding Machine",
         model: "JKMT-330",
         img: sanding_multi,
-        video: "http://mempro.myqnapcloud.com:85/sanding.mp4",
+        video: "https://mempro.myqnapcloud.com:85/sanding.mp4",
         features: [
-          { img: blueprint, text: "Ø480 or under" },
-          { img: blueprint, text: "Z-axis stage high torque motor" },
+          { img: blueprint, text: "~Ø480" },
+          { img: motor, text: "Z-axis stage high torque motor" },
         ],
         subTitle: "Utilizes seven motions to achieving ±2.5μm flatness",
         des: "With an intuitive interface, operators of all skill levels can access fast and high-precision operations in diverse enviroments.",
@@ -536,10 +578,10 @@ export const machineDetail = {
         title: "Vision Auto Sanding Machine",
         model: "JKSM-V330",
         img: sanding_vision,
-        video: "http://mempro.myqnapcloud.com:85/sanding.mp4",
+        video: "https://mempro.myqnapcloud.com:85/sanding.mp4",
         features: [
-          { img: blueprint, text: "Ø480 or under" },
-          { img: blueprint, text: "Z-axis stage high torque motor" },
+          { img: blueprint, text: "~Ø480" },
+          { img: motor, text: "Z-axis stage high torque motor" },
         ],
         subTitle: "Designed for probe cards size 480Ø or Smaller",
         des: "It features seven distinct motion types to enhance operational efficiency. It seamlessly provides real-time contact position verification through a camera, with a control facilitated by dedicated PC software for superior efficiency. Additionally, it offers advanced coaxial and box lighting options to further enhance performance.",
@@ -556,10 +598,10 @@ export const machineDetail = {
         title: "Idling Auto Sanding Machine",
         model: "JKHI-330",
         img: sanding_idling,
-        video: "http://mempro.myqnapcloud.com:85/sanding.mp4",
+        video: "https://mempro.myqnapcloud.com:85/sanding.mp4",
         features: [
-          { img: blueprint, text: "Ø480 or under" },
-          { img: blueprint, text: "Z-axis stage high torque motor" },
+          { img: blueprint, text: "~Ø480" },
+          { img: motor, text: "Z-axis stage high torque motor" },
         ],
         subTitle:
           "It's Precision chuck base attachment is an affordable choice",
@@ -586,7 +628,7 @@ export const machineDetail = {
         title: "Length Bending Machine",
         model: "JLBS-100",
         img: bending_length,
-        video: "http://mempro.myqnapcloud.com:85/bending.mp4",
+        video: "https://mempro.myqnapcloud.com:85/bending.mp4",
         features: [
           { img: cost, text: "coast saving" },
           { img: easy, text: "simple/easy" },
@@ -613,7 +655,7 @@ export const machineDetail = {
         title: "330 Manual Prober",
         model: "JKMPCM12",
         img: manual_330,
-        video: "http://mempro.myqnapcloud.com:85/prober.mp4",
+        video: "https://mempro.myqnapcloud.com:85/prober.mp4",
         features: [
           { img: blueprint, text: "~Ø330" },
           { img: xy_axis, text: "X, Y-axis manual stage" },
@@ -634,7 +676,7 @@ export const machineDetail = {
         title: "440 Manual Prober",
         model: "JKMPCM17",
         img: manual_440,
-        video: "http://mempro.myqnapcloud.com:85/prober.mp4",
+        video: "https://mempro.myqnapcloud.com:85/prober.mp4",
         features: [
           { img: blueprint, text: "~Ø440" },
           { img: xy_axis, text: "X, Y-axis manual stage" },
@@ -655,7 +697,7 @@ export const machineDetail = {
         title: "480 Manual Prober",
         model: "JKMPCM18",
         img: manual_480,
-        video: "http://mempro.myqnapcloud.com:85/prober.mp4",
+        video: "https://mempro.myqnapcloud.com:85/prober.mp4",
         features: [
           { img: blueprint, text: "~Ø480" },
           { img: xy_axis, text: "X, Y-axis manual stage" },
@@ -676,7 +718,7 @@ export const machineDetail = {
         title: "520 Manual Prober",
         model: "JKAP-520",
         img: manual_520,
-        video: "http://mempro.myqnapcloud.com:85/prober.mp4",
+        video: "https://mempro.myqnapcloud.com:85/prober.mp4",
         features: [
           { img: blueprint, text: "~Ø520" },
           { img: xy_axis, text: "X, Y-axis manual stage" },
@@ -704,11 +746,11 @@ export const machineDetail = {
         title: "Mask Film Punching Machine",
         model: "JKPM220",
         img: punching,
-        video: "http://mempro.myqnapcloud.com:85/mask.mp4",
+        video: "https://mempro.myqnapcloud.com:85/mask.mp4",
         features: [
-          { text: "saved coordinate CSV file" },
-          { text: "Achieves accuracy of ±0.005 μm" },
-          { text: "real-time display" },
+          { img: csv, text: "saved coordinate CSV file" },
+          { img: achieves, text: "Achieves accuracy of ±0.005 μm" },
+          { img: display, text: "real-time display" },
         ],
         subTitle: "Achieves a position accuracy of ±0.005 μm",
         des: "Our mask film punching machine resolves these technical challenges efficiently,providing precise and accurate punching operations required for creating mask films that align with the needle array on the Probe card, ensuring accurate inspection of each needle based on the wafer's pad coordinates.",
@@ -732,11 +774,11 @@ export const machineDetail = {
         title: "MRC Contact Machine",
         model: "JKACM-3030",
         img: mrc_contact,
-        video: "http://mempro.myqnapcloud.com:85/rubber.mp4",
+        video: "https://mempro.myqnapcloud.com:85/rubber.mp4",
         features: [
-          { text: "Individual Recipe Application" },
-          { text: "Fast Tact Time" },
-          { text: "User-Friendly Interface" },
+          { img: recipe, text: "Individual Recipe Application" },
+          { img: tacktime, text: "Fast Tact Time" },
+          { img: easy, text: "User-Friendly Interface" },
         ],
         subTitle: "US precision multimeter for accuracy",
         des: "The automatic alignment system, utilizes an aligning camera, to facilitate individualized model managemen through separate recipe application. Real-time job monitoring via side camera allows for instant production status checks. With an average measurement time of 0.25 seconds per bump, the system operates fully automatic after product loading. The model-specific indexing operation introduces horizontal and vertical probe auto-adaptive system, ensuring exceptional efficiency and accuracy.",
@@ -752,11 +794,11 @@ export const machineDetail = {
         title: "Multi Auto Contact Machine",
         model: "JKMACM-220",
         img: multi_auto,
-        video: "http://mempro.myqnapcloud.com:85/rubber.mp4",
+        video: "https://mempro.myqnapcloud.com:85/rubber.mp4",
         features: [
-          { text: "Individual Recipe Application" },
-          { text: "Fast Tact Time" },
-          { text: "User-Friendly Interface" },
+          { img: recipe, text: "Individual Recipe Application" },
+          { img: tacktime, text: "Fast Tact Time" },
+          { img: easy, text: "User-Friendly Interface" },
         ],
         subTitle: "Measures two bumps simultaneously with automatic alignment",
         des: "Achieving a swift 0.25 second average measurement for each bump with a fully automatic system, it enhances efficiency through a model-specific indexing operation. The system excels in temperature management with a 120-degree evaluation system and a water-cooled chiller. Pin-to-pin inspection enables the force and contact resistance evaluation of individual pins of the rubber and socket contacts, coupled with automatic C.C.C testing.",
@@ -772,11 +814,11 @@ export const machineDetail = {
         title: "Socket Aging Machine",
         model: "JKMAM-230",
         img: aging,
-        video: "http://mempro.myqnapcloud.com:85/rubber.mp4",
+        video: "https://mempro.myqnapcloud.com:85/rubber.mp4",
         features: [
-          { text: "Individual Recipe Application" },
-          { text: "Fast Tact Time" },
-          { text: "User-Friendly Interface" },
+          { img: recipe, text: "Individual Recipe Application" },
+          { img: tacktime, text: "Fast Tact Time" },
+          { img: easy, text: "User-Friendly Interface" },
         ],
         subTitle: "Reduce bump surface contact resistance after UV exposure",
         des: "It can simultaneously handle three rubber sockets with three Z-Axes, and has the capability to mount 21 products on two tables which allows for cross-linking operations. Additionally, it is equipped with three loading cells with a maximum weight of 50kg each, it automatically records the load’s value during the O.D application, thus achieving a 5um positional accuracy for the X, Y, and Z-Axes. The implementation of a force overload prevention ensures stable operations. It guarantees reliable performance even under high-load conditions.",
@@ -800,10 +842,13 @@ export const machineDetail = {
         title: "Probe C.C.C Tester",
         model: "JKTT-50",
         img: ccc,
-        video: "http://mempro.myqnapcloud.com:85/tester.mp4",
+        video: "https://mempro.myqnapcloud.com:85/tester.mp4",
         features: [
-          { text: "Force, Current, Resistance and Voltage Evaluation" },
-          { text: "real-time video" },
+          {
+            img: evalution,
+            text: "Force, Current, Resistance and Voltage Evaluation",
+          },
+          { img: display, text: "real-time video" },
         ],
         subTitle:
           "Perfect for users seeking a product with current carrying capacity",
@@ -820,10 +865,10 @@ export const machineDetail = {
         title: "Probe Life Cycle Tester",
         model: "JKACM-8080",
         img: lifeCycle,
-        video: "http://mempro.myqnapcloud.com:85/tester.mp4",
+        video: "https://mempro.myqnapcloud.com:85/tester.mp4",
         features: [
-          { text: "contact at 300 cycles / m" },
-          { text: "real-time video" },
+          { img: contact, text: "contact at 300 cycles / m" },
+          { img: display, text: "real-time video" },
         ],
         subTitle: "Full-contact function Z-axis at up to 300 cycles/min",
         des: "It allows for temperature evaluations up to 150 degrees and automatically stores pin-to-pin force data. To enhance testing accuracy by blocking external influences, an external case is applied. Users can monitor real-time operations with in the enclosed environment through the vision system.",
@@ -847,8 +892,11 @@ export const machineDetail = {
         title: "R-Caulking Machine",
         model: "JKRC-2045",
         img: r,
-        video: "http://mempro.myqnapcloud.com:85/pogo.mp4",
-        features: [{ text: "20 Pogo Pin / jig" }, { text: "real-time video" }],
+        video: "https://mempro.myqnapcloud.com:85/pogo.mp4",
+        features: [
+          { img: pogopin20, text: "20 Pogo Pin / jig" },
+          { img: display, text: "real-time video" },
+        ],
         subTitle: "Automated caulking of R points on fasteners",
         des: "It incorporates an automatic alignment function using VISION technology. Real-time job monitoring is enabled through the application of a side camera. Each jig is equipped to handle 20 fasteners, ensuring efficient processing. With an average processing time of less than 1 second per unit, this machine guarantees rapid and precise operations.",
         spc: [
@@ -863,10 +911,10 @@ export const machineDetail = {
         title: "Roll Caulking Machine",
         model: "JKRM-220",
         img: roll,
-        video: "http://mempro.myqnapcloud.com:85/pogo.mp4",
+        video: "https://mempro.myqnapcloud.com:85/pogo.mp4",
         features: [
-          { text: "Adaptable to a fine-pitch product" },
-          { text: "real-time video" },
+          { img: finepitch, text: "Adaptable to a fine-pitch product" },
+          { img: display, text: "real-time video" },
         ],
         subTitle: "Automates caulking, with a camera monitoring quality",
         des: "It can process one fastener per operation ,with an average processing time of less than 5 seconds, ensuring both speed and precision. The utilization of a linear gauge allows for easy control of tool processing depth, and the tool attachment and  detachment are user-friendly. Moreover,it is adaptable to fine-pitch products, meeting various job requirements.",
@@ -975,11 +1023,11 @@ export const itemsDetail = {
       features: [
         {
           text: "fine surface treatment",
-          icon: diamond_features1,
+          icon: etching_features1,
         },
         {
           text: "short delivery period ",
-          icon: diamond_features2,
+          icon: etching_features2,
         },
       ],
       material: [
@@ -1283,6 +1331,10 @@ export const itemsDetail = {
           },
         ],
       },
+      applications: [
+        { text: "Display Driver Chip", img: displayImg },
+        { text: "Logic", img: logicImg },
+      ],
     },
   },
 
@@ -1441,22 +1493,22 @@ export const itemsDetail = {
       {
         system: "non-memory",
         type: "vertical",
-        needle: ["wire", "short", "cobra", "pems"],
+        needle: ["wire", "short", "cobra", "PEMS"],
       },
       {
         system: "non-memory",
         type: "CIS",
-        needle: ["short", "cobra", "pems"],
+        needle: ["short", "cobra", "PEMS"],
       },
       {
         system: "memory",
         type: "NANAD Flash",
-        needle: ["pems"],
+        needle: ["PEMS"],
       },
       {
         system: "memory",
         type: "DRAM",
-        needle: ["pems"],
+        needle: ["PEMS"],
       },
     ],
     contents: {
@@ -1695,7 +1747,7 @@ export const itemsDetail = {
         ],
       },
       pems: {
-        img: [pem01, pem02, pem03],
+        img: [pemsImg],
         features: [
           {
             text: "Made of alloy metal",
@@ -1703,11 +1755,11 @@ export const itemsDetail = {
           },
           {
             text: "Superior physical / perfomance",
-            icon: diamond_features2,
+            icon: pems_features2,
           },
           {
             text: "variety of tapered shapes",
-            icon: diamond_features3,
+            icon: pems_features3,
           },
         ],
         spec: [
@@ -1745,13 +1797,13 @@ export const itemsDetail = {
 
         shape: [
           {
-            title: "top",
+            title: "Top Shape",
             text: "Implements stopper",
             img: topShape,
           },
 
           {
-            title: "tip",
+            title: "Tip Shape",
             text: "Various Shape of Contact Part",
             img: tipShape,
           },

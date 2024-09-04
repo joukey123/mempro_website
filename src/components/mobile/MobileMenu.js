@@ -211,19 +211,21 @@ function MobileMenu({ onData }) {
                         <Collapse in={openParts}>
                           {selectedSubcategories && (
                             <Subcategories>
-                              {selectedSubcategories.map((sub, index) => (
-                                <Link
-                                  to={
-                                    category.type &&
-                                    `/${category.link}/${category.type}/${sub.link}`
-                                  }
-                                  key={index}
-                                >
-                                  <li style={{ fontWeight: 100 }}>
-                                    {sub.name}
-                                  </li>
-                                </Link>
-                              ))}
+                              {selectedSubcategories.map((sub, index) =>
+                                sub.name === "sanding" ? null : (
+                                  <Link
+                                    to={
+                                      category.type &&
+                                      `/${category.link}/${category.type}/${sub.link}`
+                                    }
+                                    key={index}
+                                  >
+                                    <li style={{ fontWeight: 100 }}>
+                                      {sub.name}
+                                    </li>
+                                  </Link>
+                                )
+                              )}
                             </Subcategories>
                           )}
                         </Collapse>

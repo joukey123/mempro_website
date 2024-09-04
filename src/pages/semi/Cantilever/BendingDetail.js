@@ -10,7 +10,12 @@ import {
   TableRow,
   Paper,
 } from "@mui/material";
-const Wrapper = styled.div``;
+import useAnimateOnInView from "../../../Hook/useAnimationOnInView";
+import { motion } from "framer-motion";
+
+const Wrapper = styled(motion.div)``;
+
+const MotionTableContainer = motion(TableContainer);
 
 const StyledTableCell = styled(TableCell)`
   && {
@@ -42,7 +47,7 @@ const StyledTableRow = styled(TableRow)(({ index }) => ({
     // }),
   },
 }));
-const StructureWarpper = styled.div`
+const StructureWarpper = styled(motion.div)`
   width: 100%;
   max-width: 1100px;
   height: 500px;
@@ -97,6 +102,17 @@ function BendingDetail({ contents }) {
   const bending = contents.bending;
   const [specIndex, setSpecIndex] = useState();
   const [specId, setSpecId] = useState();
+  const {
+    ref: boxRef,
+    controls: boxControls,
+    animateVariants: boxVariants,
+  } = useAnimateOnInView(0, 0.3);
+  const {
+    ref: childRef,
+    controls: childControls,
+    animateVariants: childVariants,
+  } = useAnimateOnInView(0, 0.3);
+
   const handleSpecOver = (index, id) => {
     setSpecIndex(index);
     setSpecId(id);
@@ -108,7 +124,12 @@ function BendingDetail({ contents }) {
 
   return (
     <Wrapper>
-      <StructureWarpper>
+      <StructureWarpper
+        ref={boxRef}
+        initial="hidden"
+        animate={boxControls}
+        variants={boxVariants(0.3)}
+      >
         <NeedleImg src={bending.img} />
         <BendinInfo hover={specId} />
       </StructureWarpper>
@@ -134,7 +155,14 @@ function BendingDetail({ contents }) {
           </div>
         ))}
       </BendingSpecWrapper> */}
-      <TableContainer component={Paper} sx={{ marginTop: "10px" }}>
+      <MotionTableContainer
+        component={Paper}
+        sx={{ marginTop: "10px", whiteSpace: "nowrap" }}
+        ref={childRef}
+        initial="hidden"
+        animate={childControls}
+        variants={childVariants(0.7)}
+      >
         <Table>
           <TableBody>
             {bending.spec.map((item, index) => (
@@ -178,7 +206,7 @@ function BendingDetail({ contents }) {
             ))}
           </TableBody>
         </Table>
-      </TableContainer>
+      </MotionTableContainer>
     </Wrapper>
   );
 }

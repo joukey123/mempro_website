@@ -1,5 +1,6 @@
 import Model from "./Model";
 import canti1 from "../../../src/img/stiffener/canti1.gltf";
+import { useMediaQuery } from "@mui/material";
 
 function Canti1Model() {
   return (

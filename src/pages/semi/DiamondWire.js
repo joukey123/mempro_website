@@ -265,6 +265,7 @@ const Step1 = styled(motion.img)`
   height: 40%;
   position: absolute;
   visibility: ${(props) => props.$isZoom && "hidden"};
+  left: 29%;
   @media (max-width: 1023px) {
     top: 50%;
     left: 50%;
@@ -370,14 +371,16 @@ function DiamondWire() {
             >
               {isZoom ? <ZoomOutIcon /> : <ZoomInIcon />}
             </Fab>
-            <Fab
-              color="primary"
-              aria-label="add"
-              onClick={handlePlayAnimtion}
-              sx={{ marginBottom: 1 }}
-            >
-              <PlayArrowIcon />
-            </Fab>
+            {isZoom ? null : (
+              <Fab
+                color="primary"
+                aria-label="add"
+                onClick={handlePlayAnimtion}
+                sx={{ marginBottom: 1 }}
+              >
+                <PlayArrowIcon />
+              </Fab>
+            )}
 
             {/* <ZoomBtn onClick={handlePlayAnimtion}>
               <i class="fa-solid fa-arrows-rotate"></i>

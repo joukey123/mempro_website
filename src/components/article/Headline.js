@@ -27,6 +27,8 @@ const Title = styled.h1`
   text-transform: capitalize;
   @media (max-width: 1023px) {
     margin-bottom: 10px;
+    font-size: 36px;
+    letter-spacing: -1.5px;
   }
 `;
 const Span = styled.span`

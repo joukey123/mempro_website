@@ -323,43 +323,48 @@ function Contact() {
                     }}
                   >
                     <p>
-                      ※ 개인정보 수집 및 이용에 대한 안내 고객님의 개인정보를
-                      안전하게 보호하고자 아래와 같이 개인정보수집 및 이용에
-                      대한 약관을 동의 받고 있습니다.
+                      <b>
+                        ※ Notice on the Collection and Use of Personal
+                        Information
+                      </b>
                       <br />
-                      미동의 시 고객문의 등록이 불가함을 알려드립니다.
+                      <br />
+                      To protect your personal information securely, we request
+                      your agreement to the following terms regarding the
+                      collection and use of personal information. Please note
+                      that if you do not agree, you will not be able to register
+                      a customer inquiry.
                       <br /> <br />
-                      1. 수집하는 개인정보 항목
+                      1. Personal Information Collected
                       <br />
-                      회사는 고객문의에 대해 보다 정확하고 빠른 대응을 위해
-                      아래와 같은
+                      To respond more accurately and promptly to customer
+                      inquiries, we collect the following personal information:
                       <br />
-                      개인정보를 수집하고 있습니다.
+                      <b>Collected Items</b> : Customer name, company name,
+                      email, contact number
                       <br />
-                      - 수집항목 : 고객명, 업체명, 이메일, 연락처
-                      <br />
-                      - 개인정보 수집방법 : 홈페이지 문의 및 상담
+                      <b>Collection Method</b> : Website inquiries and
+                      consultations
                       <br /> <br />
-                      2. 개인정보의 수집 및 이용목적
+                      2. Purpose of Collecting and Using Personal Information
                       <br />
-                      본 사이트는 수집한 개인정보를 다음의 목적을 위해
-                      활용합니다.
+                      This site uses the collected personal information for the
+                      following purposes:
                       <br />
-                      (개인 식별, 불만처리 등 민원처리, 고지사항 전달)
+                      (Personal identification, handling complaints, delivering
+                      notices, etc.)
                       <br /> <br />
-                      3. 개인정보의 보유 및 이용기간
+                      3. Retention and Use Period of Personal Information
                       <br />
-                      원칙적으로, 개인정보 수집 및 이용목적이 달성된 후에는 해당
-                      정보를
+                      In principle, personal information is destroyed
+                      immediately after the purpose of its collection and use
+                      has been achieved. However, the following information will
+                      be retained for the period specified below for the stated
+                      reasons:
                       <br />
-                      지체 없이 파기합니다. 단, 다음의 정보에 대해서는 아래의
-                      이유로
+                      <b>Retention Basis</b>: Document Management Regulations
                       <br />
-                      명시한 기간 동안 보존합니다.
-                      <br />
-                      보존 근거 : 문서관리규정
-                      <br />
-                      보존 기간 : 3년
+                      <b>Retention Period</b>: 3 years
                     </p>
                   </div>
                   <FormGroup>
@@ -374,7 +379,7 @@ function Contact() {
                         />
                       }
                       sx={{ margin: 1 }}
-                      label="동의합니다"
+                      label="I agree"
                     />
                   </FormGroup>
                 </div>

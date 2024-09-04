@@ -15,8 +15,10 @@ import {
   TableRow,
   Paper,
 } from "@mui/material";
+import Application from "../../../components/Application";
+import useAnimateOnInView from "../../../Hook/useAnimationOnInView";
 const Wrapper = styled.div`
-  padding: 0 50px;
+  margin-top: 20px;
   @media (max-width: 1023px) {
     padding: 0;
   }
@@ -46,7 +48,7 @@ const StructureWarpper = styled(motion.div)`
   flex-direction: column;
   margin-bottom: 30px;
   @media (max-width: 1023px) {
-    height: 300px;
+    height: 250px;
     padding: 20px;
   }
 `;
@@ -86,6 +88,10 @@ const StyledTableCell = styled(TableCell)`
     text-align: center;
     border-right: 1px solid #dfdfdf;
     font-size: 16px;
+    white-space: nowrap;
+    @media (max-width: 1023px) {
+      font-size: 14px;
+    }
   }
 `;
 

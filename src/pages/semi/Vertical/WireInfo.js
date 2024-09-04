@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
 const SVG = styled.svg`
+  width: 100%;
   max-width: 900px;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -108%) scale(1.8);
+  transform: translate(-50%, -70%);
 `;
 
 const Line = styled.line`

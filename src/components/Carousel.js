@@ -6,17 +6,27 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Collapse, useMediaQuery } from "@mui/material";
 import ContentsTitle from "./ContentsTitle";
-import { transform } from "framer-motion";
 
+import { motion } from "framer-motion";
+import styled from "styled-components";
+import useAnimateOnInView from "../Hook/useAnimationOnInView";
+const CarouselBox = styled(motion.div)``;
+const MotionBox = motion(Box);
 function Carousel({ contents }) {
   const images = contents.sem;
   const theme = useTheme();
   const [activeStep, setActiveStep] = useState(0);
   const maxSteps = images.length;
   const [expendClicked, setExpendClicked] = useState(true);
+
+  const {
+    ref: childRef,
+    controls: childControls,
+    animateVariants: childVariants,
+  } = useAnimateOnInView(0, 0.3);
 
   const showContent = (show) => {
     setExpendClicked(show);
@@ -42,10 +52,10 @@ function Carousel({ contents }) {
   const isMobile = useMediaQuery("(max-width: 1023px)");
 
   return (
-    <div className="carousel">
+    <CarouselBox>
       <ContentsTitle title={"SEM"} onData={showContent} />
       <Collapse in={expendClicked}>
-        <Box
+        <MotionBox
           sx={{
             maxWidth: 1200,
             flexGrow: 1,
@@ -55,6 +65,10 @@ function Carousel({ contents }) {
             justifyContent: "center",
             position: "relative",
           }}
+          ref={childRef}
+          initial="hidden"
+          animate={childControls}
+          variants={childVariants(0.5)}
         >
           <Box
             component="img"
@@ -122,9 +136,9 @@ function Carousel({ contents }) {
               </Button>
             }
           />
-        </Box>
+        </MotionBox>
       </Collapse>
-    </div>
+    </CarouselBox>
   );
 }
 export default Carousel;

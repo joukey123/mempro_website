@@ -13,6 +13,9 @@ const SVG = styled.svg`
   @media (max-width: 1023px) {
     width: 95%;
   }
+  @media (max-width: 500px) {
+    width: 90%;
+  }
 `;
 const Line = styled.line`
   stroke: ${(props) =>

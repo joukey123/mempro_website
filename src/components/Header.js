@@ -11,20 +11,21 @@ import MenuIcon from "@mui/icons-material/Menu";
 import MobileMenu from "./mobile/MobileMenu";
 import Collapse from "@mui/material/Collapse";
 import { useMediaQuery } from "@mui/material";
+import Banner from "./Banner";
 
 const HeaderWrapper = styled.div`
-  position: fixed;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, 0%);
-  z-index: 9999;
+  /* position: fixed; */
+  /* top: 0px; */
+  /* left: 50%; */
+  /* transform: translate(-50%, 0%); */
+  /* z-index: 9999; */
   width: 100%;
   height: 80px;
   max-width: 1280px;
   display: flex;
   align-items: center;
-  box-shadow: ${(props) =>
-    props.$isMain ? null : "0px 3px 1px -2px rgba(0, 0, 0, 0.2)"};
+  /* box-shadow: ${(props) =>
+    props.$isMain ? null : "0px 2px 4px rgba(0, 0, 0, 0.08)"}; */
   color: ${(props) =>
     props.$isMain ? props.theme.colors.white : props.theme.colors.black};
   background-color: ${(props) =>
@@ -105,7 +106,9 @@ function Header() {
   const [hoveredLiWidth, setHoveredLiWidth] = useState(null);
   const [openMobileMenu, setOpenMobileMenu] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+
   const isMobile = useMediaQuery("(max-width: 1023px)");
+
   const handleDataFromChild = (data) => {
     setOpenMobileMenu(data);
   };
@@ -150,78 +153,105 @@ function Header() {
   };
 
   return (
-    <HeaderWrapper $isMain={isMain} $isScrolled={isScrolled && isMain}>
-      <LogoWrapper>
-        <Link to={"/"}>
-          <Logo $isMain={isMain} />
-        </Link>
-      </LogoWrapper>
-      <NavWrapper>
-        <Nav>
-          {items.map((item, index) => (
-            <NavMenu
-              key={index}
-              onMouseOver={(event) => handleMouseOver(index, event)}
-              onMouseLeave={
-                item.link === "about" || item.link === "contact"
-                  ? () => handleMouseOut()
-                  : null
-              }
-              style={{ position: "relative" }}
-              $isSelect={location.pathname.split("/")[1] === item.link}
-            >
-              {(item.category === "semiconductor" ||
-                item.category === "contact" ||
-                item.category === "about MEMPro") && (
-                <Link
-                  to={
-                    item.type ? `/${item.link}/${item.type}` : `/${item.link}`
-                  }
-                  style={{
-                    color: activeMenu === index ? "inherit" : "inherit",
-                    fontWeight: activeMenu === index && "bold",
-                  }}
-                >
-                  {item.category}
-                </Link>
-              )}
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        position: "fixed",
+        width: "100%",
+        zIndex: "9999",
+      }}
+    >
+      <Banner
+        text={"Explore our full range of products and services."}
+        linkText={"Click Here to Access Our Catalog"}
+        link={"https://mempro.myqnapcloud.com:85/"}
+        color={"#eceb98"}
+        fontColor={"black"}
+      />
+      <Banner
+        text={"2024 SEMICON Taiwan. Booth S7948, 4th, HALL 2"}
+        linkText={"Click Here! Booth"}
+        link={"https://mempro.myqnapcloud.com:8081/semiconMap.png"}
+        color={"#574298"}
+        fontColor={"white"}
+      />
 
-              <Submenu
-                subcategories={item.subcategories}
-                handleMouseOut={handleMouseOut}
-                hoveredLiWidth={hoveredLiWidth}
-                isVisible={activeMenu === index && item.subcategories}
-                categoryLink={item.link}
-                type={item.type}
-              />
+      <HeaderWrapper $isMain={isMain} $isScrolled={isScrolled && isMain}>
+        <LogoWrapper>
+          <Link to={"/"}>
+            <Logo $isMain={isMain} />
+          </Link>
+        </LogoWrapper>
+        <NavWrapper>
+          <Nav>
+            {items.map((item, index) => (
+              <NavMenu
+                key={index}
+                onMouseOver={(event) => handleMouseOver(index, event)}
+                onMouseLeave={
+                  item.link === "about" || item.link === "contact"
+                    ? () => handleMouseOut()
+                    : null
+                }
+                style={{ position: "relative" }}
+                $isSelect={location.pathname.split("/")[1] === item.link}
+              >
+                {(item.category === "semiconductor" ||
+                  item.category === "contact" ||
+                  item.category === "about MEMPro") && (
+                  <Link
+                    to={
+                      item.type ? `/${item.link}/${item.type}` : `/${item.link}`
+                    }
+                    style={{
+                      color: activeMenu === index ? "inherit" : "inherit",
+                      fontWeight: activeMenu === index && "bold",
+                    }}
+                  >
+                    {item.category}
+                  </Link>
+                )}
 
-              {/* {item.subcategories && (
+                <Submenu
+                  subcategories={item.subcategories}
+                  handleMouseOut={handleMouseOut}
+                  hoveredLiWidth={hoveredLiWidth}
+                  isVisible={activeMenu === index && item.subcategories}
+                  categoryLink={item.link}
+                  type={item.type}
+                />
+
+                {/* {item.subcategories && (
                 <Submenu
                   subcategories={item.subcategories}
                   hoveredLiWidth={hoveredLiWidth}
                 />
               )} */}
-            </NavMenu>
-          ))}
-        </Nav>
-      </NavWrapper>
+              </NavMenu>
+            ))}
+          </Nav>
+        </NavWrapper>
 
-      <LanguageWrapper>
-        <Language />
-      </LanguageWrapper>
+        <LanguageWrapper>
+          <Language />
+        </LanguageWrapper>
 
-      {/* {openMobileMenu && <MobileMenu onData={handleDataFromChild} />}*/}
-      {isMobile ? (
-        <>
-          <MenuIconWrapper onClick={handleOpenMobileMenu}>
-            <MenuIcon fontSize="large" />
-          </MenuIconWrapper>
-          <Collapse orientation="horizontal" in={openMobileMenu}>
-            <MobileMenu onData={handleDataFromChild} />
-          </Collapse>
-        </>
-      ) : null}
-    </HeaderWrapper>
+        {/* {openMobileMenu && <MobileMenu onData={handleDataFromChild} />}*/}
+        {isMobile ? (
+          <>
+            <MenuIconWrapper onClick={handleOpenMobileMenu}>
+              <MenuIcon fontSize="large" />
+            </MenuIconWrapper>
+            <Collapse orientation="horizontal" in={openMobileMenu}>
+              <MobileMenu onData={handleDataFromChild} />
+            </Collapse>
+          </>
+        ) : null}
+      </HeaderWrapper>
+    </div>
   );
 }
 

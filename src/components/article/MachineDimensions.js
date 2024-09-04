@@ -3,7 +3,7 @@ import Grid from "@mui/material/Unstable_Grid2"; // Grid version 2
 import Box from "@mui/material/Box";
 import { useState } from "react";
 
-import ContentsTitle from "./ContentsTitle";
+import ContentsTitle from "../ContentsTitle";
 import Collapse from "@mui/material/Collapse";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -12,6 +12,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { motion } from "framer-motion";
+import useAnimateOnInView from "../../Hook/useAnimationOnInView";
 
 const StyledTableHead = styled(TableHead)`
   && {
@@ -25,7 +27,7 @@ const StyledTableCell = styled(TableCell)`
     font-size: 16px;
   }
 `;
-
+const MotionTableContainer = motion(TableContainer);
 function MachineDimensions({ data, maxWidth }) {
   const [expendClicked, setExpendClicked] = useState(true);
   console.log(data, "data");
@@ -35,14 +37,22 @@ function MachineDimensions({ data, maxWidth }) {
   const hasProbeCardSize = data.find(
     (item) => item.probeCardSize && item.probeCardSize.trim() !== ""
   );
-
+  const {
+    ref: boxRef,
+    controls: boxControls,
+    animateVariants: boxVariants,
+  } = useAnimateOnInView(0, 0.3);
   return (
     <div className="dimensions">
       <ContentsTitle title={"Dimensions"} onData={showContent} />
       <Collapse in={expendClicked}>
-        <TableContainer
+        <MotionTableContainer
           component={Paper}
-          sx={{ width: "95%", margin: "0 auto" }}
+          sx={{ width: "95%", margin: "0 auto", whiteSpace: "nowrap" }}
+          ref={boxRef}
+          initial="hidden"
+          animate={boxControls}
+          variants={boxVariants(0.5)}
         >
           <Table aria-label="custom table">
             <StyledTableHead>
@@ -85,7 +95,7 @@ function MachineDimensions({ data, maxWidth }) {
               ))}
             </TableBody>
           </Table>
-        </TableContainer>
+        </MotionTableContainer>
       </Collapse>
     </div>
   );

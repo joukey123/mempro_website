@@ -8,6 +8,7 @@ import { useState } from "react";
 import { add } from "../../data";
 import build from "../../img/build.svg";
 import { useMediaQuery } from "@mui/material";
+import useAnimateOnInView from "../../Hook/useAnimationOnInView";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -17,6 +18,9 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media (max-width: 1023px) {
+    margin-top: 50px;
+  }
 `;
 const MapWrapper = styled.div`
   width: 100%;
@@ -24,7 +28,11 @@ const MapWrapper = styled.div`
   height: 500px;
   margin: 0 auto;
   position: relative;
-  overflow-y: hidden;
+  @media (max-width: 1023px) {
+    height: 250px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
 `;
 const Map = styled.div`
   background: url(${worldmap}) no-repeat top center;
@@ -72,10 +80,14 @@ const BtnWrapper = styled.div`
   button:last-child {
     margin-left: 20px;
   }
+  @media (max-width: 1023px) {
+    margin-bottom: 20px;
+  }
 `;
 const Des = styled.p`
-  width: 39%;
   text-align: center;
+  font-weight: 300;
+  letter-spacing: -0.5px;
 `;
 const BlackBox = styled.div`
   background-color: ${(props) => props.theme.colors.black};
@@ -86,7 +98,7 @@ const BlackBox = styled.div`
   text-align: center;
   line-height: 40px;
   font-weight: 500;
-  margin-bottom: 35px;
+  margin-bottom: 15px;
 `;
 
 const OfficeAddrss = styled.div`
@@ -115,10 +127,26 @@ const OfficeAddrss = styled.div`
   }
 `;
 const OfficeMotionBox = styled(motion.div)``;
+const Partners = styled(motion.div)`
+  @media (max-width: 1023px) {
+    position: absolute;
+    top: -2%;
+    left: 107%;
+    transform: scale(0.5);
+  }
+`;
 
+const Offices = styled(motion.div)`
+  @media (max-width: 1023px) {
+    position: absolute;
+    top: -2%;
+    left: 107%;
+    transform: scale(0.5);
+  }
+`;
 function Office() {
-  const [isTrade, setIsTrade] = useState(false);
-  const [isOffice, setIsOffice] = useState(true);
+  const [isTrade, setIsTrade] = useState(true);
+  const [isOffice, setIsOffice] = useState(false);
 
   const handleClick = (event) => {
     if (event.target.innerText === "Trade Partners") {
@@ -136,14 +164,22 @@ function Office() {
     )}`;
     window.open(url, "_blank");
   };
+  const isMobile = useMediaQuery("(max-width: 1023px)");
+
+  const {
+    ref: boxRef,
+    controls: boxControls,
+    animateVariants: boxVariants,
+  } = useAnimateOnInView(0, 0.3);
+
   return (
     <>
       <Wrapper>
         <BlackBox>Office & Trade Partners</BlackBox>
         <Des>
           {isTrade
-            ? "멤프로와 현재 거래하고 있는 파트너입니다."
-            : "멤프로의 본사와 해외 사업장을 소개합니다."}
+            ? "The partners currently working with Mempro."
+            : "Mempro’s headquarters and international offices."}
         </Des>
         <BtnWrapper>
           <Btn
@@ -161,7 +197,7 @@ function Office() {
           <Map />
           <AnimatePresence>
             {isTrade && (
-              <motion.div exit={{ opacity: 0 }}>
+              <Partners exit={{ opacity: 0 }}>
                 {/* korea */}
                 <Pin
                   src={pin}
@@ -305,10 +341,10 @@ function Office() {
                 >
                   USA
                 </Nation>
-              </motion.div>
+              </Partners>
             )}
             {isOffice && (
-              <motion.div exit={{ opacity: 0 }}>
+              <Offices exit={{ opacity: 0 }}>
                 {/* korea */}
                 <OfficePin
                   src={pin}
@@ -337,31 +373,35 @@ function Office() {
                 >
                   Taiwan
                 </OfficeNation>
-              </motion.div>
+              </Offices>
             )}
           </AnimatePresence>
         </MapWrapper>
         <OfficeAddrss>
           {add.map((item, index) => (
-            <div
+            <motion.div
               key={index}
               style={{
                 border: "1px solid rgba(0,0,0,0.1)",
-                padding: 20,
+                padding: isMobile ? "15px" : "20px",
                 borderRadius: 10,
                 boxShadow: "1px 1px 5px rgba(0,0,0,0.05)",
                 margin: 5,
               }}
+              ref={boxRef}
+              initial="hidden"
+              animate={boxControls}
+              variants={boxVariants(index * 0.5)}
             >
               <div
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  marginBottom: 30,
+                  marginBottom: isMobile ? 0 : 30,
                 }}
               >
                 <img src={build} width={40} style={{ marginRight: 15 }} />
-                <div style={{ width: "90%" }}>
+                <div style={{ width: isMobile ? "95%" : "90%" }}>
                   <div
                     style={{ fontSize: 16, marginBottom: 8, fontWeight: 300 }}
                   >
@@ -397,10 +437,27 @@ function Office() {
               >
                 {item.address}
               </div>
-              <div style={{ fontSize: 15, marginTop: 20 }}>
-                {item.mail}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;{item.tell}
+              <div style={{ fontSize: 14, marginTop: isMobile ? 10 : 20 }}>
+                {isMobile ? (
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      marginBottom: 0,
+                    }}
+                  >
+                    <span style={{ marginBottom: 10, fontSize: "14px" }}>
+                      {item.mail}
+                    </span>
+                    <span style={{ fontSize: "14px" }}>{item.tell}</span>
+                  </div>
+                ) : (
+                  <span style={{ whiteSpace: "nowrap" }}>
+                    {item.mail}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;{item.tell}
+                  </span>
+                )}
               </div>
-            </div>
+            </motion.div>
           ))}
         </OfficeAddrss>
       </Wrapper>

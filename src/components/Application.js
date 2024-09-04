@@ -3,15 +3,16 @@ import Grid from "@mui/material/Unstable_Grid2"; // Grid version 2
 import Collapse from "@mui/material/Collapse";
 import { useState } from "react";
 import ContentsTitle from "./ContentsTitle";
-const ApplicationBox = styled.div`
+import useAnimateOnInView from "../Hook/useAnimationOnInView";
+import { motion } from "framer-motion";
+const ApplicationBox = styled(motion.div)`
   margin: 150px 0;
   @media (max-width: 1023px) {
-    margin-top: -50px;
-    margin-bottom: 0px;
+    margin: 0px 0;
   }
 `;
 const ApplicationImg = styled.img`
-  width: 200px;
+  width: ${(props) => (props.$number < 3 ? "450px" : "200px")};
   height: 200px;
   object-fit: cover;
   border-radius: 10px;
@@ -20,6 +21,7 @@ const ApplicationImg = styled.img`
     height: 100px;
   }
 `;
+const MotionGrid = motion(Grid);
 
 const StyledGridContainer = styled(Grid)``;
 function Application({ contents }) {
@@ -27,20 +29,35 @@ function Application({ contents }) {
   const showContent = (show) => {
     setExpendClicked(show);
   };
+
+  const {
+    ref: childRef,
+    controls: childControls,
+    animateVariants: childVariants,
+  } = useAnimateOnInView(0, 0.3);
+
   return (
-    <ApplicationBox className="application">
+    <ApplicationBox>
       <ContentsTitle title={"Application"} onData={showContent} />
       <Collapse in={expendClicked}>
         <StyledGridContainer container spacing={3}>
-          {contents.applications.map((item) => (
-            <Grid
+          {contents.applications.map((item, index) => (
+            <MotionGrid
               xs={6}
               md={12 / contents.applications.length}
               sx={{ textAlign: "center" }}
+              key={index}
+              ref={childRef}
+              initial="hidden"
+              animate={childControls}
+              variants={childVariants(index * 0.3)}
             >
-              <ApplicationImg src={item.img} />
+              <ApplicationImg
+                src={item.img}
+                $number={contents.applications.length}
+              />
               <div>{item.text}</div>
-            </Grid>
+            </MotionGrid>
           ))}
         </StyledGridContainer>
       </Collapse>

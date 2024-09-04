@@ -21,7 +21,7 @@ import Background from "three/examples/jsm/renderers/common/Background.js";
 import { useMediaQuery } from "@mui/material";
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
-import VerticalAnimationMobile from "../Cantilever/VerticalAnimationMobile";
+import VerticalAnimationMobile from "./VerticalAnimationMobile";
 const Wrapper = styled.div`
   width: 100%;
   max-width: 1280px;
@@ -323,10 +323,10 @@ function Vertical() {
             <Button onClick={() => navigate("/semi/parts/stiffener")}>
               Stiffener
             </Button>
-            <Button onClick={() => navigate("/semi/parts/cprobe")}>
+            <Button onClick={() => navigate("/semi/parts/vprobe")}>
               Cobra, Wire, Short, PEMS
             </Button>
-            <Button onClick={() => navigate("/semi/parts/tube")}>
+            <Button onClick={() => navigate("/semi/parts/ceramic")}>
               Ceramic Hole / Plate
             </Button>
           </ButtonGroup>
@@ -338,7 +338,9 @@ function Vertical() {
 
             {isMobile ? (
               <VerticalAnimationMobile isAnimation={playAnimation} />
-            ) : (
+            ) : null}
+
+            {/* (
               <>
                 <Part
                   src={images.part1}
@@ -455,7 +457,7 @@ function Vertical() {
                   $isZoom={isZoom}
                 />
               </>
-            )}
+            ) */}
 
             {!isMobile && (
               <Line style={{}} $isPlay={playAnimation} $isZoom={isZoom}>
@@ -526,7 +528,7 @@ function Vertical() {
                     animate={{ visibility: "visible" }}
                     transition={{ delay: 1.5 }}
                   >
-                    <Link to={`/semi/parts/vstiffener`}>
+                    <Link to={`/semi/parts/stiffener`}>
                       <StyledChip label="Stiffener" />
                     </Link>
                   </motion.span>
@@ -581,7 +583,7 @@ function Vertical() {
             )}
 
             {/* vertical animation start */}
-            {playAnimation && !isMobile && (
+            {!isMobile && (
               <>
                 <Part
                   src={images.part1}
@@ -592,7 +594,7 @@ function Vertical() {
                     zIndex: 10,
                   }}
                   animate={
-                    triggerAnimation
+                    playAnimation && !isMobile
                       ? {
                           translateX: 200 - 150,
                           translateY: -100 + 230 + 50,
@@ -611,16 +613,16 @@ function Vertical() {
                     translateX: 120,
                     translateY: 20 + 50,
                     scale: 0.2,
-                    opacity: 1,
+                    opacity: 0.2,
                     zIndex: 9,
                   }}
                   animate={
-                    triggerAnimation
+                    playAnimation && !isMobile
                       ? {
                           translateX: 120 - 85,
                           translateY: 15 + 165 + 50,
                           scale: 0.2,
-                          opacity: 1,
+                          opacity: 0.2,
                           zIndex: 9,
                         }
                       : {}
@@ -634,16 +636,16 @@ function Vertical() {
                     translateX: 100,
                     translateY: 40 + 50,
                     scale: 0.15,
-                    opacity: 1,
+                    opacity: 0.2,
                     zIndex: 8,
                   }}
                   animate={
-                    triggerAnimation
+                    playAnimation && !isMobile
                       ? {
                           translateX: 100 - 70,
                           translateY: 40 + 135 + 50,
                           scale: 0.15,
-                          opacity: 1,
+                          opacity: 0.2,
                           zIndex: 8,
                         }
                       : {}
@@ -659,15 +661,17 @@ function Vertical() {
                     rotate: 5,
                     scale: 0.85,
                     zIndex: 7,
+                    opacity: 0.2,
                   }}
                   animate={
-                    triggerAnimation
+                    playAnimation && !isMobile
                       ? {
                           translateX: 30,
                           translateY: 120 + 20 + 50,
                           rotate: 5,
                           scale: 0.85,
                           zIndex: 7,
+                          opacity: 0.2,
                         }
                       : {}
                   }
@@ -683,7 +687,7 @@ function Vertical() {
                     zIndex: 6,
                   }}
                   animate={
-                    triggerAnimation
+                    playAnimation && !isMobile
                       ? {
                           translateX: -80 + 50,
                           translateY: 300 - 20 + 50,
@@ -701,16 +705,18 @@ function Vertical() {
                     translateX: -120,
                     translateY: 350 + 50,
                     scale: 0.3,
-                    opacity: 1,
+                    opacity: 0.2,
+
                     zIndex: 5,
                   }}
                   animate={
-                    triggerAnimation
+                    playAnimation && !isMobile
                       ? {
                           translateX: -120 + 80,
                           translateY: 350 - 50 + 50,
                           scale: 0.3,
-                          opacity: 1,
+                          opacity: 0.2,
+
                           zIndex: 5,
                         }
                       : {}
@@ -728,7 +734,7 @@ function Vertical() {
                     zIndex: 3,
                   }}
                   animate={
-                    triggerAnimation
+                    playAnimation && !isMobile
                       ? {
                           translateX: -150 + 110,
                           translateY: 380 - 80 + 50,
@@ -751,7 +757,7 @@ function Vertical() {
                     zIndex: 2,
                   }}
                   animate={
-                    triggerAnimation
+                    playAnimation && !isMobile
                       ? {
                           translateX: -180 + 140,
                           translateY: 430 - 110 + 40,
@@ -773,7 +779,7 @@ function Vertical() {
                     opacity: 1,
                   }}
                   animate={
-                    triggerAnimation
+                    playAnimation && !isMobile
                       ? {
                           translateX: -250 + 150,
                           translateY: 410 - 140 + 40,

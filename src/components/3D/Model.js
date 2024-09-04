@@ -1,6 +1,8 @@
 import * as THREE from "three";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import { useEffect, useRef } from "react";
+import { transform } from "framer-motion";
+import { useMediaQuery } from "@mui/material";
 
 const Model = ({
   path,
@@ -13,7 +15,7 @@ const Model = ({
 }) => {
   const gltf = useGLTF(path, true);
   const modelRef = useRef();
-
+  const isMobile = useMediaQuery("max-width: 1023px");
   useEffect(() => {
     if (gltf.scene) {
       // 모델을 참조하여 위치 설정

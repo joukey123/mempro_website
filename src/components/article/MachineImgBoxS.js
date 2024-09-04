@@ -1,6 +1,8 @@
+import { useMediaQuery } from "@mui/material";
 import ReactImageMagnify from "react-image-magnify";
 
 function MachineImgBoxS({ src, alt }) {
+  const isMobile = useMediaQuery("(max-width: 1023px)");
   return (
     <ReactImageMagnify
       {...{

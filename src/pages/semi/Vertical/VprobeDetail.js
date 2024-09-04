@@ -9,6 +9,9 @@ import PemsDetail from "./PemsDetail";
 
 const Wrapper = styled.div`
   padding: 0 50px;
+  @media (max-width: 1023px) {
+    padding: 0px;
+  }
 `;
 
 const TableWrapper = styled.div`
@@ -69,7 +72,7 @@ function VprobeDetail({ needle, contents }) {
       {needle === "short" && (
         <ShortDetail contents={contents.short} needle={needle} />
       )}
-      {needle === "pems" && (
+      {needle === "PEMS" && (
         <PemsDetail contents={contents.pems} needle={needle} />
       )}
     </Wrapper>
