@@ -128,60 +128,62 @@ function Banner({ width }) {
             </Slide>
           ))}
         </div>
-        <ButtonContainer isVisible={isHovered}>
-          <div
-            onClick={prevImgBanner}
-            style={{
-              position: "absolute",
-              left: 0,
-              top: "50%",
-              transform: "translate(0%,-50%)",
-              width: "auto",
-            }}
-            className="preBtn"
-          >
-            <IconButton
-              color="white"
-              sx={{
-                color: "white", // 전체 버튼 색상 설정
-                "& svg": {
-                  color: "inherit", // 아이콘 색상을 부모의 색상으로 설정
-                },
-                "&:hover": {
-                  backgroundColor: "rgba(0,0,0,0.6)",
-                },
+        {bannerItem.length === 1 ? null : (
+          <ButtonContainer isVisible={isHovered}>
+            <div
+              onClick={prevImgBanner}
+              style={{
+                position: "absolute",
+                left: 0,
+                top: "50%",
+                transform: "translate(0%,-50%)",
+                width: "auto",
               }}
+              className="preBtn"
             >
-              <ArrowBackIosNewIcon />
-            </IconButton>
-          </div>
+              <IconButton
+                color="white"
+                sx={{
+                  color: "white", // 전체 버튼 색상 설정
+                  "& svg": {
+                    color: "inherit", // 아이콘 색상을 부모의 색상으로 설정
+                  },
+                  "&:hover": {
+                    backgroundColor: "rgba(0,0,0,0.6)",
+                  },
+                }}
+              >
+                <ArrowBackIosNewIcon />
+              </IconButton>
+            </div>
 
-          <div
-            onClick={nextImgBanner}
-            style={{
-              position: "absolute",
-              right: 0,
-              top: "50%",
-              transform: "translate(0%,-50%)",
-              width: "auto",
-            }}
-          >
-            <IconButton
-              color="white"
-              sx={{
-                color: "white", // 전체 버튼 색상 설정
-                "& svg": {
-                  color: "inherit", // 아이콘 색상을 부모의 색상으로 설정
-                },
-                "&:hover": {
-                  backgroundColor: "rgba(0,0,0,0.6)",
-                },
+            <div
+              onClick={nextImgBanner}
+              style={{
+                position: "absolute",
+                right: 0,
+                top: "50%",
+                transform: "translate(0%,-50%)",
+                width: "auto",
               }}
             >
-              <ArrowForwardIosIcon />
-            </IconButton>
-          </div>
-        </ButtonContainer>
+              <IconButton
+                color="white"
+                sx={{
+                  color: "white", // 전체 버튼 색상 설정
+                  "& svg": {
+                    color: "inherit", // 아이콘 색상을 부모의 색상으로 설정
+                  },
+                  "&:hover": {
+                    backgroundColor: "rgba(0,0,0,0.6)",
+                  },
+                }}
+              >
+                <ArrowForwardIosIcon />
+              </IconButton>
+            </div>
+          </ButtonContainer>
+        )}
       </Warpper>
     </>
   );

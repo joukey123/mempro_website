@@ -171,13 +171,13 @@ function Header() {
         color={"#eceb98"}
         fontColor={"black"}
       />
-      <Banner
+      {/* <Banner
         text={"2024 SEMICON Taiwan. Booth S7948, 4th, HALL 2"}
         linkText={"Click Here! Booth"}
         link={"https://mempro.co.kr/semiconMap.png"}
         color={"#574298"}
         fontColor={"white"}
-      />
+      /> */}
 
       <HeaderWrapper $isMain={isMain} $isScrolled={isScrolled && isMain}>
         <LogoWrapper>

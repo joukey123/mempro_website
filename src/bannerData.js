@@ -7,9 +7,9 @@ export const bannerItem = [
     img: bendingServiecImg,
     link: "/semi/parts/cprobe",
   },
-  {
-    title: "semicon_taiwan_2024",
-    img: semicon2024,
-    link: "https://www.mempro.co.kr/semiconMap.png",
-  },
+  // {
+  //   title: "semicon_taiwan_2024",
+  //   img: semicon2024,
+  //   link: "https://www.mempro.co.kr/semiconMap.png",
+  // },
 ];
