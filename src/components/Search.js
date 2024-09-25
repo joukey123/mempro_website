@@ -1,14 +1,6 @@
-import { Link } from "react-router-dom";
 import { itemsDetail, machineDetail } from "../data";
 import Fuse from "fuse.js";
 import { useState } from "react";
-
-const books = {
-  1: { title: "The Great Gatsby", author: "F. Scott Fitzgerald" },
-  2: { title: "Moby Dick", author: "Herman Melville" },
-  3: { title: "War and Peace", author: "Leo Tolstoy" },
-  4: { title: "Pride and Prejudice", author: "Jane Austen" },
-};
 
 const itemsArray = Object.values(itemsDetail);
 const machinesArray = Object.values(machineDetail);
