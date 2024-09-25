@@ -12,6 +12,7 @@ import MobileMenu from "./mobile/MobileMenu";
 import Collapse from "@mui/material/Collapse";
 import { useMediaQuery } from "@mui/material";
 import TopBanner from "./TopBanner";
+import SeachComponent from "./Search";
 
 const HeaderWrapper = styled.div`
   /* position: fixed; */
@@ -187,6 +188,7 @@ function Header() {
         </LogoWrapper>
         <NavWrapper>
           <Nav>
+            <SeachComponent />
             {items.map((item, index) => (
               <NavMenu
                 key={index}
@@ -210,6 +212,12 @@ function Header() {
                       color: activeMenu === index ? "inherit" : "inherit",
                       fontWeight: activeMenu === index && "bold",
                     }}
+                    onMouseOver={(event) => handleMouseOver(index, event)}
+                    onMouseLeave={
+                      item.link === "about" || item.link === "contact"
+                        ? () => handleMouseOut()
+                        : null
+                    }
                   >
                     {item.category}
                   </Link>
