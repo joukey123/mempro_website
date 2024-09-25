@@ -277,7 +277,7 @@ function ShortDeatail({ contents, needle }) {
                     align="center"
                     sx={{ color: "white" }}
                   >
-                    Diameter
+                    O/D (µm)
                   </StyledTableCell>
                   <StyledTableCell
                     colSpan={2}
