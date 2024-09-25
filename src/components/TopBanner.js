@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import CloseIcon from "@mui/icons-material/Close";
 
-const TopBanner = styled.div`
+const TopBannerBox = styled.div`
   width: 100%;
   background-color: ${(props) => props.$color};
   display: flex;
@@ -53,7 +53,7 @@ const CloseBtn = styled.div`
     }
   }
 `;
-const Banner = ({ text, linkText, link, color, fontColor }) => {
+const TopBanner = ({ text, linkText, link, color, fontColor }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -77,7 +77,11 @@ const Banner = ({ text, linkText, link, color, fontColor }) => {
 
   return (
     isVisible && (
-      <TopBanner $isVisible={isVisible} $color={color} $fontColor={fontColor}>
+      <TopBannerBox
+        $isVisible={isVisible}
+        $color={color}
+        $fontColor={fontColor}
+      >
         <Bar>
           <span>
             {text}
@@ -94,9 +98,9 @@ const Banner = ({ text, linkText, link, color, fontColor }) => {
             <CloseIcon />
           </button>
         </CloseBtn>
-      </TopBanner>
+      </TopBannerBox>
     )
   );
 };
 
-export default Banner;
+export default TopBanner;

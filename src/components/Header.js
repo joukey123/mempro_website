@@ -11,7 +11,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import MobileMenu from "./mobile/MobileMenu";
 import Collapse from "@mui/material/Collapse";
 import { useMediaQuery } from "@mui/material";
-import Banner from "./Banner";
+import TopBanner from "./TopBanner";
 
 const HeaderWrapper = styled.div`
   /* position: fixed; */
@@ -164,7 +164,7 @@ function Header() {
         zIndex: "9999",
       }}
     >
-      <Banner
+      <TopBanner
         text={"Explore our full range of products and services."}
         linkText={"Click Here to Access Our Catalog"}
         link={"https://www.mempro.co.kr:84"}
