@@ -12,7 +12,7 @@ import MobileMenu from "./mobile/MobileMenu";
 import Collapse from "@mui/material/Collapse";
 import { useMediaQuery } from "@mui/material";
 import TopBanner from "./TopBanner";
-import SeachComponent from "./Search";
+import SearchBar from "./SearchBar";
 
 const HeaderWrapper = styled.div`
   /* position: fixed; */
@@ -107,6 +107,7 @@ function Header() {
   const [hoveredLiWidth, setHoveredLiWidth] = useState(null);
   const [openMobileMenu, setOpenMobileMenu] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [openSearchBar, setOpenSearchBar] = useState(false);
 
   const isMobile = useMediaQuery("(max-width: 1023px)");
 
@@ -152,7 +153,9 @@ function Header() {
   const handleMouseOut = () => {
     setActiveMenu(null);
   };
-
+  const handleOpenSearchBar = () => {
+    setOpenSearchBar(true);
+  };
   return (
     <div
       style={{
@@ -188,7 +191,8 @@ function Header() {
         </LogoWrapper>
         <NavWrapper>
           <Nav>
-            <SeachComponent />
+            {openSearchBar && <SearchBar />}
+
             {items.map((item, index) => (
               <NavMenu
                 key={index}
@@ -240,6 +244,7 @@ function Header() {
               )} */}
               </NavMenu>
             ))}
+            <button onClick={handleOpenSearchBar}>search</button>
           </Nav>
         </NavWrapper>
 
