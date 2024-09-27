@@ -44,16 +44,24 @@ const Img = styled.img`
   object-fit: cover;
   filter: brightness(0.4);
 `;
-function PageHeader() {
+function PageHeader({ img }) {
   const { headerImges, currentCategory } = useCategory();
   return (
     <>
       <Header />
       <Warpper>
-        <ImgWarpper>
-          <Img src={headerImges} alt={currentCategory} />
-          {/* <BlackBox /> */}
-        </ImgWarpper>
+        {headerImges ? (
+          <ImgWarpper>
+            <Img src={headerImges} alt={currentCategory} />
+            {/* <BlackBox /> */}
+          </ImgWarpper>
+        ) : (
+          <ImgWarpper>
+            <Img src={img} alt={currentCategory} />
+            {/* <BlackBox /> */}
+          </ImgWarpper>
+        )}
+
         {currentCategory !== "contact" && <Breadcrumbs />}
       </Warpper>
     </>

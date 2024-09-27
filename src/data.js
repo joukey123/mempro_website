@@ -223,6 +223,8 @@ import contact from "./img/icon/contact.svg";
 //logo
 import logoImg from "./img/nav_logo.svg";
 
+//thumnail
+import testThumnail from "./img/thumnail/test_thumnail.jpg";
 export const logo = logoImg;
 export const linkBtns = [
   {
@@ -499,6 +501,7 @@ export const books = [
 ];
 export const machineDetail = {
   sanding: {
+    model: ["JKSM-B330", "JKVT-330", "JKMT-330", "JKSM-V330", "JKHI-330"],
     nation: ["Made in Korea"],
     title: "Sanding Machine",
     description:
@@ -618,6 +621,7 @@ export const machineDetail = {
     // blueImg: sanding_blueprint,
   },
   bending: {
+    model: ["JLBS-100"],
     nation: ["Made in Korea"],
     title: "Bending Machine",
     description:
@@ -645,6 +649,7 @@ export const machineDetail = {
     },
   },
   manual: {
+    model: ["JKMPCM12", "JKMPCM17", "JKMPCM18", "JKAP-520"],
     nation: ["Made in Korea"],
     title: "Manual Prober",
     description:
@@ -737,6 +742,7 @@ export const machineDetail = {
     },
   },
   punching: {
+    model: ["JKPM220"],
     nation: ["Made in Korea"],
     title: "Punching Machine",
     description: "Used to drill a hole in mask film.",
@@ -764,6 +770,7 @@ export const machineDetail = {
     },
   },
   rubber: {
+    model: ["JKACM-3030", "JKMACM-220", "JKMAM-230"],
     nation: ["Made in Korea"],
     title: "Rubber Socket Tester",
     description:
@@ -832,6 +839,7 @@ export const machineDetail = {
     },
   },
   tester: {
+    model: ["JKTT-50", "JKACM-8080"],
     nation: ["Made in Korea"],
     title: "Probe Tester",
     description:
@@ -882,6 +890,7 @@ export const machineDetail = {
     },
   },
   pogo: {
+    model: ["JKRC-2045", "JKRM-220"],
     nation: ["Made in Korea"],
     title: "PogoPin Caulking Machine",
     description:
@@ -935,6 +944,9 @@ export const itemsDetail = {
     description:
       "Manufactured by using an electrode to deposit diamond particles on the surface of core wire, made of high carbon steel and tungsten.",
     images: diamondwire_machine,
+    thumnail: testThumnail,
+    diagram: "wafer",
+    link: "/semi/parts/diamond",
     contents: {
       sem: [
         { text: "Electroplated Diamond Wire SEM", img: diamondWire_sem1 },
@@ -1019,6 +1031,8 @@ export const itemsDetail = {
       step1: etching_step1,
       diagram: etching_diagram,
     },
+    thumnail: testThumnail,
+
     contents: {
       features: [
         {
@@ -1098,49 +1112,51 @@ export const itemsDetail = {
     },
   },
 
-  probe: {
-    title: "Probe",
-    description:
-      "Are used to connect the integrated circuits located on a wafer to the ATE (Automated Test Equipment) to test that the electrical parameters and performance meet requirements before they are manufactured and shipped out.",
-    // warning: "We provide the necessary parts for the probe card.",
+  // probe: {
+  //   title: "Probe",
+  //   description:
+  //     "Are used to connect the integrated circuits located on a wafer to the ATE (Automated Test Equipment) to test that the electrical parameters and performance meet requirements before they are manufactured and shipped out.",
+  //   // warning: "We provide the necessary parts for the probe card.",
 
-    images: {
-      machine: cantilever_machie,
-      diagram: cantilever_diagram,
-    },
-    item: [
-      {
-        title: "sanding machine",
-        img: item_sanding_machine,
-        link: "a",
-      },
-      {
-        title: "bending machine",
-        img: item_bending_machine,
-        link: "a",
-      },
-      {
-        title: "Guide Plate/Hole",
-        img: item_guide,
-        link: "ceramic",
-      },
-      {
-        title: "stiffener",
-        img: item_stiffener,
-        link: "cstiffener",
-      },
-      {
-        title: "probe",
-        img: item_probe,
-        link: "cprobe",
-      },
-      {
-        title: "PI-Tube",
-        img: item_pitube,
-        link: "tube",
-      },
-    ],
-  },
+  //   images: {
+  //     machine: cantilever_machie,
+  //     diagram: cantilever_diagram,
+  //   },
+  //   thumnail: testThumnail,
+
+  //   item: [
+  //     {
+  //       title: "sanding machine",
+  //       img: item_sanding_machine,
+  //       link: "a",
+  //     },
+  //     {
+  //       title: "bending machine",
+  //       img: item_bending_machine,
+  //       link: "a",
+  //     },
+  //     {
+  //       title: "Guide Plate/Hole",
+  //       img: item_guide,
+  //       link: "ceramic",
+  //     },
+  //     {
+  //       title: "stiffener",
+  //       img: item_stiffener,
+  //       link: "cstiffener",
+  //     },
+  //     {
+  //       title: "probe",
+  //       img: item_probe,
+  //       link: "cprobe",
+  //     },
+  //     {
+  //       title: "PI-Tube",
+  //       img: item_pitube,
+  //       link: "tube",
+  //     },
+  //   ],
+  // },
 
   cantilever: {
     title: "Cantilever Structure",
@@ -1250,7 +1266,7 @@ export const itemsDetail = {
   },
   cprobe: {
     nation: ["Made in Korea"],
-    title: "cantilever Probe",
+    title: "Cantilever Probe",
     cards: [
       {
         type: "cantilever",
@@ -1476,7 +1492,7 @@ export const itemsDetail = {
   },
   vprobe: {
     nation: ["Made in Korea"],
-    title: "Vertical Porbe",
+    title: "Vertical Probe",
     // cards: {
     //   vertical: {
     //     needle: ["wire", "short", "cobra", "pems"],

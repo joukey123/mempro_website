@@ -28,23 +28,25 @@ function Breadcrumbs() {
   const { currentCategory, selectDiagram, type } = useCategory();
 
   return (
-    <Wrapper>
-      <Category>
-        <span>{currentCategory}</span>
-        {currentCategory !== "about MEMPro" &&
-          currentCategory !== "contact" && (
-            <>
-              &nbsp; &middot; <span>{type}</span>
-            </>
-          )}
-        {currentCategory !== "about MEMPro" &&
-          currentCategory !== "contact" && (
-            <>
-              &nbsp; &middot; <span>{selectDiagram}</span>
-            </>
-          )}
-      </Category>
-    </Wrapper>
+    currentCategory && (
+      <Wrapper>
+        <Category>
+          <span>{currentCategory}</span>
+          {currentCategory !== "about MEMPro" &&
+            currentCategory !== "contact" && (
+              <>
+                &nbsp; &middot; <span>{type}</span>
+              </>
+            )}
+          {currentCategory !== "about MEMPro" &&
+            currentCategory !== "contact" && (
+              <>
+                &nbsp; &middot; <span>{selectDiagram}</span>
+              </>
+            )}
+        </Category>
+      </Wrapper>
+    )
   );
 }
 

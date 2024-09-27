@@ -12,7 +12,7 @@ import MobileMenu from "./mobile/MobileMenu";
 import Collapse from "@mui/material/Collapse";
 import { useMediaQuery } from "@mui/material";
 import TopBanner from "./TopBanner";
-import SearchBar from "./SearchBar";
+import SearchBar from "./search/SearchBar";
 import SearchIcon from "@mui/icons-material/Search";
 const HeaderWrapper = styled.div`
   /* position: fixed; */

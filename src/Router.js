@@ -29,8 +29,8 @@ import Rubber from "./pages/semi/Machine/Rubber";
 import Machine from "./pages/semi/Machine";
 import NotFound from "./pages/home/NotFound";
 import ScrollToTop from "./Hook/ScrollToTop";
+import SearchResult from "../src/components/search/SearchResult";
 import { useEffect } from "react";
-import SearchResult from "./pages/semi/SearchResult";
 function CatalogRedirect() {
   useEffect(() => {
     window.history.replaceState(null, "", "/catalogs");
