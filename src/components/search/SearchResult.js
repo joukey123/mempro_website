@@ -116,7 +116,7 @@ function SearchResult() {
               </Link>
             ))
           ) : (
-            <li>No results found</li>
+            <b>No results found</b>
           )}
         </ResultList>
       </Wrapper>
