@@ -48,7 +48,7 @@ const SearchBarWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    border-bottom: 5px solid #034ea2;
+    border-bottom: 3px solid #034ea2;
     padding-bottom: 10px;
 
     input {
@@ -72,26 +72,33 @@ const SearchBarWrapper = styled.div`
 const PopularKeywordWrapper = styled.div`
   width: 100%;
   display: flex;
-  margin-top: 20px;
+  align-items: center;
+  justify-content: baseline;
+  margin-top: 30px;
 `;
 
 const KeywordTitle = styled.span`
-  padding: 10px;
-  border-radius: 10px;
-  margin-right: 30px;
+  background-color: #dfeefc;
+  color: #024ea2;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin: 0 3%;
+  font-size: 14px;
 `;
 const Keyword = styled.span`
-  background-color: #2268b7;
-  color: white;
-  padding: 10px 30px;
-  border-radius: 10px;
-  margin: 0 7px;
+  font-size: 14px;
+  padding: 10px 15px;
+  border-radius: 5px;
+  color: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  margin: 0 1%;
+
   cursor: pointer;
 `;
 const itemsArray = Object.values(itemsDetail);
 const machinesArray = Object.values(machineDetail);
 
-function SearchBar() {
+function SearchBar({ onData }) {
   const navigate = useNavigate();
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
@@ -101,7 +108,7 @@ function SearchBar() {
       "cantilever",
       "vertical",
       "bending",
-      "PI-Tube",
+      "PITube",
       "probe",
       "wafer",
     ],
@@ -115,18 +122,22 @@ function SearchBar() {
       "nation",
       "cards.type",
       "cards.needle",
+      "cards.system",
       "contents",
     ],
 
-    threshold: 0, // 검색 민감도 설정
+    threshold: 0.2, // 검색 민감도 설정
   };
   const fuse = new Fuse(combineData, options);
   const handleSubmit = (e) => {
     e.preventDefault(); // 페이지 리로드 방지
     const result = fuse.search(query);
     setResults(result.map((res) => res.item)); // 검색 결과 설정
+    navigate("/searchResult", { state: result.map((res) => res.item) });
   };
-
+  const handleHideSearchBar = () => {
+    onData(false);
+  };
   return (
     <div
       style={{
@@ -142,11 +153,10 @@ function SearchBar() {
       <SearchWrapper>
         <SearchBarHeader>
           <Logo src={navLogo} />
-          <button>
+          <button onClick={handleHideSearchBar}>
             <CloseIcon />
           </button>
         </SearchBarHeader>
-
         <SearchBarWrapper>
           <form onSubmit={handleSubmit}>
             <input
@@ -163,7 +173,7 @@ function SearchBar() {
           {/* <ul>
             {results.length > 0 ? (
               results.map((book, index) => (
-                <li key={index}>
+                <li key={index} style={{ color: "black" }}>
                   <strong>{book.title}</strong>
                 </li>
               ))
@@ -174,7 +184,7 @@ function SearchBar() {
           <PopularKeywordWrapper>
             {Object.keys(popularKeywords).map((item) => (
               <KeywordTitle>
-                <b>{item} : </b>
+                <b>{item}</b>
               </KeywordTitle>
             ))}
             {popularKeywords.popularKeyword?.map((item) => (

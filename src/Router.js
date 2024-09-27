@@ -30,6 +30,7 @@ import Machine from "./pages/semi/Machine";
 import NotFound from "./pages/home/NotFound";
 import ScrollToTop from "./Hook/ScrollToTop";
 import { useEffect } from "react";
+import SearchResult from "./pages/semi/SearchResult";
 function CatalogRedirect() {
   useEffect(() => {
     window.history.replaceState(null, "", "/catalogs");
@@ -77,6 +78,7 @@ function Router() {
           <Route path="rubber" element={<Rubber />} />
         </Route>
         <Route path="contact" element={<Contact />} />
+        <Route path="searchResult" element={<SearchResult />} />
         <Route path="/catalogs" element={<CatalogRedirect />} />
 
         <Route path="*" element={<NotFound />} />

@@ -13,7 +13,7 @@ import Collapse from "@mui/material/Collapse";
 import { useMediaQuery } from "@mui/material";
 import TopBanner from "./TopBanner";
 import SearchBar from "./SearchBar";
-
+import SearchIcon from "@mui/icons-material/Search";
 const HeaderWrapper = styled.div`
   /* position: fixed; */
   /* top: 0px; */
@@ -100,6 +100,16 @@ const MenuIconWrapper = styled.div`
   }
 `;
 
+const SearchButton = styled.button`
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+  margin-left: 20px;
+  svg {
+    font-size: 1.5rem;
+  }
+`;
+
 function Header() {
   const location = useLocation();
   const [isMain, setIsMain] = useState(false);
@@ -156,6 +166,10 @@ function Header() {
   const handleOpenSearchBar = () => {
     setOpenSearchBar(true);
   };
+
+  const closeSearchBar = (data) => {
+    setOpenSearchBar(data);
+  };
   return (
     <div
       style={{
@@ -191,7 +205,7 @@ function Header() {
         </LogoWrapper>
         <NavWrapper>
           <Nav>
-            {openSearchBar && <SearchBar />}
+            {openSearchBar && <SearchBar onData={closeSearchBar} />}
 
             {items.map((item, index) => (
               <NavMenu
@@ -244,7 +258,9 @@ function Header() {
               )} */}
               </NavMenu>
             ))}
-            <button onClick={handleOpenSearchBar}>search</button>
+            <SearchButton onClick={handleOpenSearchBar}>
+              <SearchIcon />
+            </SearchButton>
           </Nav>
         </NavWrapper>
 
