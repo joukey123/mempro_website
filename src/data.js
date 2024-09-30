@@ -224,7 +224,16 @@ import contact from "./img/icon/contact.svg";
 import logoImg from "./img/nav_logo.svg";
 
 //thumnail
-import testThumnail from "./img/thumnail/test_thumnail.jpg";
+import diamondwire_thumnail from "./img/thumnail/diamond_thumnail.jpg";
+import etching_thumnail from "./img/thumnail/etching_thumnail.jpg";
+import canti_thumnail from "./img/thumnail/canti_thumnail.jpg";
+import cprobe_thumnail from "./img/thumnail/cprobe_thumnail.jpg";
+import tube_thumnail from "./img/thumnail/tube_thumnail.jpg";
+import vertical_thumnail from "./img/thumnail/vertical_thumnail.jpg";
+import vprobe_thumnail from "./img/thumnail/vprobe_thumnail.jpg";
+import stiffener_thumnail from "./img/thumnail/stiffener_thumnail.jpg";
+import ceramic_thumnail from "./img/thumnail/ceramic_thumnail.jpg";
+
 export const logo = logoImg;
 export const linkBtns = [
   {
@@ -944,7 +953,7 @@ export const itemsDetail = {
     description:
       "Manufactured by using an electrode to deposit diamond particles on the surface of core wire, made of high carbon steel and tungsten.",
     images: diamondwire_machine,
-    thumnail: testThumnail,
+    thumnail: diamondwire_thumnail,
     diagram: "wafer",
     link: "/semi/parts/diamond",
     contents: {
@@ -1031,8 +1040,9 @@ export const itemsDetail = {
       step1: etching_step1,
       diagram: etching_diagram,
     },
-    thumnail: testThumnail,
-
+    thumnail: etching_thumnail,
+    diagram: "Etching",
+    link: "/semi/parts/etching",
     contents: {
       features: [
         {
@@ -1173,6 +1183,9 @@ export const itemsDetail = {
       part7: cantilever_part4,
       part8: cantilever_part4,
     },
+    thumnail: canti_thumnail,
+    diagram: "EDS",
+    link: "/semi/parts/cantilever",
     item: [
       {
         title: "stiffener",
@@ -1194,6 +1207,9 @@ export const itemsDetail = {
 
   stiffener: {
     nation: ["Made in Taiwan"],
+    thumnail: stiffener_thumnail,
+    diagram: "EDS",
+    link: "/semi/parts/stiffener",
     types: {
       "canti (DDI)": [
         {
@@ -1267,6 +1283,10 @@ export const itemsDetail = {
   cprobe: {
     nation: ["Made in Korea"],
     title: "Cantilever Probe",
+    thumnail: cprobe_thumnail,
+    diagram: "EDS",
+    link: "/semi/parts/cprobe",
+    cardNeedle: "WRNP, WNP, BECU, Coaxial, P7, PT, NP40",
     cards: [
       {
         type: "cantilever",
@@ -1359,6 +1379,9 @@ export const itemsDetail = {
     title: "PI-Tube",
     description: "The PI-Tube prevents shorts caused by the contact of probe.",
     img: tube,
+    thumnail: tube_thumnail,
+    diagram: "EDS",
+    link: "/semi/parts/tube",
     mobileImg: [mobile_tube1, mobile_tube2],
     spec: [
       {
@@ -1455,6 +1478,9 @@ export const itemsDetail = {
       part8: vertical_part8,
       part9: vertical_part9,
     },
+    thumnail: vertical_thumnail,
+    diagram: "EDS",
+    link: "/semi/parts/vertical",
     item: [
       {
         title: "Stiffener",
@@ -1473,23 +1499,23 @@ export const itemsDetail = {
       },
     ],
   },
-  vstiffener: {
-    nation: ["Made in Taiwan"],
-    title: "Stiffener",
-    images: {
-      stiffener,
-    },
-    contents: {
-      items: [
-        stiffener,
-        stiffener3,
-        stiffener4,
-        stiffener5,
-        stiffener6,
-        stiffener7,
-      ],
-    },
-  },
+  // vstiffener: {
+  //   nation: ["Made in Taiwan"],
+  //   title: "Stiffener",
+  //   images: {
+  //     stiffener,
+  //   },
+  //   contents: {
+  //     items: [
+  //       stiffener,
+  //       stiffener3,
+  //       stiffener4,
+  //       stiffener5,
+  //       stiffener6,
+  //       stiffener7,
+  //     ],
+  //   },
+  // },
   vprobe: {
     nation: ["Made in Korea"],
     title: "Vertical Probe",
@@ -1504,7 +1530,10 @@ export const itemsDetail = {
     //     needle: ["cobra", "pems"],
     //   },
     // },
-
+    thumnail: vprobe_thumnail,
+    diagram: "EDS",
+    link: "/semi/parts/vprobe",
+    cardNeedle: "Wire, Short, Cobra, PEMS",
     cards: [
       {
         system: "non-memory",
@@ -1842,7 +1871,9 @@ export const itemsDetail = {
       step3: ceramic_step3,
       step4: ceramic_step4,
     },
-
+    thumnail: ceramic_thumnail,
+    diagram: "EDS",
+    link: "/semi/parts/ceramic",
     types: {
       shape: [
         {

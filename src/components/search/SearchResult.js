@@ -45,7 +45,7 @@ const ResultList = styled.ul`
 
   li {
     width: 250px;
-    height: 350px;
+    height: 370px;
     background-color: white;
     border-radius: 15px;
     overflow: hidden;
@@ -80,7 +80,48 @@ function SearchResult() {
   const params = new URLSearchParams(location.search);
   const keyword = params.get("keyword"); // 'keyword'에 해당하는 값 가져오기
 
-  console.log(dataArray, "dataArray");
+  const highlightMatchWithSnippet = (text, query, snippetLength = 100) => {
+    if (!query) return text;
+
+    const regex = new RegExp(`(${query})`, "gi");
+    const matchIndex = text.toLowerCase().indexOf(query.toLowerCase());
+
+    if (matchIndex === -1) return truncateText(text, snippetLength); // 검색어가 없으면 잘린 텍스트 반환
+
+    // 키워드를 중심으로 앞뒤로 100자를 포함하는 구간 설정
+    const start = Math.max(
+      0,
+      matchIndex - Math.floor((snippetLength - query.length) / 2)
+    );
+    const end = Math.min(
+      text.length,
+      matchIndex + query.length + Math.floor((snippetLength - query.length) / 2)
+    );
+
+    const snippet = text.substring(start, end);
+    const parts = snippet.split(regex); // 검색어로 나누어 강조할 부분 설정
+
+    return (
+      <>
+        {start > 0 && "..."}
+        {parts.map((part, index) =>
+          part.toLowerCase() === query.toLowerCase() ? (
+            <b key={index} style={{ backgroundColor: "yellow" }}>
+              {part}
+            </b>
+          ) : (
+            part
+          )
+        )}
+        {end < text.length && "..."}
+      </>
+    );
+  };
+
+  const truncateText = (text, maxLength = 100) => {
+    return text.length > maxLength ? text.slice(0, maxLength) + "..." : text;
+  };
+
   return (
     <>
       <PageHeader img={headerImg} />
@@ -103,14 +144,28 @@ function SearchResult() {
                   <ResultListText className="resultText">
                     <small>{item?.diagram}</small>
                     <span>{item?.title}</span>
+
                     {item?.des ? (
-                      <p>
-                        {item?.des.slice(0, 100)}
-                        {item?.des.length > 100 ? "..." : ""}
-                      </p>
+                      // <p>
+                      //   {item?.des.slice(0, 100)}
+                      //   {item?.des.length > 100 ? "..." : ""}
+                      // </p>
+                      <p>{highlightMatchWithSnippet(item.des, item.query)}</p>
                     ) : (
-                      <p>{item?.title}</p>
+                      <p>
+                        <p>
+                          {highlightMatchWithSnippet(item.title, item.query)}
+                        </p>
+                      </p>
                     )}
+
+                    {item?.cardNeedle && (
+                      <p style={{ marginTop: 20 }}>
+                        {highlightMatchWithSnippet(item.cardNeedle, item.query)}
+                      </p>
+                    )}
+
+                    {item?.model && <p>{item.model.map((item) => item)}</p>}
                   </ResultListText>
                 </li>
               </Link>

@@ -94,6 +94,7 @@ function SearchInputBar({ onData, width }) {
       "contents",
       "diagram",
       "model",
+      "cardNeedle",
     ],
 
     threshold: 0.1, // 검색 민감도 설정
@@ -110,6 +111,9 @@ function SearchInputBar({ onData, width }) {
         des: res.item.description,
         link: res.item.link,
         diagram: res.item.diagram,
+        query: query,
+        cardNeedle: res.item.cardNeedle,
+        model: res.item.model,
       }));
 
       navigate(`/searchResult?keyword=${query}`, {
@@ -122,6 +126,7 @@ function SearchInputBar({ onData, width }) {
   const handleHideSearchBar = () => {
     onData(false);
   };
+
   return (
     <SearchBarWrapper $width={width}>
       <form onSubmit={handleSubmit}>
