@@ -2,7 +2,7 @@ import styled from "styled-components";
 import navLogo from "../img/nav_logo.svg";
 import navLogoWhite from "../img/nav_logo_white.svg";
 import { items } from "../data";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Language from "./Language";
 import { useEffect, useRef, useState } from "react";
 import Submenu from "./Submenu";
@@ -16,6 +16,7 @@ import SearchBar from "./search/SearchBar";
 import SearchIcon from "@mui/icons-material/Search";
 import { useRecoilState } from "recoil";
 import { handleSearchBar } from "../atoms";
+import MobileSearchInputComponent from "./search/MobileSearchInput";
 const HeaderWrapper = styled.div`
   /* position: fixed; */
   /* top: 0px; */
@@ -96,19 +97,24 @@ const MenuIconWrapper = styled.div`
   cursor: pointer;
 
   @media (max-width: 1023px) {
-    display: block;
+    display: flex;
     position: absolute;
     right: 30px;
+    align-items: center;
   }
 `;
 
 const SearchButton = styled.button`
+  display: flex;
   border: 0;
   background-color: transparent;
   cursor: pointer;
   margin-left: 20px;
   svg {
     font-size: 1.5rem;
+  }
+  @media (max-width: 1023px) {
+    margin-right: 10px;
   }
 `;
 
@@ -121,6 +127,7 @@ function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useRecoilState(handleSearchBar);
   const isMobile = useMediaQuery("(max-width: 1023px)");
+  const navigate = useNavigate();
 
   const handleDataFromChild = (data) => {
     setOpenMobileMenu(data);
@@ -266,8 +273,9 @@ function Header() {
         {/* {openMobileMenu && <MobileMenu onData={handleDataFromChild} />}*/}
         {isMobile ? (
           <>
-            <MenuIconWrapper onClick={handleOpenMobileMenu}>
-              <MenuIcon fontSize="large" />
+            <MenuIconWrapper>
+              <MobileSearchInputComponent />
+              <MenuIcon fontSize="large" onClick={handleOpenMobileMenu} />
             </MenuIconWrapper>
             <Collapse orientation="horizontal" in={openMobileMenu}>
               <MobileMenu onData={handleDataFromChild} />

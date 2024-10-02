@@ -25,8 +25,7 @@ const Wrapper = styled.div`
 `;
 
 const ResultText = styled.div`
-  margin-top: 100px;
-  margin-bottom: 100px;
+  margin: 100px 0;
   p {
     font-size: 24px;
     span {
@@ -37,13 +36,22 @@ const ResultText = styled.div`
       color: #014ea2;
     }
   }
+
+  @media (max-width: 1023px) {
+    margin: 80px 0;
+    p {
+      font-size: 20px;
+      span {
+        font-size: 20px;
+      }
+    }
+  }
 `;
 
 const ResultList = styled.ul`
   display: grid;
   grid-template-columns: ${(props) =>
     props.$length < 4 ? `repeat(${props.$length}, 1fr)` : "repeat(4, 1fr)"};
-
   grid-gap: 20px;
 
   li {
@@ -64,9 +72,26 @@ const ResultList = styled.ul`
     }
   }
   margin-top: 100px;
+  @media (max-width: 1023px) {
+    grid-template-columns: repeat(1, 1fr);
+    margin-top: 50px;
+    li {
+      width: 100%;
+      height: 200px;
+      display: flex;
+
+      img {
+        height: 100%;
+      }
+    }
+  }
 `;
 
-const ResultListImg = styled.div``;
+const ResultListImg = styled.div`
+  @media (max-width: 1023px) {
+    width: 35%;
+  }
+`;
 const ResultListText = styled.div`
   padding: 15px;
   small {
@@ -79,6 +104,9 @@ const ResultListText = styled.div`
     font-weight: 500;
     display: block;
     margin-bottom: 12px;
+  }
+  @media (max-width: 1023px) {
+    width: 65%;
   }
 `;
 

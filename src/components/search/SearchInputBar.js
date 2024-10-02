@@ -47,6 +47,7 @@ const PopularKeywordWrapper = styled.div`
   justify-content: center;
   margin-top: 30px;
   flex-wrap: wrap;
+  flex-direction: column;
 `;
 
 const KeywordTitle = styled.span`
@@ -57,15 +58,17 @@ const KeywordTitle = styled.span`
   font-size: 14px;
 `;
 const Keyword = styled.span`
+  width: 100%;
+  padding: 10px 0;
   font-size: 14px;
-  padding: 10px 15px;
   border-radius: 5px;
   color: rgba(0, 0, 0, 0.7);
   border: 1px solid rgba(0, 0, 0, 0.2);
   margin: 1%;
-
   cursor: pointer;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
   &:hover {
     border: 1px solid rgba(0, 0, 0, 0.6);
     transition: 0.3s ease-in-out all;
@@ -177,16 +180,28 @@ function SearchInputBar({ isClose, width, onRender }) {
             )}
           </ul> */}
       <PopularKeywordWrapper>
-        {Object.keys(popularKeywords).map((item) => (
-          <KeywordTitle>
-            <b>{item}</b>
-          </KeywordTitle>
-        ))}
-        {popularKeywords.popularKeyword?.map((item, index) => (
-          <Keyword key={index} onClick={() => handleKeywordClick(item)}>
-            {item}
-          </Keyword>
-        ))}
+        <div style={{ display: "flex" }}>
+          {Object.keys(popularKeywords).map((item) => (
+            <KeywordTitle>
+              <b>{item}</b>
+            </KeywordTitle>
+          ))}
+        </div>
+        <div
+          style={{
+            display: "grid",
+            width: "100%",
+            gridTemplateColumns: "repeat(3,1fr)",
+            gap: "10px",
+            marginTop: "10px",
+          }}
+        >
+          {popularKeywords.popularKeyword?.map((item, index) => (
+            <Keyword key={index} onClick={() => handleKeywordClick(item)}>
+              {item}
+            </Keyword>
+          ))}
+        </div>
       </PopularKeywordWrapper>
     </SearchBarWrapper>
   );
