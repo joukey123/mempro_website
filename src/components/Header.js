@@ -120,7 +120,6 @@ function Header() {
   const [openMobileMenu, setOpenMobileMenu] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useRecoilState(handleSearchBar);
-
   const isMobile = useMediaQuery("(max-width: 1023px)");
 
   const handleDataFromChild = (data) => {
@@ -252,7 +251,7 @@ function Header() {
               )} */}
               </NavMenu>
             ))}
-            <SearchButton onClick={() => setIsOpen((prev) => !prev)}>
+            <SearchButton onClick={() => setIsOpen(true)}>
               <SearchIcon />
             </SearchButton>
 

@@ -8,7 +8,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
 import useFuse from "./useFuse";
 import { useRecoilState } from "recoil";
-import { queryKeyword } from "../../atoms";
+import { handleSearchBar, queryKeyword } from "../../atoms";
 
 const SearchBarWrapper = styled.div`
   width: ${(props) => props.$width}%;
@@ -73,6 +73,7 @@ function SearchInputBar({ isClose, width, onRender }) {
   const params = new URLSearchParams(location.search);
   const keyword = params.get("keyword"); // 'keyword'에 해당하는 값 가져오기
   const [query, setQuery] = useRecoilState(queryKeyword);
+  const [isOpen, setIsOpen] = useRecoilState(handleSearchBar);
 
   const popularKeywords = {
     popularKeyword: [
@@ -91,6 +92,7 @@ function SearchInputBar({ isClose, width, onRender }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     handleSearch(query);
+    setIsOpen(false);
   };
 
   // const options = {
@@ -139,6 +141,7 @@ function SearchInputBar({ isClose, width, onRender }) {
     if (query !== keyword) {
       setQuery(keyword);
       handleSearch(keyword); // 훅의 search 메서드 호출
+      setIsOpen(false);
 
       // 검색 결과로 페이지 이동
     }
