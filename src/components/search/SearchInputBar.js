@@ -158,7 +158,7 @@ function SearchInputBar({ isClose, width, onRender }) {
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search Items"
+          placeholder="Search Parts, Machine, Model..."
         />
         <button type="submit">
           <SearchIcon />

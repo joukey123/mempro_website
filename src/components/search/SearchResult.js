@@ -8,7 +8,7 @@ import useFuse from "./useFuse";
 import { useRecoilValue } from "recoil";
 import { resultArray } from "../../atoms";
 import { useEffect } from "react";
-
+import SearchOffIcon from "@mui/icons-material/SearchOff";
 const Wrapper = styled.div`
   width: 100%;
   max-width: 1280px;
@@ -79,6 +79,21 @@ const ResultListText = styled.div`
     font-weight: 500;
     display: block;
     margin-bottom: 12px;
+  }
+`;
+
+const MessageBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.5);
+  :first-child {
+    margin-top: 20px;
+    margin-bottom: 2px;
+    font-size: 32px;
+  }
+  :last-child {
+    font-weight: bold;
   }
 `;
 function SearchResult() {
@@ -204,7 +219,12 @@ function SearchResult() {
               </Link>
             ))
           ) : (
-            <b>No results found</b>
+            <MessageBox>
+              <span>
+                <SearchOffIcon />
+              </span>
+              <span>Sorry. We couldn't find any results</span>
+            </MessageBox>
           )}
         </ResultList>
       </Wrapper>
