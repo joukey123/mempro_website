@@ -14,6 +14,7 @@ const Form = styled.form`
     border: 0;
     background-color: transparent;
     cursor: pointer;
+    color: rgba(0, 0, 0, 0.3);
   }
 `;
 
@@ -21,10 +22,10 @@ const MobileSearchInput = styled.input`
   border: 0;
   border-radius: 10px;
   text-indent: 10px;
-  width: 170px;
+  width: 120px;
   height: 35px;
   outline: 0;
-  font-size: 12px;
+  font-size: 16px;
   border: 1px solid rgba(0, 0, 0, 0.1);
 `;
 
@@ -46,7 +47,7 @@ function MobileSearchInputComponent() {
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search Items..."
+          placeholder="Search..."
         />
         <button type="submit">
           <SearchIcon />

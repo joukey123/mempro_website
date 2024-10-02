@@ -9,6 +9,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import useFuse from "./useFuse";
 import { useRecoilState } from "recoil";
 import { handleSearchBar, queryKeyword } from "../../atoms";
+import { useMediaQuery } from "@mui/material";
 
 const SearchBarWrapper = styled.div`
   width: ${(props) => props.$width}%;
@@ -44,10 +45,12 @@ const PopularKeywordWrapper = styled.div`
   width: 90%;
   display: flex;
   align-items: center;
-  justify-content: center;
   margin-top: 30px;
   flex-wrap: wrap;
-  flex-direction: column;
+  @media (max-width: 1023px) {
+    flex-direction: column;
+    justify-content: center;
+  }
 `;
 
 const KeywordTitle = styled.span`
@@ -82,6 +85,7 @@ function SearchInputBar({ isClose, width, onRender }) {
   const keyword = params.get("keyword"); // 'keyword'에 해당하는 값 가져오기
   const [query, setQuery] = useRecoilState(queryKeyword);
   const [isOpen, setIsOpen] = useRecoilState(handleSearchBar);
+  const isMobile = useMediaQuery("(max-width: 1023px)");
 
   const popularKeywords = {
     popularKeyword: [
@@ -161,10 +165,10 @@ function SearchInputBar({ isClose, width, onRender }) {
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search Parts, Machine, Model..."
+          placeholder="Search..."
         />
         <button type="submit">
-          <SearchIcon />
+          <SearchIcon sx={{ color: "#0068B7" }} />
         </button>
       </form>
 
@@ -180,7 +184,7 @@ function SearchInputBar({ isClose, width, onRender }) {
             )}
           </ul> */}
       <PopularKeywordWrapper>
-        <div style={{ display: "flex" }}>
+        <div style={{ display: "flex", marginRight: !isMobile && "10px" }}>
           {Object.keys(popularKeywords).map((item) => (
             <KeywordTitle>
               <b>{item}</b>
@@ -190,10 +194,10 @@ function SearchInputBar({ isClose, width, onRender }) {
         <div
           style={{
             display: "grid",
-            width: "100%",
-            gridTemplateColumns: "repeat(3,1fr)",
+            width: isMobile ? "100%" : "60%",
+            gridTemplateColumns: isMobile ? "repeat(4,1fr)" : "repeat(7,1fr)",
             gap: "10px",
-            marginTop: "10px",
+            marginTop: isMobile ? "10px" : "0px",
           }}
         >
           {popularKeywords.popularKeyword?.map((item, index) => (

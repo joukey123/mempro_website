@@ -9,6 +9,7 @@ import { useRecoilValue } from "recoil";
 import { resultArray } from "../../atoms";
 import { useEffect } from "react";
 import SearchOffIcon from "@mui/icons-material/SearchOff";
+import { useMediaQuery } from "@mui/material";
 const Wrapper = styled.div`
   width: 100%;
   max-width: 1280px;
@@ -40,9 +41,9 @@ const ResultText = styled.div`
   @media (max-width: 1023px) {
     margin: 80px 0;
     p {
-      font-size: 20px;
+      font-size: 18px;
       span {
-        font-size: 20px;
+        font-size: 18px;
       }
     }
   }
@@ -125,6 +126,7 @@ const MessageBox = styled.div`
   }
 `;
 function SearchResult() {
+  const isMobile = useMediaQuery("(max-width: 1023px)");
   const location = useLocation();
   const dataArray = location.state || []; // 배열이 없을 경우 대비
   const params = new URLSearchParams(location.search);
@@ -180,8 +182,8 @@ function SearchResult() {
       <Wrapper>
         <ResultText>
           <p>
-            <span>`{keyword}`</span>에 대한 <span>{results.length}</span>
-            건의 검색결과가 있습니다.
+            <span>`{keyword}`</span>에 대한 <span>{results.length}</span>건의
+            검색결과가 있습니다.
           </p>
         </ResultText>
         <SearchInputBar width={90} />
