@@ -234,6 +234,14 @@ import vprobe_thumnail from "./img/thumnail/vprobe_thumnail.jpg";
 import stiffener_thumnail from "./img/thumnail/stiffener_thumnail.jpg";
 import ceramic_thumnail from "./img/thumnail/ceramic_thumnail.jpg";
 
+import sanding_thumnail from "./img/thumnail/sanding_thumnail.jpg";
+import bending_thumnail from "./img/thumnail/bending_thumnail.jpg";
+import manual_thumnail from "./img/thumnail/manual_thumnail.jpg";
+import rubber_thumnail from "./img/thumnail/rubber_thumnail.jpg";
+import tester_thumnail from "./img/thumnail/tester_thumnail.jpg";
+import punching_thumnail from "./img/thumnail/punching_thumnail.jpg";
+import pogo_thumnail from "./img/thumnail/pogo_thumnail.jpg";
+
 export const logo = logoImg;
 export const linkBtns = [
   {
@@ -510,7 +518,10 @@ export const books = [
 ];
 export const machineDetail = {
   sanding: {
+    diagram: "machine",
     model: ["JKSM-B330", "JKVT-330", "JKMT-330", "JKSM-V330", "JKHI-330"],
+    link: "/semi/machine/sanding",
+    thumnail: sanding_thumnail,
     nation: ["Made in Korea"],
     title: "Sanding Machine",
     description:
@@ -630,7 +641,11 @@ export const machineDetail = {
     // blueImg: sanding_blueprint,
   },
   bending: {
+    diagram: "machine",
     model: ["JLBS-100"],
+    thumnail: bending_thumnail,
+    link: "/semi/machine/bending",
+
     nation: ["Made in Korea"],
     title: "Bending Machine",
     description:
@@ -658,6 +673,10 @@ export const machineDetail = {
     },
   },
   manual: {
+    diagram: "machine",
+    thumnail: manual_thumnail,
+    link: "/semi/machine/manual",
+
     model: ["JKMPCM12", "JKMPCM17", "JKMPCM18", "JKAP-520"],
     nation: ["Made in Korea"],
     title: "Manual Prober",
@@ -751,6 +770,10 @@ export const machineDetail = {
     },
   },
   punching: {
+    diagram: "machine",
+    thumnail: punching_thumnail,
+    link: "/semi/machine/punching",
+
     model: ["JKPM220"],
     nation: ["Made in Korea"],
     title: "Punching Machine",
@@ -779,6 +802,10 @@ export const machineDetail = {
     },
   },
   rubber: {
+    diagram: "machine",
+    thumnail: rubber_thumnail,
+    link: "/semi/machine/rubber",
+
     model: ["JKACM-3030", "JKMACM-220", "JKMAM-230"],
     nation: ["Made in Korea"],
     title: "Rubber Socket Tester",
@@ -848,6 +875,10 @@ export const machineDetail = {
     },
   },
   tester: {
+    diagram: "machine",
+    thumnail: tester_thumnail,
+    link: "/semi/machine/tester",
+
     model: ["JKTT-50", "JKACM-8080"],
     nation: ["Made in Korea"],
     title: "Probe Tester",
@@ -899,6 +930,10 @@ export const machineDetail = {
     },
   },
   pogo: {
+    diagram: "machine",
+    thumnail: pogo_thumnail,
+    link: "/semi/machine/pogo",
+
     model: ["JKRC-2045", "JKRM-220"],
     nation: ["Made in Korea"],
     title: "PogoPin Caulking Machine",
@@ -1286,7 +1321,7 @@ export const itemsDetail = {
     thumnail: cprobe_thumnail,
     diagram: "EDS",
     link: "/semi/parts/cprobe",
-    cardNeedle: "WRNP, WNP, BECU, Coaxial, P7, PT, NP40",
+    model: ["WRNP", "WNP", "BECU", "Coaxial", "P7", "PT", "NP40"],
     cards: [
       {
         type: "cantilever",
@@ -1533,7 +1568,7 @@ export const itemsDetail = {
     thumnail: vprobe_thumnail,
     diagram: "EDS",
     link: "/semi/parts/vprobe",
-    cardNeedle: "Wire, Short, Cobra, PEMS",
+    model: ["Wire", "Short", "Cobra", "PEMS"],
     cards: [
       {
         system: "non-memory",

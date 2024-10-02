@@ -14,6 +14,8 @@ import { useMediaQuery } from "@mui/material";
 import TopBanner from "./TopBanner";
 import SearchBar from "./search/SearchBar";
 import SearchIcon from "@mui/icons-material/Search";
+import { useRecoilState } from "recoil";
+import { handleSearchBar } from "../atoms";
 const HeaderWrapper = styled.div`
   /* position: fixed; */
   /* top: 0px; */
@@ -117,7 +119,7 @@ function Header() {
   const [hoveredLiWidth, setHoveredLiWidth] = useState(null);
   const [openMobileMenu, setOpenMobileMenu] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [openSearchBar, setOpenSearchBar] = useState(false);
+  const [isOpen, setIsOpen] = useRecoilState(handleSearchBar);
 
   const isMobile = useMediaQuery("(max-width: 1023px)");
 
@@ -163,13 +165,7 @@ function Header() {
   const handleMouseOut = () => {
     setActiveMenu(null);
   };
-  const handleOpenSearchBar = () => {
-    setOpenSearchBar(true);
-  };
 
-  const closeSearchBar = (data) => {
-    setOpenSearchBar(data);
-  };
   return (
     <div
       style={{
@@ -205,8 +201,6 @@ function Header() {
         </LogoWrapper>
         <NavWrapper>
           <Nav>
-            {openSearchBar && <SearchBar onData={closeSearchBar} />}
-
             {items.map((item, index) => (
               <NavMenu
                 key={index}
@@ -258,9 +252,11 @@ function Header() {
               )} */}
               </NavMenu>
             ))}
-            <SearchButton onClick={handleOpenSearchBar}>
+            <SearchButton onClick={() => setIsOpen((prev) => !prev)}>
               <SearchIcon />
             </SearchButton>
+
+            {isOpen && <SearchBar />}
           </Nav>
         </NavWrapper>
 

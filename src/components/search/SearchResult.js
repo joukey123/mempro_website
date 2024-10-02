@@ -1,10 +1,13 @@
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import PageHeader from "../headers/PageHeader";
 import headerImg from "../../img/searchHeader.jpg";
 import styled from "styled-components";
-import SearchBar from "./SearchBar";
 import SearchInputBar from "./SearchInputBar";
 import Footer from "../Footer";
+import useFuse from "./useFuse";
+import { useRecoilValue } from "recoil";
+import { resultArray } from "../../atoms";
+import { useEffect } from "react";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -45,7 +48,7 @@ const ResultList = styled.ul`
 
   li {
     width: 250px;
-    height: 370px;
+    height: 400px;
     background-color: white;
     border-radius: 15px;
     overflow: hidden;
@@ -56,12 +59,12 @@ const ResultList = styled.ul`
       object-fit: cover;
     }
   }
-  margin-top: 50px;
+  margin-top: 100px;
 `;
 
 const ResultListImg = styled.div``;
 const ResultListText = styled.div`
-  padding: 20px;
+  padding: 15px;
   small {
     display: block;
     font-weight: 300;
@@ -79,7 +82,6 @@ function SearchResult() {
   const dataArray = location.state || []; // 배열이 없을 경우 대비
   const params = new URLSearchParams(location.search);
   const keyword = params.get("keyword"); // 'keyword'에 해당하는 값 가져오기
-
   const highlightMatchWithSnippet = (text, query, snippetLength = 100) => {
     if (!query) return text;
 
@@ -106,7 +108,10 @@ function SearchResult() {
         {start > 0 && "..."}
         {parts.map((part, index) =>
           part.toLowerCase() === query.toLowerCase() ? (
-            <b key={index} style={{ backgroundColor: "yellow" }}>
+            <b
+              key={index}
+              style={{ backgroundColor: "yellow", fontWeight: "normal" }}
+            >
               {part}
             </b>
           ) : (
@@ -117,10 +122,10 @@ function SearchResult() {
       </>
     );
   };
-
   const truncateText = (text, maxLength = 100) => {
     return text.length > maxLength ? text.slice(0, maxLength) + "..." : text;
   };
+  const results = useRecoilValue(resultArray);
 
   return (
     <>
@@ -128,16 +133,16 @@ function SearchResult() {
       <Wrapper>
         <ResultText>
           <p>
-            <span>`{keyword}`</span>에 대한 <span>{dataArray.length}</span>
+            <span>`{keyword}`</span>에 대한 <span>{results.length}</span>
             건의 검색결과가 있습니다.
           </p>
         </ResultText>
         <SearchInputBar width={90} />
-        <ResultList $length={dataArray.length}>
-          {dataArray.length > 0 ? (
-            dataArray.map((item, index) => (
+        <ResultList $length={results.length}>
+          {results.length > 0 ? (
+            results.map((item, index) => (
               <Link to={`${item?.link}`} key={index}>
-                <li key={index} style={{ color: "black" }}>
+                <li style={{ color: "black" }}>
                   <ResultListImg className="resultImg">
                     <img src={item?.thumnail} />
                   </ResultListImg>
@@ -145,27 +150,51 @@ function SearchResult() {
                     <small>{item?.diagram}</small>
                     <span>{item?.title}</span>
 
-                    {item?.des ? (
+                    {item?.description ? (
                       // <p>
                       //   {item?.des.slice(0, 100)}
                       //   {item?.des.length > 100 ? "..." : ""}
                       // </p>
-                      <p>{highlightMatchWithSnippet(item.des, item.query)}</p>
+                      <p>
+                        {highlightMatchWithSnippet(item.description, keyword)}
+                      </p>
                     ) : (
                       <p>
-                        <p>
-                          {highlightMatchWithSnippet(item.title, item.query)}
-                        </p>
+                        <p>{highlightMatchWithSnippet(item.title, keyword)}</p>
                       </p>
                     )}
 
                     {item?.cardNeedle && (
                       <p style={{ marginTop: 20 }}>
-                        {highlightMatchWithSnippet(item.cardNeedle, item.query)}
+                        {highlightMatchWithSnippet(item.cardNeedle, keyword)}
                       </p>
                     )}
 
-                    {item?.model && <p>{item.model.map((item) => item)}</p>}
+                    {item?.model && (
+                      <>
+                        <p
+                          style={{
+                            marginTop: "10px",
+                            display: "flex",
+                            flexWrap: "wrap",
+                          }}
+                        >
+                          {item.model.map((modeItem, index) => (
+                            <span
+                              style={{
+                                fontSize: "14px",
+                                fontWeight: "normal",
+                                marginBottom: -5,
+                                marginRight: 5,
+                              }}
+                            >
+                              {highlightMatchWithSnippet(modeItem, keyword)}
+                              {index < item.model.length - 1 && ", "}
+                            </span>
+                          ))}
+                        </p>
+                      </>
+                    )}
                   </ResultListText>
                 </li>
               </Link>

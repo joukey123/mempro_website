@@ -1,11 +1,14 @@
 import { itemsDetail, machineDetail } from "../../data";
 import Fuse from "fuse.js";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import navLogo from "../../img/nav_logo.svg";
 import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
+import useFuse from "./useFuse";
+import { useRecoilState } from "recoil";
+import { queryKeyword } from "../../atoms";
 
 const SearchBarWrapper = styled.div`
   width: ${(props) => props.$width}%;
@@ -63,13 +66,14 @@ const Keyword = styled.span`
 
   cursor: pointer;
 `;
-const itemsArray = Object.values(itemsDetail);
-const machinesArray = Object.values(machineDetail);
 
-function SearchInputBar({ onData, width }) {
+function SearchInputBar({ isClose, width, onRender }) {
   const navigate = useNavigate();
-  const [query, setQuery] = useState("");
-  const [results, setResults] = useState([]);
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const keyword = params.get("keyword"); // 'keyword'에 해당하는 값 가져오기
+  const [query, setQuery] = useRecoilState(queryKeyword);
+
   const popularKeywords = {
     popularKeyword: [
       "wire",
@@ -81,52 +85,64 @@ function SearchInputBar({ onData, width }) {
       "wafer",
     ],
   };
-  const combineData = [...itemsArray, ...machinesArray];
-  const options = {
-    keys: [
-      "title",
-      "description",
-      "specifications.model",
-      "nation",
-      "cards.type",
-      "cards.needle",
-      "cards.system",
-      "contents",
-      "diagram",
-      "model",
-      "cardNeedle",
-    ],
 
-    threshold: 0.1, // 검색 민감도 설정
-  };
-  const fuse = new Fuse(combineData, options);
+  const { handleSearch } = useFuse();
+
   const handleSubmit = (e) => {
-    e.preventDefault(); // 페이지 리로드 방지
-    try {
-      const result = fuse.search(query);
-      setResults(result.map((res) => res.item)); // 검색 결과 설정
-      const simpleResults = result.map((res) => ({
-        title: res.item.title,
-        thumnail: res.item.thumnail,
-        des: res.item.description,
-        link: res.item.link,
-        diagram: res.item.diagram,
-        query: query,
-        cardNeedle: res.item.cardNeedle,
-        model: res.item.model,
-      }));
+    e.preventDefault();
+    handleSearch(query);
+  };
 
-      navigate(`/searchResult?keyword=${query}`, {
-        state: simpleResults,
-      });
-    } catch (error) {
-      console.error("Error navigating:", error);
+  // const options = {
+  //   keys: [
+  //     "title",
+  //     "description",
+  //     "specifications.model",
+  //     "nation",
+  //     "cards.type",
+  //     "cards.needle",
+  //     "cards.system",
+  //     "contents",
+  //     "diagram",
+  //     "model",
+  //     "cardNeedle",
+  //   ],
+
+  //   threshold: 0.1, // 검색 민감도 설정
+  // };
+  // const fuse = new Fuse(combineData, options);
+  // const handleSubmit = (e) => {
+  //   e.preventDefault(); // 페이지 리로드 방지
+  //   try {
+  //     const result = fuse.search(query);
+  //     setResults(result.map((res) => res.item)); // 검색 결과 설정
+  //     const simpleResults = result.map((res) => ({
+  //       title: res.item.title,
+  //       thumnail: res.item.thumnail,
+  //       des: res.item.description,
+  //       link: res.item.link,
+  //       diagram: res.item.diagram,
+  //       query: query,
+  //       cardNeedle: res.item.cardNeedle,
+  //       model: res.item.model,
+  //     }));
+
+  //     navigate(`/searchResult?keyword=${query}`, {
+  //       state: simpleResults,
+  //     });
+  //   } catch (error) {
+  //     console.error("Error navigating:", error);
+  //   }
+  // };
+
+  const handleKeywordClick = (keyword) => {
+    if (query !== keyword) {
+      setQuery(keyword);
+      handleSearch(keyword); // 훅의 search 메서드 호출
+
+      // 검색 결과로 페이지 이동
     }
   };
-  const handleHideSearchBar = () => {
-    onData(false);
-  };
-
   return (
     <SearchBarWrapper $width={width}>
       <form onSubmit={handleSubmit}>
@@ -158,8 +174,10 @@ function SearchInputBar({ onData, width }) {
             <b>{item}</b>
           </KeywordTitle>
         ))}
-        {popularKeywords.popularKeyword?.map((item) => (
-          <Keyword>{item}</Keyword>
+        {popularKeywords.popularKeyword?.map((item, index) => (
+          <Keyword key={index} onClick={() => handleKeywordClick(item)}>
+            {item}
+          </Keyword>
         ))}
       </PopularKeywordWrapper>
     </SearchBarWrapper>

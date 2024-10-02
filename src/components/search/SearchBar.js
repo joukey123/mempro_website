@@ -1,12 +1,19 @@
-import { itemsDetail, machineDetail } from "../../data";
-import Fuse from "fuse.js";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import navLogo from "../../img/nav_logo.svg";
-import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
 import SearchInputBar from "./SearchInputBar";
+import { useRecoilState } from "recoil";
+import { handleSearchBar, searchIsClose } from "../../atoms";
+
+const ModalWarpper = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.85);
+  z-index: 999999;
+`;
 const SearchWrapper = styled.div`
   position: fixed;
   top: 0;
@@ -40,32 +47,21 @@ const SearchBarHeader = styled.div`
   }
 `;
 
-function SearchBar({ onData }) {
-  const handleHideSearchBar = () => {
-    onData(false);
-  };
+function SearchBar() {
+  const [isOpen, setIsOpen] = useRecoilState(handleSearchBar);
+
   return (
-    <div
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        width: "100vw",
-        height: "100vh",
-        backgroundColor: "rgba(0,0,0,0.85)",
-        zIndex: 999999,
-      }}
-    >
+    <ModalWarpper>
       <SearchWrapper>
         <SearchBarHeader>
           <Logo src={navLogo} />
-          <button onClick={handleHideSearchBar}>
+          <button onClick={() => setIsOpen((prev) => !prev)}>
             <CloseIcon />
           </button>
         </SearchBarHeader>
         <SearchInputBar width={60} />
       </SearchWrapper>
-    </div>
+    </ModalWarpper>
   );
 }
 
