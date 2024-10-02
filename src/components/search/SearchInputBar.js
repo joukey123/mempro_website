@@ -65,6 +65,11 @@ const Keyword = styled.span`
   margin: 1%;
 
   cursor: pointer;
+
+  &:hover {
+    border: 1px solid rgba(0, 0, 0, 0.6);
+    transition: 0.3s ease-in-out all;
+  }
 `;
 
 function SearchInputBar({ isClose, width, onRender }) {

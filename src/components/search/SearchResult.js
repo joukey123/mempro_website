@@ -58,6 +58,10 @@ const ResultList = styled.ul`
       height: 150px;
       object-fit: cover;
     }
+    &:hover {
+      border: 1px solid rgba(0, 0, 0, 0.6);
+      transition: 0.3s ease-in-out all;
+    }
   }
   margin-top: 100px;
 `;

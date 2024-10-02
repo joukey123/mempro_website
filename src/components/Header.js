@@ -252,7 +252,7 @@ function Header() {
               </NavMenu>
             ))}
             <SearchButton onClick={() => setIsOpen(true)}>
-              <SearchIcon />
+              <SearchIcon sx={{ color: isMain ? "white" : "black" }} />
             </SearchButton>
 
             {isOpen && <SearchBar />}
