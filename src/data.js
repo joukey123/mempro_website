@@ -1174,36 +1174,30 @@ export const itemsDetail = {
       ],
       material: [
         {
-          text: { eng: "Silicon", kor: "실리콘", cn: "硅", jp: "シリコン" },
+          text: { eng: "Silicon" },
           images: [
             {
-              title: { eng: "Electrode", kor: "전극", cn: "电极", jp: "電極" },
+              title: { eng: "Electrode" },
               img: img_1,
             },
             {
               title: {
                 eng: "Shower Head",
-                kor: "샤워 헤드",
-                cn: "淋浴喷头",
-                jp: "シャワーヘッド",
               },
               img: img_2,
             },
             {
               title: {
                 eng: "Focus",
-                kor: "집중",
-                cn: "焦点",
-                jp: "フォーカス",
               },
               img: img_3,
             },
             {
-              title: { eng: "Insert", kor: "삽입", cn: "插入", jp: "挿入" },
+              title: { eng: "Insert" },
               img: img_4,
             },
             {
-              title: { eng: "C-Ring", kor: "C-링", cn: "C型环", jp: "Cリング" },
+              title: { eng: "C-Ring" },
               img: img_5,
             },
           ],
@@ -1211,53 +1205,35 @@ export const itemsDetail = {
         {
           text: {
             eng: "Quartz",
-            kor: "석영",
-            cn: "石英",
-            jp: "クォーツ",
           },
           images: [
             {
               title: {
                 eng: "Electrode",
-                kor: "전극",
-                cn: "电极",
-                jp: "電極",
               },
               img: img_6,
             },
             {
               title: {
                 eng: "G.D.P",
-                kor: "G.D.P",
-                cn: "G.D.P",
-                jp: "G.D.P",
               },
               img: img_7,
             },
             {
               title: {
                 eng: "Shield",
-                kor: "쉴드",
-                cn: "盾",
-                jp: "シールド",
               },
               img: img_8,
             },
             {
               title: {
                 eng: "Wap",
-                kor: "Wap",
-                cn: "Wap",
-                jp: "Wap",
               },
               img: img_9,
             },
             {
               title: {
                 eng: "Insulator",
-                kor: "절연체",
-                cn: "绝缘体",
-                jp: "絶縁体",
               },
               img: img_10,
             },
@@ -1266,26 +1242,17 @@ export const itemsDetail = {
         {
           text: {
             eng: "SiC",
-            kor: "SiC",
-            cn: "SiC",
-            jp: "SiC",
           },
           images: [
             {
               title: {
                 eng: "SiC Ring",
-                kor: "SiC 링",
-                cn: "SiC环",
-                jp: "SiCリング",
               },
               img: img_11,
             },
             {
               title: {
                 eng: "SiC Shower Head",
-                kor: "SiC 샤워 헤드",
-                cn: "SiC淋浴头",
-                jp: "SiCシャワーヘッド",
               },
               img: img_12,
             },
@@ -1348,10 +1315,18 @@ export const itemsDetail = {
   // },
 
   cantilever: {
-    title: "Cantilever Structure",
-    description:
-      "Are used to connect the integrated circuits located on a wafer to the ATE (Automated Test Equipment) to test that the electrical parameters and performance meet requirements before they are manufactured and shipped out.",
-    // warning: "We provide the necessary parts for the probe card.",
+    title: {
+      eng: "Cantilever Structure",
+      kor: "캐틀리버 구조",
+      cn: "悬臂结构",
+      jp: "カンチレバー構造",
+    },
+    description: {
+      eng: "Are used to connect the integrated circuits located on a wafer to the ATE (Automated Test Equipment) to test that the electrical parameters and performance meet requirements before they are manufactured and shipped out.",
+      kor: "웨이퍼에 위치한 집적 회로를 ATE(자동화 테스트 장비)와 연결하여 전기적 파라미터와 성능이 요구 사항을 충족하는지 테스트한 후 제조 및 배송됩니다.",
+      cn: "用于将位于晶圆上的集成电路连接到ATE（自动化测试设备），以在制造和发货之前测试电气参数和性能是否满足要求。",
+      jp: "ウェハ上の集積回路をATE（自動テスト装置）に接続し、製造および出荷前に電気的なパラメータと性能が要求を満たしているかどうかをテストします。",
+    },
     images: {
       part1: cantilever_part1,
       part2: cantilever_part2,
@@ -1367,17 +1342,23 @@ export const itemsDetail = {
     link: "/semi/parts/cantilever",
     item: [
       {
-        title: "stiffener",
+        title: {
+          eng: "stiffener",
+        },
         img: item_stiffener,
         link: "stiffener",
       },
       {
-        title: "probe",
+        title: {
+          eng: "probe",
+        },
         img: item_probe,
         link: "cprobe",
       },
       {
-        title: "PI-Tube",
+        title: {
+          eng: "PI-Tube",
+        },
         img: item_pitube,
         link: "tube",
       },

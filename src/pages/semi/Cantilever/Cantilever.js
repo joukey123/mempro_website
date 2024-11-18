@@ -23,6 +23,7 @@ import { useMediaQuery } from "@mui/material";
 import CantileverAnimationMobile from "./CantileverAnimationMobile";
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
+import useTranslation from "../../../Hook/useTranslation";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -209,7 +210,7 @@ const StyledChip = styled(Chip)({
 function Cantilever() {
   const location = useLocation();
   const navigate = useNavigate();
-
+  const { getText } = useTranslation();
   const paths = location.pathname.split("/").filter(Boolean);
   const porbeArray = ["probe", "cantilever", "vertical"];
   const [sublink, setSublink] = useState(paths[2]);
@@ -286,11 +287,7 @@ function Cantilever() {
           handleClickProbe={handleClickProbe}
           sublink={sublink}
         /> */}
-        <Headline
-          item={{ ...itemsDetail[`${sublink}`] }}
-          text="
-        We provide the necessary parts for the probe card."
-        />
+        <Headline item={{ ...itemsDetail[`${sublink}`] }} />
         {sublink === "probe" && <Probe images={images} item={item} />}
         {/* {sublink === "probe" && (
           <DiagramWpper>
@@ -712,7 +709,11 @@ function Cantilever() {
                     ))}
                   </Cards> */}
                   {item.map((item, index) => (
-                    <Cards title={item.title} img={item.img} link={item.link} />
+                    <Cards
+                      title={getText(item.title)}
+                      img={item.img}
+                      link={item.link}
+                    />
                   ))}
                 </ZooWrapper>
               )}
