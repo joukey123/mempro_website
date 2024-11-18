@@ -984,10 +984,17 @@ export const machineDetail = {
 export const itemsDetail = {
   diamond: {
     nation: ["Made in Korea"],
-    title: { Eng: "Diamond Wire", Kor: "다이아몬드 와이어" },
+    title: {
+      eng: "Diamond Wire",
+      kor: "다이아몬드 와이어",
+      cn: "金刚线",
+      jp: "ダイヤモンドワイヤー",
+    },
     description: {
-      Eng: "Manufactured by using an electrode to deposit diamond particles on the surface of core wire, made of high carbon steel and tungsten.",
-      Kor: "고탄소 강철과 텅스텐으로 만든 코어 와이어 표면에 전극을 이용해 다이아몬드 입자를 증착하여 제조됩니다.",
+      eng: "Manufactured by using an electrode to deposit diamond particles on the surface of core wire, made of high carbon steel and tungsten.",
+      kor: "고탄소 강철과 텅스텐으로 만든 코어 와이어 표면에 전극을 이용해 다이아몬드 입자를 증착하여 제조됩니다.",
+      cn: "采用电极在芯线表面沉积金刚石颗粒而制成，芯线由高碳钢和钨制成.",
+      jp: "高炭素鋼とタングステンからなる芯線の表面に電極を用いてダイヤモンド粒子を蒸着させて製造されます.",
     },
     images: diamondwire_machine,
     thumnail: diamondwire_thumnail,
@@ -997,42 +1004,82 @@ export const itemsDetail = {
       sem: [
         {
           text: {
-            Eng: "Electroplated Diamond Wire SEM",
-            Kor: "전기도금된 다이아몬드 와이어 SEM",
+            eng: "Electroplated Diamond Wire SEM",
+            kor: "전기도금된 다이아몬드 와이어 SEM",
+            cn: "电镀金刚石线扫描电镜",
+            jp: "電着ダイヤモンドワイヤーSEM",
           },
           img: diamondWire_sem1,
         },
         {
           text: {
-            Eng: "Configuration of Electroplated Diamond Wire",
-            Kor: "전착 다이아몬드 와이어 사진",
+            eng: "Configuration of Electroplated Diamond Wire",
+            kor: "전착 다이아몬드 와이어 사진",
+            cn: "电镀金刚线的配置",
+            jp: "電着ダイヤモンドワイヤーの構成",
           },
           img: diamondWire_sem2,
         },
       ],
       applications: [
         {
-          text: { Eng: "Semiconductor Ingot", Kor: "반도체 잉곳" },
+          text: {
+            eng: "Semiconductor Ingot",
+            kor: "반도체 잉곳",
+            cn: "半导体锭",
+            jp: "半導体インゴット",
+          },
           img: semiconductorIngot,
         },
         {
-          text: { Eng: "Sapphire Ingot", Kor: "사파이어 잉곳" },
+          text: {
+            eng: "Sapphire Ingot",
+            kor: "사파이어 잉곳",
+            cn: "蓝宝石锭",
+            jp: "サファイアインゴット",
+          },
           img: sapphireIngot,
         },
-        { text: { Eng: "Solar Ingot", Kor: "태양광 잉곳" }, img: solarIngot },
-        { text: { Eng: "Magnet", Kor: "자석" }, img: magnet },
+        {
+          text: {
+            eng: "Solar Ingot",
+            kor: "태양광 잉곳",
+            cn: "太阳能锭",
+            jp: "ソーラーインゴット",
+          },
+          img: solarIngot,
+        },
+        {
+          text: { eng: "Magnet", kor: "자석", cn: "磁铁", jp: "磁石" },
+          img: magnet,
+        },
       ],
       features: [
         {
-          text: { Eng: "plating technique", Kor: "도금기술" },
+          text: {
+            eng: "plating technique",
+            kor: "도금기술",
+            cn: "电镀技术",
+            jp: "メッキ技術",
+          },
           icon: diamond_features1,
         },
         {
-          text: { Eng: "electrodeposited Ni", Kor: "전착 Ni" },
+          text: {
+            eng: "electrodeposited Ni",
+            kor: "전착 Ni",
+            cn: "电沉积镍",
+            jp: "電着Ni",
+          },
           icon: diamond_features2,
         },
         {
-          text: { Eng: "production speed 50M", Kor: "생산속도 50M" },
+          text: {
+            eng: "production speed 50M",
+            kor: "생산속도 50M",
+            cn: "生产速度50M",
+            jp: "生産速度50M",
+          },
           icon: diamond_features3,
         },
       ],
@@ -1084,9 +1131,18 @@ export const itemsDetail = {
 
   etching: {
     nation: ["Made in Korea"],
-    title: "Electrode, Focus Ring, ETC.",
-    description:
-      "During the semiconductor manufacturing process, consumable parts are applied precisely in a sterile environment with the use of a chamber of diffusion in the CVD ,Etching ,and Thin Film processing facilities.",
+    title: {
+      eng: "Electrode, Focus Ring, ETC.",
+      kor: "포커스링 / 기타",
+      cn: "电极、聚焦环等.",
+      jp: "電極、フォーカスリング等",
+    },
+    description: {
+      eng: "During the semiconductor manufacturing process, consumable parts are applied precisely in a sterile environment with the use of a chamber of diffusion in the CVD, Etching, and Thin Film processing facilities.",
+      kor: "반도체 제조 과정에서는 CVD, 에칭, 그리고 박막 공정 설비의 확산 챔버를 활용하여 소모품이 멸균 환경에서 정밀하게 적용됩니다.",
+      cn: "在半导体制造过程中，在CVD、刻蚀和薄膜加工设备的扩散腔中，耗材在无菌环境下精确使用.",
+      jp: "半導体製造プロセスでは、CVD、エッチング、薄膜処理設備の拡散チャンバーを使用して、消耗部品が無菌環境で正確に適用されます.",
+    },
     images: {
       machine: etching_machine,
       step1: etching_step1,
@@ -1098,79 +1154,150 @@ export const itemsDetail = {
     contents: {
       features: [
         {
-          text: "fine surface treatment",
+          text: {
+            eng: "fine surface treatment",
+            kor: "정밀 표면 처리",
+            cn: "精细表面处理",
+            jp: "精密表面処",
+          },
           icon: etching_features1,
         },
         {
-          text: "short delivery period ",
+          text: {
+            eng: "short delivery period",
+            kor: "짧은 납기 기간",
+            cn: "短交货期",
+            jp: "短い納",
+          },
           icon: etching_features2,
         },
       ],
       material: [
         {
-          text: "Silicon",
+          text: { eng: "Silicon", kor: "실리콘", cn: "硅", jp: "シリコン" },
           images: [
             {
-              title: "Electrode",
+              title: { eng: "Electrode", kor: "전극", cn: "电极", jp: "電極" },
               img: img_1,
             },
             {
-              title: "Showe Head",
+              title: {
+                eng: "Shower Head",
+                kor: "샤워 헤드",
+                cn: "淋浴喷头",
+                jp: "シャワーヘッド",
+              },
               img: img_2,
             },
             {
-              title: "Focus",
+              title: {
+                eng: "Focus",
+                kor: "집중",
+                cn: "焦点",
+                jp: "フォーカス",
+              },
               img: img_3,
             },
             {
-              title: "Insert",
+              title: { eng: "Insert", kor: "삽입", cn: "插入", jp: "挿入" },
               img: img_4,
             },
             {
-              title: "C-Ring",
+              title: { eng: "C-Ring", kor: "C-링", cn: "C型环", jp: "Cリング" },
               img: img_5,
             },
           ],
         },
         {
-          text: "Quartz",
+          text: {
+            eng: "Quartz",
+            kor: "석영",
+            cn: "石英",
+            jp: "クォーツ",
+          },
           images: [
             {
-              title: "Electrode",
+              title: {
+                eng: "Electrode",
+                kor: "전극",
+                cn: "电极",
+                jp: "電極",
+              },
               img: img_6,
             },
             {
-              title: "G.D.P",
+              title: {
+                eng: "G.D.P",
+                kor: "G.D.P",
+                cn: "G.D.P",
+                jp: "G.D.P",
+              },
               img: img_7,
             },
             {
-              title: "Sheild",
+              title: {
+                eng: "Shield",
+                kor: "쉴드",
+                cn: "盾",
+                jp: "シールド",
+              },
               img: img_8,
             },
             {
-              title: "Wap",
+              title: {
+                eng: "Wap",
+                kor: "Wap",
+                cn: "Wap",
+                jp: "Wap",
+              },
               img: img_9,
             },
             {
-              title: "Insulator",
+              title: {
+                eng: "Insulator",
+                kor: "절연체",
+                cn: "绝缘体",
+                jp: "絶縁体",
+              },
               img: img_10,
             },
           ],
         },
         {
-          text: "SiC",
+          text: {
+            eng: "SiC",
+            kor: "SiC",
+            cn: "SiC",
+            jp: "SiC",
+          },
           images: [
             {
-              title: "SiC Ring",
+              title: {
+                eng: "SiC Ring",
+                kor: "SiC 링",
+                cn: "SiC环",
+                jp: "SiCリング",
+              },
               img: img_11,
             },
             {
-              title: "SiC Shower Head",
+              title: {
+                eng: "SiC Shower Head",
+                kor: "SiC 샤워 헤드",
+                cn: "SiC淋浴头",
+                jp: "SiCシャワーヘッド",
+              },
               img: img_12,
             },
           ],
         },
       ],
+    },
+    info: {
+      eng: "We are able to produce the product based on drawings or actual measurements.",
+      kor: "우리는 도면이나 실제 측정을 기반으로 제품을 생산할 수 있습니다.",
+      cn: "我们能够根据图纸或实际测量生产产品。",
+      jp: "私たちは図面または実際の測定に基づいて製品を生産することができます。",
     },
   },
 

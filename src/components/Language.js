@@ -25,22 +25,32 @@ function Language() {
   const languageOptions = [
     {
       key: "eng",
-      text: "Eng",
+      text: "ENG",
       value: "eng",
       flag: "us",
     },
     {
       key: "kor",
-      text: "Kor",
+      text: "KOR",
       value: "kor",
       flag: "kr",
+    },
+    {
+      key: "cn",
+      text: "CN",
+      value: "cn",
+      flag: "cn",
+    },
+    {
+      key: "jp",
+      text: "JP",
+      value: "jp",
+      flag: "jp",
     },
   ];
 
   const handleChange = (e) => {
     setSelectedLanguage(e.target.innerText);
-    console.log(e.target.innerText, "e");
-    console.log(selectedLanguage, "selectedLanguage");
   };
   return (
     <>
@@ -53,7 +63,6 @@ function Language() {
         icon={<StyleArrowDropDownIcon />} // react-icons 패키지에서 가져온 아이콘 사용
         onChange={(e) => handleChange(e)}
       />
-      {selectedLanguage === "Kor" ? console.log("한국어") : console.log("영어")}
     </>
   );
 }

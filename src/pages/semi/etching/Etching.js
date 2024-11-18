@@ -15,6 +15,7 @@ import ContentsTitle from "../../../components/ContentsTitle";
 import Features from "../../../components/Features";
 import { Collapse, Button, ButtonGroup, Box } from "@mui/material";
 import useAnimateOnInView from "../../../Hook/useAnimationOnInView";
+import useTranslation from "../../../Hook/useTranslation";
 
 const Wrapper = styled(motion.div)`
   width: 100%;
@@ -309,7 +310,7 @@ function Etching() {
     controls: childControls,
     animateVariants: childVariants,
   } = useAnimateOnInView(0, 0.3);
-
+  const { getText } = useTranslation();
   return (
     <>
       <Wrapper>
@@ -378,8 +379,7 @@ function Etching() {
           sx={{ width: "100%", maxWidth: 1100, margin: "20px auto" }}
         >
           <AlertTitle>Info</AlertTitle>
-          We are able to produce the product based on drawings or actual
-          measurements.
+          {getText(itemsDetail[`etching`].info)}
         </Alert>
         <Contents>
           <Features contents={contents} maxWidth={600} />
@@ -410,7 +410,7 @@ function Etching() {
                       $isClick={index === selectMaterial}
                       $disabled={index !== selectMaterial}
                     >
-                      {item.text}
+                      {getText(item.text)}
                     </StyledButton>
                   ))}
                 </MotionButtonGroup>
@@ -442,7 +442,7 @@ function Etching() {
                     <OptionWrapper key={index}>
                       <img src={item.img} alt={item.title} />
                       <span style={{ padding: "7px 0", textAlign: "center" }}>
-                        {item.title}
+                        {getText(item.title)}
                       </span>
                     </OptionWrapper>
                   ))}
