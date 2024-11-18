@@ -3,6 +3,9 @@ import styled from "styled-components";
 import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
 import SnackbarBox from "../SnackbarBox";
+import { language } from "../../atoms";
+import { useRecoilState } from "recoil";
+import useTranslation from "../../Hook/useTranslation";
 
 const TextWrapper = styled.div`
   width: 100%;
@@ -59,6 +62,7 @@ const Warining = styled.img`
 function Headline({ item, text }) {
   const [showWarning, setShowWarning] = useState(true);
   const [timeoutId, setTimeoutId] = useState(null);
+  const { getText } = useTranslation();
 
   const handleShowWarning = () => {
     setShowWarning(true);
@@ -67,6 +71,7 @@ function Headline({ item, text }) {
       setTimeoutId(null);
     }
   };
+
   const handleHideWarning = () => {
     const id = setTimeout(() => setShowWarning(false), 3000);
     setTimeoutId(id);
@@ -82,7 +87,7 @@ function Headline({ item, text }) {
   return (
     <TextWrapper style={{ display: "flex" }}>
       <TitleBox>
-        <Title>{item.title}</Title>
+        <Title>{getText(item.title)}</Title>
         {item.warning && <SnackbarBox text={item.warning} />}
         <Stack direction="row" spacing={1}>
           {item.nation &&
@@ -91,7 +96,9 @@ function Headline({ item, text }) {
             ))}
         </Stack>
       </TitleBox>
-      {item.description && <Description>{item.description}</Description>}
+      {item.description && (
+        <Description>{getText(item.description)}</Description>
+      )}
     </TextWrapper>
   );
 }

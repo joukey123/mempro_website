@@ -21,6 +21,8 @@ import Features from "../../components/Features";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 
 import mobileZoom from "../../img/diamond/mobileZoom.svg";
+import { useRecoilState } from "recoil";
+import { language } from "../../atoms";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -295,6 +297,7 @@ const MobileZoom = styled.img`
   transform: scale(5) translate(20%, -7%);
 `;
 function DiamondWire() {
+  const [selectedLanguage, setSelectedLanguage] = useRecoilState(language);
   const sublink = "diamond";
   const { images, contents } = itemsDetail[`${sublink}`];
   const [index, setIndex] = useState(0);

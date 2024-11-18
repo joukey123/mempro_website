@@ -981,58 +981,41 @@ export const machineDetail = {
     },
   },
 };
-export const itemsDetail = {
+export const itemsDetail_kor = {
   diamond: {
     nation: ["Made in Korea"],
-    title: { Eng: "Diamond Wire", Kor: "다이아몬드 와이어" },
-    description: {
-      Eng: "Manufactured by using an electrode to deposit diamond particles on the surface of core wire, made of high carbon steel and tungsten.",
-      Kor: "고탄소 강철과 텅스텐으로 만든 코어 와이어 표면에 전극을 이용해 다이아몬드 입자를 증착하여 제조됩니다.",
-    },
+    title: "다이아몬드 와이어",
+    description:
+      "고탄소강과 텅스텐으로 만든 코어 와이어 표면에 전극을 사용하여 다이아몬드 입자를 증착시켜 제조된 제품입니다.",
     images: diamondwire_machine,
     thumnail: diamondwire_thumnail,
     diagram: "wafer",
     link: "/semi/parts/diamond",
     contents: {
       sem: [
+        { text: "Electroplated Diamond Wire SEM", img: diamondWire_sem1 },
         {
-          text: {
-            Eng: "Electroplated Diamond Wire SEM",
-            Kor: "전기도금된 다이아몬드 와이어 SEM",
-          },
-          img: diamondWire_sem1,
-        },
-        {
-          text: {
-            Eng: "Configuration of Electroplated Diamond Wire",
-            Kor: "전착 다이아몬드 와이어 사진",
-          },
+          text: "Configuration of Electroplated Diamond Wire",
           img: diamondWire_sem2,
         },
       ],
       applications: [
-        {
-          text: { Eng: "Semiconductor Ingot", Kor: "반도체 잉곳" },
-          img: semiconductorIngot,
-        },
-        {
-          text: { Eng: "Sapphire Ingot", Kor: "사파이어 잉곳" },
-          img: sapphireIngot,
-        },
-        { text: { Eng: "Solar Ingot", Kor: "태양광 잉곳" }, img: solarIngot },
-        { text: { Eng: "Magnet", Kor: "자석" }, img: magnet },
+        { text: "Semiconductor Ingot", img: semiconductorIngot },
+        { text: "Sapphire Ingot", img: sapphireIngot },
+        { text: "Solar Ingot", img: solarIngot },
+        { text: "Magnet", img: magnet },
       ],
       features: [
         {
-          text: { Eng: "plating technique", Kor: "도금기술" },
+          text: "plating technique",
           icon: diamond_features1,
         },
         {
-          text: { Eng: "electrodeposited Ni", Kor: "전착 Ni" },
+          text: "electrodeposited Ni",
           icon: diamond_features2,
         },
         {
-          text: { Eng: "production speed 50M", Kor: "생산속도 50M" },
+          text: "production speed 50M",
           icon: diamond_features3,
         },
       ],

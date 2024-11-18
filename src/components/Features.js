@@ -7,6 +7,9 @@ import { useRef, useState, useEffect } from "react";
 
 import { motion } from "framer-motion";
 import useAnimateOnInView from "../Hook/useAnimationOnInView";
+import { useRecoilState } from "recoil";
+import { language } from "../atoms";
+import useTranslation from "../Hook/useTranslation";
 
 const FeaturesBox = styled(motion.div)`
   margin: 150px 0;
@@ -33,6 +36,7 @@ function Features({ contents, maxWidth }) {
   const length = contents.features.length;
   const [rowNumber, setRowNumber] = useState(maxNumber / length);
   const [expendClicked, setExpendClicked] = useState(true);
+  const { getText } = useTranslation();
 
   const {
     ref: childRef,
@@ -85,7 +89,7 @@ function Features({ contents, maxWidth }) {
                         wordBreak: "break-word",
                       }}
                     >
-                      {item.text}
+                      {getText(item.text)}
                     </span>
                   </div>
                 </motion.div>

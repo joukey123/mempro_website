@@ -14,3 +14,8 @@ export const handleSearchBar = atom({
   key: "handleSearchBar",
   default: false,
 });
+
+export const language = atom({
+  key: "language",
+  default: "",
+});

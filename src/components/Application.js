@@ -5,6 +5,7 @@ import { useState } from "react";
 import ContentsTitle from "./ContentsTitle";
 import useAnimateOnInView from "../Hook/useAnimationOnInView";
 import { motion } from "framer-motion";
+import useTranslation from "../Hook/useTranslation";
 const ApplicationBox = styled(motion.div)`
   margin: 150px 0;
   @media (max-width: 1023px) {
@@ -35,7 +36,7 @@ function Application({ contents }) {
     controls: childControls,
     animateVariants: childVariants,
   } = useAnimateOnInView(0, 0.3);
-
+  const { getText } = useTranslation();
   return (
     <ApplicationBox>
       <ContentsTitle title={"Application"} onData={showContent} />
@@ -56,7 +57,7 @@ function Application({ contents }) {
                 src={item.img}
                 $number={contents.applications.length}
               />
-              <div>{item.text}</div>
+              <div>{getText(item.text)}</div>
             </MotionGrid>
           ))}
         </StyledGridContainer>

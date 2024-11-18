@@ -89,7 +89,7 @@ const NavMenu = styled.li`
 `;
 const LanguageWrapper = styled.div`
   transform: scale(0.8);
-  display: none;
+  margin-left: 50px;
 `;
 
 const MenuIconWrapper = styled.div`

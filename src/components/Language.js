@@ -2,6 +2,9 @@ import { Dropdown, Flag } from "semantic-ui-react";
 import styled from "styled-components";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import "semantic-ui-css/semantic.min.css"; // Semantic UI CSS 파일 로드
+import { useState } from "react";
+import { useRecoilState } from "recoil";
+import { language } from "../atoms";
 
 const StyleArrowDropDownIcon = styled(ArrowDropDownIcon)`
   position: absolute;
@@ -17,6 +20,8 @@ const FixedDropdown = styled(Dropdown)`
 `;
 
 function Language() {
+  const [selectedLanguage, setSelectedLanguage] = useRecoilState(language);
+
   const languageOptions = [
     {
       key: "eng",
@@ -31,15 +36,25 @@ function Language() {
       flag: "kr",
     },
   ];
+
+  const handleChange = (e) => {
+    setSelectedLanguage(e.target.innerText);
+    console.log(e.target.innerText, "e");
+    console.log(selectedLanguage, "selectedLanguage");
+  };
   return (
-    <FixedDropdown
-      placeholder="Language"
-      fluid
-      search
-      selection
-      options={languageOptions}
-      icon={<StyleArrowDropDownIcon />} // react-icons 패키지에서 가져온 아이콘 사용
-    />
+    <>
+      <FixedDropdown
+        placeholder="Language"
+        fluid
+        search
+        selection
+        options={languageOptions}
+        icon={<StyleArrowDropDownIcon />} // react-icons 패키지에서 가져온 아이콘 사용
+        onChange={(e) => handleChange(e)}
+      />
+      {selectedLanguage === "Kor" ? console.log("한국어") : console.log("영어")}
+    </>
   );
 }
 

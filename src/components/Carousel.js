@@ -13,6 +13,7 @@ import ContentsTitle from "./ContentsTitle";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import useAnimateOnInView from "../Hook/useAnimationOnInView";
+import useTranslation from "../Hook/useTranslation";
 const CarouselBox = styled(motion.div)``;
 const MotionBox = motion(Box);
 function Carousel({ contents }) {
@@ -50,6 +51,7 @@ function Carousel({ contents }) {
   //   };
   // }, []);
   const isMobile = useMediaQuery("(max-width: 1023px)");
+  const { getText } = useTranslation();
 
   return (
     <CarouselBox>
@@ -99,7 +101,7 @@ function Carousel({ contents }) {
             }}
           >
             <Typography sx={{ letterSpacing: "-.2px" }}>
-              {images[activeStep].text}
+              {getText(images[activeStep].text)}
             </Typography>
           </Paper>
           <MobileStepper
