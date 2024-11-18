@@ -986,9 +986,6 @@ export const itemsDetail = {
     nation: ["Made in Korea"],
     title: {
       eng: "Diamond Wire",
-      kor: "다이아몬드 와이어",
-      cn: "金刚线",
-      jp: "ダイヤモンドワイヤー",
     },
     description: {
       eng: "Manufactured by using an electrode to deposit diamond particles on the surface of core wire, made of high carbon steel and tungsten.",
@@ -1025,32 +1022,23 @@ export const itemsDetail = {
         {
           text: {
             eng: "Semiconductor Ingot",
-            kor: "반도체 잉곳",
-            cn: "半导体锭",
-            jp: "半導体インゴット",
           },
           img: semiconductorIngot,
         },
         {
           text: {
             eng: "Sapphire Ingot",
-            kor: "사파이어 잉곳",
-            cn: "蓝宝石锭",
-            jp: "サファイアインゴット",
           },
           img: sapphireIngot,
         },
         {
           text: {
             eng: "Solar Ingot",
-            kor: "태양광 잉곳",
-            cn: "太阳能锭",
-            jp: "ソーラーインゴット",
           },
           img: solarIngot,
         },
         {
-          text: { eng: "Magnet", kor: "자석", cn: "磁铁", jp: "磁石" },
+          text: { eng: "Magnet" },
           img: magnet,
         },
       ],
@@ -1133,9 +1121,6 @@ export const itemsDetail = {
     nation: ["Made in Korea"],
     title: {
       eng: "Electrode, Focus Ring, ETC.",
-      kor: "포커스링 / 기타",
-      cn: "电极、聚焦环等.",
-      jp: "電極、フォーカスリング等",
     },
     description: {
       eng: "During the semiconductor manufacturing process, consumable parts are applied precisely in a sterile environment with the use of a chamber of diffusion in the CVD, Etching, and Thin Film processing facilities.",
@@ -1317,9 +1302,6 @@ export const itemsDetail = {
   cantilever: {
     title: {
       eng: "Cantilever Structure",
-      kor: "캐틀리버 구조",
-      cn: "悬臂结构",
-      jp: "カンチレバー構造",
     },
     description: {
       eng: "Are used to connect the integrated circuits located on a wafer to the ATE (Automated Test Equipment) to test that the electrical parameters and performance meet requirements before they are manufactured and shipped out.",
@@ -1425,7 +1407,7 @@ export const itemsDetail = {
         },
       ],
     },
-    title: "Stiffener",
+    title: { eng: "Stiffener" },
     images: {
       stiffener,
     },
@@ -1528,16 +1510,39 @@ export const itemsDetail = {
         ],
       },
       applications: [
-        { text: "Display Driver Chip", img: displayImg },
-        { text: "Logic", img: logicImg },
+        {
+          text: {
+            eng: "Display Driver Chip",
+            kor: "디스플레이 드라이버 칩",
+            cn: "显示驱动芯片",
+            jp: "ディスプレイドライバーチップ",
+          },
+          img: displayImg,
+        },
+        {
+          text: {
+            eng: "Logic",
+            kor: "로직",
+            cn: "逻辑",
+            jp: "ロジック",
+          },
+          img: logicImg,
+        },
       ],
     },
   },
 
   tube: {
     nation: ["Made in Korea", "Made in Japan"],
-    title: "PI-Tube",
-    description: "The PI-Tube prevents shorts caused by the contact of probe.",
+    title: {
+      eng: "PI-Tube",
+    },
+    description: {
+      eng: "The PI-Tube prevents shorts caused by the contact of probe.",
+      kor: "PI-튜브는 프로브 접촉으로 인한 쇼트현상을 방지합니다.",
+      cn: "PI管可防止探针接触引起的短路。",
+      jp: "PIチューブはプローブの接触によって引き起こされるショートを防ぎます。",
+    },
     img: tube,
     thumnail: tube_thumnail,
     diagram: "EDS",
@@ -1623,10 +1628,15 @@ export const itemsDetail = {
     ],
   },
   vertical: {
-    title: "Vertical Structure",
-    description:
-      "Are used to connect the integrated circuits located on a wafer to the ATE (Automated Test Equipment) to test that the electrical parameters and performance meet requirements before they are manufactured and shipped out.",
-    // warning: "We provide the necessary parts for the probe card.",
+    title: {
+      eng: "Vertical Structure",
+    },
+    description: {
+      eng: "Are used to connect the integrated circuits located on a wafer to the ATE (Automated Test Equipment) to test that the electrical parameters and performance meet requirements before they are manufactured and shipped out.",
+      kor: "수직 구조는 웨이퍼에 위치한 집적 회로를 ATE(자동화 테스트 장비)와 연결하여 전기적 파라미터와 성능이 요구 사항을 충족하는지 테스트한 후 제조 및 출하됩니다.",
+      cn: "用于将位于晶圆上的集成电路连接到ATE（自动化测试设备），以测试电气参数和性能在制造和出货前是否符合要求。",
+      jp: "垂直構造は、ウェハ上にある集積回路をATE（自動化テスト設備）に接続して、製造および出荷前に電気的パラメーターとパフォーマンスが要求を満たしているかどうかをテストするために使用されます。",
+    },
     images: {
       part1: vertical_part1,
       part2: vertical_part2,
@@ -1678,7 +1688,7 @@ export const itemsDetail = {
   // },
   vprobe: {
     nation: ["Made in Korea"],
-    title: "Vertical Probe",
+    title: { eng: "Vertical Probe" },
     // cards: {
     //   vertical: {
     //     needle: ["wire", "short", "cobra", "pems"],
@@ -1883,9 +1893,9 @@ export const itemsDetail = {
           },
         ],
         sem: [
-          { text: "15N", img: wire15 },
+          { text: { eng: "15N" }, img: wire15 },
           {
-            text: "20NF",
+            text: { eng: "20NF" },
             img: wire20,
           },
         ],
@@ -1934,21 +1944,21 @@ export const itemsDetail = {
         sem: [
           {
             id: 1,
-            text: "SEM",
+            text: { eng: "SEM" },
             img: shortSem,
           },
 
           {
             id: 2,
-            text: "Press Stopper",
+            text: { eng: "Press Stopper" },
             img: press,
           },
-          { id: 3, text: "Coating Stopper", img: shortCoating },
+          { id: 3, text: { eng: "Coating Stopper" }, img: shortCoating },
         ],
         applications: [
-          { text: "Power IC", img: powerIC },
-          { text: "CIS", img: cis },
-          { text: "Alternative to MEMS", img: mems },
+          { text: { eng: "Power IC" }, img: powerIC },
+          { text: { eng: "CIS" }, img: cis },
+          { text: { eng: "Alternative to MEMS" }, img: mems },
         ],
       },
       pems: {

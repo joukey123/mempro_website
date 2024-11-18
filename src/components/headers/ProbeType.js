@@ -16,6 +16,7 @@ import { itemsDetail } from "../../data";
 import styled from "styled-components";
 import { Alert, capitalize, useMediaQuery } from "@mui/material";
 import { transform } from "framer-motion";
+import useTranslation from "../../Hook/useTranslation";
 const StyledButton = styled(Button)`
   color: ${(props) => props.$disabled && "#E4E4E4"} !important;
   border-color: ${(props) => props.$disabled && "#E4E4E4"} !important;
@@ -46,7 +47,13 @@ function ProbeType({ cards, onData, IsNeedleChange }) {
   const findNeedle = cards.find(
     (card) => card.type.toLowerCase() === selectCard.toLowerCase()
   );
-
+  const { getText } = useTranslation();
+  const warningText = {
+    eng: "Probe material types may vary, but detailed specifications are similar or identical.",
+    kor: "프로브 재료 유형은 다를 수 있지만, 세부 사양은 유사하거나 동일합니다.",
+    cn: "探针材料类型可能有所不同，但详细规格相似或相同。",
+    jp: "プローブの材料タイプは異なる場合がありますが、詳細な仕様は似ているか、同じです。",
+  };
   const getUniqueNeedles = (cards) => {
     return [
       ...new Set(
@@ -176,8 +183,7 @@ function ProbeType({ cards, onData, IsNeedleChange }) {
           },
         }}
       >
-        Probe material types may vary, but detailed specifications are similar
-        or identical.
+        {getText(warningText)}
       </Alert>
       {alignType === "Type" && (
         <div
