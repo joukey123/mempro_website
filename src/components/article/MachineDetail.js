@@ -8,6 +8,7 @@ import Divider from "@mui/material/Divider";
 import MachineImgBoxS from "./MachineImgBoxS";
 import { motion } from "framer-motion";
 import useAnimateOnInView from "../../Hook/useAnimationOnInView";
+import useTranslation from "../../Hook/useTranslation";
 
 const MachinInfoWrapper = styled.div`
   width: 100%;
@@ -170,7 +171,7 @@ const OptionWrapper = styled(motion.div)`
 function MachineDetail({ info, blueImg, options }) {
   const [expendClicked, setExpendClicked] = useState(true);
   const isMobile = useMediaQuery("(max-width: 1023px)");
-
+  const { getText } = useTranslation();
   const showContent = (show) => {
     setExpendClicked(show);
   };
@@ -201,8 +202,8 @@ function MachineDetail({ info, blueImg, options }) {
               "\n$1"
             )}
           </MachinTextTitle>
-          <MachinTextSubTitle>{info?.subTitle}</MachinTextSubTitle>
-          <MachinTextDes>{info?.des}</MachinTextDes>
+          <MachinTextSubTitle>{getText(info?.subTitle)}</MachinTextSubTitle>
+          <MachinTextDes>{getText(info?.des)}</MachinTextDes>
           <MachineFeatures>
             {info?.features.map((item, index) => (
               <FeaturesIconBox key={index} $number={info?.features.length}>
@@ -214,7 +215,9 @@ function MachineDetail({ info, blueImg, options }) {
                     textAlign: "center",
                   }}
                 >
-                  {item.text.slice(0, 17) + `\n` + item.text.slice(17)}
+                  {getText(item.text).slice(0, 17) +
+                    `\n` +
+                    getText(item.text).slice(17)}
                 </span>
               </FeaturesIconBox>
             ))}

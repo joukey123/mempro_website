@@ -17,6 +17,7 @@ import {
 } from "@mui/material";
 import Application from "../../../components/Application";
 import useAnimateOnInView from "../../../Hook/useAnimationOnInView";
+import useTranslation from "../../../Hook/useTranslation";
 const Wrapper = styled.div`
   margin-top: 20px;
   @media (max-width: 1023px) {
@@ -154,6 +155,8 @@ function CprobeDetail({ needle, contents }) {
   const data = React.useMemo(() => contents.needle.spec, []);
 
   const coaxialData = React.useMemo(() => contents.coaxial.spec, []);
+
+  const { getText } = useTranslation();
   // const coaxialColumns = React.useMemo(
   //   () => [
   //     { Header: "", accessor: "category" },

@@ -10,6 +10,7 @@ const useTranslation = (defaultLanguage = "eng") => {
 
   return {
     getText,
+    selectedLanguage,
   };
 };
 

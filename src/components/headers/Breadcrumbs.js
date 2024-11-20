@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useCategory } from "../../Hook/useCategory";
+import useTranslation from "../../Hook/useTranslation";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -26,7 +27,6 @@ const Category = styled.div`
 
 function Breadcrumbs() {
   const { currentCategory, selectDiagram, type } = useCategory();
-
   return (
     currentCategory && (
       <Wrapper>

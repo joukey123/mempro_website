@@ -9,10 +9,11 @@ function useFuse() {
   const itemsArray = Object.values(itemsDetail);
   const machinesArray = Object.values(machineDetail);
   const combineData = [...itemsArray, ...machinesArray];
+
   const options = {
     keys: [
-      "title",
-      "description",
+      "title.eng",
+      "description.eng",
       "specifications.model",
       "nation",
       "cards.type",

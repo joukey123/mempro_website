@@ -9,6 +9,7 @@ import { add } from "../../data";
 import build from "../../img/build.svg";
 import { useMediaQuery } from "@mui/material";
 import useAnimateOnInView from "../../Hook/useAnimationOnInView";
+import useTranslation from "../../Hook/useTranslation";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -171,15 +172,28 @@ function Office() {
     controls: boxControls,
     animateVariants: boxVariants,
   } = useAnimateOnInView(0, 0.3);
-
+  const { selectedLanguage } = useTranslation();
+  const lang = selectedLanguage.toLowerCase();
+  const partnersMessage = {
+    eng: "The partners currently working with Mempro.",
+    kor: "현재 Mempro와 협력 중인 파트너들입니다.",
+    cn: "目前与Mempro合作的伙伴。",
+    jp: "現在Memproと共に働いているパートナーです。",
+  };
+  const officesMessage = {
+    eng: "Mempro’s headquarters and international offices.",
+    kor: "Mempro의 본사 및 해외 사무소.",
+    cn: "Mempro的总部和国际办公室。",
+    jp: "Memproの本社および国際オフィス。",
+  };
   return (
     <>
       <Wrapper>
         <BlackBox>Office & Trade Partners</BlackBox>
         <Des>
           {isTrade
-            ? "The partners currently working with Mempro."
-            : "Mempro’s headquarters and international offices."}
+            ? partnersMessage[lang] ?? partnersMessage["eng"]
+            : officesMessage[lang] ?? officesMessage["eng"]}
         </Des>
         <BtnWrapper>
           <Btn

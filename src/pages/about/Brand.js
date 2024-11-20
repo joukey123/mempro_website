@@ -22,6 +22,7 @@ import Snackbar from "@mui/material/Snackbar";
 import { useSwipeable } from "react-swipeable";
 import Clipboard from "clipboard";
 import useAnimateOnInView from "../../Hook/useAnimationOnInView";
+import useTranslation from "../../Hook/useTranslation";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -382,6 +383,21 @@ function Brand() {
     preventDefaultTouchmoveEvent: true,
     trackMouse: true, // 마우스로도 슬라이드할 수 있도록 함
   });
+  const { selectedLanguage } = useTranslation();
+  const lang = selectedLanguage.toLowerCase();
+  const valuesMessage = {
+    eng: " We lead in semiconductor and trade industries, delivering top quality and service with customer trust. Through innovation, we shape the future with our clients.",
+    kor: "우리는 반도체 및 무역 산업에서 선도하며, 고객 신뢰와 함께 최고의 품질과 서비스를 제공합니다. 혁신을 통해 우리는 고객과 함께 미래를 형성합니다.",
+    cn: "我们在半导体和贸易行业中处于领先地位，通过客户信任提供卓越的质量和服务。通过创新，我们与客户共同塑造未来。",
+    jp: "私たちは半導体および貿易業界でリードしており、顧客の信頼をもとに最高の品質とサービスを提供しています。革新を通じて、私たちは顧客とともに未来を形作ります。",
+  };
+
+  const logoMessage = {
+    eng: "The logo visually represents commitment and trust, symbolizing balance and harmony with clients through a hexagon. The ‘M’ signifies Mempro’s leadership on the global stage.",
+    kor: "로고는 헥사곤을 통해 고객과의 균형과 조화를 상징하며, 헌신과 신뢰를 시각적으로 표현합니다. ‘M’은 Mempro의 글로벌 무대에서의 리더십을 나타냅니다.",
+    cn: "该标志通过六边形象征与客户之间的平衡与和谐，直观地代表了承诺与信任。‘M’代表了Mempro在全球舞台上的领导地位。",
+    jp: "ロゴはヘキサゴンを通じて、顧客とのバランスと調和を象徴し、コミットメントと信頼を視覚的に表現しています。‘M’はMemproのグローバルな舞台でのリーダーシップを意味しています。",
+  };
   return (
     <>
       <Wrapper>
@@ -420,9 +436,7 @@ function Brand() {
             {/* 주식회사 멤프로는 반도체 & 무역 산업의 선두주자로서, 고객과 신뢰의
             바탕으로 최고의 품질과 서비스를 약속드립니다. 혁식을 통해 미래를
             함께 열어갑니다. */}
-            We lead in semiconductor and trade industries, delivering top
-            quality and service with customer trust. Through innovation, we
-            shape the future with our clients.
+            {valuesMessage[lang] ?? valuesMessage["eng"]}
           </Dec>
 
           <ValueImgWrapper>
@@ -482,9 +496,7 @@ function Brand() {
             조화를 상징하며 글로벌 비즈니스와 다양한 거래를 조화롭게 관리하는
             능력을 표현합니다. 로고에 포함된 'M'자는 멤프로가 글로벌 무대에서
             중심적인 역할을 하는 리더십을 상징합니다. */}
-            The logo visually represents commitment and trust, symbolizing
-            balance and harmony with clients through a hexagon. The ‘M’
-            signifies Mempro’s leadership on the global stage.
+            {logoMessage[lang] ?? logoMessage["eng"]}
           </Dec>
           <ColorBoxWrapper>
             {Color.map((item, index) => (
@@ -529,7 +541,7 @@ function Brand() {
                       }}
                       $number={index}
                     >
-                      색상 복사
+                      copyed!
                     </CopyMessage>
                   )}
                 </AnimatePresence>

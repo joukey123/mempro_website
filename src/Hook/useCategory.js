@@ -69,7 +69,7 @@ export const useCategory = () => {
       } else {
         const mainItem = items.find((item) => item.link === mainPath);
         if (mainItem) {
-          foundCategory = mainItem.category;
+          foundCategory = mainItem.category.eng;
           if (mainItem.type) {
             type = mainItem.type;
           } else {

@@ -10,6 +10,7 @@ import { resultArray } from "../../atoms";
 import { useEffect } from "react";
 import SearchOffIcon from "@mui/icons-material/SearchOff";
 import { useMediaQuery } from "@mui/material";
+import useTranslation from "../../Hook/useTranslation";
 const Wrapper = styled.div`
   width: 100%;
   max-width: 1280px;
@@ -175,15 +176,37 @@ function SearchResult() {
     return text.length > maxLength ? text.slice(0, maxLength) + "..." : text;
   };
   const results = useRecoilValue(resultArray);
-
+  const { selectedLanguage } = useTranslation();
   return (
     <>
       <PageHeader img={headerImg} />
       <Wrapper>
         <ResultText>
           <p>
-            <span>`{keyword}`</span>에 대한 <span>{results.length}</span>건의
-            검색결과가 있습니다.
+            {selectedLanguage === "KOR" && (
+              <>
+                <span>`{keyword}`</span>에 대한 <span>{results.length}</span>
+                건의 검색결과가 있습니다.
+              </>
+            )}
+            {selectedLanguage === "ENG" && (
+              <>
+                <span>`{keyword}`</span> has <span>{results.length}</span>
+                search results.
+              </>
+            )}
+            {selectedLanguage === "CN" && (
+              <>
+                <span>`{keyword}`</span> 有 <span>{results.length}</span>
+                条搜索结果。
+              </>
+            )}
+            {selectedLanguage === "JP" && (
+              <>
+                <span>`{keyword}`</span> に対して <span>{results.length}</span>
+                件の検索結果があります。
+              </>
+            )}
           </p>
         </ResultText>
         <SearchInputBar width={90} />
@@ -197,9 +220,38 @@ function SearchResult() {
                   </ResultListImg>
                   <ResultListText className="resultText">
                     <small>{item?.diagram}</small>
-                    <span>{item?.title}</span>
+                    <span>{item?.title.eng}</span>
 
-                    {item?.description ? (
+                    {item.description && (
+                      <p> {item?.description?.eng.slice(0, 100) + "..."}</p>
+                    )}
+
+                    {item?.model && (
+                      <>
+                        <p
+                          style={{
+                            marginTop: "10px",
+                            display: "flex",
+                            flexWrap: "wrap",
+                          }}
+                        >
+                          {item.model.map((modeItem, index) => (
+                            <span
+                              style={{
+                                fontSize: "14px",
+                                fontWeight: "normal",
+                                marginBottom: -5,
+                                marginRight: 5,
+                              }}
+                            >
+                              {modeItem}
+                              {index < item.model.length - 1 && ", "}
+                            </span>
+                          ))}
+                        </p>
+                      </>
+                    )}
+                    {/* {item?.description ? (
                       // <p>
                       //   {item?.des.slice(0, 100)}
                       //   {item?.des.length > 100 ? "..." : ""}
@@ -243,7 +295,7 @@ function SearchResult() {
                           ))}
                         </p>
                       </>
-                    )}
+                    )} */}
                   </ResultListText>
                 </li>
               </Link>

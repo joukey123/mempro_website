@@ -17,6 +17,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import { useRecoilState } from "recoil";
 import { handleSearchBar } from "../atoms";
 import MobileSearchInputComponent from "./search/MobileSearchInput";
+import useTranslation from "../Hook/useTranslation";
 const HeaderWrapper = styled.div`
   /* position: fixed; */
   /* top: 0px; */
@@ -128,7 +129,7 @@ function Header() {
   const [isOpen, setIsOpen] = useRecoilState(handleSearchBar);
   const isMobile = useMediaQuery("(max-width: 1023px)");
   const navigate = useNavigate();
-
+  const { getText } = useTranslation();
   const handleDataFromChild = (data) => {
     setOpenMobileMenu(data);
   };
@@ -219,27 +220,17 @@ function Header() {
                 style={{ position: "relative" }}
                 $isSelect={location.pathname.split("/")[1] === item.link}
               >
-                {(item.category === "semiconductor" ||
-                  item.category === "contact" ||
-                  item.category === "about MEMPro") && (
-                  <Link
-                    to={
-                      item.type ? `/${item.link}/${item.type}` : `/${item.link}`
-                    }
-                    style={{
-                      color: activeMenu === index ? "inherit" : "inherit",
-                      fontWeight: activeMenu === index && "bold",
-                    }}
-                    onMouseOver={(event) => handleMouseOver(index, event)}
-                    onMouseLeave={
-                      item.link === "about" || item.link === "contact"
-                        ? () => handleMouseOut()
-                        : null
-                    }
-                  >
-                    {item.category}
-                  </Link>
-                )}
+                <Link
+                  to={
+                    item.type ? `/${item.link}/${item.type}` : `/${item.link}`
+                  }
+                  style={{
+                    color: activeMenu === index ? "inherit" : "inherit",
+                    fontWeight: activeMenu === index && "bold",
+                  }}
+                >
+                  {getText(item.category)}
+                </Link>
 
                 <Submenu
                   subcategories={item.subcategories}

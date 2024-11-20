@@ -279,12 +279,17 @@ export const add = [
 
 export const items = [
   {
-    category: "about MEMPro",
+    category: {
+      eng: "about MEMPro",
+      kor: "MEMPro 소개",
+      cn: "关于MEMPro",
+      jp: "MEMProについて",
+    },
     link: "about",
     headerImg: aboutImg,
   },
   {
-    category: "semiconductor",
+    category: { eng: "semiconductor" },
     type: "parts",
     link: "semi",
     headerImg: semiImg,
@@ -353,79 +358,85 @@ export const items = [
     ],
   },
 
-  {
-    category: "led",
-    subcategories: [
-      {
-        diagram: "process",
-        subcategory: [{ name: "Coater", link: "coater" }],
-      },
-      {
-        diagram: "eds",
-        subcategory: [{ name: "Led Probe", link: "ledprobe" }],
-      },
-    ],
-    link: "led",
-    tag: (
-      <path d="M331.9,476.36l167.16,95.02-102.02,64.15-28.39-16.39c-16.06-9.28-42.01-9.27-57.97.01l-19.38,11.26c-15.96,9.28-41.93,9.28-58,0L12.1,502.7c-16.07-9.27-16.13-24.3-.17-33.58l77.17-44.84c15.96-9.28,15.87-24.32-.19-33.6l-36.38-21c-16.06-9.27-16.15-24.32-.19-33.59l160.55-93.3c15.87-9.22,15.89-24.15.07-33.43l297.99,168.52-179.05,98.48Z" />
-    ),
-  },
-  {
-    category: "substrate",
-    subcategories: [
-      {
-        diagram: "Process",
-        subcategory: [
-          { name: "PP Sheet", link: "pp" },
-          { name: "Ceramic Brush", link: "brush" },
-        ],
-      },
-    ],
-    link: "subs",
-    tag: (
-      <path d="M870.93,547.21l-225.01,130.76c-15.96,9.28-41.93,9.28-57.99.01l-9.41-5.43c-16.06-9.28-42.03-9.28-57.99,0-15.94,9.26-41.91,9.26-57.97-.01l-64.45-37.21,102.02-64.15-167.16-95.02,179.05-98.48,35.12-20.02,218.07,127.66,105.72,61.89Z" />
-    ),
-  },
-  {
-    category: "BBT",
-    subcategories: [
-      {
-        diagram: "BBT",
-        subcategory: [
-          { name: "Wire Probe", link: "wire" },
-          { name: "Universal Probe", link: "universal" },
-          { name: "Dimple Probe", link: "dimple" },
-          { name: "Spring Wire Probe", link: "spring" },
-        ],
-      },
-    ],
-    link: "bbt",
+  // {
+  //   category: "led",
+  //   subcategories: [
+  //     {
+  //       diagram: "process",
+  //       subcategory: [{ name: "Coater", link: "coater" }],
+  //     },
+  //     {
+  //       diagram: "eds",
+  //       subcategory: [{ name: "Led Probe", link: "ledprobe" }],
+  //     },
+  //   ],
+  //   link: "led",
+  //   tag: (
+  //     <path d="M331.9,476.36l167.16,95.02-102.02,64.15-28.39-16.39c-16.06-9.28-42.01-9.27-57.97.01l-19.38,11.26c-15.96,9.28-41.93,9.28-58,0L12.1,502.7c-16.07-9.27-16.13-24.3-.17-33.58l77.17-44.84c15.96-9.28,15.87-24.32-.19-33.6l-36.38-21c-16.06-9.27-16.15-24.32-.19-33.59l160.55-93.3c15.87-9.22,15.89-24.15.07-33.43l297.99,168.52-179.05,98.48Z" />
+  //   ),
+  // },
+  // {
+  //   category: "substrate",
+  //   subcategories: [
+  //     {
+  //       diagram: "Process",
+  //       subcategory: [
+  //         { name: "PP Sheet", link: "pp" },
+  //         { name: "Ceramic Brush", link: "brush" },
+  //       ],
+  //     },
+  //   ],
+  //   link: "subs",
+  //   tag: (
+  //     <path d="M870.93,547.21l-225.01,130.76c-15.96,9.28-41.93,9.28-57.99.01l-9.41-5.43c-16.06-9.28-42.03-9.28-57.99,0-15.94,9.26-41.91,9.26-57.97-.01l-64.45-37.21,102.02-64.15-167.16-95.02,179.05-98.48,35.12-20.02,218.07,127.66,105.72,61.89Z" />
+  //   ),
+  // },
+  // {
+  //   category: "BBT",
+  //   subcategories: [
+  //     {
+  //       diagram: "BBT",
+  //       subcategory: [
+  //         { name: "Wire Probe", link: "wire" },
+  //         { name: "Universal Probe", link: "universal" },
+  //         { name: "Dimple Probe", link: "dimple" },
+  //         { name: "Spring Wire Probe", link: "spring" },
+  //       ],
+  //     },
+  //   ],
+  //   link: "bbt",
 
-    tag: (
-      <path d="M1026.94,311.09l-25.67,14.92c-11.52,6.7-14.69,16.39-9.52,24.75l-226,135.17-218.07-127.66,377.51-215.2,86.09,49.7c16.06,9.27,16.13,24.3.17,33.58l-7.65,4.44c-15.96,9.28-15.85,24.31.21,33.58l22.74,13.13c16.07,9.28,16.15,24.32.19,33.59Z" />
-    ),
-  },
-  {
-    category: "capted",
-    subcategories: [
-      {
-        diagram: "Process",
-        subcategory: [
-          { name: "Road Stus", link: "stus" },
-          { name: "Bollard", link: "bollard" },
-          { name: "Solar Lighr", link: "solar" },
-          { name: "Logo Jector", link: "logojector" },
-        ],
-      },
-    ],
-    link: "capted",
+  //   tag: (
+  //     <path d="M1026.94,311.09l-25.67,14.92c-11.52,6.7-14.69,16.39-9.52,24.75l-226,135.17-218.07-127.66,377.51-215.2,86.09,49.7c16.06,9.27,16.13,24.3.17,33.58l-7.65,4.44c-15.96,9.28-15.85,24.31.21,33.58l22.74,13.13c16.07,9.28,16.15,24.32.19,33.59Z" />
+  //   ),
+  // },
+  // {
+  //   category: "capted",
+  //   subcategories: [
+  //     {
+  //       diagram: "Process",
+  //       subcategory: [
+  //         { name: "Road Stus", link: "stus" },
+  //         { name: "Bollard", link: "bollard" },
+  //         { name: "Solar Lighr", link: "solar" },
+  //         { name: "Logo Jector", link: "logojector" },
+  //       ],
+  //     },
+  //   ],
+  //   link: "capted",
 
-    tag: (
-      <path d="M1069.39,431.59l-198.35,115.27-105.72-61.89,226-135.17c1.99,3.23,5.22,6.25,9.69,8.83l68.19,39.37c16.07,9.28,16.15,24.32.19,33.59Z" />
-    ),
-  },
+  //   tag: (
+  //     <path d="M1069.39,431.59l-198.35,115.27-105.72-61.89,226-135.17c1.99,3.23,5.22,6.25,9.69,8.83l68.19,39.37c16.07,9.28,16.15,24.32.19,33.59Z" />
+  //   ),
+  // },
   {
-    category: "contact",
+    category: {
+      eng: "contact",
+      kor: "문의",
+      cn: "联系方式",
+      jp: "連絡先",
+    },
+
     link: "contact",
     headerImg: contactImg,
   },
@@ -523,9 +534,13 @@ export const machineDetail = {
     link: "/semi/machine/sanding",
     thumnail: sanding_thumnail,
     nation: ["Made in Korea"],
-    title: "Sanding Machine",
-    description:
-      "Used to sand the cross section of the wafer's contact area with the probe card.",
+    title: { eng: "Sanding Machine" },
+    description: {
+      eng: "Used to sand the cross section of the wafer's contact area with the probe card.",
+      kor: "웨이퍼와 프로브 카드 접촉 영역의 단면을 샌딩하는 데 사용됩니다.",
+      cn: "用于打磨晶圆与探针卡接触区域的横截面。",
+      jp: "ウェーハとプローブカードの接触部分の断面を研磨するために使用されます。",
+    },
     options: [
       { text: "Ø330 Probe Card", img: sandingJig_330 },
       { text: "Ø440 Probe Card", img: sandingJig_440 },
@@ -541,12 +556,38 @@ export const machineDetail = {
         img: sanding_330,
         video: "https://www.mempro.co.kr/sanding.mp4",
         features: [
-          { img: blueprint, text: "~Ø330" },
-          { img: compact, text: "compact size" },
-          { img: easy, text: "simple/easy" },
+          { img: blueprint, text: { eng: "~Ø330" } },
+          {
+            img: compact,
+            text: {
+              eng: "Compact size",
+              kor: "컴팩트한 크기",
+              cn: "紧凑尺寸",
+              jp: "コンパクトサイズ",
+            },
+          },
+          {
+            img: easy,
+            text: {
+              eng: "Simple/Easy",
+              kor: "쉬운 작동",
+              cn: "简单/容易",
+              jp: "シンプル/簡単",
+            },
+          },
         ],
-        subTitle: "Basic and Economy Models",
-        des: "With a Chuck Accuracy of ±2μm, dual motion types (circular and linear), support for card sizes up 300Ø or under, a Z-axis motor with 0.25μm resolution, and an attachabled scope arm, it’s the ultimate choice for efficient and accurate probe card pin grinding. Elevate your precision needs with this fundamental yet powerful machine.",
+        subTitle: {
+          eng: "Basic and Economy Models",
+          kor: "기본 및 경제형 모델",
+          cn: "基本和经济型型号",
+          jp: "基本およびエコノミーモデル",
+        },
+        des: {
+          eng: "With a Chuck Accuracy of ±2μm, dual motion types (circular and linear), support for card sizes up to 300Ø or under, a Z-axis motor with 0.25μm resolution, and an attachable scope arm, it’s the ultimate choice for efficient and accurate probe card pin grinding. Elevate your precision needs with this fundamental yet powerful machine.",
+          kor: "척 정밀도 ±2μm, 이중 운동 방식(원형 및 직선), 최대 300Ø 이하 카드 크기 지원, 0.25μm 해상도의 Z축 모터, 부착 가능한 스코프 암을 갖춘 이 장비는 효율적이고 정확한 프로브 카드 핀 연마를 위한 최고의 선택입니다. 기본적이면서도 강력한 이 기계로 정밀도를 높이세요.",
+          cn: "具备±2μm的夹头精度、双运动类型（圆形和线性）、支持最大300Ø或以下的卡尺寸、具有0.25μm分辨率的Z轴马达以及可附加的显微镜臂，它是实现高效且精确的探针卡针打磨的终极选择。通过这台基础而强大的机器提升您的精度需求。",
+          jp: "チャック精度±2μm、二重動作タイプ（円形および線形）、300Ø以下のカードサイズに対応、0.25μmの解像度を持つZ軸モーター、取り付け可能なスコープアームを備えたこの装置は、効率的で正確なプローブカードピン研磨の究極の選択です。この基本的ながらも強力なマシンで精度のニーズを高めましょう。",
+        },
         spc: [
           {
             model: "JKSM-B330",
@@ -562,12 +603,32 @@ export const machineDetail = {
         img: sanding_vertical,
         video: "https://www.mempro.co.kr/sanding.mp4",
         features: [
-          { img: blueprint, text: "~Ø480" },
-          { img: motor, text: "Z-axis stage high torque motor" },
+          {
+            img: blueprint,
+            text: { eng: "~Ø480" },
+          },
+          {
+            img: motor,
+            text: {
+              eng: "Z-axis stage high torque motor",
+              kor: "Z축 고토크 모터",
+              cn: "Z轴高扭矩电机",
+              jp: "Z軸高トルクモーター",
+            },
+          },
         ],
-        subTitle:
-          "It's Precision chuck base attachment is an affordable choice",
-        des: "Achieving an exceptional Chuck-to-Base flatness and parallelism of 7μm,it guarantees unmatched accuracy. Featuring circular motion capabilities, compatibility with card sizes up to 480Ø, a high-speed Z-axis operation, and a selection of four versatile jig options, this machine excels across diverse applications.",
+        subTitle: {
+          eng: "Its Precision chuck base attachment is an affordable choice",
+          kor: "정밀 척 베이스 장착은 경제적인 선택입니다",
+          cn: "其精密卡盘底座附件是经济实惠的选择",
+          jp: "その精密チャックベースアタッチメントは手頃な選択肢です",
+        },
+        des: {
+          eng: "Achieving an exceptional Chuck-to-Base flatness and parallelism of 7μm, it guarantees unmatched accuracy. Featuring circular motion capabilities, compatibility with card sizes up to 480Ø, a high-speed Z-axis operation, and a selection of four versatile jig options, this machine excels across diverse applications.",
+          kor: "7μm의 뛰어난 척-베이스 평탄도와 평행도를 달성하여 타의 추종을 불허하는 정확도를 보장합니다. 원형 모션 기능, 최대 480Ø 카드 크기 호환성, 고속 Z축 작동, 4가지 다목적 지그 옵션으로 다양한 응용 분야에서 탁월합니다.",
+          cn: "实现了卓越的卡盘与底座平坦度和平行度（7μm），保证无与伦比的精度。具有圆形运动功能、支持最大480Ø的卡片尺寸、高速Z轴操作以及四种多功能夹具选项，在各种应用中表现出色。",
+          jp: "7μmの卓越したチャックとベースの平坦性と平行性を達成し、他に類を見ない精度を保証します。円形運動機能、最大480Øのカードサイズへの対応、高速Z軸操作、4つの多用途ジグオプションにより、多様なアプリケーションで優れた性能を発揮します。",
+        },
         spc: [
           {
             model: "JKVT-330",
@@ -583,11 +644,32 @@ export const machineDetail = {
         img: sanding_multi,
         video: "https://www.mempro.co.kr/sanding.mp4",
         features: [
-          { img: blueprint, text: "~Ø480" },
-          { img: motor, text: "Z-axis stage high torque motor" },
+          {
+            img: blueprint,
+            text: { eng: "~Ø480" },
+          },
+          {
+            img: motor,
+            text: {
+              eng: "Z-axis stage high torque motor",
+              kor: "Z축 고토크 모터",
+              cn: "Z轴高扭矩电机",
+              jp: "Z軸高トルクモーター",
+            },
+          },
         ],
-        subTitle: "Utilizes seven motions to achieving ±2.5μm flatness",
-        des: "With an intuitive interface, operators of all skill levels can access fast and high-precision operations in diverse enviroments.",
+        subTitle: {
+          eng: "Utilizes seven motions to achieve ±2.5μm flatness",
+          kor: "±2.5μm 평탄도를 달성하기 위해 7가지 모션을 활용합니다",
+          cn: "利用七种运动实现±2.5μm的平坦度",
+          jp: "±2.5μmの平坦度を達成するために7つの動きを使用します",
+        },
+        des: {
+          eng: "With an intuitive interface, operators of all skill levels can access fast and high-precision operations in diverse environments.",
+          kor: "직관적인 인터페이스를 통해 모든 숙련도의 작업자가 다양한 환경에서 빠르고 정밀한 작업을 수행할 수 있습니다.",
+          cn: "通过直观的界面，各种技能水平的操作员都可以在各种环境中进行快速且高精度的操作。",
+          jp: "直感的なインターフェースにより、あらゆるスキルレベルのオペレーターがさまざまな環境で迅速かつ高精度な操作を行うことができます。",
+        },
         spc: [
           {
             model: "JKMT-330",
@@ -603,11 +685,32 @@ export const machineDetail = {
         img: sanding_vision,
         video: "https://www.mempro.co.kr/sanding.mp4",
         features: [
-          { img: blueprint, text: "~Ø480" },
-          { img: motor, text: "Z-axis stage high torque motor" },
+          {
+            img: blueprint,
+            text: { eng: "~Ø480", kor: "~Ø480", cn: "~Ø480", jp: "~Ø480" },
+          },
+          {
+            img: motor,
+            text: {
+              eng: "Z-axis stage high torque motor",
+              kor: "Z축 고토크 모터",
+              cn: "Z轴高扭矩电机",
+              jp: "Z軸高トルクモーター",
+            },
+          },
         ],
-        subTitle: "Designed for probe cards size 480Ø or Smaller",
-        des: "It features seven distinct motion types to enhance operational efficiency. It seamlessly provides real-time contact position verification through a camera, with a control facilitated by dedicated PC software for superior efficiency. Additionally, it offers advanced coaxial and box lighting options to further enhance performance.",
+        subTitle: {
+          eng: "Designed for probe cards size 480Ø or Smaller",
+          kor: "480Ø 이하 크기의 프로브 카드를 위해 설계되었습니다",
+          cn: "专为480Ø或更小尺寸的探针卡设计",
+          jp: "480Ø以下のプローブカード用に設計されています",
+        },
+        des: {
+          eng: "It features seven distinct motion types to enhance operational efficiency. It seamlessly provides real-time contact position verification through a camera, with a control facilitated by dedicated PC software for superior efficiency. Additionally, it offers advanced coaxial and box lighting options to further enhance performance.",
+          kor: "7가지 독특한 모션 유형을 제공하여 작업 효율성을 향상시킵니다. 카메라를 통해 실시간 접촉 위치 확인을 원활하게 제공하며, 전용 PC 소프트웨어로 제어되어 효율성이 극대화됩니다. 또한, 고급 동축 및 박스 조명 옵션을 추가로 제공합니다.",
+          cn: "具有七种独特的运动类型，可提高操作效率。通过相机提供实时接触位置验证，专用PC软件控制进一步提高了效率。此外，还提供先进的同轴和盒式照明选项以进一步增强性能。",
+          jp: "7つの異なる動作タイプを備えており、操作効率を向上させます。カメラを通じてリアルタイムで接触位置を確認でき、専用PCソフトウェアによる制御で効率が向上します。さらに、先進的な同軸およびボックス照明オプションも提供します。",
+        },
         spc: [
           {
             model: "JKSM-V330",
@@ -623,12 +726,32 @@ export const machineDetail = {
         img: sanding_idling,
         video: "https://www.mempro.co.kr/sanding.mp4",
         features: [
-          { img: blueprint, text: "~Ø480" },
-          { img: motor, text: "Z-axis stage high torque motor" },
+          {
+            img: blueprint,
+            text: { eng: "~Ø480", kor: "~Ø480", cn: "~Ø480", jp: "~Ø480" },
+          },
+          {
+            img: motor,
+            text: {
+              eng: "Z-axis stage high torque motor",
+              kor: "Z축 고토크 모터",
+              cn: "Z轴高扭矩电机",
+              jp: "Z軸高トルクモーター",
+            },
+          },
         ],
-        subTitle:
-          "It's Precision chuck base attachment is an affordable choice",
-        des: "Achieving an exceptional Chuck-to-Base flatness and parallelism of 7μm,it guarantees unmatched accuracy. Featuring circular motion capabilities, compatibility with card sizes up to 480Ø, a high-speed Z-axis operation, and a selection of four versatile jig options, this machine excels across diverse applications.",
+        subTitle: {
+          eng: "It's Precision chuck base attachment is an affordable choice",
+          kor: "정밀 척 베이스 장착은 경제적인 선택입니다",
+          cn: "其精密卡盘底座附件是经济实惠的选择",
+          jp: "その精密チャックベースアタッチメントは手頃な選択肢です",
+        },
+        des: {
+          eng: "Achieving an exceptional Chuck-to-Base flatness and parallelism of 7μm, it guarantees unmatched accuracy. Featuring circular motion capabilities, compatibility with card sizes up to 480Ø, a high-speed Z-axis operation, and a selection of four versatile jig options, this machine excels across diverse applications.",
+          kor: "7μm의 뛰어난 척-베이스 평탄도와 평행도를 달성하여 타의 추종을 불허하는 정확도를 보장합니다. 원형 모션 기능, 최대 480Ø 카드 크기 호환성, 고속 Z축 작동, 4가지 다목적 지그 옵션으로 다양한 응용 분야에서 탁월합니다.",
+          cn: "实现了卓越的卡盘与底座平坦度和平行度（7μm），保证无与伦比的精度。具有圆形运动功能、支持最大480Ø的卡片尺寸、高速Z轴操作以及四种多功能夹具选项，在各种应用中表现出色。",
+          jp: "7μmの卓越したチャックとベースの平坦性と平行性を達成し、他に類を見ない精度を保証します。円形運動機能、最大480Øのカードサイズへの対応、高速Z軸操作、4つの多用途ジグオプションにより、多様なアプリケーションで優れた性能を発揮します。",
+        },
         spc: [
           {
             model: "JKHI-330",
@@ -647,9 +770,13 @@ export const machineDetail = {
     link: "/semi/machine/bending",
 
     nation: ["Made in Korea"],
-    title: "Bending Machine",
-    description:
-      "The Probe of porbe cards demand delicate and precise processing.",
+    title: { eng: "Bending Machine" },
+    description: {
+      eng: "The Probe of probe cards demand delicate and precise processing.",
+      kor: "프로브 카드의 프로브는 섬세하고 정밀한 처리를 요구합니다.",
+      cn: "探针卡的探针需要精细且精确的加工。",
+      jp: "プローブカードのプローブは繊細で精密な処理が求められます。",
+    },
     contents: {
       length: {
         num: "length",
@@ -658,11 +785,37 @@ export const machineDetail = {
         img: bending_length,
         video: "https://www.mempro.co.kr/bending.mp4",
         features: [
-          { img: cost, text: "coast saving" },
-          { img: easy, text: "simple/easy" },
+          {
+            img: cost,
+            text: {
+              eng: "cost saving",
+              kor: "비용 절감",
+              cn: "节约成本",
+              jp: "コスト削減",
+            },
+          },
+          {
+            img: easy,
+            text: {
+              eng: "simple/easy",
+              kor: "쉬운 작동",
+              cn: "简单/容易",
+              jp: "簡単/簡易",
+            },
+          },
         ],
-        subTitle: "Bends Probe to desired angles and lengths.",
-        des: "The simple operation and various bending point blocks support the production of workpieces with almost no errors in the shortest possible time, regardless of the user or environment. Cost savings were achieved through local production of components, and a single action is used for length adjustment, clamping, bending, and product discharge.",
+        subTitle: {
+          eng: "Bends Probe to desired angles and lengths.",
+          kor: "프로브를 원하는 각도와 길이로 구부립니다.",
+          cn: "将探针弯曲到所需的角度和长度。",
+          jp: "プローブを希望の角度と長さに曲げます。",
+        },
+        des: {
+          eng: "The simple operation and various bending point blocks support the production of workpieces with almost no errors in the shortest possible time, regardless of the user or environment. Cost savings were achieved through local production of components, and a single action is used for length adjustment, clamping, bending, and product discharge.",
+          kor: "간단한 작동과 다양한 벤딩 포인트 블록은 사용자와 환경에 관계없이 거의 오차 없이 최단 시간 내에 제품을 생산할 수 있도록 지원합니다. 부품의 현지 생산을 통해 비용 절감이 이루어졌으며, 길이 조정, 고정, 벤딩, 제품 배출을 단일 동작으로 수행합니다.",
+          cn: "简单的操作和多种弯曲点模块支持在最短时间内几乎无误差地生产工件，无论用户或环境如何。通过本地生产组件实现了成本节约，长度调整、夹紧、弯曲和产品排放均通过单一操作完成。",
+          jp: "簡単な操作とさまざまな曲げポイントブロックにより、ユーザーや環境に関係なく、ほぼ誤差なしで最短時間で製品を製造することが可能です。部品の現地生産によるコスト削減が実現され、長さ調整、クランプ、曲げ、製品排出が一つの動作で行われます。",
+        },
         spc: [
           {
             model: "JLBS-100",
@@ -679,9 +832,13 @@ export const machineDetail = {
 
     model: ["JKMPCM12", "JKMPCM17", "JKMPCM18", "JKAP-520"],
     nation: ["Made in Korea"],
-    title: "Manual Prober",
-    description:
-      "Used to correct alignment in the pinpoint of a probe card wafer contact area and the mask glass dot.",
+    title: { eng: "Manual Prober" },
+    description: {
+      eng: "Used to correct alignment in the pinpoint of a probe card wafer contact area and the mask glass dot.",
+      kor: "프로브 카드 웨이퍼 접촉 영역과 마스크 글라스 점의 정밀한 정렬을 조정하는 데 사용됩니다.",
+      cn: "用于校正探针卡晶圆接触区域与掩膜玻璃点的精确对齐。",
+      jp: "プローブカードのウェハ接触エリアとマスクガラスドットの位置合わせを修正するために使用されます。",
+    },
     contents: {
       330: {
         num: 330,
@@ -690,12 +847,41 @@ export const machineDetail = {
         img: manual_330,
         video: "https://www.mempro.co.kr/prober.mp4",
         features: [
-          { img: blueprint, text: "~Ø330" },
-          { img: xy_axis, text: "X, Y-axis manual stage" },
-          { img: z_axis, text: "fine adjustments Z-axis" },
+          {
+            img: blueprint,
+            text: { eng: "~Ø330", kor: "~Ø330", cn: "~Ø330", jp: "~Ø330" },
+          },
+          {
+            img: xy_axis,
+            text: {
+              eng: "X, Y-axis manual stage",
+              kor: "X, Y 축 수동 스테이지",
+              cn: "X, Y 轴手动平台",
+              jp: "X, Y 軸手動ステージ",
+            },
+          },
+          {
+            img: z_axis,
+            text: {
+              eng: "fine adjustments Z-axis",
+              kor: "Z 축 미세 조정",
+              cn: "Z 轴精确调整",
+              jp: "Z 軸微調整",
+            },
+          },
         ],
-        subTitle: "optimizes probe cards with under Ø300",
-        des: "This product is equipped with manual stages for X, Y, and θ, enabling precise positional adjustments. It also provides the capability to move the microscope along the X and Y axises for precise sample observation, and fine adjustment along theZ-axis for achieving the desired height. It delivers excellent testing and adjustment performance to users.",
+        subTitle: {
+          eng: "Optimizes probe cards with under Ø300",
+          kor: "Ø300 이하의 프로브 카드를 최적화합니다.",
+          cn: "优化 Ø300 以下的探针卡。",
+          jp: "Ø300 以下のプローブカードを最適化します。",
+        },
+        des: {
+          eng: "This product is equipped with manual stages for X, Y, and θ, enabling precise positional adjustments. It also provides the capability to move the microscope along the X and Y axes for precise sample observation, and fine adjustment along the Z-axis for achieving the desired height. It delivers excellent testing and adjustment performance to users.",
+          kor: "이 제품은 X, Y, θ 수동 스테이지를 갖추고 있어 정밀한 위치 조정이 가능합니다. 또한 현미경을 X, Y 축을 따라 이동시켜 샘플을 정밀하게 관찰하고, Z 축 미세 조정을 통해 원하는 높이를 달성할 수 있습니다. 뛰어난 테스트 및 조정 성능을 제공합니다.",
+          cn: "该产品配备了 X, Y 和 θ 手动平台，可进行精确的位置调整。此外，还可以沿 X 和 Y 轴移动显微镜以进行精确的样品观察，并通过 Z 轴的精确调整达到所需高度。为用户提供卓越的测试和调整性能。",
+          jp: "この製品は、X、Y、θの手動ステージを備えており、精密な位置調整が可能です。また、X、Y軸に沿って顕微鏡を移動してサンプルを正確に観察し、Z軸の微調整により必要な高さを達成できます。優れたテストおよび調整性能を提供します。",
+        },
         spc: [
           {
             model: "JKMPCM12",
@@ -711,12 +897,41 @@ export const machineDetail = {
         img: manual_440,
         video: "https://www.mempro.co.kr/prober.mp4",
         features: [
-          { img: blueprint, text: "~Ø440" },
-          { img: xy_axis, text: "X, Y-axis manual stage" },
-          { img: z_axis, text: "fine adjustments Z-axis" },
+          {
+            img: blueprint,
+            text: { eng: "~Ø440", kor: "~Ø440", cn: "~Ø440", jp: "~Ø440" },
+          },
+          {
+            img: xy_axis,
+            text: {
+              eng: "X, Y-axis manual stage",
+              kor: "X, Y 축 수동 스테이지",
+              cn: "X, Y 轴手动平台",
+              jp: "X, Y 軸手動ステージ",
+            },
+          },
+          {
+            img: z_axis,
+            text: {
+              eng: "fine adjustments Z-axis",
+              kor: "Z 축 미세 조정",
+              cn: "Z 轴精确调整",
+              jp: "Z 軸微調整",
+            },
+          },
         ],
-        subTitle: "Excels as a high-performance instrument",
-        des: "The 440 MANUAL PROBER features manual stages for X, Y, and 0 adjustments, and a movable microscope along the X and Y axes for precise sample observation. Fine adjustment along the Z-axis allows for height customization, making it ideal for users needing exceptional testing and adjustment performance.",
+        subTitle: {
+          eng: "Excels as a high-performance instrument",
+          kor: "고성능 장비로 탁월합니다.",
+          cn: "作为高性能仪器表现出色。",
+          jp: "高性能な機器として優れています。",
+        },
+        des: {
+          eng: "The 440 Manual Prober features manual stages for X, Y, and θ adjustments, and a movable microscope along the X and Y axes for precise sample observation. Fine adjustment along the Z-axis allows for height customization, making it ideal for users needing exceptional testing and adjustment performance.",
+          kor: "440 수동 프로버는 X, Y, θ 조정을 위한 수동 스테이지를 특징으로 하며, X 및 Y 축을 따라 이동 가능한 현미경을 통해 정밀한 샘플 관찰이 가능합니다. Z 축의 미세 조정을 통해 높이를 사용자 지정할 수 있어 탁월한 테스트 및 조정 성능을 필요로 하는 사용자에게 이상적입니다.",
+          cn: "440 手动探针台配备了用于 X、Y 和 θ 调整的手动平台，并可沿 X 和 Y 轴移动显微镜以进行精确的样品观察。通过 Z 轴的精确调整可进行高度定制，非常适合需要卓越测试和调整性能的用户。",
+          jp: "440 手動プローバーは、X、Y、θの調整用手動ステージを備え、XおよびY軸に沿って移動可能な顕微鏡を使用して精密なサンプル観察を可能にします。Z軸の微調整により高さのカスタマイズが可能で、卓越したテストおよび調整性能を必要とするユーザーに最適です。",
+        },
         spc: [
           {
             model: "JKMPCM17",
@@ -732,12 +947,41 @@ export const machineDetail = {
         img: manual_480,
         video: "https://www.mempro.co.kr/prober.mp4",
         features: [
-          { img: blueprint, text: "~Ø480" },
-          { img: xy_axis, text: "X, Y-axis manual stage" },
-          { img: z_axis, text: "fine adjustments Z-axis" },
+          {
+            img: blueprint,
+            text: { eng: "~Ø480", kor: "~Ø480", cn: "~Ø480", jp: "~Ø480" },
+          },
+          {
+            img: xy_axis,
+            text: {
+              eng: "X, Y-axis manual stage",
+              kor: "X, Y 축 수동 스테이지",
+              cn: "X, Y 轴手动平台",
+              jp: "X, Y 軸手動ステージ",
+            },
+          },
+          {
+            img: z_axis,
+            text: {
+              eng: "fine adjustments Z-axis",
+              kor: "Z 축 미세 조정",
+              cn: "Z 轴精确调整",
+              jp: "Z 軸微調整",
+            },
+          },
         ],
-        subTitle: "Tailored for porbe card with 480Ø or less",
-        des: "It also includes optional features,such as: a table that offers  flatness and parallelism of 0.01 and a shock absorber for smooth Z-axis reciprocating movement, which enhances precision testing and adjustments.",
+        subTitle: {
+          eng: "Tailored for probe card with 480Ø or less",
+          kor: "480Ø 이하의 프로브 카드에 맞춰진 설계",
+          cn: "为 Ø480 以下的探针卡量身定制",
+          jp: "Ø480 以下のプローブカードに合わせて設計されています",
+        },
+        des: {
+          eng: "It also includes optional features, such as: a table that offers flatness and parallelism of 0.01 and a shock absorber for smooth Z-axis reciprocating movement, which enhances precision testing and adjustments.",
+          kor: "또한, 평탄도와 평행도가 0.01인 테이블과 Z축의 원활한 왕복 운동을 위한 충격 흡수기와 같은 선택적 기능이 포함되어 있어 정밀한 테스트 및 조정 성능을 강화합니다.",
+          cn: "此外，还包括选配功能，如：提供平整度和平行度为0.01的工作台以及用于平稳Z轴往复运动的减震器，从而增强了精确测试和调节性能。",
+          jp: "さらに、平坦度と平行度が0.01のテーブルや、Z軸のスムーズな往復運動のためのショックアブソーバーなどのオプション機能が含まれており、精密なテストと調整性能を強化します。",
+        },
         spc: [
           {
             model: "JKMPCM18",
@@ -753,12 +997,41 @@ export const machineDetail = {
         img: manual_520,
         video: "https://www.mempro.co.kr/prober.mp4",
         features: [
-          { img: blueprint, text: "~Ø520" },
-          { img: xy_axis, text: "X, Y-axis manual stage" },
-          { img: z_axis, text: "fine adjustments Z-axis" },
+          {
+            img: blueprint,
+            text: { eng: "~Ø520", kor: "~Ø520", cn: "~Ø520", jp: "~Ø520" },
+          },
+          {
+            img: xy_axis,
+            text: {
+              eng: "X, Y-axis manual stage",
+              kor: "X, Y 축 수동 스테이지",
+              cn: "X, Y 轴手动平台",
+              jp: "X, Y 軸手動ステージ",
+            },
+          },
+          {
+            img: z_axis,
+            text: {
+              eng: "fine adjustments Z-axis",
+              kor: "Z 축 미세 조정",
+              cn: "Z 轴精确调整",
+              jp: "Z 軸微調整",
+            },
+          },
         ],
-        subTitle: "Most advanced model that prioritizes user convenience",
-        des: "This system enables easy manipulation of the microscope's X, Y, and Z axes, along with convenient control of the alignment glass through a remote or a 7-inch touch panel. Users can also opt for manual adjustments, ensuring maximum usability and efficiency.",
+        subTitle: {
+          eng: "Most advanced model that prioritizes user convenience",
+          kor: "사용자 편의성을 최우선으로 한 가장 진보된 모델",
+          cn: "最先进的型号，优先考虑用户便利性",
+          jp: "ユーザーの便利さを最優先にした最も進んだモデル",
+        },
+        des: {
+          eng: "This system enables easy manipulation of the microscope's X, Y, and Z axes, along with convenient control of the alignment glass through a remote or a 7-inch touch panel. Users can also opt for manual adjustments, ensuring maximum usability and efficiency.",
+          kor: "이 시스템은 현미경의 X, Y, Z 축을 쉽게 조작할 수 있으며, 원격 제어나 7인치 터치 패널을 통해 정렬 유리의 제어도 가능합니다. 사용자는 수동 조정을 선택할 수 있어 최대한의 사용 편의성과 효율성을 보장합니다.",
+          cn: "该系统使得显微镜的 X、Y 和 Z 轴操作变得简单，并通过遥控器或7英寸触摸面板方便地控制对准玻璃。用户还可以选择手动调整，确保最大程度的可用性和效率。",
+          jp: "このシステムは、顕微鏡のX、Y、Z軸を簡単に操作でき、リモコンまたは7インチタッチパネルを使ってアライメントガラスの操作も便利に行えます。ユーザーは手動調整も選択でき、最大限の利便性と効率性を確保します。",
+        },
         spc: [
           {
             model: "JKAP-520",
@@ -776,8 +1049,13 @@ export const machineDetail = {
 
     model: ["JKPM220"],
     nation: ["Made in Korea"],
-    title: "Punching Machine",
-    description: "Used to drill a hole in mask film.",
+    title: { eng: "Punching Machine" },
+    description: {
+      eng: "Used to drill a hole in mask film.",
+      kor: "마스크 필름에 구멍을 뚫는 데 사용됩니다.",
+      cn: "用于在掩模薄膜上打孔。",
+      jp: "マスクフィルムに穴を開けるために使用されます。",
+    },
     contents: {
       punching: {
         num: "punching",
@@ -786,12 +1064,46 @@ export const machineDetail = {
         img: punching,
         video: "https://www.mempro.co.kr/mask.mp4",
         features: [
-          { img: csv, text: "saved coordinate CSV file" },
-          { img: achieves, text: "Achieves accuracy of ±0.005 μm" },
-          { img: display, text: "real-time display" },
+          {
+            img: csv,
+            text: {
+              eng: "saved coordinate CSV file",
+              kor: "저장된 좌표 CSV 파일",
+              cn: "保存的坐标 CSV 文件",
+              jp: "保存された座標 CSV ファイル",
+            },
+          },
+          {
+            img: achieves,
+            text: {
+              eng: "Achieves accuracy of ±0.005 μm",
+              kor: "정밀도 ±0.005 μm 달성",
+              cn: "精度达到 ±0.005 μm",
+              jp: "精度±0.005 μmを実現",
+            },
+          },
+          {
+            img: display,
+            text: {
+              eng: "real-time display",
+              kor: "실시간 표시",
+              cn: "实时显示",
+              jp: "リアルタイム表示",
+            },
+          },
         ],
-        subTitle: "Achieves a position accuracy of ±0.005 μm",
-        des: "Our mask film punching machine resolves these technical challenges efficiently,providing precise and accurate punching operations required for creating mask films that align with the needle array on the Probe card, ensuring accurate inspection of each needle based on the wafer's pad coordinates.",
+        subTitle: {
+          eng: "Achieves a position accuracy of ±0.005 μm",
+          kor: "±0.005 μm의 위치 정확도 달성",
+          cn: "达到 ±0.005 μm 的位置精度",
+          jp: "±0.005 μm の位置精度を実現",
+        },
+        des: {
+          eng: "Our mask film punching machine resolves these technical challenges efficiently, providing precise and accurate punching operations required for creating mask films that align with the needle array on the Probe card, ensuring accurate inspection of each needle based on the wafer's pad coordinates.",
+          kor: "당사의 마스크 필름 펀칭 머신은 기술적 도전을 효율적으로 해결하며, Probe 카드의 바늘 배열과 일치하는 마스크 필름을 생성하는 데 필요한 정밀하고 정확한 펀칭 작업을 제공합니다. 이를 통해 웨이퍼의 패드 좌표를 기준으로 각 바늘을 정확하게 검사할 수 있습니다.",
+          cn: "我们的掩模薄膜打孔机有效解决了这些技术难题，提供了精确且准确的打孔操作，适用于创建与探针卡上的针阵列对齐的掩模薄膜，确保根据晶圆的焊盘坐标对每个针进行准确检查。",
+          jp: "当社のマスクフィルムパンチングマシンは、これらの技術的な課題を効率的に解決し、プローブカードの針配列と一致するマスクフィルムを作成するために必要な精密かつ正確なパンチング操作を提供します。これにより、ウェーハのパッド座標に基づいて各針を正確に検査できます。",
+        },
         spc: [
           {
             model: "JKPM220",
@@ -805,12 +1117,15 @@ export const machineDetail = {
     diagram: "machine",
     thumnail: rubber_thumnail,
     link: "/semi/machine/rubber",
-
     model: ["JKACM-3030", "JKMACM-220", "JKMAM-230"],
     nation: ["Made in Korea"],
-    title: "Rubber Socket Tester",
-    description:
-      "An advanced facility designed for the purpose of evaluating the force and contact resistance of rubber sockets.",
+    title: { eng: "Rubber Socket Tester" },
+    description: {
+      eng: "An advanced facility designed for the purpose of evaluating the force and contact resistance of rubber sockets.",
+      kor: "고무 소켓의 힘과 접촉 저항을 평가하기 위해 설계된 고급 시설입니다.",
+      cn: "用于评估橡胶插座的力和接触电阻的先进设备。",
+      jp: "ゴムソケットの力と接触抵抗を評価するために設計された高度な施設です。",
+    },
     contents: {
       mrc: {
         num: "mrc",
@@ -819,12 +1134,46 @@ export const machineDetail = {
         img: mrc_contact,
         video: "https://www.mempro.co.kr/rubber.mp4",
         features: [
-          { img: recipe, text: "Individual Recipe Application" },
-          { img: tacktime, text: "Fast Tact Time" },
-          { img: easy, text: "User-Friendly Interface" },
+          {
+            img: recipe,
+            text: {
+              eng: "Individual Recipe Application",
+              kor: "개별 레시피 적용",
+              cn: "个别配方应用",
+              jp: "個別レシピの適用",
+            },
+          },
+          {
+            img: tacktime,
+            text: {
+              eng: "Fast Tact Time",
+              kor: "빠른 전환 시간",
+              cn: "快速的操作时间",
+              jp: "速いタクトタイム",
+            },
+          },
+          {
+            img: easy,
+            text: {
+              eng: "User-Friendly Interface",
+              kor: "사용자 친화적인 인터페이스",
+              cn: "用户友好的界面",
+              jp: "ユーザーフレンドリーなインターフェース",
+            },
+          },
         ],
-        subTitle: "US precision multimeter for accuracy",
-        des: "The automatic alignment system, utilizes an aligning camera, to facilitate individualized model managemen through separate recipe application. Real-time job monitoring via side camera allows for instant production status checks. With an average measurement time of 0.25 seconds per bump, the system operates fully automatic after product loading. The model-specific indexing operation introduces horizontal and vertical probe auto-adaptive system, ensuring exceptional efficiency and accuracy.",
+        subTitle: {
+          eng: "US precision multimeter for accuracy",
+          kor: "정확성을 위한 미국 정밀 멀티미터",
+          cn: "美国精密万用表，确保准确性",
+          jp: "正確さのためのアメリカ精密マルチメーター",
+        },
+        des: {
+          eng: "The automatic alignment system, utilizes an aligning camera, to facilitate individualized model management through separate recipe application. Real-time job monitoring via side camera allows for instant production status checks. With an average measurement time of 0.25 seconds per bump, the system operates fully automatic after product loading. The model-specific indexing operation introduces horizontal and vertical probe auto-adaptive system, ensuring exceptional efficiency and accuracy.",
+          kor: "자동 정렬 시스템은 정렬 카메라를 활용하여 개별 모델 관리를 위해 별도의 레시피 적용을 지원합니다. 사이드 카메라를 통한 실시간 작업 모니터링은 즉시 생산 상태를 확인할 수 있게 해줍니다. 평균 측정 시간은 0.25초로, 제품 로딩 후 시스템이 완전히 자동으로 작동합니다. 모델별 인덱싱 작동은 수평 및 수직 프로브 자동 적응 시스템을 도입하여 뛰어난 효율성과 정확성을 보장합니다.",
+          cn: "自动对准系统利用对准相机，通过单独的配方应用来促进个性化的模型管理。侧面相机的实时作业监控允许即时生产状态检查。每个凸起的平均测量时间为0.25秒，产品加载后系统完全自动运行。模型特定的索引操作引入了水平和垂直探针自动适应系统，确保卓越的效率和准确性。",
+          jp: "自動アライメントシステムはアライメントカメラを使用し、個別のレシピ適用を通じて個別のモデル管理を促進します。サイドカメラによるリアルタイム作業監視により、即座に生産状態を確認できます。各バンプの平均測定時間は0.25秒で、製品ロード後にシステムは完全自動で作動します。モデル固有のインデックス操作は、水平方向および垂直方向のプローブ自動適応システムを導入し、優れた効率と精度を保証します。",
+        },
         spc: [
           {
             model: "JKACM-3030",
@@ -839,12 +1188,46 @@ export const machineDetail = {
         img: multi_auto,
         video: "https://www.mempro.co.kr/rubber.mp4",
         features: [
-          { img: recipe, text: "Individual Recipe Application" },
-          { img: tacktime, text: "Fast Tact Time" },
-          { img: easy, text: "User-Friendly Interface" },
+          {
+            img: recipe,
+            text: {
+              eng: "Individual Recipe Application",
+              kor: "개별 레시피 적용",
+              cn: "个别配方应用",
+              jp: "個別レシピの適用",
+            },
+          },
+          {
+            img: tacktime,
+            text: {
+              eng: "Fast Tact Time",
+              kor: "빠른 전환 시간",
+              cn: "快速的操作时间",
+              jp: "速いタクトタイム",
+            },
+          },
+          {
+            img: easy,
+            text: {
+              eng: "User-Friendly Interface",
+              kor: "사용자 친화적인 인터페이스",
+              cn: "用户友好的界面",
+              jp: "ユーザーフレンドリーなインターフェース",
+            },
+          },
         ],
-        subTitle: "Measures two bumps simultaneously with automatic alignment",
-        des: "Achieving a swift 0.25 second average measurement for each bump with a fully automatic system, it enhances efficiency through a model-specific indexing operation. The system excels in temperature management with a 120-degree evaluation system and a water-cooled chiller. Pin-to-pin inspection enables the force and contact resistance evaluation of individual pins of the rubber and socket contacts, coupled with automatic C.C.C testing.",
+        subTitle: {
+          eng: "Measures two bumps simultaneously with automatic alignment",
+          kor: "자동 정렬로 두 개의 범프를 동시에 측정",
+          cn: "通过自动对准同时测量两个凸起",
+          jp: "自動アライメントで2つのバンプを同時に測定",
+        },
+        des: {
+          eng: "Achieving a swift 0.25 second average measurement for each bump with a fully automatic system, it enhances efficiency through a model-specific indexing operation. The system excels in temperature management with a 120-degree evaluation system and a water-cooled chiller. Pin-to-pin inspection enables the force and contact resistance evaluation of individual pins of the rubber and socket contacts, coupled with automatic C.C.C testing.",
+          kor: "완전 자동 시스템으로 각 범프에 대해 0.25초의 빠른 평균 측정을 달성하며, 모델별 인덱싱 작동으로 효율성을 높입니다. 시스템은 120도의 평가 시스템과 수냉식 냉각기를 통해 온도 관리에서 뛰어난 성능을 보입니다. 핀 간 검사로 고무와 소켓 접촉의 각 핀에 대한 힘과 접촉 저항을 평가하고 자동 C.C.C 테스트도 지원합니다.",
+          cn: "通过完全自动系统实现每个凸起0.25秒的快速平均测量，并通过模型特定的索引操作提高效率。该系统在温度管理方面表现出色，配备120度的评估系统和水冷式冷却器。针对针的检查可以评估橡胶和插座接触的各个针的力和接触电阻，并支持自动C.C.C测试。",
+          jp: "完全自動システムで各バンプを0.25秒の速い平均測定を実現し、モデル固有のインデックス操作で効率を向上させます。システムは、120度の評価システムと水冷式チラーを用いた温度管理に優れた性能を発揮します。ピン間の検査により、ゴムとソケット接触の各ピンの力と接触抵抗を評価し、自動C.C.Cテストもサポートします。",
+        },
         spc: [
           {
             model: "JKMACM-220",
@@ -859,12 +1242,46 @@ export const machineDetail = {
         img: aging,
         video: "https://www.mempro.co.kr/rubber.mp4",
         features: [
-          { img: recipe, text: "Individual Recipe Application" },
-          { img: tacktime, text: "Fast Tact Time" },
-          { img: easy, text: "User-Friendly Interface" },
+          {
+            img: recipe,
+            text: {
+              eng: "Individual Recipe Application",
+              kor: "개별 레시피 적용",
+              cn: "个别配方应用",
+              jp: "個別レシピの適用",
+            },
+          },
+          {
+            img: tacktime,
+            text: {
+              eng: "Fast Tact Time",
+              kor: "빠른 전환 시간",
+              cn: "快速的操作时间",
+              jp: "速いタクトタイム",
+            },
+          },
+          {
+            img: easy,
+            text: {
+              eng: "User-Friendly Interface",
+              kor: "사용자 친화적인 인터페이스",
+              cn: "用户友好的界面",
+              jp: "ユーザーフレンドリーなインターフェース",
+            },
+          },
         ],
-        subTitle: "Reduce bump surface contact resistance after UV exposure",
-        des: "It can simultaneously handle three rubber sockets with three Z-Axes, and has the capability to mount 21 products on two tables which allows for cross-linking operations. Additionally, it is equipped with three loading cells with a maximum weight of 50kg each, it automatically records the load’s value during the O.D application, thus achieving a 5um positional accuracy for the X, Y, and Z-Axes. The implementation of a force overload prevention ensures stable operations. It guarantees reliable performance even under high-load conditions.",
+        subTitle: {
+          eng: "Reduce bump surface contact resistance after UV exposure",
+          kor: "UV 노출 후 범프 표면 접촉 저항 감소",
+          cn: "紫外线照射后减少凸点表面接触电阻",
+          jp: "UV露光後のバンプ表面接触抵抗の低減",
+        },
+        des: {
+          eng: "It can simultaneously handle three rubber sockets with three Z-Axes, and has the capability to mount 21 products on two tables which allows for cross-linking operations. Additionally, it is equipped with three loading cells with a maximum weight of 50kg each, it automatically records the load’s value during the O.D application, thus achieving a 5um positional accuracy for the X, Y, and Z-Axes. The implementation of a force overload prevention ensures stable operations. It guarantees reliable performance even under high-load conditions.",
+          kor: "이 장치는 세 개의 Z축을 사용하여 세 개의 고무 소켓을 동시에 처리할 수 있으며, 두 개의 테이블에 21개의 제품을 장착할 수 있어 교차 연결 작업을 허용합니다. 또한, 최대 50kg의 무게를 처리할 수 있는 세 개의 로딩 셀이 장착되어 있으며, O.D 적용 중 로드 값을 자동으로 기록하여 X, Y, Z축의 5um 위치 정확도를 달성합니다. 과부하 방지 기능이 구현되어 있어 안정적인 작동을 보장합니다. 고하중 조건에서도 신뢰성 있는 성능을 제공합니다.",
+          cn: "该设备可以同时处理三个带有三个Z轴的橡胶插座，并能够在两个工作台上安装21个产品，从而允许交联操作。此外，它配备了三个最大承重50kg的加载单元，在O.D应用过程中自动记录负载值，从而实现X、Y和Z轴的5um位置精度。实施的过载预防功能确保了稳定的操作，即使在高负荷条件下也能保证可靠的性能。",
+          jp: "この機械は、3つのZ軸で3つのゴムソケットを同時に処理でき、2つのテーブルに21個の製品を取り付けることができ、クロスリンク操作を可能にします。さらに、最大50kgの重さを扱える3つのローディングセルが搭載されており、O.D.適用中に負荷値を自動的に記録し、X、Y、Z軸の5umの位置精度を実現します。過負荷防止機能が導入されており、安定した運転が保証されます。高負荷条件でも信頼性のある性能を提供します。",
+        },
         spc: [
           {
             model: "JKMAM-230",
@@ -881,9 +1298,13 @@ export const machineDetail = {
 
     model: ["JKTT-50", "JKACM-8080"],
     nation: ["Made in Korea"],
-    title: "Probe Tester",
-    description:
-      "Used to evaluate the properties of  a product through the C.C.C evaluation of  probe and lifecycle test.",
+    title: { eng: "Probe Tester" },
+    description: {
+      eng: "Used to evaluate the properties of a product through the C.C.C evaluation of probe and lifecycle test.",
+      kor: "프로브 평가 및 생애 주기 테스트를 통해 제품의 특성을 평가하는 데 사용됩니다.",
+      cn: "用于通过探针的C.C.C评估和生命周期测试来评估产品的特性。",
+      jp: "プローブのC.C.C評価およびライフサイクルテストを通じて製品の特性を評価するために使用されます。",
+    },
     contents: {
       ccc: {
         num: "ccc",
@@ -894,13 +1315,35 @@ export const machineDetail = {
         features: [
           {
             img: evalution,
-            text: "Force, Current, Resistance and Voltage Evaluation",
+            text: {
+              eng: "Force, Current, Resistance and Voltage Evaluation",
+              kor: "힘, 전류, 저항 및 전압 평가",
+              cn: "力、电流、电阻和电压评估",
+              jp: "力、電流、抵抗および電圧の評価",
+            },
           },
-          { img: display, text: "real-time video" },
+          {
+            img: display,
+            text: {
+              eng: "Real-time Video",
+              kor: "실시간 영상",
+              cn: "实时视频",
+              jp: "リアルタイムビデオ",
+            },
+          },
         ],
-        subTitle:
-          "Perfect for users seeking a product with current carrying capacity",
-        des: "This tester allows for force, current application, resistance, voltage, and temperature evaluations up to 150 degrees. All data is automatically saved in real-time. During the test, users can monitor updated force and resistance graphs in real-time and observe and assess probes through the vision system.",
+        subTitle: {
+          eng: "Perfect for users seeking a product with current carrying capacity",
+          kor: "전류 용량이 있는 제품을 찾는 사용자에게 적합",
+          cn: "适用于寻找具有电流承载能力的用户",
+          jp: "電流容量のある製品を求めるユーザーに最適",
+        },
+        des: {
+          eng: "This tester allows for force, current application, resistance, voltage, and temperature evaluations up to 150 degrees. All data is automatically saved in real-time. During the test, users can monitor updated force and resistance graphs in real-time and observe and assess probes through the vision system.",
+          kor: "이 테스터는 힘, 전류, 저항, 전압 및 온도를 150도까지 평가할 수 있습니다. 모든 데이터는 실시간으로 자동 저장됩니다. 테스트 중에는 사용자가 실시간으로 힘과 저항 그래프를 모니터링하고 비전 시스템을 통해 프로브를 관찰하고 평가할 수 있습니다.",
+          cn: "该测试仪允许对力、电流、抵抗、电压和温度进行高达150度的评估。所有数据都会实时自动保存。在测试过程中，用户可以实时监控更新的力和电阻图表，并通过视觉系统观察和评估探针。",
+          jp: "このテスターは、力、電流、抵抗、電圧、温度を最大150度まで評価できます。すべてのデータはリアルタイムで自動的に保存されます。テスト中、ユーザーは更新された力と抵抗のグラフをリアルタイムで監視し、ビジョンシステムを通じてプローブを観察および評価できます。",
+        },
         spc: [
           {
             model: "JKTT-50",
@@ -915,11 +1358,37 @@ export const machineDetail = {
         img: lifeCycle,
         video: "https://www.mempro.co.kr/tester.mp4",
         features: [
-          { img: contact, text: "contact at 300 cycles / m" },
-          { img: display, text: "real-time video" },
+          {
+            img: contact,
+            text: {
+              eng: "Contact at 300 Cycles / min",
+              kor: "300 사이클 / 분에서 접촉",
+              cn: "每分钟300次接触",
+              jp: "300サイクル/分で接触",
+            },
+          },
+          {
+            img: display,
+            text: {
+              eng: "Real-time Video",
+              kor: "실시간 영상",
+              cn: "实时视频",
+              jp: "リアルタイムビデオ",
+            },
+          },
         ],
-        subTitle: "Full-contact function Z-axis at up to 300 cycles/min",
-        des: "It allows for temperature evaluations up to 150 degrees and automatically stores pin-to-pin force data. To enhance testing accuracy by blocking external influences, an external case is applied. Users can monitor real-time operations with in the enclosed environment through the vision system.",
+        subTitle: {
+          eng: "Full-contact function Z-axis at up to 300 cycles/min",
+          kor: "최대 300 사이클/분까지 완전 접촉 기능 Z축",
+          cn: "最多300次/分钟的全接触功能Z轴",
+          jp: "最大300サイクル/分の完全接触機能Z軸",
+        },
+        des: {
+          eng: "It allows for temperature evaluations up to 150 degrees and automatically stores pin-to-pin force data. To enhance testing accuracy by blocking external influences, an external case is applied. Users can monitor real-time operations within the enclosed environment through the vision system.",
+          kor: "이 장치는 150도까지 온도 평가가 가능하며, 핀 간의 힘 데이터를 자동으로 저장합니다. 외부 영향을 차단하여 테스트 정확도를 향상시키기 위해 외부 케이스가 적용됩니다. 사용자는 비전 시스템을 통해 밀폐된 환경 내에서 실시간 작업을 모니터링할 수 있습니다.",
+          cn: "该设备允许对温度进行高达150度的评估，并自动存储针对针的力数据。为了通过阻挡外部影响来提高测试精度，应用了外部外壳。用户可以通过视觉系统在封闭环境中监控实时操作。",
+          jp: "この装置は、最大150度までの温度評価が可能で、ピン間の力データを自動的に保存します。外部からの影響を遮断してテストの精度を向上させるため、外部ケースが適用されています。ユーザーはビジョンシステムを通じて密閉された環境内でリアルタイムの操作を監視できます。",
+        },
         spc: [
           {
             model: "JKACM-8080",
@@ -936,9 +1405,13 @@ export const machineDetail = {
 
     model: ["JKRC-2045", "JKRM-220"],
     nation: ["Made in Korea"],
-    title: "PogoPin Caulking Machine",
-    description:
-      "To assemble Pogo pins into finished products, it is essential to assemble and secure the plunger, barrel.",
+    title: { eng: "PogoPin Caulking Machine" },
+    description: {
+      eng: "To assemble Pogo pins into finished products, it is essential to assemble and secure the plunger, barrel.",
+      kor: "포고핀을 완제품으로 조립하기 위해서는 플런저와 배럴을 조립하고 고정하는 것이 필수적입니다.",
+      cn: "为了将Pogo针钉组装成成品，必须组装并固定活塞和筒体。",
+      jp: "ポゴピンを完成品に組み立てるためには、プランジャーとバレルを組み立てて固定することが不可欠です。",
+    },
     contents: {
       rCaulking: {
         num: "rCaulking",
@@ -947,11 +1420,37 @@ export const machineDetail = {
         img: r,
         video: "https://www.mempro.co.kr/pogo.mp4",
         features: [
-          { img: pogopin20, text: "20 Pogo Pin / jig" },
-          { img: display, text: "real-time video" },
+          {
+            img: pogopin20,
+            text: {
+              eng: "20 Pogo Pin / jig",
+              kor: "20 포고핀 / 지그",
+              cn: "20个Pogo针钉/夹具",
+              jp: "20ポゴピン/ジグ",
+            },
+          },
+          {
+            img: display,
+            text: {
+              eng: "Real-time Video",
+              kor: "실시간 영상",
+              cn: "实时视频",
+              jp: "リアルタイムビデオ",
+            },
+          },
         ],
-        subTitle: "Automated caulking of R points on fasteners",
-        des: "It incorporates an automatic alignment function using VISION technology. Real-time job monitoring is enabled through the application of a side camera. Each jig is equipped to handle 20 fasteners, ensuring efficient processing. With an average processing time of less than 1 second per unit, this machine guarantees rapid and precise operations.",
+        subTitle: {
+          eng: "Automated caulking of R points on fasteners",
+          kor: "패스너의 R 포인트 자동 칼킹",
+          cn: "紧固件R点自动钉合",
+          jp: "ファスナーのRポイント自動かしめ",
+        },
+        des: {
+          eng: "It incorporates an automatic alignment function using VISION technology. Real-time job monitoring is enabled through the application of a side camera. Each jig is equipped to handle 20 fasteners, ensuring efficient processing. With an average processing time of less than 1 second per unit, this machine guarantees rapid and precise operations.",
+          kor: "비전 기술을 사용한 자동 정렬 기능이 통합되어 있습니다. 측면 카메라를 통해 실시간 작업 모니터링이 가능합니다. 각 지그는 20개의 패스너를 처리할 수 있도록 장착되어 있어 효율적인 처리가 가능합니다. 평균 처리 시간은 1초 미만으로 빠르고 정확한 작업을 보장합니다.",
+          cn: "该设备采用了使用视觉技术的自动对准功能。通过侧面相机，可以实现实时作业监控。每个夹具可处理20个紧固件，确保高效处理。每个单位的平均处理时间不到1秒，保证了快速和精确的操作。",
+          jp: "この機械は、VISION技術を使用した自動調整機能を備えています。サイドカメラを使用して、リアルタイムの作業監視が可能です。各ジグは20個のファスナーを扱うことができ、効率的な処理を実現します。平均処理時間は1秒未満で、迅速かつ正確な操作を保証します。",
+        },
         spc: [
           {
             model: "JKRC-2045",
@@ -966,11 +1465,37 @@ export const machineDetail = {
         img: roll,
         video: "https://www.mempro.co.kr/pogo.mp4",
         features: [
-          { img: finepitch, text: "Adaptable to a fine-pitch product" },
-          { img: display, text: "real-time video" },
+          {
+            img: finepitch,
+            text: {
+              eng: "Adaptable to a fine-pitch product",
+              kor: "미세 피치 제품에 적합",
+              cn: "适应细间距产品",
+              jp: "微細ピッチ製品に対応",
+            },
+          },
+          {
+            img: display,
+            text: {
+              eng: "Real-time Video",
+              kor: "실시간 영상",
+              cn: "实时视频",
+              jp: "リアルタイムビデオ",
+            },
+          },
         ],
-        subTitle: "Automates caulking, with a camera monitoring quality",
-        des: "It can process one fastener per operation ,with an average processing time of less than 5 seconds, ensuring both speed and precision. The utilization of a linear gauge allows for easy control of tool processing depth, and the tool attachment and  detachment are user-friendly. Moreover,it is adaptable to fine-pitch products, meeting various job requirements.",
+        subTitle: {
+          eng: "Automates caulking, with a camera monitoring quality",
+          kor: "칼킹 자동화, 품질 모니터링 카메라",
+          cn: "自动化钉合，配有质量监控相机",
+          jp: "かしめを自動化、品質監視カメラ付き",
+        },
+        des: {
+          eng: "It can process one fastener per operation, with an average processing time of less than 5 seconds, ensuring both speed and precision. The utilization of a linear gauge allows for easy control of tool processing depth, and the tool attachment and detachment are user-friendly. Moreover, it is adaptable to fine-pitch products, meeting various job requirements.",
+          kor: "각 작업당 하나의 패스너를 처리할 수 있으며, 평균 처리 시간은 5초 미만으로 속도와 정밀도를 보장합니다. 선형 게이지를 활용하여 도구 처리 깊이를 쉽게 제어할 수 있으며, 도구 장착 및 분리는 사용자 친화적입니다. 또한 미세 피치 제품에 적합하여 다양한 작업 요구 사항을 충족할 수 있습니다.",
+          cn: "每次操作可处理一个紧固件，平均处理时间不到5秒，确保速度和精度。利用线性规尺可以轻松控制工具加工深度，并且工具的安装和拆卸都很便捷。此外，它适应细间距产品，满足不同工作需求。",
+          jp: "各作業で1つのファスナーを処理でき、平均処理時間は5秒未満で、速度と精度を保証します。線形ゲージの使用により、工具の加工深さを簡単に制御でき、工具の取り付けと取り外しは使いやすいです。また、微細ピッチ製品にも対応しており、さまざまな作業要件を満たします。",
+        },
         spc: [
           {
             model: "JKRM-220",
@@ -1424,7 +1949,7 @@ export const itemsDetail = {
   },
   cprobe: {
     nation: ["Made in Korea"],
-    title: "Cantilever Probe",
+    title: { eng: "Cantilever Probe" },
     thumnail: cprobe_thumnail,
     diagram: "EDS",
     link: "/semi/parts/cprobe",
@@ -2033,7 +2558,7 @@ export const itemsDetail = {
     },
   },
   ceramic: {
-    title: "Ceramic Guide Plate / Hole Processing",
+    title: { eng: "Ceramic Guide Plate / Hole Processing" },
     images: {
       machine: ceramic,
       step1: ceramic_step1,

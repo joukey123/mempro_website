@@ -9,6 +9,7 @@ import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import Alert from "@mui/material/Alert";
 import AlertTitle from "@mui/material/AlertTitle";
 import { useMediaQuery } from "@mui/material";
+import useTranslation from "../Hook/useTranslation";
 const Wrapper = styled.div`
   width: 100%;
   max-width: 1280px;
@@ -115,7 +116,8 @@ function CurrentNav() {
   const location = useLocation();
   const lo = location.pathname.split("/")[3];
   const isMobile = useMediaQuery("(max-width: 1023px)");
-
+  const { getText, selectedLanguage } = useTranslation();
+  const lang = selectedLanguage.toLowerCase();
   useEffect(() => {
     setSelectSubCategory(`${currentSubcategory[0]}`);
   }, [currentSubcategory[0]]);
@@ -140,6 +142,7 @@ function CurrentNav() {
       }
     }
   };
+
   const getSubcategoryLink = (subcategoryName) => {
     const mainItem = items.find(
       (item) => item.category.toLowerCase() === currentCategory.toLowerCase()
@@ -170,6 +173,13 @@ function CurrentNav() {
   const handleSelectSub = (item) => {
     setSelectSubCategory(item);
     navigate(`${getSubcategoryLink(item)}`);
+  };
+
+  const translatedMessage = {
+    eng: "We provide the necessary parts for the probe card.",
+    kor: "우리는 프로브 카드에 필요한 부품을 제공합니다.",
+    cn: "我们提供探针卡所需的零件。",
+    jp: "プローブカードに必要な部品を提供します。",
   };
   return (
     <Wrapper>
@@ -215,7 +225,7 @@ function CurrentNav() {
           },
         }}
       >
-        We provide the necessary parts for the probe card.
+        {translatedMessage[lang] ?? translatedMessage["eng"]}
       </Alert>
     </Wrapper>
   );
