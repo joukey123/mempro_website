@@ -85,7 +85,7 @@ function Features({ contents, maxWidth }) {
                         marginTop: 0,
                         textTransform: "capitalize",
                         lineHeight: "19px",
-                        fontSize: 14,
+                        fontSize: 18,
                         wordBreak: "break-word",
                       }}
                     >

@@ -57,7 +57,7 @@ function Application({ contents }) {
                 src={item.img}
                 $number={contents.applications.length}
               />
-              <div>{getText(item.text)}</div>
+              <div style={{ fontSize: "18px" }}>{getText(item.text)}</div>
             </MotionGrid>
           ))}
         </StyledGridContainer>

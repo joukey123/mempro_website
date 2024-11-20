@@ -218,7 +218,7 @@ function CurrentNav() {
           alignItems: isMobile && "center",
           justifyContent: isMobile && "center",
           "& .MuiAlert-message": {
-            fontSize: "13px",
+            fontSize: "16px",
           },
           "& .css-1ytlwq5-MuiAlert-icon": {
             display: isMobile ? "none !important" : "flex !important",

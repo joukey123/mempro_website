@@ -122,10 +122,9 @@ const StyleTitle = styled.h1`
   }
 `;
 const Dec = styled.p`
-  width: 45%;
+  width: 50%;
   text-align: center;
-  letter-spacing: -0.5px;
-  font-weight: 300;
+  font-size: 18px;
 
   @media (max-width: 1023px) {
     width: 90%;

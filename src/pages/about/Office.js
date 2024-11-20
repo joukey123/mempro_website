@@ -72,9 +72,9 @@ const BtnWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  transform: scale(0.9);
   padding: 20px 5px;
   margin-bottom: 50px;
+
   button {
     width: 150px;
   }
@@ -87,8 +87,7 @@ const BtnWrapper = styled.div`
 `;
 const Des = styled.p`
   text-align: center;
-  font-weight: 300;
-  letter-spacing: -0.5px;
+  font-size: 18px;
 `;
 const BlackBox = styled.div`
   background-color: ${(props) => props.theme.colors.black};

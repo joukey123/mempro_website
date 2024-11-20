@@ -45,7 +45,8 @@ const Span = styled.span`
 `;
 const Description = styled.p`
   margin-top: 20px;
-  width: 65%;
+  width: 70%;
+  font-size: 18px;
   @media (max-width: 1023px) {
     width: 100%;
   }
