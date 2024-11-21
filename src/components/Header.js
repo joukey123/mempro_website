@@ -131,7 +131,6 @@ function Header() {
   const navigate = useNavigate();
   const { selectedLanguage, getText } = useTranslation();
   const lang = selectedLanguage.toLowerCase();
-  const isBannerTop = localStorage.getItem("bannerClosed");
   const handleDataFromChild = (data) => {
     setOpenMobileMenu(data);
   };
@@ -211,15 +210,25 @@ function Header() {
         zIndex: "9999",
       }}
     >
-      {isBannerTop && (
-        <TopBanner
-          text={topBannerText["catalog"][lang].text}
-          linkText={topBannerText["catalog"][lang].linkText}
-          link={topBannerText["catalog"][lang].link}
-          color={"#eceb98"}
-          fontColor={"black"}
-        />
-      )}
+      <TopBanner
+        text={
+          topBannerText["catalog"]?.[lang]?.text ||
+          topBannerText["catalog"]?.["en"]?.text ||
+          "Explore our full range of products and services."
+        }
+        linkText={
+          topBannerText["catalog"][lang]?.linkText ||
+          topBannerText["catalog"]?.["en"]?.linkText ||
+          "Click Here to Access Our Catalog"
+        }
+        link={
+          topBannerText["catalog"][lang]?.link ||
+          topBannerText["catalog"]?.["en"]?.link ||
+          "https://www.mempro.co.kr:84"
+        }
+        color={"#eceb98"}
+        fontColor={"black"}
+      />
 
       {/* <Banner
         text={"2024 SEMICON Taiwan. Booth S7948, 4th, HALL 2"}

@@ -146,14 +146,14 @@ function HomeAbout() {
             variants={animateVariants(1)}
             style={{ maxWidth: "400px" }}
           >
-            {homeAboutText[lang].title}
+            {homeAboutText[lang]?.title}
           </motion.h1>
           <motion.p
             initial="hidden"
             animate={controls}
             variants={animateVariants(1.2)}
           >
-            {homeAboutText[lang].des}
+            {homeAboutText[lang]?.des}
           </motion.p>
           <BtnWrapper
             initial="hidden"
@@ -161,10 +161,10 @@ function HomeAbout() {
             variants={animateVariants(1.5)}
           >
             <Link to={"/about"}>
-              <Btn text={homeAboutText[lang].aboutBtn} />
+              <Btn text={homeAboutText[lang]?.aboutBtn} />
             </Link>
             <Link to={"/contact"}>
-              <Btn text={homeAboutText[lang].contactBtn} />
+              <Btn text={homeAboutText[lang]?.contactBtn} />
             </Link>
           </BtnWrapper>
         </TextWrapper>
