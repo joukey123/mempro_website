@@ -90,7 +90,7 @@ const NavMenu = styled.li`
 `;
 const LanguageWrapper = styled.div`
   transform: scale(0.8);
-  margin-left: 50px;
+  margin-left: ${(props) => (props.$isMobile ? "0px" : "50px")};
 `;
 
 const MenuIconWrapper = styled.div`
@@ -131,7 +131,7 @@ function Header() {
   const navigate = useNavigate();
   const { selectedLanguage, getText } = useTranslation();
   const lang = selectedLanguage.toLowerCase();
-
+  const isBannerTop = localStorage.getItem("bannerClosed");
   const handleDataFromChild = (data) => {
     setOpenMobileMenu(data);
   };
@@ -211,13 +211,16 @@ function Header() {
         zIndex: "9999",
       }}
     >
-      <TopBanner
-        text={topBannerText["catalog"][lang].text}
-        linkText={topBannerText["catalog"][lang].linkText}
-        link={topBannerText["catalog"][lang].link}
-        color={"#eceb98"}
-        fontColor={"black"}
-      />
+      {isBannerTop && (
+        <TopBanner
+          text={topBannerText["catalog"][lang].text}
+          linkText={topBannerText["catalog"][lang].linkText}
+          link={topBannerText["catalog"][lang].link}
+          color={"#eceb98"}
+          fontColor={"black"}
+        />
+      )}
+
       {/* <Banner
         text={"2024 SEMICON Taiwan. Booth S7948, 4th, HALL 2"}
         linkText={"Click Here! Booth"}
@@ -292,14 +295,14 @@ function Header() {
           <>
             <MenuIconWrapper>
               <MobileSearchInputComponent />
+              <LanguageWrapper $isMobile={isMobile}>
+                <Language />
+              </LanguageWrapper>
               <MenuIcon fontSize="large" onClick={handleOpenMobileMenu} />
             </MenuIconWrapper>
             <Collapse orientation="horizontal" in={openMobileMenu}>
               <MobileMenu onData={handleDataFromChild} />
             </Collapse>
-            <LanguageWrapper>
-              <Language />
-            </LanguageWrapper>
           </>
         ) : null}
       </HeaderWrapper>

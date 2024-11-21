@@ -14,13 +14,12 @@ const Form = styled.form`
     border: 0;
     background-color: transparent;
     cursor: pointer;
-    color: rgba(0, 0, 0, 0.3);
   }
 `;
 
 const MobileSearchInput = styled.input`
   border: 0;
-  border-radius: 10px;
+  border-radius: 0.28571429rem;
   text-indent: 10px;
   width: 120px;
   height: 35px;

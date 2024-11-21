@@ -1,11 +1,14 @@
-import { Dropdown, Flag } from "semantic-ui-react";
+import { Dropdown } from "semantic-ui-react";
 import styled from "styled-components";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import LanguageIcon from "@mui/icons-material/Language";
+
 import "semantic-ui-css/semantic.min.css"; // Semantic UI CSS 파일 로드
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { language } from "../atoms";
-
+import { useMediaQuery } from "@mui/material";
+import { transform } from "framer-motion";
 const StyleArrowDropDownIcon = styled(ArrowDropDownIcon)`
   position: absolute;
   right: 20px;
@@ -21,8 +24,12 @@ const FixedDropdown = styled(Dropdown)`
 
 function Language() {
   const [selectedLanguage, setSelectedLanguage] = useRecoilState(language);
-  const storedLang = localStorage.getItem("language");
-  const inputValue = storedLang ? storedLang.toLowerCase() : "eng";
+  const storedLang = localStorage.getItem("language")
+    ? localStorage.getItem("language")
+    : localStorage.setItem("language", "ENG");
+  const inputValue = storedLang ? storedLang.toLowerCase() : "ENG";
+  const isMobile = useMediaQuery("(max-width: 1023px)");
+
   const languageOptions = [
     {
       key: "eng",
@@ -61,15 +68,35 @@ function Language() {
   }, []);
   return (
     <>
-      <FixedDropdown
-        placeholder="Language"
-        fluid
-        selection
-        options={languageOptions}
-        icon={<StyleArrowDropDownIcon />} // react-icons 패키지에서 가져온 아이콘 사용
-        onChange={(e) => handleChange(e)}
-        value={inputValue}
-      />
+      {isMobile ? (
+        <Dropdown
+          icon={<LanguageIcon />}
+          options={languageOptions}
+          compact
+          text=" "
+          onChange={(e) => handleChange(e)}
+          // react-icons 패키지에서 가져온 아이콘 사용
+          style={{
+            margin: "0 10px",
+            transform: "scale(1.2)",
+            width: "100%",
+            height: "35px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        />
+      ) : (
+        <FixedDropdown
+          placeholder="Language"
+          fluid
+          selection
+          options={languageOptions}
+          icon={<StyleArrowDropDownIcon />} // react-icons 패키지에서 가져온 아이콘 사용
+          onChange={(e) => handleChange(e)}
+          value={inputValue}
+        />
+      )}
     </>
   );
 }
