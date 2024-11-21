@@ -13,6 +13,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import Button from "@mui/material/Button";
 import logo_white from "../../img/nav_logo_white.svg";
 import { color } from "framer-motion";
+import useTranslation from "../../Hook/useTranslation";
 const Wrapper = styled.div`
   width: 100%;
   height: 100vh;
@@ -129,7 +130,7 @@ function MobileMenu({ onData }) {
   };
 
   const handleCategory = (category) => {
-    if (category.category === "semiconductor") {
+    if (category.category.eng === "semiconductor") {
       setOpenCategory((prev) => !prev);
     } else {
       navigate(`/${category.link}`);
@@ -138,7 +139,7 @@ function MobileMenu({ onData }) {
   useEffect(() => {
     hideSubMobileMenu();
   }, [location.key]);
-
+  const { getText } = useTranslation();
   return (
     <Wrapper>
       <MenuWrapper>
@@ -160,119 +161,110 @@ function MobileMenu({ onData }) {
         </MenuTop>
 
         <ul style={{ marginBottom: "20px" }}>
-          {items.map(
-            (category, index) =>
-              (category.category === "about MEMPro" ||
-                category.category === "semiconductor" ||
-                category.category === "contact") && (
-                <Categories key={index}>
-                  <Category onClick={() => handleCategory(category)}>
-                    <span>{category.category}</span>
+          {items.map((category, index) => (
+            <Categories key={index}>
+              <Category onClick={() => handleCategory(category)}>
+                <span>{getText(category.category)}</span>
 
-                    {category.subcategories && (
+                {category.subcategories && (
+                  <div>
+                    {openCategory ? (
+                      <KeyboardArrowUpIcon />
+                    ) : (
+                      <KeyboardArrowDownIcon />
+                    )}
+                  </div>
+                )}
+              </Category>
+
+              {category.type && (
+                <Collapse in={openCategory}>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      marginTop: "10px",
+                      padding: "0 10px",
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: "100%",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                      }}
+                      onClick={() => handlePartsType(category)}
+                    >
+                      <span>Parts</span>
                       <div>
-                        {openCategory ? (
+                        {openParts ? (
                           <KeyboardArrowUpIcon />
                         ) : (
                           <KeyboardArrowDownIcon />
                         )}
                       </div>
-                    )}
-                  </Category>
-
-                  {category.type && (
-                    <Collapse in={openCategory}>
-                      <div
-                        style={{
-                          display: "flex",
-                          flexDirection: "column",
-                          marginTop: "10px",
-                          padding: "0 10px",
-                        }}
-                      >
-                        <div
-                          style={{
-                            width: "100%",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "space-between",
-                          }}
-                          onClick={() => handlePartsType(category)}
-                        >
-                          <span>Parts</span>
-                          <div>
-                            {openParts ? (
-                              <KeyboardArrowUpIcon />
-                            ) : (
-                              <KeyboardArrowDownIcon />
-                            )}
-                          </div>
-                        </div>
-                        <Collapse in={openParts}>
-                          {selectedSubcategories && (
-                            <Subcategories>
-                              {selectedSubcategories.map((sub, index) =>
-                                sub.name === "sanding" ? null : (
-                                  <Link
-                                    to={
-                                      category.type &&
-                                      `/${category.link}/${category.type}/${sub.link}`
-                                    }
-                                    key={index}
-                                  >
-                                    <li style={{ fontWeight: 100 }}>
-                                      {sub.name}
-                                    </li>
-                                  </Link>
-                                )
-                              )}
-                            </Subcategories>
+                    </div>
+                    <Collapse in={openParts}>
+                      {selectedSubcategories && (
+                        <Subcategories>
+                          {selectedSubcategories.map((sub, index) =>
+                            sub.name === "sanding" ? null : (
+                              <Link
+                                to={
+                                  category.type &&
+                                  `/${category.link}/${category.type}/${sub.link}`
+                                }
+                                key={index}
+                              >
+                                <li style={{ fontWeight: 100 }}>{sub.name}</li>
+                              </Link>
+                            )
                           )}
-                        </Collapse>
-                        <div
-                          style={{
-                            width: "100%",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "space-between",
-                            marginTop: "15px",
-                          }}
-                          onClick={handleMachinesType}
-                        >
-                          <span>Machines</span>
-                          <div>
-                            {openMachines ? (
-                              <KeyboardArrowUpIcon />
-                            ) : (
-                              <KeyboardArrowDownIcon />
-                            )}
-                          </div>
-                        </div>
-                        <Collapse in={openMachines}>
-                          {selectedMachine && (
-                            <Subcategories>
-                              {selectedMachine.map((sub, index) => (
-                                <Link
-                                  to={
-                                    category.type &&
-                                    `/${sub.link}/${sub.type}/${sub.subcategorylink}`
-                                  }
-                                  key={index}
-                                >
-                                  <li style={{ fontWeight: 100 }}>
-                                    {sub.diagram}
-                                  </li>
-                                </Link>
-                              ))}
-                            </Subcategories>
-                          )}
-                        </Collapse>
-                      </div>
+                        </Subcategories>
+                      )}
                     </Collapse>
-                  )}
-                </Categories>
-              )
-          )}
+                    <div
+                      style={{
+                        width: "100%",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        marginTop: "15px",
+                      }}
+                      onClick={handleMachinesType}
+                    >
+                      <span>Machines</span>
+                      <div>
+                        {openMachines ? (
+                          <KeyboardArrowUpIcon />
+                        ) : (
+                          <KeyboardArrowDownIcon />
+                        )}
+                      </div>
+                    </div>
+                    <Collapse in={openMachines}>
+                      {selectedMachine && (
+                        <Subcategories>
+                          {selectedMachine.map((sub, index) => (
+                            <Link
+                              to={
+                                category.type &&
+                                `/${sub.link}/${sub.type}/${sub.subcategorylink}`
+                              }
+                              key={index}
+                            >
+                              <li style={{ fontWeight: 100 }}>{sub.diagram}</li>
+                            </Link>
+                          ))}
+                        </Subcategories>
+                      )}
+                    </Collapse>
+                  </div>
+                </Collapse>
+              )}
+            </Categories>
+          ))}
         </ul>
         <div
           style={{

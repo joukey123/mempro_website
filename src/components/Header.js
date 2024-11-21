@@ -129,7 +129,9 @@ function Header() {
   const [isOpen, setIsOpen] = useRecoilState(handleSearchBar);
   const isMobile = useMediaQuery("(max-width: 1023px)");
   const navigate = useNavigate();
-  const { getText } = useTranslation();
+  const { selectedLanguage, getText } = useTranslation();
+  const lang = selectedLanguage.toLowerCase();
+
   const handleDataFromChild = (data) => {
     setOpenMobileMenu(data);
   };
@@ -172,6 +174,30 @@ function Header() {
   const handleMouseOut = () => {
     setActiveMenu(null);
   };
+  const topBannerText = {
+    catalog: {
+      eng: {
+        text: "Explore our full range of products and services.",
+        linkText: "Click Here to Access Our Catalog",
+        link: "https://www.mempro.co.kr:84",
+      },
+      kor: {
+        text: "저희의 전체 제품 및 서비스를 확인하세요.",
+        linkText: "카탈로그 보러 가기",
+        link: "https://www.mempro.co.kr:84",
+      },
+      cn: {
+        text: "探索我们全系列的产品和服务。",
+        linkText: "点击此处访问我们的目录",
+        link: "https://www.mempro.co.kr:84",
+      },
+      jp: {
+        text: "製品とサービスの全ラインナップをご覧ください。",
+        linkText: "こちらをクリックしてカタログにアクセス",
+        link: "https://www.mempro.co.kr:84",
+      },
+    },
+  };
 
   return (
     <div
@@ -186,9 +212,9 @@ function Header() {
       }}
     >
       <TopBanner
-        text={"Explore our full range of products and services."}
-        linkText={"Click Here to Access Our Catalog"}
-        link={"https://www.mempro.co.kr:84"}
+        text={topBannerText["catalog"][lang].text}
+        linkText={topBannerText["catalog"][lang].linkText}
+        link={topBannerText["catalog"][lang].link}
         color={"#eceb98"}
         fontColor={"black"}
       />
@@ -254,12 +280,12 @@ function Header() {
             </SearchButton>
 
             {isOpen && <SearchBar />}
+
+            <LanguageWrapper>
+              <Language />
+            </LanguageWrapper>
           </Nav>
         </NavWrapper>
-
-        <LanguageWrapper>
-          <Language />
-        </LanguageWrapper>
 
         {/* {openMobileMenu && <MobileMenu onData={handleDataFromChild} />}*/}
         {isMobile ? (
@@ -271,6 +297,9 @@ function Header() {
             <Collapse orientation="horizontal" in={openMobileMenu}>
               <MobileMenu onData={handleDataFromChild} />
             </Collapse>
+            <LanguageWrapper>
+              <Language />
+            </LanguageWrapper>
           </>
         ) : null}
       </HeaderWrapper>

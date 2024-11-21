@@ -5,6 +5,7 @@ import LogoAnimation from "../../components/LogoAnimation";
 import { motion, useAnimation, useInView } from "framer-motion";
 import React, { useRef } from "react";
 import { Link } from "react-router-dom";
+import useTranslation from "../../Hook/useTranslation";
 
 const Homeabout = styled.div`
   display: flex;
@@ -44,7 +45,7 @@ const TextWrapper = styled.div`
     width: 80%;
   }
   p {
-    font-size: 0.8rem;
+    font-size: 18px;
     font-weight: 100;
   }
   order: 2;
@@ -90,7 +91,8 @@ function HomeAbout() {
   const controls = useAnimation();
   const ref = useRef(null);
   const isInView = useInView(ref, { triggerOnce: true, threshold: 0.5 });
-
+  const { selectedLanguage } = useTranslation();
+  const lang = selectedLanguage.toLowerCase();
   React.useEffect(() => {
     if (isInView) {
       controls.start("visible");
@@ -101,7 +103,32 @@ function HomeAbout() {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 1, delay } },
   });
-
+  const homeAboutText = {
+    eng: {
+      title: "Professional Trading Service",
+      des: "We can offer you the finest products you seek",
+      aboutBtn: "About MEMPro",
+      contactBtn: "Contact",
+    },
+    kor: {
+      title: "전문 무역 서비스",
+      des: "귀하가 원하는 최고의 제품을 제공할 수 있습니다",
+      aboutBtn: "MEMPro 소개",
+      contactBtn: "문의하기",
+    },
+    cn: {
+      title: "专业贸易服务",
+      des: "我们可以为您提供您需要的最佳产品",
+      aboutBtn: "关于 MEMPro",
+      contactBtn: "联系",
+    },
+    jp: {
+      title: "プロフェッショナルトレーディングサービス",
+      des: "あなたが探している最高の製品を提供できます",
+      aboutBtn: "MEMProについて",
+      contactBtn: "お問い合わせ",
+    },
+  };
   return (
     <Homeabout>
       <Wraper>
@@ -111,7 +138,7 @@ function HomeAbout() {
             animate={controls}
             variants={animateVariants(0)}
           >
-            MEMPro
+            MEMPro Corp.
           </motion.span>
           <motion.h1
             initial="hidden"
@@ -119,14 +146,14 @@ function HomeAbout() {
             variants={animateVariants(1)}
             style={{ maxWidth: "400px" }}
           >
-            Professional Trading Service
+            {homeAboutText[lang].title}
           </motion.h1>
           <motion.p
             initial="hidden"
             animate={controls}
             variants={animateVariants(1.2)}
           >
-            We can offer you the finest products you seek
+            {homeAboutText[lang].des}
           </motion.p>
           <BtnWrapper
             initial="hidden"
@@ -134,10 +161,10 @@ function HomeAbout() {
             variants={animateVariants(1.5)}
           >
             <Link to={"/about"}>
-              <Btn text={"About MEMPro"} />
+              <Btn text={homeAboutText[lang].aboutBtn} />
             </Link>
             <Link to={"/contact"}>
-              <Btn text={"Contact"} />
+              <Btn text={homeAboutText[lang].contactBtn} />
             </Link>
           </BtnWrapper>
         </TextWrapper>

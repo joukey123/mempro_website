@@ -22,7 +22,7 @@ const FixedDropdown = styled(Dropdown)`
 function Language() {
   const [selectedLanguage, setSelectedLanguage] = useRecoilState(language);
   const storedLang = localStorage.getItem("language");
-
+  const inputValue = storedLang ? storedLang.toLowerCase() : "eng";
   const languageOptions = [
     {
       key: "eng",
@@ -68,7 +68,7 @@ function Language() {
         options={languageOptions}
         icon={<StyleArrowDropDownIcon />} // react-icons 패키지에서 가져온 아이콘 사용
         onChange={(e) => handleChange(e)}
-        value={storedLang.toLowerCase()}
+        value={inputValue}
       />
     </>
   );

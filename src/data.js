@@ -2038,18 +2038,12 @@ export const itemsDetail = {
         {
           text: {
             eng: "Display Driver Chip",
-            kor: "디스플레이 드라이버 칩",
-            cn: "显示驱动芯片",
-            jp: "ディスプレイドライバーチップ",
           },
           img: displayImg,
         },
         {
           text: {
             eng: "Logic",
-            kor: "로직",
-            cn: "逻辑",
-            jp: "ロジック",
           },
           img: logicImg,
         },
@@ -2294,9 +2288,9 @@ export const itemsDetail = {
           },
         ],
         applications: [
-          { text: "AP Chips", img: ap },
-          { text: "CPU Chips", img: cpu },
-          { text: "GPU Chips", img: gpu },
+          { text: { eng: "AP Chips" }, img: ap },
+          { text: { eng: "CPU Chips" }, img: cpu },
+          { text: { eng: "GPU Chips" }, img: gpu },
         ],
       },
       wire: {
@@ -2490,15 +2484,15 @@ export const itemsDetail = {
         img: [pemsImg],
         features: [
           {
-            text: "Made of alloy metal",
+            text: { eng: "Made of alloy metal" },
             icon: diamond_features1,
           },
           {
-            text: "Superior physical / perfomance",
+            text: { eng: "Superior physical / perfomance" },
             icon: pems_features2,
           },
           {
-            text: "variety of tapered shapes",
+            text: { eng: "variety of tapered shapes" },
             icon: pems_features3,
           },
         ],
@@ -2550,9 +2544,9 @@ export const itemsDetail = {
         ],
 
         applications: [
-          { text: "AP Chips", img: ap },
-          { text: "CPU Chips", img: cpu },
-          { text: "GPU Chips", img: gpu },
+          { text: { eng: "AP Chips" }, img: ap },
+          { text: { eng: "CPU Chips" }, img: cpu },
+          { text: { eng: "GPU Chips" }, img: gpu },
         ],
       },
     },

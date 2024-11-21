@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { items } from "../../data";
 import { Link } from "react-router-dom";
 import MessageBox from "../../components/MessageBox";
+import useTranslation from "../../Hook/useTranslation";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -60,6 +61,8 @@ function HomeMenu() {
   const scale = useTransform(scrollYProgress, [0, 0.5, 0.8], [0, 1, 0]);
   const [mouseover, setMouseover] = useState(false);
   const [selectCategory, setSelectCategoty] = useState();
+  const { selectedLanguage } = useTranslation();
+  const lang = selectedLanguage.toLowerCase();
   const [viewScale, setviewScale] = useState(
     Math.min(
       (
@@ -102,6 +105,13 @@ function HomeMenu() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const messageBoxText = {
+    eng: "Choose the Category you want",
+    kor: "원하는 카테고리를 선택하세요",
+    cn: "选择您想要的类别",
+    jp: "希望するカテゴリを選択してください",
+  };
   return (
     <Wrapper>
       <motion.div style={{ scale }}>
@@ -114,7 +124,7 @@ function HomeMenu() {
         <div style={{ position: "absolute", top: 0, left: 0, width: "100%" }}>
           {items.map(
             (item) =>
-              item.category === "semiconductor" &&
+              item.category.eng === "semiconductor" &&
               item.subcategories &&
               item.subcategories.map((sub, index) => {
                 // sub.subcategory가 존재하고 최소 한 개의 항목이 있는지 확인
@@ -208,7 +218,7 @@ function HomeMenu() {
           </>
         )}
       </motion.div>
-      <MessageBox text={"Choose the Category you want"} type={"close"} />
+      <MessageBox text={messageBoxText[lang]} type={"close"} />
     </Wrapper>
   );
 }
