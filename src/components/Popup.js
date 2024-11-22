@@ -11,16 +11,15 @@ const Wrapper = styled.div`
   left: ${(props) => (props.$isMobile ? "50%" : "20%")};
   transform: translate(-50%, -50%);
   z-index: 999999;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   width: ${(props) => props.$isMobile && "100vw"};
   height: ${(props) => props.$isMobile && "100vh"};
   background-color: ${(props) => props.$isMobile && "rgba(0, 0, 0, 0.6)"};
   backdrop-filter: ${(props) =>
     props.$isMobile && " blur(3px)"}; /* 블러 효과 */
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 const Imgbox = styled.div`
@@ -41,11 +40,17 @@ const TestBox = styled.div`
     props.$isMobile ? "calc(1000px / 2.5)" : "calc(1000px /2)"};
   height: ${(props) =>
     props.$isMobile ? "calc(1363px / 2.5)" : "calc(1363px /2)"};
-  background-color: aliceblue;
-  transform: scale(0.9);
+  transform: ${(props) => props.$isMobile && "scale(0.9)"};
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
 `;
 const Btnbox = styled.div`
   width: 100%;
+  border: 10px;
   button {
     width: 50%;
     background-color: white;
