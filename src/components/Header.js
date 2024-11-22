@@ -15,9 +15,11 @@ import TopBanner from "./TopBanner";
 import SearchBar from "./search/SearchBar";
 import SearchIcon from "@mui/icons-material/Search";
 import { useRecoilState } from "recoil";
-import { handleSearchBar } from "../atoms";
+import { handleSearchBar, showPopup } from "../atoms";
 import MobileSearchInputComponent from "./search/MobileSearchInput";
 import useTranslation from "../Hook/useTranslation";
+import Popup from "./Popup";
+import Semiconimg from "../img/test.jpg";
 const HeaderWrapper = styled.div`
   /* position: fixed; */
   /* top: 0px; */
@@ -90,7 +92,7 @@ const NavMenu = styled.li`
 `;
 const LanguageWrapper = styled.div`
   transform: scale(0.8);
-  margin-left: ${(props) => (props.$isMobile ? "0px" : "50px")};
+  margin: ${(props) => (props.$isMobile ? "0px" : "0 0 0 50px")};
 `;
 
 const MenuIconWrapper = styled.div`
@@ -102,6 +104,8 @@ const MenuIconWrapper = styled.div`
     position: absolute;
     right: 30px;
     align-items: center;
+    justify-content: space-between;
+    width: 120px;
   }
 `;
 
@@ -131,6 +135,8 @@ function Header() {
   const navigate = useNavigate();
   const { selectedLanguage, getText } = useTranslation();
   const lang = selectedLanguage.toLowerCase();
+  const [isShowPopup, setIsShowPopup] = useRecoilState(showPopup);
+
   const handleDataFromChild = (data) => {
     setOpenMobileMenu(data);
   };
@@ -298,7 +304,7 @@ function Header() {
             </LanguageWrapper>
           </Nav>
         </NavWrapper>
-
+        {isShowPopup && <Popup img={Semiconimg} />}
         {/* {openMobileMenu && <MobileMenu onData={handleDataFromChild} />}*/}
         {isMobile ? (
           <>

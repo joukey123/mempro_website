@@ -29,7 +29,6 @@ function useFuse() {
   const [fuse] = useState(new Fuse(combineData, options));
   const [results, setResults] = useRecoilState(resultArray);
   const [query, setQuery] = useRecoilState(queryKeyword);
-
   const navigate = useNavigate();
   const location = useLocation();
   const params = new URLSearchParams(location.search);
@@ -37,7 +36,7 @@ function useFuse() {
   const handleSearch = (query) => {
     const result = fuse.search(query);
     setResults(result.map((res) => res.item)); // 검색 결과 설정
-    navigate(`/searchResult?keyword=${query}`);
+    navigate(`/searchResult`);
   };
   // useEffect(() => {
   //   if (query) {

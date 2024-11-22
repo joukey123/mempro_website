@@ -25,6 +25,7 @@ const ApplicationImg = styled.img`
 const MotionGrid = motion(Grid);
 
 const StyledGridContainer = styled(Grid)``;
+
 function Application({ contents }) {
   const [expendClicked, setExpendClicked] = useState(true);
   const showContent = (show) => {

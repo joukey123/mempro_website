@@ -19,3 +19,8 @@ export const language = atom({
   key: "language",
   default: "eng",
 });
+
+export const showPopup = atom({
+  key: "showPopup",
+  default: "true",
+});

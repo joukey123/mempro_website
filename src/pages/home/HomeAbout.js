@@ -6,6 +6,8 @@ import { motion, useAnimation, useInView } from "framer-motion";
 import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import useTranslation from "../../Hook/useTranslation";
+import Popup from "../../components/Popup";
+import Semiconimg from "../../img/test.jpg";
 
 const Homeabout = styled.div`
   display: flex;

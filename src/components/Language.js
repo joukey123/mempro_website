@@ -77,7 +77,6 @@ function Language() {
           onChange={(e) => handleChange(e)}
           // react-icons 패키지에서 가져온 아이콘 사용
           style={{
-            margin: "0 10px",
             transform: "scale(1.2)",
             width: "100%",
             height: "35px",

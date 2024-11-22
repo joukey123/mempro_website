@@ -3,6 +3,8 @@ import useFuse from "./useFuse";
 import { useRecoilState } from "recoil";
 import { handleSearchBar, queryKeyword } from "../../atoms";
 import styled from "styled-components";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const Form = styled.form`
   position: relative;
@@ -28,10 +30,24 @@ const MobileSearchInput = styled.input`
   border: 1px solid rgba(0, 0, 0, 0.1);
 `;
 
+const MobileBtn = styled.button`
+  border: 0;
+  background-color: transparent;
+  color: ${(props) => (props.$isMain ? "white" : "black")};
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+`;
+
 function MobileSearchInputComponent() {
+  const location = useLocation();
   const { handleSearch } = useFuse();
+  const [isMain, setIsMain] = useState(false);
   const [isOpen, setIsOpen] = useRecoilState(handleSearchBar);
   const [query, setQuery] = useRecoilState(queryKeyword);
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,9 +55,17 @@ function MobileSearchInputComponent() {
     setIsOpen(false);
   };
 
+  useEffect(() => {
+    if (location.pathname === "/") {
+      setIsMain(true);
+    } else {
+      setIsMain(false);
+    }
+  }, [location]);
+
   return (
     <>
-      <Form onSubmit={handleSubmit}>
+      {/* <Form onSubmit={handleSubmit}>
         <MobileSearchInput
           type="text"
           value={query}
@@ -51,7 +75,14 @@ function MobileSearchInputComponent() {
         <button type="submit">
           <SearchIcon />
         </button>
-      </Form>
+      </Form> */}
+      <MobileBtn
+        type="submit"
+        onClick={() => navigate(`/searchResult?keyword=${query}`)}
+        $isMain={isMain}
+      >
+        <SearchIcon />
+      </MobileBtn>
     </>
   );
 }
