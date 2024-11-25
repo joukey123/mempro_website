@@ -393,7 +393,7 @@ function Brand() {
 
   const logoMessage = {
     eng: "The logo visually represents commitment and trust, symbolizing balance and harmony with clients through a hexagon. The ‘M’ signifies Mempro’s leadership on the global stage.",
-    kor: "로고는 헥사곤을 통해 고객과의 균형과 조화를 상징하며, 헌신과 신뢰를 시각적으로 표현합니다. ‘M’은 Mempro의 글로벌 무대에서의 리더십을 나타냅니다.",
+    kor: "헥사곤은 고객과의 균형과 조화를 상징하며, 블루 계열 색상은 신뢰를 시각적으로 표현합니다. ‘M’은 Mempro가 글로벌 중심에서 발휘하는 리더십을 담고 있습니다.",
     cn: "该标志通过六边形象征与客户之间的平衡与和谐，直观地代表了承诺与信任。‘M’代表了Mempro在全球舞台上的领导地位。",
     jp: "ロゴはヘキサゴンを通じて、顧客とのバランスと調和を象徴し、コミットメントと信頼を視覚的に表現しています。‘M’はMemproのグローバルな舞台でのリーダーシップを意味しています。",
   };

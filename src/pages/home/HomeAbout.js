@@ -113,8 +113,8 @@ function HomeAbout() {
       contactBtn: "Contact",
     },
     kor: {
-      title: "전문 무역 서비스",
-      des: "귀하가 원하는 최고의 제품을 제공할 수 있습니다",
+      title: "글로벌 무역 솔루션",
+      des: "최고의 제품 & 서비스를 제공할 수 있습니다",
       aboutBtn: "MEMPro 소개",
       contactBtn: "문의하기",
     },

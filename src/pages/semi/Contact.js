@@ -143,8 +143,8 @@ function Contact() {
       des: "As a leading trading company, we are here to address your inquiries and provide assistance. Feel free to reach out to us. Your input is important to us.",
     },
     kor: {
-      title: "MEMpro 문의하세요!",
-      des: "저희는 선도적인 무역 회사로서 귀하의 문의를 해결하고 도움을 드리기 위해 여기 있습니다. 언제든지 연락 주시기 바랍니다. 귀하의 의견은 저희에게 중요합니다.",
+      title: "MEMpro Contact!",
+      des: "Mempro는 글로벌 무역 솔루션을 제공합니다. 필요한 제품이나 서비스가 있으시면 언제든 말씀해 주세요. 최선을 다해 도와드리겠습니다.",
     },
     cn: {
       title: "请联系我们！",

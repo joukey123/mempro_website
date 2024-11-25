@@ -537,7 +537,7 @@ export const machineDetail = {
     title: { eng: "Sanding Machine" },
     description: {
       eng: "Used to sand the cross section of the wafer's contact area with the probe card.",
-      kor: "웨이퍼와 프로브 카드 접촉 영역의 단면을 샌딩하는 데 사용됩니다.",
+      kor: "웨이퍼와 프로브 카드가 접촉하는 영역의 단면을 매끄럽게 다듬거나 불순물을 제거하기 위해 샌딩 작업을 수행하는 데 사용됩니다. 이 과정은 접촉 품질을 개선하고 테스트의 정확성을 높이기 위한 중요한 단계입니다.",
       cn: "用于打磨晶圆与探针卡接触区域的横截面。",
       jp: "ウェーハとプローブカードの接触部分の断面を研磨するために使用されます。",
     },
@@ -584,7 +584,7 @@ export const machineDetail = {
         },
         des: {
           eng: "With a Chuck Accuracy of ±2μm, dual motion types (circular and linear), support for card sizes up to 300Ø or under, a Z-axis motor with 0.25μm resolution, and an attachable scope arm, it’s the ultimate choice for efficient and accurate probe card pin grinding. Elevate your precision needs with this fundamental yet powerful machine.",
-          kor: "척 정밀도 ±2μm, 이중 운동 방식(원형 및 직선), 최대 300Ø 이하 카드 크기 지원, 0.25μm 해상도의 Z축 모터, 부착 가능한 스코프 암을 갖춘 이 장비는 효율적이고 정확한 프로브 카드 핀 연마를 위한 최고의 선택입니다. 기본적이면서도 강력한 이 기계로 정밀도를 높이세요.",
+          kor: "±2μm의 척 정밀도, 원형 및 직선의 이중 모션 타입, 최대 300Ø 이하의 카드 크기 지원, 0.25μm 해상도를 갖춘 Z축 모터, 그리고 부착 가능한 스코프 암을 갖춘 이 장비는 효율적이고 정밀한 프로브 카드 핀 연마 작업을 위한 최상의 선택입니다. 정밀도를 한 단계 끌어올리는 이 필수적이면서 강력한 기계를 경험해 보세요.",
           cn: "具备±2μm的夹头精度、双运动类型（圆形和线性）、支持最大300Ø或以下的卡尺寸、具有0.25μm分辨率的Z轴马达以及可附加的显微镜臂，它是实现高效且精确的探针卡针打磨的终极选择。通过这台基础而强大的机器提升您的精度需求。",
           jp: "チャック精度±2μm、二重動作タイプ（円形および線形）、300Ø以下のカードサイズに対応、0.25μmの解像度を持つZ軸モーター、取り付け可能なスコープアームを備えたこの装置は、効率的で正確なプローブカードピン研磨の究極の選択です。この基本的ながらも強力なマシンで精度のニーズを高めましょう。",
         },
@@ -611,7 +611,7 @@ export const machineDetail = {
             img: motor,
             text: {
               eng: "Z-axis stage high torque motor",
-              kor: "Z축 고토크 모터",
+              kor: "Z축 고출력 모터",
               cn: "Z轴高扭矩电机",
               jp: "Z軸高トルクモーター",
             },
@@ -625,7 +625,7 @@ export const machineDetail = {
         },
         des: {
           eng: "Achieving an exceptional Chuck-to-Base flatness and parallelism of 7μm, it guarantees unmatched accuracy. Featuring circular motion capabilities, compatibility with card sizes up to 480Ø, a high-speed Z-axis operation, and a selection of four versatile jig options, this machine excels across diverse applications.",
-          kor: "7μm의 뛰어난 척-베이스 평탄도와 평행도를 달성하여 타의 추종을 불허하는 정확도를 보장합니다. 원형 모션 기능, 최대 480Ø 카드 크기 호환성, 고속 Z축 작동, 4가지 다목적 지그 옵션으로 다양한 응용 분야에서 탁월합니다.",
+          kor: "7μm 수준의 뛰어난 척-베이스 평탄도와 평행도를 실현하여 탁월한 정밀도를 보장합니다. 원형 모션 기능, 최대 480Ø 카드 크기 호환성, 고속 Z축 작동, 그리고 네 가지의 다용도 지그 옵션을 제공하여 다양한 응용 분야에서 우수한 성능을 발휘합니다.",
           cn: "实现了卓越的卡盘与底座平坦度和平行度（7μm），保证无与伦比的精度。具有圆形运动功能、支持最大480Ø的卡片尺寸、高速Z轴操作以及四种多功能夹具选项，在各种应用中表现出色。",
           jp: "7μmの卓越したチャックとベースの平坦性と平行性を達成し、他に類を見ない精度を保証します。円形運動機能、最大480Øのカードサイズへの対応、高速Z軸操作、4つの多用途ジグオプションにより、多様なアプリケーションで優れた性能を発揮します。",
         },
@@ -652,7 +652,7 @@ export const machineDetail = {
             img: motor,
             text: {
               eng: "Z-axis stage high torque motor",
-              kor: "Z축 고토크 모터",
+              kor: "Z축 고출력 모터",
               cn: "Z轴高扭矩电机",
               jp: "Z軸高トルクモーター",
             },
@@ -666,7 +666,7 @@ export const machineDetail = {
         },
         des: {
           eng: "With an intuitive interface, operators of all skill levels can access fast and high-precision operations in diverse environments.",
-          kor: "직관적인 인터페이스를 통해 모든 숙련도의 작업자가 다양한 환경에서 빠르고 정밀한 작업을 수행할 수 있습니다.",
+          kor: "직관적인 인터페이스를 통해 모든 작업자가 다양한 환경에서 빠르고 고정밀 작업을 수행할 수 있습니다.",
           cn: "通过直观的界面，各种技能水平的操作员都可以在各种环境中进行快速且高精度的操作。",
           jp: "直感的なインターフェースにより、あらゆるスキルレベルのオペレーターがさまざまな環境で迅速かつ高精度な操作を行うことができます。",
         },
@@ -693,7 +693,7 @@ export const machineDetail = {
             img: motor,
             text: {
               eng: "Z-axis stage high torque motor",
-              kor: "Z축 고토크 모터",
+              kor: "Z축 고출력 모터",
               cn: "Z轴高扭矩电机",
               jp: "Z軸高トルクモーター",
             },
@@ -707,7 +707,7 @@ export const machineDetail = {
         },
         des: {
           eng: "It features seven distinct motion types to enhance operational efficiency. It seamlessly provides real-time contact position verification through a camera, with a control facilitated by dedicated PC software for superior efficiency. Additionally, it offers advanced coaxial and box lighting options to further enhance performance.",
-          kor: "7가지 독특한 모션 유형을 제공하여 작업 효율성을 향상시킵니다. 카메라를 통해 실시간 접촉 위치 확인을 원활하게 제공하며, 전용 PC 소프트웨어로 제어되어 효율성이 극대화됩니다. 또한, 고급 동축 및 박스 조명 옵션을 추가로 제공합니다.",
+          kor: "이 장비는 작업 효율성을 높이기 위해 일곱 가지 다른 모션 타입을 제공합니다. 카메라를 통한 실시간 접촉 위치 확인 기능을 원활하게 제공하며, 전용 PC 소프트웨어로 제어되어 뛰어난 효율성을 보장합니다. 또한, 성능을 더욱 향상시키기 위해 고급 코액시얼 및 박스 조명 옵션도 제공합니다.",
           cn: "具有七种独特的运动类型，可提高操作效率。通过相机提供实时接触位置验证，专用PC软件控制进一步提高了效率。此外，还提供先进的同轴和盒式照明选项以进一步增强性能。",
           jp: "7つの異なる動作タイプを備えており、操作効率を向上させます。カメラを通じてリアルタイムで接触位置を確認でき、専用PCソフトウェアによる制御で効率が向上します。さらに、先進的な同軸およびボックス照明オプションも提供します。",
         },
@@ -734,7 +734,7 @@ export const machineDetail = {
             img: motor,
             text: {
               eng: "Z-axis stage high torque motor",
-              kor: "Z축 고토크 모터",
+              kor: "Z축 고출력 모터",
               cn: "Z轴高扭矩电机",
               jp: "Z軸高トルクモーター",
             },
@@ -748,7 +748,7 @@ export const machineDetail = {
         },
         des: {
           eng: "Achieving an exceptional Chuck-to-Base flatness and parallelism of 7μm, it guarantees unmatched accuracy. Featuring circular motion capabilities, compatibility with card sizes up to 480Ø, a high-speed Z-axis operation, and a selection of four versatile jig options, this machine excels across diverse applications.",
-          kor: "7μm의 뛰어난 척-베이스 평탄도와 평행도를 달성하여 타의 추종을 불허하는 정확도를 보장합니다. 원형 모션 기능, 최대 480Ø 카드 크기 호환성, 고속 Z축 작동, 4가지 다목적 지그 옵션으로 다양한 응용 분야에서 탁월합니다.",
+          kor: "7μm의 뛰어난 척-베이스 평탄도와 평행도를 달성하여 고품질의 정밀도를 보장합니다. 원형 모션 기능, 최대 480Ø 카드 크기 호환성, 고속 Z축 작동, 그리고 네 가지 다용도 지그 옵션을 갖춘 이 기계는 다양한 응용 분야에서 탁월한 성능을 발휘합니다.",
           cn: "实现了卓越的卡盘与底座平坦度和平行度（7μm），保证无与伦比的精度。具有圆形运动功能、支持最大480Ø的卡片尺寸、高速Z轴操作以及四种多功能夹具选项，在各种应用中表现出色。",
           jp: "7μmの卓越したチャックとベースの平坦性と平行性を達成し、他に類を見ない精度を保証します。円形運動機能、最大480Øのカードサイズへの対応、高速Z軸操作、4つの多用途ジグオプションにより、多様なアプリケーションで優れた性能を発揮します。",
         },
@@ -812,7 +812,7 @@ export const machineDetail = {
         },
         des: {
           eng: "The simple operation and various bending point blocks support the production of workpieces with almost no errors in the shortest possible time, regardless of the user or environment. Cost savings were achieved through local production of components, and a single action is used for length adjustment, clamping, bending, and product discharge.",
-          kor: "간단한 작동과 다양한 벤딩 포인트 블록은 사용자와 환경에 관계없이 거의 오차 없이 최단 시간 내에 제품을 생산할 수 있도록 지원합니다. 부품의 현지 생산을 통해 비용 절감이 이루어졌으며, 길이 조정, 고정, 벤딩, 제품 배출을 단일 동작으로 수행합니다.",
+          kor: "간단한 조작과 다양한 굽힘 지점 블록을 통해, 사용자나 환경에 관계없이 거의 오류 없이 최단 시간 내에 작업물을 생산할 수 있습니다. 부품을 현지에서 생산하여 비용을 절감했으며, 길이 조정, 클램핑, 굽힘, 제품 배출을 한 번의 동작으로 처리할 수 있습니다.",
           cn: "简单的操作和多种弯曲点模块支持在最短时间内几乎无误差地生产工件，无论用户或环境如何。通过本地生产组件实现了成本节约，长度调整、夹紧、弯曲和产品排放均通过单一操作完成。",
           jp: "簡単な操作とさまざまな曲げポイントブロックにより、ユーザーや環境に関係なく、ほぼ誤差なしで最短時間で製品を製造することが可能です。部品の現地生産によるコスト削減が実現され、長さ調整、クランプ、曲げ、製品排出が一つの動作で行われます。",
         },
@@ -855,7 +855,7 @@ export const machineDetail = {
             img: xy_axis,
             text: {
               eng: "X, Y-axis manual stage",
-              kor: "X, Y 축 수동 스테이지",
+              kor: "X, Y축 수동 스테이지",
               cn: "X, Y 轴手动平台",
               jp: "X, Y 軸手動ステージ",
             },
@@ -878,7 +878,7 @@ export const machineDetail = {
         },
         des: {
           eng: "This product is equipped with manual stages for X, Y, and θ, enabling precise positional adjustments. It also provides the capability to move the microscope along the X and Y axes for precise sample observation, and fine adjustment along the Z-axis for achieving the desired height. It delivers excellent testing and adjustment performance to users.",
-          kor: "이 제품은 X, Y, θ 수동 스테이지를 갖추고 있어 정밀한 위치 조정이 가능합니다. 또한 현미경을 X, Y 축을 따라 이동시켜 샘플을 정밀하게 관찰하고, Z 축 미세 조정을 통해 원하는 높이를 달성할 수 있습니다. 뛰어난 테스트 및 조정 성능을 제공합니다.",
+          kor: "이 제품은 X, Y, θ 축에 수동 스테이지가 장착되어 있어 정밀한 위치 조정이 가능합니다. 또한, 현미경을 X, Y 축 방향으로 이동시켜 샘플을 정확하게 관찰할 수 있으며, Z축에서 세밀한 조정을 통해 원하는 높이를 맞출 수 있습니다. 이 제품은 우수한 테스트 및 조정 성능을 사용자에게 제공합니다.",
           cn: "该产品配备了 X, Y 和 θ 手动平台，可进行精确的位置调整。此外，还可以沿 X 和 Y 轴移动显微镜以进行精确的样品观察，并通过 Z 轴的精确调整达到所需高度。为用户提供卓越的测试和调整性能。",
           jp: "この製品は、X、Y、θの手動ステージを備えており、精密な位置調整が可能です。また、X、Y軸に沿って顕微鏡を移動してサンプルを正確に観察し、Z軸の微調整により必要な高さを達成できます。優れたテストおよび調整性能を提供します。",
         },
@@ -905,7 +905,7 @@ export const machineDetail = {
             img: xy_axis,
             text: {
               eng: "X, Y-axis manual stage",
-              kor: "X, Y 축 수동 스테이지",
+              kor: "X, Y축 수동 스테이지",
               cn: "X, Y 轴手动平台",
               jp: "X, Y 軸手動ステージ",
             },
@@ -928,7 +928,7 @@ export const machineDetail = {
         },
         des: {
           eng: "The 440 Manual Prober features manual stages for X, Y, and θ adjustments, and a movable microscope along the X and Y axes for precise sample observation. Fine adjustment along the Z-axis allows for height customization, making it ideal for users needing exceptional testing and adjustment performance.",
-          kor: "440 수동 프로버는 X, Y, θ 조정을 위한 수동 스테이지를 특징으로 하며, X 및 Y 축을 따라 이동 가능한 현미경을 통해 정밀한 샘플 관찰이 가능합니다. Z 축의 미세 조정을 통해 높이를 사용자 지정할 수 있어 탁월한 테스트 및 조정 성능을 필요로 하는 사용자에게 이상적입니다.",
+          kor: "이 제품은 X, Y, θ 축에 수동 스테이지가 장착되어 있어 정밀한 위치 조정이 가능합니다. 또한, 현미경을 X, Y 축 방향으로 이동시켜 샘플을 정확하게 관찰할 수 있으며, Z축에서 세밀한 조정을 통해 원하는 높이를 맞출 수 있습니다. 이 제품은 우수한 테스트 및 조정 성능을 사용자에게 제공합니다.",
           cn: "440 手动探针台配备了用于 X、Y 和 θ 调整的手动平台，并可沿 X 和 Y 轴移动显微镜以进行精确的样品观察。通过 Z 轴的精确调整可进行高度定制，非常适合需要卓越测试和调整性能的用户。",
           jp: "440 手動プローバーは、X、Y、θの調整用手動ステージを備え、XおよびY軸に沿って移動可能な顕微鏡を使用して精密なサンプル観察を可能にします。Z軸の微調整により高さのカスタマイズが可能で、卓越したテストおよび調整性能を必要とするユーザーに最適です。",
         },
@@ -955,7 +955,7 @@ export const machineDetail = {
             img: xy_axis,
             text: {
               eng: "X, Y-axis manual stage",
-              kor: "X, Y 축 수동 스테이지",
+              kor: "X, Y축 수동 스테이지",
               cn: "X, Y 轴手动平台",
               jp: "X, Y 軸手動ステージ",
             },
@@ -977,10 +977,10 @@ export const machineDetail = {
           jp: "Ø480 以下のプローブカードに合わせて設計されています",
         },
         des: {
-          eng: "It also includes optional features, such as: a table that offers flatness and parallelism of 0.01 and a shock absorber for smooth Z-axis reciprocating movement, which enhances precision testing and adjustments.",
-          kor: "또한, 평탄도와 평행도가 0.01인 테이블과 Z축의 원활한 왕복 운동을 위한 충격 흡수기와 같은 선택적 기능이 포함되어 있어 정밀한 테스트 및 조정 성능을 강화합니다.",
-          cn: "此外，还包括选配功能，如：提供平整度和平行度为0.01的工作台以及用于平稳Z轴往复运动的减震器，从而增强了精确测试和调节性能。",
-          jp: "さらに、平坦度と平行度が0.01のテーブルや、Z軸のスムーズな往復運動のためのショックアブソーバーなどのオプション機能が含まれており、精密なテストと調整性能を強化します。",
+          eng: "A table that offers flatness and parallelism of 0.01 and a shock absorber for smooth Z-axis reciprocating movement, which enhances precision testing and adjustments.",
+          kor: "0.01의 평탄도와 평행도를 제공하는 테이블과 Z축 왕복 운동을 부드럽게 해주는 Shock absorber와 같은 옵션 기능이 포함되어 있어, 정밀한 테스트와 조정 성능을 더욱 향상시킵니다. ",
+          cn: "还包括选配功能，如：提供平整度和平行度为0.01的工作台以及用于平稳Z轴往复运动的减震器，从而增强了精确测试和调节性能。",
+          jp: "平坦度と平行度が0.01のテーブルや、Z軸のスムーズな往復運動のためのショックアブソーバーなどのオプション機能が含まれており、精密なテストと調整性能を強化します。",
         },
         spc: [
           {
@@ -1005,7 +1005,7 @@ export const machineDetail = {
             img: xy_axis,
             text: {
               eng: "X, Y-axis manual stage",
-              kor: "X, Y 축 수동 스테이지",
+              kor: "X, Y축 수동 스테이지",
               cn: "X, Y 轴手动平台",
               jp: "X, Y 軸手動ステージ",
             },
@@ -1028,7 +1028,7 @@ export const machineDetail = {
         },
         des: {
           eng: "This system enables easy manipulation of the microscope's X, Y, and Z axes, along with convenient control of the alignment glass through a remote or a 7-inch touch panel. Users can also opt for manual adjustments, ensuring maximum usability and efficiency.",
-          kor: "이 시스템은 현미경의 X, Y, Z 축을 쉽게 조작할 수 있으며, 원격 제어나 7인치 터치 패널을 통해 정렬 유리의 제어도 가능합니다. 사용자는 수동 조정을 선택할 수 있어 최대한의 사용 편의성과 효율성을 보장합니다.",
+          kor: "이 시스템은 현미경의 X, Y, Z 축을 쉽게 조작할 수 있으며, 리모컨이나 7인치 터치 패널을 통해 정렬 유리도 간편하게 제어할 수 있습니다. 또한, 사용자는 수동 조정도 선택할 수 있어 최대한의 사용 편의성과 효율성을 제공합니다.",
           cn: "该系统使得显微镜的 X、Y 和 Z 轴操作变得简单，并通过遥控器或7英寸触摸面板方便地控制对准玻璃。用户还可以选择手动调整，确保最大程度的可用性和效率。",
           jp: "このシステムは、顕微鏡のX、Y、Z軸を簡単に操作でき、リモコンまたは7インチタッチパネルを使ってアライメントガラスの操作も便利に行えます。ユーザーは手動調整も選択でき、最大限の利便性と効率性を確保します。",
         },
@@ -1068,7 +1068,7 @@ export const machineDetail = {
             img: csv,
             text: {
               eng: "saved coordinate CSV file",
-              kor: "저장된 좌표 CSV 파일",
+              kor: "좌표 CSV 파일",
               cn: "保存的坐标 CSV 文件",
               jp: "保存された座標 CSV ファイル",
             },
@@ -1077,9 +1077,9 @@ export const machineDetail = {
             img: achieves,
             text: {
               eng: "Achieves accuracy of ±0.005 μm",
-              kor: "정밀도 ±0.005 μm 달성",
-              cn: "精度达到 ±0.005 μm",
-              jp: "精度±0.005 μmを実現",
+              kor: "정밀도 ±0.005μm",
+              cn: "精度达到 ±0.005μm",
+              jp: "精度±0.005μmを実現",
             },
           },
           {
@@ -1094,15 +1094,15 @@ export const machineDetail = {
         ],
         subTitle: {
           eng: "Achieves a position accuracy of ±0.005 μm",
-          kor: "±0.005 μm의 위치 정확도 달성",
-          cn: "达到 ±0.005 μm 的位置精度",
-          jp: "±0.005 μm の位置精度を実現",
+          kor: "정밀도 ±0.005μm",
+          cn: "精度达到 ±0.005μm",
+          jp: "精度达到 ±0.005μm",
         },
         des: {
-          eng: "Our mask film punching machine resolves these technical challenges efficiently, providing precise and accurate punching operations required for creating mask films that align with the needle array on the Probe card, ensuring accurate inspection of each needle based on the wafer's pad coordinates.",
-          kor: "당사의 마스크 필름 펀칭 머신은 기술적 도전을 효율적으로 해결하며, Probe 카드의 바늘 배열과 일치하는 마스크 필름을 생성하는 데 필요한 정밀하고 정확한 펀칭 작업을 제공합니다. 이를 통해 웨이퍼의 패드 좌표를 기준으로 각 바늘을 정확하게 검사할 수 있습니다.",
-          cn: "我们的掩模薄膜打孔机有效解决了这些技术难题，提供了精确且准确的打孔操作，适用于创建与探针卡上的针阵列对齐的掩模薄膜，确保根据晶圆的焊盘坐标对每个针进行准确检查。",
-          jp: "当社のマスクフィルムパンチングマシンは、これらの技術的な課題を効率的に解決し、プローブカードの針配列と一致するマスクフィルムを作成するために必要な精密かつ正確なパンチング操作を提供します。これにより、ウェーハのパッド座標に基づいて各針を正確に検査できます。",
+          eng: "Providing precise and accurate punching operations required for creating mask films that align with the needle array on the Probe card, ensuring accurate inspection of each needle based on the wafer's pad coordinates.",
+          kor: "프로브 카드의 바늘 배열에 맞춰 마스크 필름을 만들기 위해 필요한 정밀하고 정확한 펀칭 작업을 제공합니다. 이를 통해 웨이퍼의 패드 좌표를 기준으로 각 바늘에 대한 정확한 검사가 보장됩니다.",
+          cn: "提供用于制作与探针卡上针阵列对齐的遮罩膜所需的精确且准确的冲孔操作，从而确保根据晶圆的焊盘坐标对每个针头进行准确检查。",
+          jp: "プローブカードの針配列に合わせたマスクフィルムの作成に必要な精密で正確なパンチング操作を提供し、ウェハのパッド座標に基づいて各針の正確な検査を保証します。",
         },
         spc: [
           {
@@ -1138,7 +1138,7 @@ export const machineDetail = {
             img: recipe,
             text: {
               eng: "Individual Recipe Application",
-              kor: "개별 레시피 적용",
+              kor: "개별 설정 적용",
               cn: "个别配方应用",
               jp: "個別レシピの適用",
             },
@@ -1147,7 +1147,7 @@ export const machineDetail = {
             img: tacktime,
             text: {
               eng: "Fast Tact Time",
-              kor: "빠른 전환 시간",
+              kor: "작업 효율성 향상",
               cn: "快速的操作时间",
               jp: "速いタクトタイム",
             },
@@ -1156,7 +1156,7 @@ export const machineDetail = {
             img: easy,
             text: {
               eng: "User-Friendly Interface",
-              kor: "사용자 친화적인 인터페이스",
+              kor: "편리한 인터페이스",
               cn: "用户友好的界面",
               jp: "ユーザーフレンドリーなインターフェース",
             },
@@ -1170,7 +1170,7 @@ export const machineDetail = {
         },
         des: {
           eng: "The automatic alignment system, utilizes an aligning camera, to facilitate individualized model management through separate recipe application. Real-time job monitoring via side camera allows for instant production status checks. With an average measurement time of 0.25 seconds per bump, the system operates fully automatic after product loading. The model-specific indexing operation introduces horizontal and vertical probe auto-adaptive system, ensuring exceptional efficiency and accuracy.",
-          kor: "자동 정렬 시스템은 정렬 카메라를 활용하여 개별 모델 관리를 위해 별도의 레시피 적용을 지원합니다. 사이드 카메라를 통한 실시간 작업 모니터링은 즉시 생산 상태를 확인할 수 있게 해줍니다. 평균 측정 시간은 0.25초로, 제품 로딩 후 시스템이 완전히 자동으로 작동합니다. 모델별 인덱싱 작동은 수평 및 수직 프로브 자동 적응 시스템을 도입하여 뛰어난 효율성과 정확성을 보장합니다.",
+          kor: "자동 정렬 시스템은 정렬 카메라를 이용해 각 모델에 맞는 레시피를 별도로 적용하여 개별 모델 관리를 쉽게 합니다. 사이드 카메라를 통해 실시간으로 작업 상태를 모니터링할 수 있어 즉시 생산 상황을 확인할 수 있습니다. 각 범프에 대한 평균 측정 시간이 0.25초로, 제품을 로딩한 후 시스템은 완전히 자동으로 작동합니다. 모델별 인덱싱 작업은 수평 및 수직 프로브 자동 적응 시스템을 도입하여 뛰어난 효율성과 정확성을 보장합니다.",
           cn: "自动对准系统利用对准相机，通过单独的配方应用来促进个性化的模型管理。侧面相机的实时作业监控允许即时生产状态检查。每个凸起的平均测量时间为0.25秒，产品加载后系统完全自动运行。模型特定的索引操作引入了水平和垂直探针自动适应系统，确保卓越的效率和准确性。",
           jp: "自動アライメントシステムはアライメントカメラを使用し、個別のレシピ適用を通じて個別のモデル管理を促進します。サイドカメラによるリアルタイム作業監視により、即座に生産状態を確認できます。各バンプの平均測定時間は0.25秒で、製品ロード後にシステムは完全自動で作動します。モデル固有のインデックス操作は、水平方向および垂直方向のプローブ自動適応システムを導入し、優れた効率と精度を保証します。",
         },
@@ -1192,7 +1192,7 @@ export const machineDetail = {
             img: recipe,
             text: {
               eng: "Individual Recipe Application",
-              kor: "개별 레시피 적용",
+              kor: "개별 설정 적용",
               cn: "个别配方应用",
               jp: "個別レシピの適用",
             },
@@ -1201,7 +1201,7 @@ export const machineDetail = {
             img: tacktime,
             text: {
               eng: "Fast Tact Time",
-              kor: "빠른 전환 시간",
+              kor: "작업 효율성 향상",
               cn: "快速的操作时间",
               jp: "速いタクトタイム",
             },
@@ -1210,7 +1210,7 @@ export const machineDetail = {
             img: easy,
             text: {
               eng: "User-Friendly Interface",
-              kor: "사용자 친화적인 인터페이스",
+              kor: "편리한 인터페이스",
               cn: "用户友好的界面",
               jp: "ユーザーフレンドリーなインターフェース",
             },
@@ -1218,13 +1218,13 @@ export const machineDetail = {
         ],
         subTitle: {
           eng: "Measures two bumps simultaneously with automatic alignment",
-          kor: "자동 정렬로 두 개의 범프를 동시에 측정",
+          kor: "두 개의 범프를 동시에 측정합니다.",
           cn: "通过自动对准同时测量两个凸起",
           jp: "自動アライメントで2つのバンプを同時に測定",
         },
         des: {
           eng: "Achieving a swift 0.25 second average measurement for each bump with a fully automatic system, it enhances efficiency through a model-specific indexing operation. The system excels in temperature management with a 120-degree evaluation system and a water-cooled chiller. Pin-to-pin inspection enables the force and contact resistance evaluation of individual pins of the rubber and socket contacts, coupled with automatic C.C.C testing.",
-          kor: "완전 자동 시스템으로 각 범프에 대해 0.25초의 빠른 평균 측정을 달성하며, 모델별 인덱싱 작동으로 효율성을 높입니다. 시스템은 120도의 평가 시스템과 수냉식 냉각기를 통해 온도 관리에서 뛰어난 성능을 보입니다. 핀 간 검사로 고무와 소켓 접촉의 각 핀에 대한 힘과 접촉 저항을 평가하고 자동 C.C.C 테스트도 지원합니다.",
+          kor: "각 범프에 대해 평균 0.25초의 빠른 측정을 달성하며, 완전 자동 시스템을 통해 모델별 인덱싱 작업으로 효율성을 향상시킵니다. 이 시스템은 120도 평가 시스템과 수냉식 냉각기를 통해 우수한 온도 관리 성능을 제공합니다. 또한, 핀 간 검사 기능을 통해 고무와 소켓 접촉부의 개별 핀에 대한 힘과 접촉 저항을 평가하며, 자동 C.C.C 테스트도 지원합니다.",
           cn: "通过完全自动系统实现每个凸起0.25秒的快速平均测量，并通过模型特定的索引操作提高效率。该系统在温度管理方面表现出色，配备120度的评估系统和水冷式冷却器。针对针的检查可以评估橡胶和插座接触的各个针的力和接触电阻，并支持自动C.C.C测试。",
           jp: "完全自動システムで各バンプを0.25秒の速い平均測定を実現し、モデル固有のインデックス操作で効率を向上させます。システムは、120度の評価システムと水冷式チラーを用いた温度管理に優れた性能を発揮します。ピン間の検査により、ゴムとソケット接触の各ピンの力と接触抵抗を評価し、自動C.C.Cテストもサポートします。",
         },
@@ -1246,7 +1246,7 @@ export const machineDetail = {
             img: recipe,
             text: {
               eng: "Individual Recipe Application",
-              kor: "개별 레시피 적용",
+              kor: "개별 설정 적용",
               cn: "个别配方应用",
               jp: "個別レシピの適用",
             },
@@ -1255,7 +1255,7 @@ export const machineDetail = {
             img: tacktime,
             text: {
               eng: "Fast Tact Time",
-              kor: "빠른 전환 시간",
+              kor: "작업 효율성 향상",
               cn: "快速的操作时间",
               jp: "速いタクトタイム",
             },
@@ -1264,7 +1264,7 @@ export const machineDetail = {
             img: easy,
             text: {
               eng: "User-Friendly Interface",
-              kor: "사용자 친화적인 인터페이스",
+              kor: "편리한 인터페이스",
               cn: "用户友好的界面",
               jp: "ユーザーフレンドリーなインターフェース",
             },
@@ -1278,7 +1278,7 @@ export const machineDetail = {
         },
         des: {
           eng: "It can simultaneously handle three rubber sockets with three Z-Axes, and has the capability to mount 21 products on two tables which allows for cross-linking operations. Additionally, it is equipped with three loading cells with a maximum weight of 50kg each, it automatically records the load’s value during the O.D application, thus achieving a 5um positional accuracy for the X, Y, and Z-Axes. The implementation of a force overload prevention ensures stable operations. It guarantees reliable performance even under high-load conditions.",
-          kor: "이 장치는 세 개의 Z축을 사용하여 세 개의 고무 소켓을 동시에 처리할 수 있으며, 두 개의 테이블에 21개의 제품을 장착할 수 있어 교차 연결 작업을 허용합니다. 또한, 최대 50kg의 무게를 처리할 수 있는 세 개의 로딩 셀이 장착되어 있으며, O.D 적용 중 로드 값을 자동으로 기록하여 X, Y, Z축의 5um 위치 정확도를 달성합니다. 과부하 방지 기능이 구현되어 있어 안정적인 작동을 보장합니다. 고하중 조건에서도 신뢰성 있는 성능을 제공합니다.",
+          kor: "이 시스템은 세 개의 Z축을 사용하여 세 개의 고무 소켓을 동시에 처리할 수 있으며, 두 개의 테이블에 21개의 제품을 장착해 교차 작업을 할 수 있습니다. 또한, 최대 50kg까지 측정할 수 있는 세 개의 로딩 셀이 장착되어 있어 O.D 적용 중 하중 값을 자동으로 기록하고, X, Y, Z축에서 5μm의 위치 정확도를 달성합니다. 과부하 방지 기능이 적용되어 안정적인 작업을 보장하며, 고하중 조건에서도 신뢰할 수 있는 성능을 제공합니다.",
           cn: "该设备可以同时处理三个带有三个Z轴的橡胶插座，并能够在两个工作台上安装21个产品，从而允许交联操作。此外，它配备了三个最大承重50kg的加载单元，在O.D应用过程中自动记录负载值，从而实现X、Y和Z轴的5um位置精度。实施的过载预防功能确保了稳定的操作，即使在高负荷条件下也能保证可靠的性能。",
           jp: "この機械は、3つのZ軸で3つのゴムソケットを同時に処理でき、2つのテーブルに21個の製品を取り付けることができ、クロスリンク操作を可能にします。さらに、最大50kgの重さを扱える3つのローディングセルが搭載されており、O.D.適用中に負荷値を自動的に記録し、X、Y、Z軸の5umの位置精度を実現します。過負荷防止機能が導入されており、安定した運転が保証されます。高負荷条件でも信頼性のある性能を提供します。",
         },
@@ -1340,7 +1340,7 @@ export const machineDetail = {
         },
         des: {
           eng: "This tester allows for force, current application, resistance, voltage, and temperature evaluations up to 150 degrees. All data is automatically saved in real-time. During the test, users can monitor updated force and resistance graphs in real-time and observe and assess probes through the vision system.",
-          kor: "이 테스터는 힘, 전류, 저항, 전압 및 온도를 150도까지 평가할 수 있습니다. 모든 데이터는 실시간으로 자동 저장됩니다. 테스트 중에는 사용자가 실시간으로 힘과 저항 그래프를 모니터링하고 비전 시스템을 통해 프로브를 관찰하고 평가할 수 있습니다.",
+          kor: "이 테스터는 힘, 전류 적용, 저항, 전압 및 최대 150도까지의 온도 평가가 가능합니다. 모든 데이터는 실시간으로 자동 저장됩니다. 테스트 중에는 실시간으로 업데이트되는 힘과 저항 그래프를 모니터링하고, 비전 시스템을 통해 프로브를 확인하며 평가할 수 있습니다.",
           cn: "该测试仪允许对力、电流、抵抗、电压和温度进行高达150度的评估。所有数据都会实时自动保存。在测试过程中，用户可以实时监控更新的力和电阻图表，并通过视觉系统观察和评估探针。",
           jp: "このテスターは、力、電流、抵抗、電圧、温度を最大150度まで評価できます。すべてのデータはリアルタイムで自動的に保存されます。テスト中、ユーザーは更新された力と抵抗のグラフをリアルタイムで監視し、ビジョンシステムを通じてプローブを観察および評価できます。",
         },
@@ -1362,7 +1362,7 @@ export const machineDetail = {
             img: contact,
             text: {
               eng: "Contact at 300 Cycles / min",
-              kor: "300 사이클 / 분에서 접촉",
+              kor: "300 사이클 / 분 접촉 ",
               cn: "每分钟300次接触",
               jp: "300サイクル/分で接触",
             },
@@ -1385,7 +1385,7 @@ export const machineDetail = {
         },
         des: {
           eng: "It allows for temperature evaluations up to 150 degrees and automatically stores pin-to-pin force data. To enhance testing accuracy by blocking external influences, an external case is applied. Users can monitor real-time operations within the enclosed environment through the vision system.",
-          kor: "이 장치는 150도까지 온도 평가가 가능하며, 핀 간의 힘 데이터를 자동으로 저장합니다. 외부 영향을 차단하여 테스트 정확도를 향상시키기 위해 외부 케이스가 적용됩니다. 사용자는 비전 시스템을 통해 밀폐된 환경 내에서 실시간 작업을 모니터링할 수 있습니다.",
+          kor: "이 시스템은 최대 150도까지 온도 평가가 가능하며, 핀 간 힘 데이터를 자동으로 저장합니다. 외부 영향을 차단하여 테스트 정확성을 높이기 위해 외부 케이스가 적용됩니다. 사용자는 비전 시스템을 통해 밀폐된 환경에서 실시간으로 작업을 모니터링할 수 있습니다.",
           cn: "该设备允许对温度进行高达150度的评估，并自动存储针对针的力数据。为了通过阻挡外部影响来提高测试精度，应用了外部外壳。用户可以通过视觉系统在封闭环境中监控实时操作。",
           jp: "この装置は、最大150度までの温度評価が可能で、ピン間の力データを自動的に保存します。外部からの影響を遮断してテストの精度を向上させるため、外部ケースが適用されています。ユーザーはビジョンシステムを通じて密閉された環境内でリアルタイムの操作を監視できます。",
         },
@@ -1447,7 +1447,7 @@ export const machineDetail = {
         },
         des: {
           eng: "It incorporates an automatic alignment function using VISION technology. Real-time job monitoring is enabled through the application of a side camera. Each jig is equipped to handle 20 fasteners, ensuring efficient processing. With an average processing time of less than 1 second per unit, this machine guarantees rapid and precise operations.",
-          kor: "비전 기술을 사용한 자동 정렬 기능이 통합되어 있습니다. 측면 카메라를 통해 실시간 작업 모니터링이 가능합니다. 각 지그는 20개의 패스너를 처리할 수 있도록 장착되어 있어 효율적인 처리가 가능합니다. 평균 처리 시간은 1초 미만으로 빠르고 정확한 작업을 보장합니다.",
+          kor: "이 시스템은 VISION 기술을 이용한 자동 정렬 기능을 갖추고 있습니다. 사이드 카메라를 통해 실시간 작업 모니터링이 가능하며, 각 지그는 20개의 패스너를 처리할 수 있어 효율적인 작업이 가능합니다. 단위당 평균 처리 시간이 1초 이하로, 빠르고 정밀한 작업을 보장합니다.",
           cn: "该设备采用了使用视觉技术的自动对准功能。通过侧面相机，可以实现实时作业监控。每个夹具可处理20个紧固件，确保高效处理。每个单位的平均处理时间不到1秒，保证了快速和精确的操作。",
           jp: "この機械は、VISION技術を使用した自動調整機能を備えています。サイドカメラを使用して、リアルタイムの作業監視が可能です。各ジグは20個のファスナーを扱うことができ、効率的な処理を実現します。平均処理時間は1秒未満で、迅速かつ正確な操作を保証します。",
         },
@@ -1469,7 +1469,7 @@ export const machineDetail = {
             img: finepitch,
             text: {
               eng: "Adaptable to a fine-pitch product",
-              kor: "미세 피치 제품에 적합",
+              kor: "fine-pitch 가능",
               cn: "适应细间距产品",
               jp: "微細ピッチ製品に対応",
             },
@@ -1492,7 +1492,7 @@ export const machineDetail = {
         },
         des: {
           eng: "It can process one fastener per operation, with an average processing time of less than 5 seconds, ensuring both speed and precision. The utilization of a linear gauge allows for easy control of tool processing depth, and the tool attachment and detachment are user-friendly. Moreover, it is adaptable to fine-pitch products, meeting various job requirements.",
-          kor: "각 작업당 하나의 패스너를 처리할 수 있으며, 평균 처리 시간은 5초 미만으로 속도와 정밀도를 보장합니다. 선형 게이지를 활용하여 도구 처리 깊이를 쉽게 제어할 수 있으며, 도구 장착 및 분리는 사용자 친화적입니다. 또한 미세 피치 제품에 적합하여 다양한 작업 요구 사항을 충족할 수 있습니다.",
+          kor: "이 시스템은 한 번의 작업으로 하나의 패스너를 처리할 수 있으며, 평균 처리 시간은 5초 이하로 속도와 정밀성을 모두 보장합니다. 선형 게이지를 이용해 도구 처리 깊이를 쉽게 조절할 수 있으며, 도구의 부착과 분리가 사용자 친화적입니다. 또한, 파인 피치 제품에도 적응 가능하여 다양한 작업 요구 사항을 충족합니다.",
           cn: "每次操作可处理一个紧固件，平均处理时间不到5秒，确保速度和精度。利用线性规尺可以轻松控制工具加工深度，并且工具的安装和拆卸都很便捷。此外，它适应细间距产品，满足不同工作需求。",
           jp: "各作業で1つのファスナーを処理でき、平均処理時間は5秒未満で、速度と精度を保証します。線形ゲージの使用により、工具の加工深さを簡単に制御でき、工具の取り付けと取り外しは使いやすいです。また、微細ピッチ製品にも対応しており、さまざまな作業要件を満たします。",
         },
@@ -1514,7 +1514,7 @@ export const itemsDetail = {
     },
     description: {
       eng: "Manufactured by using an electrode to deposit diamond particles on the surface of core wire, made of high carbon steel and tungsten.",
-      kor: "고탄소 강철과 텅스텐으로 만든 코어 와이어 표면에 전극을 이용해 다이아몬드 입자를 증착하여 제조됩니다.",
+      kor: "고탄소강 및 텅스텐으로 만든 코어 와이어 표면에 전극을 사용하여 다이아몬드 입자를 코팅하여 제조합니다.",
       cn: "采用电极在芯线表面沉积金刚石颗粒而制成，芯线由高碳钢和钨制成.",
       jp: "高炭素鋼とタングステンからなる芯線の表面に電極を用いてダイヤモンド粒子を蒸着させて製造されます.",
     },
@@ -1649,9 +1649,9 @@ export const itemsDetail = {
     },
     description: {
       eng: "During the semiconductor manufacturing process, consumable parts are applied precisely in a sterile environment with the use of a chamber of diffusion in the CVD, Etching, and Thin Film processing facilities.",
-      kor: "반도체 제조 과정에서는 CVD, 에칭, 그리고 박막 공정 설비의 확산 챔버를 활용하여 소모품이 멸균 환경에서 정밀하게 적용됩니다.",
-      cn: "在半导体制造过程中，在CVD、刻蚀和薄膜加工设备的扩散腔中，耗材在无菌环境下精确使用.",
-      jp: "半導体製造プロセスでは、CVD、エッチング、薄膜処理設備の拡散チャンバーを使用して、消耗部品が無菌環境で正確に適用されます.",
+      kor: "반도체 제조 공정에서는 소모성 부품이 CVD(화학기상증착), 식각(Etching), 박막(Thin Film) 처리 설비에 있는 확산 챔버를 활용하여, 무균 환경에서 매우 정밀하게 적용됩니다. 이는 오염을 최소화하고, 공정의 정확성과 신뢰성을 보장하기 위한 필수적인 단계입니다.",
+      cn: "在半导体制造过程中，消耗部件在CVD（化学气相沉积）、蚀刻和薄膜处理设备的扩散腔内，在无菌环境下被精确地应用。这是为了最大限度地减少污染，并确保工艺的精确性和可靠性，是一个必不可少的步骤。",
+      jp: "半導体製造プロセスでは、消耗部品がCVD（化学気相成長）、エッチング、薄膜処理装置の拡散チャンバーを活用し、無菌環境で非常に精密に適用されます。これは汚染を最小限に抑え、工程の正確性と信頼性を確保するための必須のステップです。",
     },
     images: {
       machine: etching_machine,
@@ -1830,7 +1830,7 @@ export const itemsDetail = {
     },
     description: {
       eng: "Are used to connect the integrated circuits located on a wafer to the ATE (Automated Test Equipment) to test that the electrical parameters and performance meet requirements before they are manufactured and shipped out.",
-      kor: "웨이퍼에 위치한 집적 회로를 ATE(자동화 테스트 장비)와 연결하여 전기적 파라미터와 성능이 요구 사항을 충족하는지 테스트한 후 제조 및 배송됩니다.",
+      kor: "웨이퍼에 위치한 집적회로(IC)를 자동화 검사 장비(ATE, Automated Test Equipment)에 연결하여, 전기적 특성과 성능이 요구 사항을 충족하는지 제조 및 출하 전에 테스트하는 데 사용됩니다.",
       cn: "用于将位于晶圆上的集成电路连接到ATE（自动化测试设备），以在制造和发货之前测试电气参数和性能是否满足要求。",
       jp: "ウェハ上の集積回路をATE（自動テスト装置）に接続し、製造および出荷前に電気的なパラメータと性能が要求を満たしているかどうかをテストします。",
     },
@@ -2152,7 +2152,7 @@ export const itemsDetail = {
     },
     description: {
       eng: "Are used to connect the integrated circuits located on a wafer to the ATE (Automated Test Equipment) to test that the electrical parameters and performance meet requirements before they are manufactured and shipped out.",
-      kor: "수직 구조는 웨이퍼에 위치한 집적 회로를 ATE(자동화 테스트 장비)와 연결하여 전기적 파라미터와 성능이 요구 사항을 충족하는지 테스트한 후 제조 및 출하됩니다.",
+      kor: "웨이퍼에 위치한 집적회로(IC)를 자동화 검사 장비(ATE, Automated Test Equipment)에 연결하여, 전기적 특성과 성능이 요구 사항을 충족하는지 제조 및 출하 전에 테스트하는 데 사용됩니다.",
       cn: "用于将位于晶圆上的集成电路连接到ATE（自动化测试设备），以测试电气参数和性能在制造和出货前是否符合要求。",
       jp: "垂直構造は、ウェハ上にある集積回路をATE（自動化テスト設備）に接続して、製造および出荷前に電気的パラメーターとパフォーマンスが要求を満たしているかどうかをテストするために使用されます。",
     },

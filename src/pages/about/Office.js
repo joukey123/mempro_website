@@ -175,7 +175,7 @@ function Office() {
   const lang = selectedLanguage.toLowerCase();
   const partnersMessage = {
     eng: "The partners currently working with Mempro.",
-    kor: "현재 Mempro와 협력 중인 파트너들입니다.",
+    kor: "현재 Mempro와 협력 중인 파트너사의 국가들입니다.",
     cn: "目前与Mempro合作的伙伴。",
     jp: "現在Memproと共に働いているパートナーです。",
   };

@@ -108,7 +108,7 @@ function HomeMenu() {
 
   const messageBoxText = {
     eng: "Choose the Category you want",
-    kor: "원하는 카테고리를 선택하세요",
+    kor: "카테고리를 선택하세요",
     cn: "选择您想要的类别",
     jp: "希望するカテゴリを選択してください",
   };

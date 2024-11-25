@@ -187,7 +187,7 @@ function Header() {
         link: "https://www.mempro.co.kr:84",
       },
       kor: {
-        text: "저희의 전체 제품 및 서비스를 확인하세요.",
+        text: "멤프로의 제품 및 서비스를 확인하세요.",
         linkText: "카탈로그 보러 가기",
         link: "https://www.mempro.co.kr:84",
       },
