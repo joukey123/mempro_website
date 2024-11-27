@@ -65,7 +65,7 @@ function MainVideo() {
             autoPlay
             playsInline
             loop
-            src="https://www.mempro.co.kr/mobile.mp4"
+            src="http://www.mempro.co.kr/mobile.mp4"
             $ratio={12 / 19}
           ></Video>
         ) : (
@@ -74,7 +74,7 @@ function MainVideo() {
             autoPlay
             playsInline
             loop
-            src="https://www.mempro.co.kr/pc.mp4"
+            src="http://www.mempro.co.kr/pc.mp4"
             $ratio={16 / 9}
           ></Video>
         )}
