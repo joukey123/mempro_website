@@ -304,7 +304,9 @@ function Header() {
             </LanguageWrapper>
           </Nav>
         </NavWrapper>
-        {isShowPopup && <Popup img={Semiconimg} />}
+        {/* popup */}
+        {/* {isShowPopup && <Popup img={Semiconimg} />} */}
+
         {/* {openMobileMenu && <MobileMenu onData={handleDataFromChild} />}*/}
         {isMobile ? (
           <>
