@@ -38,8 +38,7 @@ const Imgbox = styled.div`
 const TestBox = styled.div`
   width: ${(props) =>
     props.$isMobile ? "calc(1000px / 2.5)" : "calc(1000px /2)"};
-  height: ${(props) =>
-    props.$isMobile ? "calc(1363px / 2.5)" : "calc(1363px /2)"};
+
   transform: ${(props) => props.$isMobile && "scale(0.9)"};
   display: flex;
   align-items: center;

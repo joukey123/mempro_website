@@ -19,7 +19,7 @@ import { handleSearchBar, showPopup } from "../atoms";
 import MobileSearchInputComponent from "./search/MobileSearchInput";
 import useTranslation from "../Hook/useTranslation";
 import Popup from "./Popup";
-import Semiconimg from "../img/test.jpg";
+import thanksCard from "../img/thanksCard.jpg";
 const HeaderWrapper = styled.div`
   /* position: fixed; */
   /* top: 0px; */
@@ -305,9 +305,9 @@ function Header() {
           </Nav>
         </NavWrapper>
         {/* popup */}
-        {/* {isShowPopup && <Popup img={Semiconimg} />} */}
+        {isShowPopup && <Popup img={thanksCard} />}
 
-        {/* {openMobileMenu && <MobileMenu onData={handleDataFromChild} />}*/}
+        {/* {openMobileMenu && <MobileMenu onData={handleDataFromChild} />} */}
         {isMobile ? (
           <>
             <MenuIconWrapper>
